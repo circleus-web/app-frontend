@@ -1,4 +1,10 @@
 main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
   display: flex;
 
   width: 100vw;
@@ -28,7 +34,7 @@ main {
     left: 84px;
     bottom: 279px;
 
-    z-index: 0;
+    z-index: -3;
   }
 
   .compas {
@@ -37,7 +43,7 @@ main {
     bottom: 230px;
     left: 900px;
 
-    z-index: 2;
+    z-index: -1;
   }
 
   .compas-shadow {
@@ -46,24 +52,24 @@ main {
     bottom: 20px;
     left: 896px;
 
-    z-index: 1;
+    z-index: -2;
   }
 
-  form {
-    display: flex;
+  z-index: -100;
+}
 
-    width: 440px;
-    height: 640px;
-    padding: 32px;
+form {
+  display: flex;
 
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0;
+  width: 440px;
+  height: 640px;
+  padding: 32px;
 
-    border-radius: 12px;
-    background-color: white;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
 
-    z-index: 10;
-  }
+  border-radius: 12px;
+  background-color: white;
 }

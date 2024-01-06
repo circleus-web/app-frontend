@@ -1,2 +1,9 @@
-<app-email-input />
-<app-button text="Continue" />
+<form [formGroup]="form">
+  <label for="email">Email</label>
+  <input formControlName="email" type="email" placeholder="" />
+
+  <label for="verificationCode">Verification code</label>
+  <input formControlName="verificationCode" type="text" placeholder="" />
+
+  <button [disabled]="form.invalid">Submit</button>
+</form>

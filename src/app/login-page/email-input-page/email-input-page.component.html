@@ -1,2 +1,6 @@
-<app-email-input />
-<app-button text="Continue" [click]="continue" />
+<form [formGroup]="form">
+  <label for="email">Email</label>
+  <input formControlName="email" type="email" placeholder="" />
+
+  <button [disabled]="form.invalid" (click)="click()">Continue</button>
+</form>

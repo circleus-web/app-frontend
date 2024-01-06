@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-
-import { EmailInputPageComponent } from './email-input-page/email-input-page.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [EmailInputPageComponent],
+  imports: [RouterModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',
 })
-export class LoginPageComponent {}
+export class LoginPageComponent { }
