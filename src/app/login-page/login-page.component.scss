@@ -1,7 +1,4 @@
-$size: 5px;
-$big-size: $size*2;
-$min: 0;
-$max: $size*.3;
+@use 'sass:math';
 
 main {
   position: absolute;
@@ -26,7 +23,14 @@ main {
   background: url('/assets/svg/form-background.svg') no-repeat center/cover;
 }
 
+// pattern for background
 main::before {
+  $size: 5px;
+  $doubled-size: $size*2;
+  $filled-form: $size*math.$pi*.1;
+  $transparent-form: $filled-form*(1+math.$pi*.1);
+  $background-color: #E9D7FE;
+
   content: '';
   position: absolute;
   top: 0;
@@ -35,30 +39,30 @@ main::before {
   height: 100%;
   background:
     radial-gradient(circle at 0 0,
-      lightgray $max, 
-      transparent $max*1.3
+      lightgray $filled-form, 
+      transparent $transparent-form
       ) $size $size repeat,
     radial-gradient(circle at center,
-      lightgray $max, 
-      transparent $max*1.3
+      lightgray $filled-form, 
+      transparent $transparent-form
       ) $size $size repeat,
-    radial-gradient(circle at 0 10px,
-      lightgray $max, 
-      transparent $max*1.3
+    radial-gradient(circle at 0 $doubled-size,
+      lightgray $filled-form, 
+      transparent $transparent-form
       ) $size $size repeat,
-    radial-gradient(circle at 10px 10px,
-      lightgray $max, 
-      transparent $max*1.3
+    radial-gradient(circle at $doubled-size $doubled-size,
+      lightgray $filled-form, 
+      transparent $transparent-form
       ) $size $size repeat,
-    radial-gradient(circle at 10px 0,
-      lightgray $max, 
-      transparent $max*1.3
+    radial-gradient(circle at $doubled-size 0,
+      lightgray $filled-form, 
+      transparent $transparent-form
       ) $size $size repeat,;
-  background-size: 10px 10px;
-  background-color: #E9D7FE;
+  background-size: $doubled-size $doubled-size;
+  background-color: $background-color;
   background-repeat: repeat;
 
-  z-index: -101;
+  z-index: -100;
 }
 
 form {
