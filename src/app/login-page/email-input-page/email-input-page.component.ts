@@ -5,6 +5,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { FormProvider } from '../../shared/form-provider';
 import { LoginFormProvider } from '../form-provider.service';
+import { FormHeaderComponent } from '../form-header/form-header.component';
 
 @Component({
   selector: 'app-login-page-email-input-page',
@@ -12,6 +13,7 @@ import { LoginFormProvider } from '../form-provider.service';
   imports: [
     ReactiveFormsModule,
     ButtonComponent,
+    FormHeaderComponent,
   ],
   templateUrl: './email-input-page.component.html',
   styleUrl: './email-input-page.component.scss',

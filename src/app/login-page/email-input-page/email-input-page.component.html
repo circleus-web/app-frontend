@@ -1,6 +1,12 @@
-<form [formGroup]="form">
-  <label for="email">Email</label>
-  <input formControlName="email" type="email" placeholder="" />
+<div class="form">
+  <form [formGroup]="form">
+    <app-form-header></app-form-header>
 
-  <button [disabled]="form.invalid" (click)="click()">Continue</button>
-</form>
+    <div class="actions">
+      <label for="email">Email</label>
+      <input formControlName="email" type="email" placeholder="" />
+
+      <button [disabled]="form.invalid" (click)="click()">Continue</button>
+    </div>
+  </form>
+</div>

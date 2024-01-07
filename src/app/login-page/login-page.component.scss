@@ -65,7 +65,7 @@ main::before {
   z-index: -100;
 }
 
-form {
+div.form {
   display: flex;
 
   width: 440px;
@@ -79,4 +79,21 @@ form {
 
   border-radius: 12px;
   background-color: white;
+
+  form {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+
+    div.actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      align-self: stretch;
+    }
+  }
 }

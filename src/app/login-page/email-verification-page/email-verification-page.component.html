@@ -1,9 +1,15 @@
-<form [formGroup]="form">
-  <label for="email">Email</label>
-  <input formControlName="email" type="email" placeholder="" />
+<div class="form">
+  <form [formGroup]="form">
+    <app-form-header></app-form-header>
 
-  <label for="verificationCode">Verification code</label>
-  <input formControlName="verificationCode" type="text" placeholder="" />
+    <div class="actions">
+      <label for="email">Email</label>
+      <input formControlName="email" type="email" placeholder="" />
 
-  <button [disabled]="form.invalid">Submit</button>
-</form>
+      <label for="verificationCode">Verification code</label>
+      <input formControlName="verificationCode" type="text" placeholder="" />
+
+      <button [disabled]="form.invalid">Submit</button>
+    </div>
+  </form>
+</div>
