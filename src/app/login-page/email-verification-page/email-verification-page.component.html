@@ -1,15 +1,1 @@
-<div class="form">
-  <form [formGroup]="form">
-    <app-form-header></app-form-header>
-
-    <div class="actions">
-      <label for="email">Email</label>
-      <input formControlName="email" type="email" placeholder="" />
-
-      <label for="verificationCode">Verification code</label>
-      <input formControlName="verificationCode" type="text" placeholder="" />
-
-      <button [disabled]="form.invalid">Submit</button>
-    </div>
-  </form>
-</div>
+<app-custom-form-generator [forms]="forms"></app-custom-form-generator>

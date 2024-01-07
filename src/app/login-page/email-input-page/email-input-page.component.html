@@ -1,12 +1,1 @@
-<div class="form">
-  <form [formGroup]="form">
-    <app-form-header></app-form-header>
-
-    <div class="actions">
-      <label for="email">Email</label>
-      <input formControlName="email" type="email" placeholder="" />
-
-      <button [disabled]="form.invalid" (click)="click()">Continue</button>
-    </div>
-  </form>
-</div>
+<app-custom-form-generator [forms]="forms"></app-custom-form-generator>

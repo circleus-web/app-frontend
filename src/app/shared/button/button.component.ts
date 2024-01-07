@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  @Input({ required: true }) text: string = '';
+  @Input({ required: true }) text!: string;
 
   @Input() click: () => void = () => {};
 }

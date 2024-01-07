@@ -1,0 +1,26 @@
+<div class="form">
+  <form>
+    <div class="header">
+      <img src="assets/svg/logo.svg" alt="Circleus logo" />
+      <div class="texts">
+        <h1 class="title">{{ forms.formTitle }}</h1>
+        @if (forms.formSubTitle) {
+          <span class="subtitle">{{ forms.formSubTitle }}</span>
+        }
+      </div>
+    </div>
+
+    <div class="actions">
+      @for (form of forms.forms; track $index) {
+        <label for="{{ form.inputName }}">{{ form.inputName }}</label>
+        <input [formControl]="form.form" type="text" placeholder="" />
+      }
+
+      @if (forms.submitButton) {
+        <button (click)="(forms.submitButton.click)">
+          {{ forms.submitButton.text }}
+        </button>
+      }
+    </div>
+  </form>
+</div>

@@ -1,35 +1,30 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonComponent } from '../../shared/button/button.component';
-import { FormProvider } from '../../shared/form-provider';
-import { LoginFormProvider } from '../form-provider.service';
-import { FormHeaderComponent } from '../form-header/form-header.component';
+import { FormArrayProvider } from '../../shared/form-array-provider.service';
+import { LoginFormArrayProvider } from '../form-provider.service';
+import { CustomFormGeneratorComponent } from '../../custom-form-generator/custom-form-generator.component';
+import { IFormArrayWithDescriptions } from '../../shared/iform-array-with-descriptions';
 
 @Component({
   selector: 'app-login-page-email-input-page',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    ButtonComponent,
-    FormHeaderComponent,
-  ],
+  imports: [ReactiveFormsModule, ButtonComponent, CustomFormGeneratorComponent],
   templateUrl: './email-input-page.component.html',
   styleUrl: './email-input-page.component.scss',
-  providers: [{ provide: FormProvider, useExisting: LoginFormProvider }],
+  providers: [
+    { provide: FormArrayProvider, useExisting: LoginFormArrayProvider },
+  ],
 })
 export class EmailInputPageComponent {
-  protected form: FormGroup;
+  protected forms: IFormArrayWithDescriptions;
 
-  constructor(private router: Router, private formProvider: FormProvider) {
-    this.form = this.formProvider.getForm().get('email') as FormGroup;
-  }
-
-  protected click() {
-    if (this.form.valid) {
-      this.formProvider.getForm().get('emailVerification')?.get('email')?.setValue(this.form.value.email);
-      this.router.navigate(['login', 'email-verification']);
-    }
+  constructor(
+    private router: Router,
+    private formProvider: FormArrayProvider,
+  ) {
+    this.forms = this.formProvider.getFormArray()['email'];
   }
 }
