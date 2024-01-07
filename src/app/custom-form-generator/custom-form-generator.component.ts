@@ -1,21 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { IFormArrayWithDescriptions } from '../shared/iform-array-with-descriptions';
+import { IFormArrayWithDescriptions } from '../shared/form-array/iform-array-with-descriptions';
+import { ButtonComponent } from '../shared/button/button.component';
 
 @Component({
   selector: 'app-custom-form-generator',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ButtonComponent],
   templateUrl: './custom-form-generator.component.html',
   styleUrl: './custom-form-generator.component.scss',
 })
 export class CustomFormGeneratorComponent {
-  // private _formGroup: FormGroup | undefined;
-
   @Input({ required: true }) forms!: IFormArrayWithDescriptions;
-
-  // protected get formGroup(): FormGroup {
-  //   return this._formGroup;
-  // }
 }

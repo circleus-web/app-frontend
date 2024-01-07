@@ -11,15 +11,19 @@
     </div>
 
     <div class="actions">
-      @for (form of forms.forms; track $index) {
-        <label for="{{ form.inputName }}">{{ form.inputName }}</label>
-        <input [formControl]="form.form" type="text" placeholder="" />
+      @for (form of forms.iterableForms; track $index) {
+        @if (form.inputTitle) {
+          <label for="{{ form.inputName }}">{{ form.inputTitle }}</label>
+        }
+        <input
+          [formControl]="form.form"
+          type="text"
+          placeholder="{{ form.inputPlaceholder }}"
+        />
       }
 
       @if (forms.submitButton) {
-        <button (click)="(forms.submitButton.click)">
-          {{ forms.submitButton.text }}
-        </button>
+        <app-button [button]="forms.submitButton"></app-button>
       }
     </div>
   </form>

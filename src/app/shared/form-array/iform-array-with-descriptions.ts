@@ -1,17 +1,17 @@
 import { FormControl } from '@angular/forms';
 
+import { IButton } from '../button/ibutton';
+
 export interface IFormWithDescription {
   form: FormControl;
   inputName: string;
-}
-
-export interface IButton {
-  text: string;
-  click: () => void;
+  inputPlaceholder?: string;
+  inputTitle?: string;
 }
 
 export interface IFormArrayWithDescriptions {
-  forms: IFormWithDescription[];
+  forms: { [key: string]: IFormWithDescription };
+  iterableForms: IFormWithDescription[];
   formTitle: string;
   formSubTitle?: string;
   submitButton?: IButton;
