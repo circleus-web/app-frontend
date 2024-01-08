@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ButtonComponent } from '../../shared/button/button.component';
-import { FormArrayProvider } from '../../shared/form-array/form-array-provider.service';
-import { LoginFormArrayProvider } from '../form-provider.service';
 import { CustomFormGeneratorComponent } from '../../custom-form-generator/custom-form-generator.component';
 import { IFormArrayWithDescriptions } from '../../shared/form-array/iform-array-with-descriptions';
+import { FormArrayWithDescriptions } from '../../shared/form-array/form-array-with-descriptions';
+import { FormWithDescription } from '../../shared/form-array/form-with-description';
 
 @Component({
   selector: 'app-login-page-email-input-page',
@@ -13,14 +13,38 @@ import { IFormArrayWithDescriptions } from '../../shared/form-array/iform-array-
   imports: [ReactiveFormsModule, ButtonComponent, CustomFormGeneratorComponent],
   templateUrl: './email-input-page.component.html',
   styleUrl: './email-input-page.component.scss',
-  providers: [
-    { provide: FormArrayProvider, useExisting: LoginFormArrayProvider },
-  ],
 })
 export class EmailInputPageComponent {
   protected forms: IFormArrayWithDescriptions;
 
-  constructor(private formProvider: FormArrayProvider) {
-    this.forms = this.formProvider.getFormArray()['email'];
+  constructor() {
+    this.forms = new FormArrayWithDescriptions({
+      formTitle: 'Вход',
+      formSubTitle: 'Добро пожаловать!',
+      forms: {
+        email: new FormWithDescription({
+          inputName: 'email',
+          inputTitle: 'Email',
+          inputPlaceholder: 'example@gmail.com',
+          form: new FormControl('', Validators.required),
+          isSubmited: false,
+        }),
+        verificationCode: new FormWithDescription({
+          inputName: 'verification-code',
+          inputTitle: 'Код верификации',
+          inputPlaceholder: 'Код из почты',
+          form: new FormControl('', Validators.required),
+          disabled: (): boolean => {
+            return !this.forms.forms['email'].isSubmited || false;
+          },
+        }),
+      },
+      submitButton: {
+        text: 'Войти',
+        click: () => {
+          this.forms.forms['email'].isSubmited = true;
+        },
+      },
+    });
   }
 }

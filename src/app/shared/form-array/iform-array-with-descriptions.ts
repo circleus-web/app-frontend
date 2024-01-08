@@ -1,13 +1,7 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 import { IButton } from '../button/ibutton';
-
-export interface IFormWithDescription {
-  form: FormControl;
-  inputName: string;
-  inputPlaceholder?: string;
-  inputTitle?: string;
-}
+import { IFormWithDescription } from './iform-with-description';
 
 export interface IFormArrayWithDescriptions {
   forms: { [key: string]: IFormWithDescription };

@@ -1,10 +1,8 @@
 import { FormGroup } from '@angular/forms';
 
-import {
-  IFormArrayWithDescriptions,
-  IFormWithDescription,
-} from './iform-array-with-descriptions';
+import { IFormArrayWithDescriptions } from './iform-array-with-descriptions';
 import { IButton } from '../button/ibutton';
+import { IFormWithDescription } from './iform-with-description';
 
 interface IRequiredFormArrayWithDescriptions {
   forms: { [key: string]: IFormWithDescription };
@@ -32,14 +30,21 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
   }
 
   public get iterableForms(): IFormWithDescription[] {
-    return Object.values(this.forms);
+    const res: IFormWithDescription[] = [];
+    Object.keys(this.forms).forEach((key) => {
+      if (!this.forms[key].disabled) {
+        res.push(this.forms[key]);
+      }
+    });
+    return res;
   }
 
   public get formGroup(): FormGroup {
     if (!this._formGroup) {
       this._formGroup = new FormGroup({});
       Object.keys(this.forms).forEach((key) => {
-        this._formGroup?.addControl(key, this.forms[key].form);
+        console.log(key, this.forms[key].disabled);
+        if (!this.forms[key].disabled) this._formGroup?.addControl(key, this.forms[key].form);
       });
     }
     return this._formGroup;
