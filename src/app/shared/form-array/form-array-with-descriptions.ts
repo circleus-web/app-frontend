@@ -8,7 +8,8 @@ interface IRequiredFormArrayWithDescriptions {
   forms: { [key: string]: IFormWithDescription };
   formTitle: string;
   formSubTitle?: string;
-  submitButton?: IButton;
+  buttons?: { [key: string]: IButton };
+  activeButtons?: string[];
 }
 
 export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
@@ -20,13 +21,16 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   public formSubTitle?: string;
 
-  public submitButton?: IButton;
+  public buttons?: { [key: string]: IButton };
+
+  public activeButtons?: string[];
 
   constructor(formArrayWithDescriptions: IRequiredFormArrayWithDescriptions) {
     this.forms = formArrayWithDescriptions.forms;
     this.formTitle = formArrayWithDescriptions.formTitle;
     this.formSubTitle = formArrayWithDescriptions.formSubTitle;
-    this.submitButton = formArrayWithDescriptions.submitButton;
+    this.buttons = formArrayWithDescriptions.buttons;
+    this.activeButtons = formArrayWithDescriptions.activeButtons;
   }
 
   public get iterableForms(): IFormWithDescription[] {
@@ -44,7 +48,8 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
       this._formGroup = new FormGroup({});
       Object.keys(this.forms).forEach((key) => {
         console.log(key, this.forms[key].disabled);
-        if (!this.forms[key].disabled) this._formGroup?.addControl(key, this.forms[key].form);
+        if (!this.forms[key].disabled)
+          this._formGroup?.addControl(key, this.forms[key].form);
       });
     }
     return this._formGroup;

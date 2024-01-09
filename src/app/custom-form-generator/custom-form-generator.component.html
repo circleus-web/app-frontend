@@ -22,8 +22,12 @@
         />
       }
 
-      @if (forms.submitButton) {
-        <app-button [button]="forms.submitButton"></app-button>
+      @if (forms.buttons) {
+        @for (i of forms.activeButtons; track $index) {
+          @if (forms.buttons[i]) {
+            <app-button [button]="forms.buttons[i]"></app-button>
+          }
+        }
       }
     </div>
   </form>

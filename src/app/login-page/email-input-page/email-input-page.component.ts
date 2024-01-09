@@ -6,6 +6,7 @@ import { CustomFormGeneratorComponent } from '../../custom-form-generator/custom
 import { IFormArrayWithDescriptions } from '../../shared/form-array/iform-array-with-descriptions';
 import { FormArrayWithDescriptions } from '../../shared/form-array/form-array-with-descriptions';
 import { FormWithDescription } from '../../shared/form-array/form-with-description';
+import { Button } from '../../shared/button/button';
 
 @Component({
   selector: 'app-login-page-email-input-page',
@@ -39,12 +40,23 @@ export class EmailInputPageComponent {
           },
         }),
       },
-      submitButton: {
-        text: 'Войти',
-        click: () => {
-          this.forms.forms['email'].isSubmited = true;
-        },
+      buttons: {
+        showVerificationCode: new Button({
+          text: 'Войти',
+          disabled: (): boolean => {
+            return this.forms.formGroup.valid;
+          },
+          click: () => {
+            this.forms.forms['email'].isSubmited = true;
+            const buttonIndex = this.forms.activeButtons?.indexOf(
+              'showVerificationCode',
+            );
+            if (buttonIndex !== undefined && buttonIndex !== -1)
+              this.forms.activeButtons?.splice(buttonIndex);
+          },
+        }),
       },
+      activeButtons: ['showVerificationCode'],
     });
   }
 }

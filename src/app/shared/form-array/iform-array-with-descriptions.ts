@@ -9,5 +9,6 @@ export interface IFormArrayWithDescriptions {
   formGroup: FormGroup;
   formTitle: string;
   formSubTitle?: string;
-  submitButton?: IButton;
+  buttons?: { [key: string]: IButton };
+  activeButtons?: string[];
 }
