@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 import { ButtonComponent } from '../../shared/button/button.component';
 import { CustomFormGeneratorComponent } from '../../custom-form-generator/custom-form-generator.component';
@@ -16,47 +18,60 @@ import { Button } from '../../shared/button/button';
   styleUrl: './email-input-page.component.scss',
 })
 export class EmailInputPageComponent {
-  protected forms: IFormArrayWithDescriptions;
+  private destroyRef = inject(DestroyRef);
 
-  constructor() {
-    this.forms = new FormArrayWithDescriptions({
-      formTitle: 'Вход',
-      formSubTitle: 'Добро пожаловать!',
-      forms: {
-        email: new FormWithDescription({
-          inputName: 'email',
-          inputTitle: 'Email',
-          inputPlaceholder: 'example@gmail.com',
-          form: new FormControl('', Validators.required),
-          isSubmited: false,
-        }),
-        verificationCode: new FormWithDescription({
-          inputName: 'verification-code',
-          inputTitle: 'Код верификации',
-          inputPlaceholder: 'Код из почты',
-          form: new FormControl('', Validators.required),
-          disabled: (): boolean => {
-            return !this.forms.forms['email'].isSubmited || false;
-          },
-        }),
-      },
-      buttons: {
-        showVerificationCode: new Button({
-          text: 'Войти',
-          disabled: (): boolean => {
-            return this.forms.formGroup.valid;
-          },
-          click: () => {
-            this.forms.forms['email'].isSubmited = true;
-            const buttonIndex = this.forms.activeButtons?.indexOf(
-              'showVerificationCode',
-            );
-            if (buttonIndex !== undefined && buttonIndex !== -1)
-              this.forms.activeButtons?.splice(buttonIndex);
-          },
-        }),
-      },
-      activeButtons: ['showVerificationCode'],
-    });
-  }
+  protected forms: IFormArrayWithDescriptions = new FormArrayWithDescriptions({
+    formTitle: 'Вход',
+    formSubTitle: 'Добро пожаловать!',
+    forms: {
+      email: new FormWithDescription({
+        inputName: 'email',
+        inputTitle: 'Email',
+        inputPlaceholder: 'example@gmail.com',
+        form: new FormControl('', Validators.required),
+        isSubmited: false,
+      }),
+      verificationCode: new FormWithDescription({
+        inputName: 'verification-code',
+        inputTitle: 'Код верификации',
+        inputPlaceholder: 'Код из почты',
+        form: new FormControl('', Validators.required),
+        disabled: (): boolean => {
+          return !this.forms.forms['email'].isSubmited || false;
+        },
+      }),
+    },
+    buttons: {
+      showVerificationCode: new Button({
+        text: 'Войти',
+        disabled: (): boolean => {
+          return this.forms.formGroup.invalid;
+        },
+        click: () => {
+          this.forms.forms['email'].isSubmited = true;
+          const buttonIndex = this.forms.activeButtons?.indexOf(
+            'showVerificationCode',
+          );
+          if (buttonIndex !== undefined && buttonIndex !== -1)
+            this.forms.activeButtons?.splice(buttonIndex);
+        },
+      }),
+    },
+    activeButtons: ['showVerificationCode'],
+    onCreate: () => {
+      this._emailControl$
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe(() => {
+          this.forms.forms['email'].isSubmited = false;
+          const buttonIndex = this.forms.activeButtons?.indexOf(
+            'showVerificationCode',
+          );
+          if (buttonIndex === undefined || buttonIndex === -1)
+            this.forms.activeButtons?.push('showVerificationCode');
+        });
+    },
+  });
+
+  private _emailControl$: Observable<string> =
+    this.forms.forms['email'].form.valueChanges;
 }

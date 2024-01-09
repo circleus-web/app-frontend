@@ -11,4 +11,6 @@ export interface IFormArrayWithDescriptions {
   formSubTitle?: string;
   buttons?: { [key: string]: IButton };
   activeButtons?: string[];
+  onCreate?: () => void;
+  onDestroy?: () => void;
 }

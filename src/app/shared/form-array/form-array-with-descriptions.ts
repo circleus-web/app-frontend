@@ -10,6 +10,8 @@ interface IRequiredFormArrayWithDescriptions {
   formSubTitle?: string;
   buttons?: { [key: string]: IButton };
   activeButtons?: string[];
+  onCreate?: () => void;
+  onDestroy?: () => void;
 }
 
 export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
@@ -25,12 +27,18 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   public activeButtons?: string[];
 
+  public onCreate?: () => void;
+
+  public onDestroy?: () => void;
+
   constructor(formArrayWithDescriptions: IRequiredFormArrayWithDescriptions) {
     this.forms = formArrayWithDescriptions.forms;
     this.formTitle = formArrayWithDescriptions.formTitle;
     this.formSubTitle = formArrayWithDescriptions.formSubTitle;
     this.buttons = formArrayWithDescriptions.buttons;
     this.activeButtons = formArrayWithDescriptions.activeButtons;
+    this.onCreate = formArrayWithDescriptions.onCreate;
+    this.onDestroy = formArrayWithDescriptions.onDestroy;
   }
 
   public get iterableForms(): IFormWithDescription[] {
@@ -47,7 +55,6 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     if (!this._formGroup) {
       this._formGroup = new FormGroup({});
       Object.keys(this.forms).forEach((key) => {
-        console.log(key, this.forms[key].disabled);
         if (!this.forms[key].disabled)
           this._formGroup?.addControl(key, this.forms[key].form);
       });
