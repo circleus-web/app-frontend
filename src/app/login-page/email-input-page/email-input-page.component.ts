@@ -18,7 +18,27 @@ import { Button } from '../../shared/button/button';
   styleUrl: './email-input-page.component.scss',
 })
 export class EmailInputPageComponent {
-  private destroyRef = inject(DestroyRef);
+  private _destroyRef = inject(DestroyRef);
+
+  private submitEmailForm(): void {
+    this.forms.forms['email'].isSubmited = true;
+  }
+
+  private defyEmailForm(): void {
+    this.forms.forms['email'].isSubmited = false;
+  }
+
+  private hideButton(buttonId: string): void {
+    const buttonIndex = this.forms.activeButtons?.indexOf(buttonId);
+    if (buttonIndex !== undefined && buttonIndex !== -1)
+      this.forms.activeButtons?.splice(buttonIndex);
+  }
+
+  private showButton(buttonId: string): void {
+    const buttonIndex = this.forms.activeButtons?.indexOf(buttonId);
+    if (buttonIndex === undefined || buttonIndex === -1)
+      this.forms.activeButtons?.push(buttonId);
+  }
 
   protected forms: IFormArrayWithDescriptions = new FormArrayWithDescriptions({
     formTitle: 'Вход',
@@ -48,26 +68,18 @@ export class EmailInputPageComponent {
           return this.forms.formGroup.invalid;
         },
         click: () => {
-          this.forms.forms['email'].isSubmited = true;
-          const buttonIndex = this.forms.activeButtons?.indexOf(
-            'showVerificationCode',
-          );
-          if (buttonIndex !== undefined && buttonIndex !== -1)
-            this.forms.activeButtons?.splice(buttonIndex);
+          this.submitEmailForm();
+          this.hideButton('showVerificationCode');
         },
       }),
     },
     activeButtons: ['showVerificationCode'],
     onCreate: () => {
       this._emailControl$
-        .pipe(takeUntilDestroyed(this.destroyRef))
+        .pipe(takeUntilDestroyed(this._destroyRef))
         .subscribe(() => {
-          this.forms.forms['email'].isSubmited = false;
-          const buttonIndex = this.forms.activeButtons?.indexOf(
-            'showVerificationCode',
-          );
-          if (buttonIndex === undefined || buttonIndex === -1)
-            this.forms.activeButtons?.push('showVerificationCode');
+          this.defyEmailForm();
+          this.showButton('showVerificationCode');
         });
     },
   });
