@@ -1,4 +1,6 @@
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+
 import { IFormWithDescription } from './iform-with-description';
 
 interface IRequiredFormWithDescription {
@@ -42,6 +44,10 @@ export class FormWithDescription implements IFormWithDescription {
     } else {
       this._getDisabled = form.disabled;
     }
+  }
+
+  public getValueChanges(): Observable<string> {
+    return this.form.valueChanges;
   }
 
   public get isSubmited(): boolean {

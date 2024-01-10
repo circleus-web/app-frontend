@@ -21,69 +21,74 @@ export class EmailInputPageComponent {
   private _destroyRef = inject(DestroyRef);
 
   private submitEmailForm(): void {
-    this.forms.forms['email'].isSubmited = true;
+    this.formArrayWithDescriptions.forms['email'].isSubmited = true;
   }
 
   private defyEmailForm(): void {
-    this.forms.forms['email'].isSubmited = false;
+    this.formArrayWithDescriptions.forms['email'].isSubmited = false;
   }
 
   private hideButton(buttonId: string): void {
-    const buttonIndex = this.forms.activeButtons?.indexOf(buttonId);
+    const buttonIndex =
+      this.formArrayWithDescriptions.activeButtons?.indexOf(buttonId);
     if (buttonIndex !== undefined && buttonIndex !== -1)
-      this.forms.activeButtons?.splice(buttonIndex);
+      this.formArrayWithDescriptions.activeButtons?.splice(buttonIndex);
   }
 
   private showButton(buttonId: string): void {
-    const buttonIndex = this.forms.activeButtons?.indexOf(buttonId);
+    const buttonIndex =
+      this.formArrayWithDescriptions.activeButtons?.indexOf(buttonId);
     if (buttonIndex === undefined || buttonIndex === -1)
-      this.forms.activeButtons?.push(buttonId);
+      this.formArrayWithDescriptions.activeButtons?.push(buttonId);
   }
 
-  protected forms: IFormArrayWithDescriptions = new FormArrayWithDescriptions({
-    formTitle: 'Вход',
-    formSubTitle: 'Добро пожаловать!',
-    forms: {
-      email: new FormWithDescription({
-        inputName: 'email',
-        inputTitle: 'Email',
-        inputPlaceholder: 'example@gmail.com',
-        form: new FormControl('', Validators.required),
-        isSubmited: false,
-      }),
-      verificationCode: new FormWithDescription({
-        inputName: 'verification-code',
-        inputTitle: 'Код верификации',
-        inputPlaceholder: 'Код из почты',
-        form: new FormControl('', Validators.required),
-        disabled: (): boolean => {
-          return !this.forms.forms['email'].isSubmited || false;
-        },
-      }),
-    },
-    buttons: {
-      showVerificationCode: new Button({
-        text: 'Войти',
-        disabled: (): boolean => {
-          return this.forms.formGroup.invalid;
-        },
-        click: () => {
-          this.submitEmailForm();
-          this.hideButton('showVerificationCode');
-        },
-      }),
-    },
-    activeButtons: ['showVerificationCode'],
-    onCreate: () => {
-      this._emailControl$
-        .pipe(takeUntilDestroyed(this._destroyRef))
-        .subscribe(() => {
-          this.defyEmailForm();
-          this.showButton('showVerificationCode');
-        });
-    },
-  });
+  protected formArrayWithDescriptions: IFormArrayWithDescriptions =
+    new FormArrayWithDescriptions({
+      formTitle: 'Вход',
+      formSubTitle: 'Добро пожаловать!',
+      forms: {
+        email: new FormWithDescription({
+          inputName: 'email',
+          inputTitle: 'Email',
+          inputPlaceholder: 'example@gmail.com',
+          form: new FormControl('', Validators.required),
+          isSubmited: false,
+        }),
+        verificationCode: new FormWithDescription({
+          inputName: 'verification-code',
+          inputTitle: 'Код верификации',
+          inputPlaceholder: 'Код из почты',
+          form: new FormControl('', Validators.required),
+          disabled: (): boolean => {
+            return (
+              !this.formArrayWithDescriptions.forms['email'].isSubmited || false
+            );
+          },
+        }),
+      },
+      buttons: {
+        showVerificationCode: new Button({
+          text: 'Войти',
+          disabled: (): boolean => {
+            return this.formArrayWithDescriptions.formGroup.invalid;
+          },
+          click: () => {
+            this.submitEmailForm();
+            this.hideButton('showVerificationCode');
+          },
+        }),
+      },
+      activeButtons: ['showVerificationCode'],
+      onCreate: () => {
+        this._emailControl$
+          .pipe(takeUntilDestroyed(this._destroyRef))
+          .subscribe(() => {
+            this.defyEmailForm();
+            this.showButton('showVerificationCode');
+          });
+      },
+    });
 
   private _emailControl$: Observable<string> =
-    this.forms.forms['email'].form.valueChanges;
+    this.formArrayWithDescriptions.forms['email'].form.valueChanges;
 }
