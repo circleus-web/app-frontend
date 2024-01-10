@@ -1,9 +1,9 @@
 import { FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 import { IFormArrayWithDescriptions } from './iform-array-with-descriptions';
 import { IButton } from '../button/ibutton';
 import { IFormWithDescription } from './iform-with-description';
-import { Observable } from 'rxjs';
 
 interface IRequiredFormArrayWithDescriptions {
   forms: { [key: string]: IFormWithDescription };
