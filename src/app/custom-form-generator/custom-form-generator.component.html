@@ -1,13 +1,17 @@
 @for (form of forms.iterableForms; track $index) {
-  @if (form.inputTitle) {
-    <label for="{{ form.inputName }}">{{ form.inputTitle }}</label>
-  }
-  <input
-    [formControl]="form.form"
-    [ngStyle]="inputStyle"
-    type="text"
-    placeholder="{{ form.inputPlaceholder }}"
-  />
+  <div class="input-with-label" [ngStyle]="inputWithLabelStyle">
+    @if (form.inputTitle) {
+      <label for="{{ form.inputName }}" [ngStyle]="labelStyle">{{
+        form.inputTitle
+      }}</label>
+    }
+    <input
+      [formControl]="form.form"
+      [ngStyle]="inputStyle"
+      type="text"
+      placeholder="{{ form.inputPlaceholder }}"
+    />
+  </div>
 }
 
 @if (forms.buttons) {
