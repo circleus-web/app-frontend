@@ -50,15 +50,6 @@ export class EmailInputPageComponent {
       this.formArrayWithDescriptions.activeButtons?.push(buttonId);
   }
 
-  private _pipeEmailFormValueChanges(): void {
-    this._emailControl$
-      .pipe(takeUntilDestroyed(this._destroyRef))
-      .subscribe(() => {
-        this._defyEmailForm();
-        this._showButton('showVerificationCode');
-      });
-  }
-
   private _emailForm: IFormWithDescription = new FormWithDescription({
     inputName: 'email',
     inputTitle: 'Email',
@@ -100,7 +91,14 @@ export class EmailInputPageComponent {
         showVerificationCode: this._showVerificationCodeButton,
       },
       activeButtons: ['showVerificationCode'],
-      onCreate: () => this._pipeEmailFormValueChanges,
+      onCreate: () => {
+        this._emailControl$
+          .pipe(takeUntilDestroyed(this._destroyRef))
+          .subscribe(() => {
+            this._defyEmailForm();
+            this._showButton('showVerificationCode');
+          });
+      },
     });
 
   protected formTitle: string = 'Вход';
