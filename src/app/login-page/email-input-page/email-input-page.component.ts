@@ -109,7 +109,7 @@ export class EmailInputPageComponent {
     display: 'flex',
     'flex-direction': 'column',
     'align-items': 'center',
-    'gap': '6px',
+    gap: '6px',
     'align-self': 'stretch',
   };
 
