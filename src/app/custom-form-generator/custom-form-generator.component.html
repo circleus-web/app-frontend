@@ -4,6 +4,7 @@
   }
   <input
     [formControl]="form.form"
+    [ngStyle]="inputStyle"
     type="text"
     placeholder="{{ form.inputPlaceholder }}"
   />
@@ -12,7 +13,11 @@
 @if (forms.buttons) {
   @for (i of forms.activeButtons; track $index) {
     @if (forms.buttons[i]) {
-      <app-button [button]="forms.buttons[i]"></app-button>
+      <app-button
+        [button]="forms.buttons[i]"
+        [buttonStyle]="buttonStyle"
+        [ngStyle]="buttonContainerStyle"
+      ></app-button>
     }
   }
 }

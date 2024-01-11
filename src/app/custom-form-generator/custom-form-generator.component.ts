@@ -15,6 +15,12 @@ import { CommonModule } from '@angular/common';
 export class CustomFormGeneratorComponent implements OnInit, OnDestroy {
   @Input({ required: true }) forms!: IFormArrayWithDescriptions;
 
+  @Input() inputStyle?: { [key: string]: string };
+
+  @Input() buttonContainerStyle?: { [key: string]: string };
+
+  @Input() buttonStyle?: { [key: string]: string };
+
   ngOnInit(): void {
     this.forms.onCreate?.call(this.forms);
   }

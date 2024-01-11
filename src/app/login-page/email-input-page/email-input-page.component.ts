@@ -107,6 +107,46 @@ export class EmailInputPageComponent {
 
   protected formSubTitle: string = 'Добро пожаловать!';
 
+  protected inputStyle = {
+    'display': 'flex',
+    'height': '40px',
+    'padding': '8px 12px',
+    'align-self': 'stretch',
+    'border-radius': '8px',
+    'background': 'var(--Gray-100, #F2F4F7)',
+    'border': 'none',
+    'font-family': 'Inter',
+    'font-size': '14px',
+    'font-style': 'normal',
+    'font-weight': '400',
+    'line-height': '20px',
+  };
+
+  protected buttonContainerStyle = {
+    'display': 'flex',
+    'width': '100%',
+  };
+
+  protected buttonStyle = {
+    'display': 'flex',
+    'padding': '12px 16px',
+    'justify-content': 'center',
+    'align-items': 'center',
+    'align-self': 'stretch',
+    'gap': '8px',
+    'flex': '1 0 0',
+    'border-radius': '8px',
+    'border': '1px solid var(--Accent-600, #7F56D9)',
+    'background': 'var(--Accent-600, #7F56D9)',
+    'box-shadow': '0px 1px 2px 0px rgba(16, 24, 40, 0.05)',
+    'color': 'var(--White, #FFF)',
+    'font-family': 'Inter',
+    'font-size': '14px',
+    'font-style': 'normal',
+    'font-weight': '600',
+    'line-height': '16px',
+  };
+
   private _emailControl$: Observable<string> =
     this.formArrayWithDescriptions.getFormValueChanges('email');
 }
