@@ -1,34 +1,18 @@
-<div class="form">
-  <form>
-    <div class="header">
-      <img src="assets/svg/logo.svg" alt="Circleus logo" />
-      <div class="texts">
-        <h1 class="title">{{ forms.formTitle }}</h1>
-        @if (forms.formSubTitle) {
-          <span class="subtitle">{{ forms.formSubTitle }}</span>
-        }
-      </div>
-    </div>
+@for (form of forms.iterableForms; track $index) {
+  @if (form.inputTitle) {
+    <label for="{{ form.inputName }}">{{ form.inputTitle }}</label>
+  }
+  <input
+    [formControl]="form.form"
+    type="text"
+    placeholder="{{ form.inputPlaceholder }}"
+  />
+}
 
-    <div class="actions">
-      @for (form of forms.iterableForms; track $index) {
-        @if (form.inputTitle) {
-          <label for="{{ form.inputName }}">{{ form.inputTitle }}</label>
-        }
-        <input
-          [formControl]="form.form"
-          type="text"
-          placeholder="{{ form.inputPlaceholder }}"
-        />
-      }
-
-      @if (forms.buttons) {
-        @for (i of forms.activeButtons; track $index) {
-          @if (forms.buttons[i]) {
-            <app-button [button]="forms.buttons[i]"></app-button>
-          }
-        }
-      }
-    </div>
-  </form>
-</div>
+@if (forms.buttons) {
+  @for (i of forms.activeButtons; track $index) {
+    @if (forms.buttons[i]) {
+      <app-button [button]="forms.buttons[i]"></app-button>
+    }
+  }
+}

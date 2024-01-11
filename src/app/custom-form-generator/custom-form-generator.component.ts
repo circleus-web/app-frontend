@@ -3,11 +3,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { IFormArrayWithDescriptions } from '../shared/form-array/iform-array-with-descriptions';
 import { ButtonComponent } from '../shared/button/button.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-custom-form-generator',
   standalone: true,
-  imports: [ReactiveFormsModule, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, ButtonComponent],
   templateUrl: './custom-form-generator.component.html',
   styleUrl: './custom-form-generator.component.scss',
 })

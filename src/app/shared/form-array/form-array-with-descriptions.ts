@@ -7,8 +7,6 @@ import { IFormWithDescription } from './iform-with-description';
 
 interface IRequiredFormArrayWithDescriptions {
   forms: { [key: string]: IFormWithDescription };
-  formTitle: string;
-  formSubTitle?: string;
   buttons?: { [key: string]: IButton };
   activeButtons?: string[];
   onCreate?: () => void;
@@ -20,10 +18,6 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   private _formGroup: FormGroup | undefined;
 
-  public formTitle: string;
-
-  public formSubTitle?: string;
-
   public buttons?: { [key: string]: IButton };
 
   public activeButtons?: string[];
@@ -34,8 +28,6 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   constructor(formArrayWithDescriptions: IRequiredFormArrayWithDescriptions) {
     this.forms = formArrayWithDescriptions.forms;
-    this.formTitle = formArrayWithDescriptions.formTitle;
-    this.formSubTitle = formArrayWithDescriptions.formSubTitle;
     this.buttons = formArrayWithDescriptions.buttons;
     this.activeButtons = formArrayWithDescriptions.activeButtons;
     this.onCreate = formArrayWithDescriptions.onCreate;

@@ -11,11 +11,17 @@ import { FormWithDescription } from '../../shared/form-array/form-with-descripti
 import { Button } from '../../shared/button/button';
 import { IFormWithDescription } from '../../shared/form-array/iform-with-description';
 import { IButton } from '../../shared/button/ibutton';
+import { FormHeaderComponent } from '../form-header/form-header.component';
 
 @Component({
   selector: 'app-login-page-email-input-page',
   standalone: true,
-  imports: [ReactiveFormsModule, ButtonComponent, CustomFormGeneratorComponent],
+  imports: [
+    ReactiveFormsModule,
+    ButtonComponent,
+    CustomFormGeneratorComponent,
+    FormHeaderComponent,
+  ],
   templateUrl: './email-input-page.component.html',
   styleUrl: './email-input-page.component.scss',
 })
@@ -86,8 +92,6 @@ export class EmailInputPageComponent {
 
   protected formArrayWithDescriptions: IFormArrayWithDescriptions =
     new FormArrayWithDescriptions({
-      formTitle: 'Вход',
-      formSubTitle: 'Добро пожаловать!',
       forms: {
         email: this._emailForm,
         verificationCode: this._verificationCodeForm,
@@ -98,6 +102,10 @@ export class EmailInputPageComponent {
       activeButtons: ['showVerificationCode'],
       onCreate: () => this._pipeEmailFormValueChanges,
     });
+
+  protected formTitle: string = 'Вход';
+
+  protected formSubTitle: string = 'Добро пожаловать!';
 
   private _emailControl$: Observable<string> =
     this.formArrayWithDescriptions.getFormValueChanges('email');

@@ -12,8 +12,6 @@ export interface IFormArrayWithDescriptions {
   isFormSubmited(formName: string): boolean;
   isFormDisabled(formName: string): boolean;
   getFormValueChanges(formName: string): Observable<string>;
-  formTitle: string;
-  formSubTitle?: string;
   isInvalid(): boolean;
   buttons?: { [key: string]: IButton };
   activeButtons?: string[];
