@@ -1,6 +1,13 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  ReactiveFormsModule,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { ButtonComponent } from '../../shared/button/button.component';
@@ -50,11 +57,20 @@ export class EmailInputPageComponent {
       this.formArrayWithDescriptions.activeButtons?.push(buttonId);
   }
 
+  private _emailValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const re =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      const forbidden = !re.test(control.value);
+      return forbidden ? { incorrectEmail: { value: control.value } } : null;
+    };
+  }
+
   private _emailForm: IFormWithDescription = new FormWithDescription({
     inputName: 'email',
     inputTitle: 'Email',
     inputPlaceholder: 'example@gmail.com',
-    form: new FormControl('', Validators.required),
+    form: new FormControl('', [Validators.required, this._emailValidator()]),
     isSubmited: false,
   });
 

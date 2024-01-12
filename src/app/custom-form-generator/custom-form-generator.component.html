@@ -8,9 +8,17 @@
     <input
       [formControl]="form.form"
       [ngStyle]="inputStyle"
+      [ngClass]="{ error: form.form.invalid }"
       type="text"
       placeholder="{{ form.inputPlaceholder }}"
     />
+    @if (form.form.invalid) {
+      @if (form.form.errors?.["incorrectEmail"]) {
+        <span class="error">{{
+          "Email должен содержать символ «@» и имя домена"
+        }}</span>
+      }
+    }
   </div>
 }
 
