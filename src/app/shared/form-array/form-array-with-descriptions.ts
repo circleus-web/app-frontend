@@ -4,9 +4,11 @@ import { Observable } from 'rxjs';
 import { IFormArrayWithDescriptions } from './iform-array-with-descriptions';
 import { IButton } from '../button/ibutton';
 import { IFormWithDescription } from './iform-with-description';
+import { FormStyle } from './form-style';
 
 interface IRequiredFormArrayWithDescriptions {
   forms: { [key: string]: IFormWithDescription };
+  formsStyle?: FormStyle;
   buttons?: { [key: string]: IButton };
   activeButtons?: string[];
   onCreate?: () => void;
@@ -18,6 +20,8 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   private _formGroup: FormGroup | undefined;
 
+  public formsStyle?: FormStyle | undefined;
+
   public buttons?: { [key: string]: IButton };
 
   public activeButtons?: string[];
@@ -28,6 +32,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   constructor(formArrayWithDescriptions: IRequiredFormArrayWithDescriptions) {
     this.forms = formArrayWithDescriptions.forms;
+    this.formsStyle = formArrayWithDescriptions.formsStyle;
     this.buttons = formArrayWithDescriptions.buttons;
     this.activeButtons = formArrayWithDescriptions.activeButtons;
     this.onCreate = formArrayWithDescriptions.onCreate;

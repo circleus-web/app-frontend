@@ -1,20 +1,17 @@
 @for (form of forms.iterableForms; track $index) {
-  <div class="input-with-label" [ngStyle]="inputWithLabelStyle">
+  <div class="input-with-label" [ngClass]="forms.formsStyle">
     @if (form.inputTitle) {
-      <label for="{{ form.inputName }}" [ngStyle]="labelStyle">{{
-        form.inputTitle
-      }}</label>
+      <label for="{{ form.inputName }}">{{ form.inputTitle }}</label>
     }
     <input
       [formControl]="form.form"
-      [ngStyle]="inputStyle"
-      [ngClass]="{ error: form.form.invalid }"
+      [ngClass]="[forms.formsStyle, forms.isInvalid() ? 'error' : '']"
       type="text"
       placeholder="{{ form.inputPlaceholder }}"
     />
     @if (form.form.invalid) {
       @if (form.form.errors?.["incorrectEmail"]) {
-        <span class="error">{{
+        <span class="error" [ngClass]="forms.formsStyle">{{
           "Email должен содержать символ «@» и имя домена"
         }}</span>
       }
@@ -27,8 +24,8 @@
     @if (forms.buttons[i]) {
       <app-button
         [button]="forms.buttons[i]"
-        [buttonStyle]="buttonStyle"
-        [ngStyle]="buttonContainerStyle"
+        class="button-container"
+        [ngClass]="forms.formsStyle"
       ></app-button>
     }
   }
