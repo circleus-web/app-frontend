@@ -1,1 +1,17 @@
-<p>input-with-label works!</p>
+
+@if (inputWithLabel.inputTitle) {
+  <label for="{{ inputWithLabel.inputName }}">{{ inputWithLabel.inputTitle }}</label>
+}
+<input
+  [formControl]="inputWithLabel.form"
+  [ngClass]="[inputWithLabel.formsStyle, inputWithLabel.isInvalid ? 'error' : '']"
+  type="text"
+  placeholder="{{ inputWithLabel.inputPlaceholder }}"
+/>
+@if (inputWithLabel.isInvalid) {
+  @if (inputWithLabel.hasError("incorrectEmail")) {
+    <span class="error" [ngClass]="inputWithLabel.formsStyle">{{
+      "Email должен содержать символ «@» и имя домена"
+    }}</span>
+  }
+}

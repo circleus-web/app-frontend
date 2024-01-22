@@ -6,4 +6,7 @@ export interface IInputWithLabel {
   inputTitle: string;
   inputPlaceholder?: string;
   hintText?: string;
+  formsStyle?: string;
+  isInvalid: boolean;
+  hasError(error: string): boolean;
 }

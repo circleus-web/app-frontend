@@ -9,5 +9,14 @@ export class InputWithLabel implements IInputWithLabel {
     public inputTitle: string,
     public inputPlaceholder?: string,
     public hintText?: string,
+    public formsStyle?: string,
   ) {}
+
+  public get isInvalid(): boolean {
+    return this.form.invalid;
+  }
+
+  public hasError(error: string): boolean {
+    return this.isInvalid && this.form.hasError(error);
+  }
 }

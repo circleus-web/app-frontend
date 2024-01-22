@@ -4,6 +4,7 @@ import { IFormInputWithLabel } from './iform-input-with-label';
 
 export class FormInputWithLabel
   extends InputWithLabel
-  implements IFormInputWithLabel {
+  implements IFormInputWithLabel
+{
   public type: FormItems = FormItems.FORM_INPUT_WITH_LABEL;
 }
