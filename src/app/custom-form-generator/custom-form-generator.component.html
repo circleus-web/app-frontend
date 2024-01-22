@@ -1,6 +1,10 @@
 @for (item of forms.iterableItems; track $index) {
   @if (item | isFormInputWithLabel) {
-    <app-input-with-label [inputWithLabel]="item"></app-input-with-label>
+    <app-input-with-label
+      [inputWithLabel]="item"
+      class="input-with-label"
+      [ngClass]="forms.formsStyle"
+    ></app-input-with-label>
   } @else if (item | isFormButton) {
     <app-button
       [button]="item"

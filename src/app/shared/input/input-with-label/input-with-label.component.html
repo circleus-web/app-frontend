@@ -6,7 +6,7 @@
 <input
   [formControl]="inputWithLabel.form"
   [ngClass]="[
-    inputWithLabel.formsStyle,
+    inputWithLabel.formsStyle ?? '',
     inputWithLabel.isInvalid ? 'error' : ''
   ]"
   type="text"
