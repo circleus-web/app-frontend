@@ -1,10 +1,14 @@
-
 @if (inputWithLabel.inputTitle) {
-  <label for="{{ inputWithLabel.inputName }}">{{ inputWithLabel.inputTitle }}</label>
+  <label for="{{ inputWithLabel.inputName }}">{{
+    inputWithLabel.inputTitle
+  }}</label>
 }
 <input
   [formControl]="inputWithLabel.form"
-  [ngClass]="[inputWithLabel.formsStyle, inputWithLabel.isInvalid ? 'error' : '']"
+  [ngClass]="[
+    inputWithLabel.formsStyle,
+    inputWithLabel.isInvalid ? 'error' : ''
+  ]"
   type="text"
   placeholder="{{ inputWithLabel.inputPlaceholder }}"
 />

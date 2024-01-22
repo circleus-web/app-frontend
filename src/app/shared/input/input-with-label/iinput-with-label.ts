@@ -1,4 +1,5 @@
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 export interface IInputWithLabel {
   form: FormControl;
@@ -9,4 +10,5 @@ export interface IInputWithLabel {
   formsStyle?: string;
   isInvalid: boolean;
   hasError(error: string): boolean;
+  getValueChanges(): Observable<string>;
 }

@@ -1,23 +1,6 @@
 @for (item of forms.iterableItems; track $index) {
   @if (item | isFormInputWithLabel) {
-    <div class="input-with-label" [ngClass]="forms.formsStyle">
-      @if (item.inputTitle) {
-        <label for="{{ item.inputName }}">{{ item.inputTitle }}</label>
-      }
-      <input
-        [formControl]="item.form"
-        [ngClass]="[forms.formsStyle, forms.isInvalid() ? 'error' : '']"
-        type="text"
-        placeholder="{{ item.inputPlaceholder }}"
-      />
-      @if (item.form.invalid) {
-        @if (item.form.errors?.["incorrectEmail"]) {
-          <span class="error" [ngClass]="forms.formsStyle">{{
-            "Email должен содержать символ «@» и имя домена"
-          }}</span>
-        }
-      }
-    </div>
+    <app-input-with-label [inputWithLabel]="item"></app-input-with-label>
   } @else if (item | isFormButton) {
     <app-button
       [button]="item"

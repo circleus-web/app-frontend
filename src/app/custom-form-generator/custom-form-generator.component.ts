@@ -6,6 +6,7 @@ import { ButtonComponent } from '../shared/button/button.component';
 import { CommonModule } from '@angular/common';
 import { IsFormInputWithLabelPipe } from './form-input/is-form-input-with-label.pipe';
 import { IsFormButtonPipe } from './form-button/is-form-button.pipe';
+import { InputWithLabelComponent } from '../shared/input/input-with-label/input-with-label.component';
 
 @Component({
   selector: 'app-custom-form-generator',
@@ -18,6 +19,7 @@ import { IsFormButtonPipe } from './form-button/is-form-button.pipe';
     ButtonComponent,
     IsFormInputWithLabelPipe,
     IsFormButtonPipe,
+    InputWithLabelComponent,
   ],
 })
 export class CustomFormGeneratorComponent implements OnInit, OnDestroy {
