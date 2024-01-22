@@ -2,6 +2,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { IFormWithDescription } from './iform-with-description';
+import { FormItems } from './form-items';
 
 interface IRequiredFormWithDescription {
   form: FormControl;
@@ -9,10 +10,11 @@ interface IRequiredFormWithDescription {
   inputTitle?: string;
   inputPlaceholder?: string;
   isSubmited?: boolean | (() => boolean);
-  disabled?: boolean | (() => boolean);
 }
 
 export class FormWithDescription implements IFormWithDescription {
+  public type: FormItems = FormItems.FORM_INPUT_WITH_LABEL;
+
   public form: FormControl;
 
   public inputName: string;
@@ -25,10 +27,6 @@ export class FormWithDescription implements IFormWithDescription {
 
   private _getIsSubmited?: () => boolean;
 
-  private _disabled?: boolean;
-
-  private _getDisabled?: () => boolean;
-
   constructor(form: IRequiredFormWithDescription) {
     this.form = form.form;
     this.inputName = form.inputName;
@@ -38,11 +36,6 @@ export class FormWithDescription implements IFormWithDescription {
       this._isSubmited = form.isSubmited;
     } else {
       this._getIsSubmited = form.isSubmited;
-    }
-    if (typeof form.disabled === 'boolean') {
-      this._disabled = form.disabled;
-    } else {
-      this._getDisabled = form.disabled;
     }
   }
 
@@ -60,19 +53,6 @@ export class FormWithDescription implements IFormWithDescription {
       this._getIsSubmited = undefined;
     } else {
       this._getIsSubmited = value;
-    }
-  }
-
-  public get disabled(): boolean {
-    return this._getDisabled?.call(this) || this._disabled || false;
-  }
-
-  public set disabled(value: boolean | (() => boolean)) {
-    if (typeof value === 'boolean') {
-      this._disabled = value;
-      this._getDisabled = undefined;
-    } else {
-      this._getDisabled = value;
     }
   }
 }

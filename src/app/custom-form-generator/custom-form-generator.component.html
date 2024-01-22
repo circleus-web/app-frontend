@@ -1,32 +1,28 @@
-@for (form of forms.iterableForms; track $index) {
-  <div class="input-with-label" [ngClass]="forms.formsStyle">
-    @if (form.inputTitle) {
-      <label for="{{ form.inputName }}">{{ form.inputTitle }}</label>
-    }
-    <input
-      [formControl]="form.form"
-      [ngClass]="[forms.formsStyle, forms.isInvalid() ? 'error' : '']"
-      type="text"
-      placeholder="{{ form.inputPlaceholder }}"
-    />
-    @if (form.form.invalid) {
-      @if (form.form.errors?.["incorrectEmail"]) {
-        <span class="error" [ngClass]="forms.formsStyle">{{
-          "Email должен содержать символ «@» и имя домена"
-        }}</span>
+@for (item of forms.iterableItems; track $index) {
+  @if (item | isFormInputWithLabel) {
+    <div class="input-with-label" [ngClass]="forms.formsStyle">
+      @if (item.inputTitle) {
+        <label for="{{ item.inputName }}">{{ item.inputTitle }}</label>
       }
-    }
-  </div>
-}
-
-@if (forms.buttons) {
-  @for (i of forms.activeButtons; track $index) {
-    @if (forms.buttons[i]) {
-      <app-button
-        [button]="forms.buttons[i]"
-        class="button-container"
-        [ngClass]="forms.formsStyle"
-      ></app-button>
-    }
+      <input
+        [formControl]="item.form"
+        [ngClass]="[forms.formsStyle, forms.isInvalid() ? 'error' : '']"
+        type="text"
+        placeholder="{{ item.inputPlaceholder }}"
+      />
+      @if (item.form.invalid) {
+        @if (item.form.errors?.["incorrectEmail"]) {
+          <span class="error" [ngClass]="forms.formsStyle">{{
+            "Email должен содержать символ «@» и имя домена"
+          }}</span>
+        }
+      }
+    </div>
+  } @else if (item | isFormButton) {
+    <app-button
+      [button]="item"
+      class="button-container"
+      [ngClass]="forms.formsStyle"
+    ></app-button>
   }
 }

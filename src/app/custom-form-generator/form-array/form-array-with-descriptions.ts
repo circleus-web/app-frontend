@@ -2,15 +2,17 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { IFormArrayWithDescriptions } from './iform-array-with-descriptions';
-import { IButton } from '../button/ibutton';
+import { IFormButton } from '../form-button/iform-button';
 import { IFormWithDescription } from './iform-with-description';
 import { FormStyle } from './form-style';
+import { FormItems } from './form-items';
+import { IFormItem } from './iform-item';
 
 interface IRequiredFormArrayWithDescriptions {
   forms: { [key: string]: IFormWithDescription };
   formsStyle?: FormStyle;
-  buttons?: { [key: string]: IButton };
-  activeButtons?: string[];
+  buttons?: { [key: string]: IFormButton };
+  activeItems?: { [key: string]: FormItems };
   onCreate?: () => void;
   onDestroy?: () => void;
 }
@@ -22,9 +24,9 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   public formsStyle?: FormStyle | undefined;
 
-  public buttons?: { [key: string]: IButton };
+  public buttons?: { [key: string]: IFormButton };
 
-  public activeButtons?: string[];
+  public activeItems?: { [key: string]: FormItems };
 
   public onCreate?: () => void;
 
@@ -34,7 +36,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     this.forms = formArrayWithDescriptions.forms;
     this.formsStyle = formArrayWithDescriptions.formsStyle;
     this.buttons = formArrayWithDescriptions.buttons;
-    this.activeButtons = formArrayWithDescriptions.activeButtons;
+    this.activeItems = formArrayWithDescriptions.activeItems;
     this.onCreate = formArrayWithDescriptions.onCreate;
     this.onDestroy = formArrayWithDescriptions.onDestroy;
   }
@@ -47,32 +49,33 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     return this.getForm(formName).form;
   }
 
-  private getAllFormsArray(): IFormWithDescription[] {
-    return Object.values(this.forms);
-  }
-
-  public get iterableForms(): IFormWithDescription[] {
-    return this.getAllFormsArray().filter((value) => !value.disabled);
+  public get iterableItems(): Required<IFormItem>[] {
+    if (!this.activeItems) return [];
+    const iterableItems: Required<IFormItem>[] = [];
+    for (const [key, value] of Object.entries(this.activeItems)) {
+      if (value === FormItems.FORM_INPUT_WITH_LABEL)
+        iterableItems.push(this.getForm(key));
+      else if (this.buttons) iterableItems.push(this.buttons[key]);
+    }
+    return iterableItems;
   }
 
   public get formGroup(): FormGroup {
     if (!this._formGroup) {
       this._formGroup = new FormGroup({});
 
-      Object.keys(this.forms).forEach((key) => {
-        if (!this.isFormDisabled(key))
-          this._formGroup?.addControl(key, this.getFormControl(key));
-      });
+      if (this.activeItems)
+        for (const [key, value] of Object.entries(this.activeItems)) {
+          if (value === FormItems.FORM_INPUT_WITH_LABEL) {
+            this._formGroup.addControl(key, this.getFormControl(key));
+          }
+        }
     }
     return this._formGroup;
   }
 
   public isFormSubmited(formName: string): boolean {
     return this.getForm(formName).isSubmited ?? false;
-  }
-
-  isFormDisabled(formName: string): boolean {
-    return this.getForm(formName).disabled ?? false;
   }
 
   public isInvalid(): boolean {

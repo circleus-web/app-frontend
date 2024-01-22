@@ -12,14 +12,15 @@ import { Observable } from 'rxjs';
 
 import { ButtonComponent } from '../../shared/button/button.component';
 import { CustomFormGeneratorComponent } from '../../custom-form-generator/custom-form-generator.component';
-import { IFormArrayWithDescriptions } from '../../shared/form-array/iform-array-with-descriptions';
-import { FormArrayWithDescriptions } from '../../shared/form-array/form-array-with-descriptions';
-import { FormWithDescription } from '../../shared/form-array/form-with-description';
-import { Button } from '../../shared/button/button';
-import { IFormWithDescription } from '../../shared/form-array/iform-with-description';
-import { IButton } from '../../shared/button/ibutton';
+import { IFormArrayWithDescriptions } from '../../custom-form-generator/form-array/iform-array-with-descriptions';
+import { FormArrayWithDescriptions } from '../../custom-form-generator/form-array/form-array-with-descriptions';
+import { FormWithDescription } from '../../custom-form-generator/form-array/form-with-description';
+import { FormButton } from '../../custom-form-generator/form-button/form-button';
+import { IFormWithDescription } from '../../custom-form-generator/form-array/iform-with-description';
+import { IFormButton } from '../../custom-form-generator/form-button/iform-button';
 import { FormHeaderComponent } from '../form-header/form-header.component';
-import { FormStyle } from '../../shared/form-array/form-style';
+import { FormStyle } from '../../custom-form-generator/form-array/form-style';
+import { FormItems } from '../../custom-form-generator/form-array/form-items';
 
 @Component({
   selector: 'app-login-page-email-input-page',
@@ -42,20 +43,6 @@ export class EmailInputPageComponent {
 
   private _defyEmailForm(): void {
     this.formArrayWithDescriptions.forms['email'].isSubmited = false;
-  }
-
-  private _hideButton(buttonId: string): void {
-    const buttonIndex =
-      this.formArrayWithDescriptions.activeButtons?.indexOf(buttonId);
-    if (buttonIndex !== undefined && buttonIndex !== -1)
-      this.formArrayWithDescriptions.activeButtons?.splice(buttonIndex);
-  }
-
-  private _showButton(buttonId: string): void {
-    const buttonIndex =
-      this.formArrayWithDescriptions.activeButtons?.indexOf(buttonId);
-    if (buttonIndex === undefined || buttonIndex === -1)
-      this.formArrayWithDescriptions.activeButtons?.push(buttonId);
   }
 
   private _emailValidator(): ValidatorFn {
@@ -81,20 +68,20 @@ export class EmailInputPageComponent {
       inputTitle: 'Код верификации',
       inputPlaceholder: 'Код из почты',
       form: new FormControl('', Validators.required),
-      disabled: (): boolean => {
-        return !this.formArrayWithDescriptions.isFormSubmited('email');
-      },
     },
   );
 
-  private _showVerificationCodeButton: IButton = new Button({
+  private _showVerificationCodeButton: IFormButton = new FormButton({
     text: 'Войти',
     disabled: (): boolean => {
       return this.formArrayWithDescriptions.isInvalid();
     },
     click: () => {
+      this.formArrayWithDescriptions.activeItems = {
+        email: FormItems.FORM_INPUT_WITH_LABEL,
+        verificationCode: FormItems.FORM_INPUT_WITH_LABEL,
+      };
       this._submitEmailForm();
-      this._hideButton('showVerificationCode');
     },
   });
 
@@ -108,13 +95,19 @@ export class EmailInputPageComponent {
       buttons: {
         showVerificationCode: this._showVerificationCodeButton,
       },
-      activeButtons: ['showVerificationCode'],
+      activeItems: {
+        email: FormItems.FORM_INPUT_WITH_LABEL,
+        showVerificationCode: FormItems.BUTTON,
+      },
       onCreate: () => {
         this._emailControl$
           .pipe(takeUntilDestroyed(this._destroyRef))
           .subscribe(() => {
+            this.formArrayWithDescriptions.activeItems = {
+              email: FormItems.FORM_INPUT_WITH_LABEL,
+              showVerificationCode: FormItems.BUTTON,
+            };
             this._defyEmailForm();
-            this._showButton('showVerificationCode');
           });
       },
     });
