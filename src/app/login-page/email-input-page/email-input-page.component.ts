@@ -51,6 +51,7 @@ export class EmailInputPageComponent {
     inputTitle: 'Email',
     inputPlaceholder: 'example@gmail.com',
     form: new FormControl('', [Validators.required, this._emailValidator()]),
+    class: ['login-page'],
   });
 
   private _verificationCodeForm: IFormInputWithLabel = new FormInputWithLabel({
@@ -58,10 +59,12 @@ export class EmailInputPageComponent {
     inputTitle: 'Код верификации',
     inputPlaceholder: 'Код из почты',
     form: new FormControl('', Validators.required),
+    class: ['login-page'],
   });
 
   private _showVerificationCodeButton: IFormButton = new FormButton({
     text: 'Войти',
+    class: ['btn', 'btn-primary'],
     disabled: (): boolean => {
       return this.formArrayWithDescriptions.isInvalid();
     },

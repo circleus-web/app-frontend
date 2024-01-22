@@ -7,7 +7,7 @@ export interface IInputWithLabel {
   inputTitle: string;
   inputPlaceholder?: string;
   hintText?: string;
-  formsStyle?: string;
+  class: string[];
   isInvalid: boolean;
   hasError(error: string): boolean;
   getValueChanges(): Observable<string>;

@@ -9,7 +9,7 @@ interface IRequiredInputWithLabel {
   inputTitle: string;
   inputPlaceholder: string;
   hintText?: string;
-  formsStyle?: string;
+  class?: string[];
 }
 
 export class InputWithLabel implements IInputWithLabel {
@@ -23,7 +23,7 @@ export class InputWithLabel implements IInputWithLabel {
 
   public hintText?: string;
 
-  public formsStyle?: string;
+  public class: string[] = [];
 
   constructor(requiredInputWithLabel: IRequiredInputWithLabel) {
     this.form = requiredInputWithLabel.form;
@@ -31,7 +31,7 @@ export class InputWithLabel implements IInputWithLabel {
     this.inputTitle = requiredInputWithLabel.inputTitle;
     this.inputPlaceholder = requiredInputWithLabel.inputPlaceholder;
     this.hintText = requiredInputWithLabel.hintText;
-    this.formsStyle = requiredInputWithLabel.formsStyle;
+    this.class = requiredInputWithLabel.class ?? [];
   }
 
   public get isInvalid(): boolean {

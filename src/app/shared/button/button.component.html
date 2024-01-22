@@ -1,7 +1,7 @@
 <button
   (click)="click()"
   [disabled]="button.disabled"
-  [ngStyle]="buttonStyle ?? {}"
+  [ngClass]="button.class"
   type="button"
 >
   {{ button.text }}

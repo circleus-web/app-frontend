@@ -12,4 +12,11 @@ import { IInputWithLabel } from './iinput-with-label';
 })
 export class InputWithLabelComponent {
   @Input({ required: true }) inputWithLabel!: IInputWithLabel;
+
+  protected get inputClass(): string[] {
+    return [
+      ...this.inputWithLabel.class,
+      this.inputWithLabel.isInvalid ? 'error' : '',
+    ];
+  }
 }

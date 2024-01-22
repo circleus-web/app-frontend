@@ -2,6 +2,7 @@ import { IButton } from './ibutton';
 
 interface IRequiredButtton {
   text: string;
+  class?: string[];
   disabled?: boolean | (() => boolean);
   click?: () => void;
   routerLink?: string[];
@@ -9,6 +10,8 @@ interface IRequiredButtton {
 
 export class Button implements IButton {
   public text: string;
+
+  public class?: string[];
 
   private _disabled?: boolean;
 
@@ -20,6 +23,7 @@ export class Button implements IButton {
 
   constructor(button: IRequiredButtton) {
     this.text = button.text;
+    this.class = button.class;
     this.click = button.click;
     this.routerLink = button.routerLink;
     if (typeof button.disabled === 'boolean') {
