@@ -1,3 +1,16 @@
 <main>
-  <router-outlet></router-outlet>
+  <div class="form-container">
+    <div class="form">
+      <app-form-header
+        [formTitle]="formTitle"
+        [formSubTitle]="formSubTitle"
+      ></app-form-header>
+      <form>
+        <app-custom-form-generator
+          [forms]="formArrayWithDescriptions"
+          class="form-component"
+        ></app-custom-form-generator>
+      </form>
+    </div>
+  </div>
 </main>
