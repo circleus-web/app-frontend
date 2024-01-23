@@ -72,7 +72,7 @@ export class LoginPageComponent {
   });
 
   private _showVerificationCodeButton: IFormButton = new FormButton({
-    text: 'Войти',
+    text: 'Продолжить',
     class: ['btn', 'btn-primary'],
     disabled: (): boolean => {
       return this.formArrayWithDescriptions.isInvalid();
