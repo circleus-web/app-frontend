@@ -27,18 +27,18 @@ import { IFormTextWithLink } from '../custom-form-generator/form-text-with-link/
 import { FormTextWithLink } from '../custom-form-generator/form-text-with-link/form-text-with-link';
 
 @Component({
-  selector: 'app-login-page',
+  selector: 'app-register-page',
   standalone: true,
-  templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss',
   imports: [
     ReactiveFormsModule,
     ButtonComponent,
     CustomFormGeneratorComponent,
     FormHeaderComponent,
   ],
+  templateUrl: './register-page.component.html',
+  styleUrl: './register-page.component.scss',
 })
-export class LoginPageComponent {
+export class RegisterPageComponent {
   private _destroyRef = inject(DestroyRef);
 
   private _emailValidator(): ValidatorFn {
@@ -138,7 +138,7 @@ export class LoginPageComponent {
       },
     });
 
-  protected formTitle: string = 'Вход';
+  protected formTitle: string = 'Регистрация';
 
   protected formSubTitle: string =
     'Добро пожаловать! Пожалуйста, введите свои данные.';
