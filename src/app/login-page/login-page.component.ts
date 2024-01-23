@@ -55,7 +55,7 @@ export class LoginPageComponent {
     inputTitle: 'Email',
     inputPlaceholder: 'example@gmail.com',
     form: new FormControl('', [Validators.required, this._emailValidator()]),
-    class: ['login-page'],
+    class: ['auth-page'],
   });
 
   private _verificationCodeForm: IFormInputWithLabel = new FormInputWithLabel({
@@ -63,7 +63,7 @@ export class LoginPageComponent {
     inputTitle: 'Код верификации',
     inputPlaceholder: 'Код из почты',
     form: new FormControl('', Validators.required),
-    class: ['login-page'],
+    class: ['auth-page'],
   });
 
   private _verificationCodeSupportText: IFormText = new FormText({

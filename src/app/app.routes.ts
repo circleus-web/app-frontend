@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationPageAccountCreationComponent } from './registration-page/account-creation/registration-page-account-creation.component';
+import { FillAccountInfoComponent } from './registration-page/fill-account-info/fill-account-info.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -23,6 +24,11 @@ export const routes: Routes = [
         path: 'account-creation',
         title: 'Account Creation - Circleus',
         component: RegistrationPageAccountCreationComponent,
+      },
+      {
+        path: 'fill-account-information',
+        title: 'Fill Account Information - Circleus',
+        component: FillAccountInfoComponent,
       },
     ],
   },

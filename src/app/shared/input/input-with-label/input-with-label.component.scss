@@ -1,4 +1,4 @@
-label.login-page {
+label.auth-page {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,7 +10,7 @@ label.login-page {
   line-height: 16px;
 }
 
-input.login-page {
+input.auth-page {
   display: flex;
   height: 40px;
   padding: 8px 12px;
@@ -25,11 +25,11 @@ input.login-page {
   line-height: 20px;
 }
 
-input.login-page.error {
+input.auth-page.error {
   border: 1px solid var(--Red-400, #f97066) !important;
 }
 
-span.login-page.error {
+span.auth-page.error {
   color: var(--Red-500, #f04438);
   align-self: stretch;
   /* Body 2 Condensed/Regular */

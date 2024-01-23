@@ -55,7 +55,7 @@ export class RegistrationPageAccountCreationComponent {
     inputTitle: 'Email',
     inputPlaceholder: 'example@gmail.com',
     form: new FormControl('', [Validators.required, this._emailValidator()]),
-    class: ['login-page'],
+    class: ['auth-page'],
   });
 
   private _verificationCodeForm: IFormInputWithLabel = new FormInputWithLabel({
@@ -63,7 +63,7 @@ export class RegistrationPageAccountCreationComponent {
     inputTitle: 'Код верификации',
     inputPlaceholder: 'Код из почты',
     form: new FormControl('', Validators.required),
-    class: ['login-page'],
+    class: ['auth-page'],
   });
 
   private _verificationCodeSupportText: IFormText = new FormText({
@@ -83,7 +83,7 @@ export class RegistrationPageAccountCreationComponent {
     },
   });
 
-  private _submitForm(): void {}
+  private _submitForm(): void { }
 
   private _submitEmailVerificationCodeButton: IFormButton = new FormButton({
     text: 'Создать аккаунт',
@@ -94,6 +94,7 @@ export class RegistrationPageAccountCreationComponent {
     click: () => {
       this._submitForm();
     },
+    routerLink: ['/registration', 'fill-account-information'],
   });
 
   private _linkToRegistration: IFormTextWithLink = new FormTextWithLink({
@@ -113,6 +114,7 @@ export class RegistrationPageAccountCreationComponent {
     email: FormItems.FORM_INPUT_WITH_LABEL,
     verificationCodeSupportText: FormItems.FORM_TEXT,
     verificationCode: FormItems.FORM_INPUT_WITH_LABEL,
+    submitEmailVerificationCodeButton: FormItems.FORM_BUTTON,
     linkToRegistration: FormItems.FORM_TEXT_WITH_LINK,
   };
 
@@ -123,6 +125,7 @@ export class RegistrationPageAccountCreationComponent {
 
   private _buttonsOnPage = {
     showVerificationCode: this._showVerificationCodeButton,
+    submitEmailVerificationCodeButton: this._submitEmailVerificationCodeButton,
   };
 
   private _textsOnPage = {
