@@ -11,5 +11,11 @@
       class="button-container"
       [ngClass]="forms.formsStyle"
     ></app-button>
+  } @else if (item | isFormText) {
+    <app-text
+      [text]="item"
+      class="text-container"
+      [ngClass]="forms.formsStyle"
+    ></app-text>
   }
 }

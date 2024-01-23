@@ -21,6 +21,8 @@ import { FormStyle } from '../../custom-form-generator/form-array/form-style';
 import { FormItems } from '../../custom-form-generator/form-array/form-items';
 import { IFormInputWithLabel } from '../../custom-form-generator/form-input/iform-input-with-label';
 import { FormInputWithLabel } from '../../custom-form-generator/form-input/form-input-with-label';
+import { IFormText } from '../../custom-form-generator/form-text/iform-text';
+import { FormText } from '../../custom-form-generator/form-text/form-text';
 
 @Component({
   selector: 'app-login-page-email-input-page',
@@ -62,6 +64,11 @@ export class EmailInputPageComponent {
     class: ['login-page'],
   });
 
+  private _verificationCodeSupportText: IFormText = new FormText({
+    text: 'Мы отправили вам код верификации. Пожалуйста, проверьте почту',
+    class: ['support-text'],
+  });
+
   private _showVerificationCodeButton: IFormButton = new FormButton({
     text: 'Войти',
     class: ['btn', 'btn-primary'],
@@ -69,12 +76,21 @@ export class EmailInputPageComponent {
       return this.formArrayWithDescriptions.isInvalid();
     },
     click: () => {
-      this.formArrayWithDescriptions.activeItems = {
-        email: FormItems.FORM_INPUT_WITH_LABEL,
-        verificationCode: FormItems.FORM_INPUT_WITH_LABEL,
-      };
+      this.formArrayWithDescriptions.activeItems =
+        this._verificationCodeInputActiveItems;
     },
   });
+
+  private _emailInputActiveItems = {
+    email: FormItems.FORM_INPUT_WITH_LABEL,
+    showVerificationCode: FormItems.FORM_BUTTON,
+  };
+
+  private _verificationCodeInputActiveItems = {
+    email: FormItems.FORM_INPUT_WITH_LABEL,
+    verificationCodeSupportText: FormItems.FORM_TEXT,
+    verificationCode: FormItems.FORM_INPUT_WITH_LABEL,
+  };
 
   protected formArrayWithDescriptions: IFormArrayWithDescriptions =
     new FormArrayWithDescriptions({
@@ -86,18 +102,16 @@ export class EmailInputPageComponent {
       buttons: {
         showVerificationCode: this._showVerificationCodeButton,
       },
-      activeItems: {
-        email: FormItems.FORM_INPUT_WITH_LABEL,
-        showVerificationCode: FormItems.BUTTON,
+      texts: {
+        verificationCodeSupportText: this._verificationCodeSupportText,
       },
+      activeItems: this._emailInputActiveItems,
       onCreate: () => {
         this._emailControl$
           ?.pipe(takeUntilDestroyed(this._destroyRef))
           .subscribe(() => {
-            this.formArrayWithDescriptions.activeItems = {
-              email: FormItems.FORM_INPUT_WITH_LABEL,
-              showVerificationCode: FormItems.BUTTON,
-            };
+            this.formArrayWithDescriptions.activeItems =
+              this._emailInputActiveItems;
           });
       },
     });

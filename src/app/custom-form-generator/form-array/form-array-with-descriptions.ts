@@ -7,11 +7,13 @@ import { IFormInputWithLabel } from '../form-input/iform-input-with-label';
 import { FormStyle } from './form-style';
 import { FormItems } from './form-items';
 import { IFormItem } from './iform-item';
+import { IFormText } from '../form-text/iform-text';
 
 interface IRequiredFormArrayWithDescriptions {
   forms?: { [key: string]: IFormInputWithLabel };
   formsStyle?: FormStyle;
   buttons?: { [key: string]: IFormButton };
+  texts?: { [key: string]: IFormText };
   activeItems?: { [key: string]: FormItems };
   onCreate?: () => void;
   onDestroy?: () => void;
@@ -26,6 +28,8 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   public buttons?: { [key: string]: IFormButton };
 
+  public texts?: { [key: string]: IFormText };
+
   public activeItems?: { [key: string]: FormItems };
 
   public onCreate?: () => void;
@@ -36,6 +40,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     this.forms = formArrayWithDescriptions.forms;
     this.formsStyle = formArrayWithDescriptions.formsStyle;
     this.buttons = formArrayWithDescriptions.buttons;
+    this.texts = formArrayWithDescriptions.texts;
     this.activeItems = formArrayWithDescriptions.activeItems;
     this.onCreate = formArrayWithDescriptions.onCreate;
     this.onDestroy = formArrayWithDescriptions.onDestroy;
@@ -51,6 +56,10 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     return this.buttons ? this.buttons[buttonName] : undefined;
   }
 
+  private getFormText(textName: string): IFormText | undefined {
+    return this.texts ? this.texts[textName] : undefined;
+  }
+
   public getFormControl(formName: string): FormControl | undefined {
     return this.getFormInputWithLabel(formName)?.form;
   }
@@ -61,12 +70,16 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     for (const [key, value] of Object.entries(this.activeItems)) {
       const formInputWithLabel = this.getFormInputWithLabel(key);
       const formButton = this.getFormButton(key);
+      const formText = this.getFormText(key);
       switch (value) {
         case FormItems.FORM_INPUT_WITH_LABEL:
           if (formInputWithLabel) iterableItems.push(formInputWithLabel);
           break;
-        case FormItems.BUTTON:
+        case FormItems.FORM_BUTTON:
           if (formButton) iterableItems.push(formButton);
+          break;
+        case FormItems.FORM_TEXT:
+          if (formText) iterableItems.push(formText);
           break;
       }
     }
