@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { LoginPageComponent } from './login-page/login-page.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -11,8 +11,8 @@ export const routes: Routes = [
     component: LoginPageComponent,
   },
   {
-    path: 'register',
-    title: 'Register - Circleus',
-    component: RegisterPageComponent,
+    path: 'registration',
+    title: 'Registration - Circleus',
+    component: RegistrationPageComponent,
   },
 ];

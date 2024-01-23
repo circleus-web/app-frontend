@@ -27,7 +27,7 @@ import { IFormTextWithLink } from '../custom-form-generator/form-text-with-link/
 import { FormTextWithLink } from '../custom-form-generator/form-text-with-link/form-text-with-link';
 
 @Component({
-  selector: 'app-register-page',
+  selector: 'app-registration-page',
   standalone: true,
   imports: [
     ReactiveFormsModule,
@@ -35,10 +35,10 @@ import { FormTextWithLink } from '../custom-form-generator/form-text-with-link/f
     CustomFormGeneratorComponent,
     FormHeaderComponent,
   ],
-  templateUrl: './register-page.component.html',
-  styleUrl: './register-page.component.scss',
+  templateUrl: './registration-page.component.html',
+  styleUrl: './registration-page.component.scss',
 })
-export class RegisterPageComponent {
+export class RegistrationPageComponent {
   private _destroyRef = inject(DestroyRef);
 
   private _emailValidator(): ValidatorFn {
