@@ -20,6 +20,8 @@ main {
     align-items: center;
     gap: 24px;
     align-self: stretch;
+
+    height: 100%;
   }
 
   form {
@@ -29,12 +31,16 @@ main {
     gap: 12px;
     align-self: stretch;
 
+    height: 100%;
+
     .form-component {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 12px;
       align-self: stretch;
+
+      height: 100%;
     }
   }
 }

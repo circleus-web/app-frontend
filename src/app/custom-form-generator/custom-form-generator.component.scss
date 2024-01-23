@@ -10,6 +10,10 @@ input.error.login-form {
   border: 1px solid var(--Red-400, #f97066) !important;
 }
 
+.text-with-link-container.login-form {
+  margin-top: auto;
+}
+
 span.error.login-form {
   color: var(--Red-500, #f04438);
   align-self: stretch;
