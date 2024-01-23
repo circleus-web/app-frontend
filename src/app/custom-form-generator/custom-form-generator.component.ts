@@ -8,7 +8,9 @@ import { IsFormInputWithLabelPipe } from './form-input/is-form-input-with-label.
 import { IsFormButtonPipe } from './form-button/is-form-button.pipe';
 import { InputWithLabelComponent } from '../shared/input/input-with-label/input-with-label.component';
 import { IsFormTextPipe } from './form-text/is-form-text.pipe';
-import { TextComponent } from '../shared/text/text.component';
+import { TextComponent } from '../shared/text/text/text.component';
+import { IsFormTextWithLinkPipe } from './form-text-with-link/is-form-text-with-link.pipe';
+import { TextWithLinkComponent } from '../shared/text/text-with-link/text-with-link.component';
 
 @Component({
   selector: 'app-custom-form-generator',
@@ -24,6 +26,8 @@ import { TextComponent } from '../shared/text/text.component';
     InputWithLabelComponent,
     IsFormTextPipe,
     TextComponent,
+    IsFormTextWithLinkPipe,
+    TextWithLinkComponent,
   ],
 })
 export class CustomFormGeneratorComponent implements OnInit, OnDestroy {

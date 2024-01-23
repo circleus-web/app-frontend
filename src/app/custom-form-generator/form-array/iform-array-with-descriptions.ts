@@ -7,6 +7,7 @@ import { FormItems } from './form-items';
 import { IFormItem } from './iform-item';
 import { IFormInputWithLabel } from '../form-input/iform-input-with-label';
 import { IFormText } from '../form-text/iform-text';
+import { IFormTextWithLink } from '../form-text-with-link/iform-text-with-link';
 
 export interface IFormArrayWithDescriptions {
   iterableItems: Required<IFormItem>[];
@@ -17,6 +18,7 @@ export interface IFormArrayWithDescriptions {
   forms?: { [key: string]: IFormInputWithLabel };
   buttons?: { [key: string]: IFormButton };
   texts?: { [key: string]: IFormText };
+  textsWithLinks?: { [key: string]: IFormTextWithLink };
   activeItems?: { [key: string]: FormItems };
   onCreate?: () => void;
   onDestroy?: () => void;

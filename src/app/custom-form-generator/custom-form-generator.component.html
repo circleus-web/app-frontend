@@ -17,5 +17,11 @@
       class="text-container"
       [ngClass]="forms.formsStyle"
     ></app-text>
+  } @else if (item | isFormTextWithLink) {
+    <app-text-with-link
+      [textWithLink]="item"
+      class="text-with-link-container"
+      [ngClass]="forms.formsStyle"
+    ></app-text-with-link>
   }
 }

@@ -8,12 +8,14 @@ import { FormStyle } from './form-style';
 import { FormItems } from './form-items';
 import { IFormItem } from './iform-item';
 import { IFormText } from '../form-text/iform-text';
+import { IFormTextWithLink } from '../form-text-with-link/iform-text-with-link';
 
 interface IRequiredFormArrayWithDescriptions {
   forms?: { [key: string]: IFormInputWithLabel };
   formsStyle?: FormStyle;
   buttons?: { [key: string]: IFormButton };
   texts?: { [key: string]: IFormText };
+  textsWithLinks?: { [key: string]: IFormTextWithLink };
   activeItems?: { [key: string]: FormItems };
   onCreate?: () => void;
   onDestroy?: () => void;
@@ -30,6 +32,8 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   public texts?: { [key: string]: IFormText };
 
+  public textsWithLinks?: { [key: string]: IFormTextWithLink };
+
   public activeItems?: { [key: string]: FormItems };
 
   public onCreate?: () => void;
@@ -41,6 +45,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     this.formsStyle = formArrayWithDescriptions.formsStyle;
     this.buttons = formArrayWithDescriptions.buttons;
     this.texts = formArrayWithDescriptions.texts;
+    this.textsWithLinks = formArrayWithDescriptions.textsWithLinks;
     this.activeItems = formArrayWithDescriptions.activeItems;
     this.onCreate = formArrayWithDescriptions.onCreate;
     this.onDestroy = formArrayWithDescriptions.onDestroy;
@@ -60,6 +65,12 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     return this.texts ? this.texts[textName] : undefined;
   }
 
+  private getFormTextWithLink(textName: string): IFormTextWithLink | undefined {
+    return this.textsWithLinks
+      ? (this.textsWithLinks[textName] as IFormTextWithLink)
+      : undefined;
+  }
+
   public getFormControl(formName: string): FormControl | undefined {
     return this.getFormInputWithLabel(formName)?.form;
   }
@@ -71,6 +82,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
       const formInputWithLabel = this.getFormInputWithLabel(key);
       const formButton = this.getFormButton(key);
       const formText = this.getFormText(key);
+      const formTextWithLink = this.getFormTextWithLink(key);
       switch (value) {
         case FormItems.FORM_INPUT_WITH_LABEL:
           if (formInputWithLabel) iterableItems.push(formInputWithLabel);
@@ -80,6 +92,9 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
           break;
         case FormItems.FORM_TEXT:
           if (formText) iterableItems.push(formText);
+          break;
+        case FormItems.FORM_TEXT_WITH_LINK:
+          if (formTextWithLink) iterableItems.push(formTextWithLink);
           break;
       }
     }

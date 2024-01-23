@@ -23,6 +23,8 @@ import { IFormInputWithLabel } from '../../custom-form-generator/form-input/ifor
 import { FormInputWithLabel } from '../../custom-form-generator/form-input/form-input-with-label';
 import { IFormText } from '../../custom-form-generator/form-text/iform-text';
 import { FormText } from '../../custom-form-generator/form-text/form-text';
+import { IFormTextWithLink } from '../../custom-form-generator/form-text-with-link/iform-text-with-link';
+import { FormTextWithLink } from '../../custom-form-generator/form-text-with-link/form-text-with-link';
 
 @Component({
   selector: 'app-login-page-email-input-page',
@@ -81,30 +83,50 @@ export class EmailInputPageComponent {
     },
   });
 
+  private _linkToRegistration: IFormTextWithLink = new FormTextWithLink({
+    link: 'Зарегистрироваться',
+    routerLink: ['/registration'],
+    textBeforeLink: 'Ещё нет аккаунта? ',
+    class: ['footer'],
+  });
+
   private _emailInputActiveItems = {
     email: FormItems.FORM_INPUT_WITH_LABEL,
     showVerificationCode: FormItems.FORM_BUTTON,
+    linkToRegistration: FormItems.FORM_TEXT_WITH_LINK,
   };
 
   private _verificationCodeInputActiveItems = {
     email: FormItems.FORM_INPUT_WITH_LABEL,
     verificationCodeSupportText: FormItems.FORM_TEXT,
     verificationCode: FormItems.FORM_INPUT_WITH_LABEL,
+    linkToRegistration: FormItems.FORM_TEXT_WITH_LINK,
+  };
+
+  private _formsOnPage = {
+    email: this._emailForm,
+    verificationCode: this._verificationCodeForm,
+  };
+
+  private _buttonsOnPage = {
+    showVerificationCode: this._showVerificationCodeButton,
+  };
+
+  private _textsOnPage = {
+    verificationCodeSupportText: this._verificationCodeSupportText,
+  };
+
+  private _textsWithLinksOnPage = {
+    linkToRegistration: this._linkToRegistration,
   };
 
   protected formArrayWithDescriptions: IFormArrayWithDescriptions =
     new FormArrayWithDescriptions({
-      forms: {
-        email: this._emailForm,
-        verificationCode: this._verificationCodeForm,
-      },
+      forms: this._formsOnPage,
       formsStyle: FormStyle.LOGIN_FORM,
-      buttons: {
-        showVerificationCode: this._showVerificationCodeButton,
-      },
-      texts: {
-        verificationCodeSupportText: this._verificationCodeSupportText,
-      },
+      buttons: this._buttonsOnPage,
+      texts: this._textsOnPage,
+      textsWithLinks: this._textsWithLinksOnPage,
       activeItems: this._emailInputActiveItems,
       onCreate: () => {
         this._emailControl$
