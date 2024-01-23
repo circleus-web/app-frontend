@@ -36,7 +36,7 @@ import { FormTextWithLink } from '../../custom-form-generator/form-text-with-lin
     FormHeaderComponent,
   ],
   templateUrl: './registration-page-account-creation.component.html',
-  styleUrl: './registration-page-account-creation.component.scss',
+  styles: ['@import "colored-form";'],
 })
 export class RegistrationPageAccountCreationComponent {
   private _destroyRef = inject(DestroyRef);
@@ -83,7 +83,7 @@ export class RegistrationPageAccountCreationComponent {
     },
   });
 
-  private _submitForm(): void { }
+  private _submitForm(): void {}
 
   private _submitEmailVerificationCodeButton: IFormButton = new FormButton({
     text: 'Создать аккаунт',

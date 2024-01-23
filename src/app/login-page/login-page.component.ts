@@ -30,7 +30,7 @@ import { FormTextWithLink } from '../custom-form-generator/form-text-with-link/f
   selector: 'app-login-page',
   standalone: true,
   templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss',
+  styles: ['@import "colored-form";'],
   imports: [
     ReactiveFormsModule,
     ButtonComponent,
