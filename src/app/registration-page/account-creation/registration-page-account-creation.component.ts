@@ -83,7 +83,7 @@ export class RegistrationPageAccountCreationComponent {
     },
   });
 
-  private _submitForm(): void { }
+  private _submitForm(): void {}
 
   private _submitEmailVerificationCodeButton: IFormButton = new FormButton({
     text: 'Создать аккаунт',
