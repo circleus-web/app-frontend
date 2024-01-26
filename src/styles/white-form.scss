@@ -9,6 +9,8 @@ main.white-form {
   bottom: 0;
   left: 0;
 
+  padding-top: 48px;
+
   display: flex;
 
   width: 100vw;
@@ -16,7 +18,6 @@ main.white-form {
   height: 100dvh;
 
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   flex-shrink: 0;
 
@@ -31,6 +32,24 @@ main.white-form {
 
     background-color: white;
   }
+
+  div.form {
+    form {
+      .form-component {
+        gap: 24px;
+      }
+    }
+  }
+}
+
+div.form-container.white-form {
+  display: flex;
+  width: 376px;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  background-color: white;
 
   div.form {
     form {

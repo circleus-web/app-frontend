@@ -3,6 +3,8 @@ import { Routes } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationPageAccountCreationComponent } from './registration-page/account-creation/registration-page-account-creation.component';
 import { FillAccountInfoComponent } from './registration-page/fill-account-info/fill-account-info.component';
+import { GeneralInfoComponent } from './registration-page/fill-account-info/general-info/general-info.component';
+import { JobInfoComponent } from './registration-page/fill-account-info/job-info/job-info.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -29,6 +31,23 @@ export const routes: Routes = [
         path: 'fill-account-information',
         title: 'Fill Account Information - Circleus',
         component: FillAccountInfoComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'general-information',
+            pathMatch: 'full',
+          },
+          {
+            path: 'general-information',
+            title: 'Fill General Account Information - Circleus',
+            component: GeneralInfoComponent,
+          },
+          {
+            path: 'job-information',
+            title: 'Fill Job Account Information - Circleus',
+            component: JobInfoComponent,
+          },
+        ],
       },
     ],
   },
