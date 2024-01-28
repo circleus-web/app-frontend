@@ -39,9 +39,9 @@ import { FormTextWithLink } from '../custom-form-generator/form-text-with-link/f
   ],
 })
 export class LoginPageComponent {
-  private _destroyRef = inject(DestroyRef);
+  private m_destroyRef = inject(DestroyRef);
 
-  private _emailValidator(): ValidatorFn {
+  private m_emailValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const re =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -50,15 +50,15 @@ export class LoginPageComponent {
     };
   }
 
-  private _emailForm: IFormInputWithLabel = new FormInputWithLabel({
+  private m_emailForm: IFormInputWithLabel = new FormInputWithLabel({
     inputName: 'email',
     inputTitle: 'Email',
     inputPlaceholder: 'example@gmail.com',
-    form: new FormControl('', [Validators.required, this._emailValidator()]),
+    form: new FormControl('', [Validators.required, this.m_emailValidator()]),
     class: ['auth-page'],
   });
 
-  private _verificationCodeForm: IFormInputWithLabel = new FormInputWithLabel({
+  private m_verificationCodeForm: IFormInputWithLabel = new FormInputWithLabel({
     inputName: 'verification-code',
     inputTitle: 'Код верификации',
     inputPlaceholder: 'Код из почты',
@@ -66,83 +66,83 @@ export class LoginPageComponent {
     class: ['auth-page'],
   });
 
-  private _verificationCodeSupportText: IFormText = new FormText({
+  private m_verificationCodeSupportText: IFormText = new FormText({
     text: 'Мы отправили вам код верификации. Пожалуйста, проверьте почту',
     class: ['support-text'],
   });
 
-  private _showVerificationCodeButton: IFormButton = new FormButton({
+  private m_showVerificationCodeButton: IFormButton = new FormButton({
     text: 'Продолжить',
     class: ['btn', 'btn-primary'],
     disabled: (): boolean => {
-      return this.formArrayWithDescriptions.isInvalid();
+      return this.m_formArrayWithDescriptions.isInvalid();
     },
     click: () => {
-      this.formArrayWithDescriptions.activeItems =
-        this._verificationCodeInputActiveItems;
+      this.m_formArrayWithDescriptions.activeItems =
+        this.m_verificationCodeInputActiveItems;
     },
   });
 
-  private _linkToRegistration: IFormTextWithLink = new FormTextWithLink({
+  private m_linkToRegistration: IFormTextWithLink = new FormTextWithLink({
     link: 'Зарегистрироваться',
     routerLink: ['/registration'],
     textBeforeLink: 'Ещё нет аккаунта? ',
     class: ['footer'],
   });
 
-  private _emailInputActiveItems = {
+  private m_emailInputActiveItems = {
     email: FormItems.FORM_INPUT_WITH_LABEL,
     showVerificationCode: FormItems.FORM_BUTTON,
     linkToRegistration: FormItems.FORM_TEXT_WITH_LINK,
   };
 
-  private _verificationCodeInputActiveItems = {
+  private m_verificationCodeInputActiveItems = {
     email: FormItems.FORM_INPUT_WITH_LABEL,
     verificationCodeSupportText: FormItems.FORM_TEXT,
     verificationCode: FormItems.FORM_INPUT_WITH_LABEL,
     linkToRegistration: FormItems.FORM_TEXT_WITH_LINK,
   };
 
-  private _formsOnPage = {
-    email: this._emailForm,
-    verificationCode: this._verificationCodeForm,
+  private m_formsOnPage = {
+    email: this.m_emailForm,
+    verificationCode: this.m_verificationCodeForm,
   };
 
-  private _buttonsOnPage = {
-    showVerificationCode: this._showVerificationCodeButton,
+  private m_buttonsOnPage = {
+    showVerificationCode: this.m_showVerificationCodeButton,
   };
 
-  private _textsOnPage = {
-    verificationCodeSupportText: this._verificationCodeSupportText,
+  private m_textsOnPage = {
+    verificationCodeSupportText: this.m_verificationCodeSupportText,
   };
 
-  private _textsWithLinksOnPage = {
-    linkToRegistration: this._linkToRegistration,
+  private m_textsWithLinksOnPage = {
+    linkToRegistration: this.m_linkToRegistration,
   };
 
-  protected formArrayWithDescriptions: IFormArrayWithDescriptions =
+  protected m_formArrayWithDescriptions: IFormArrayWithDescriptions =
     new FormArrayWithDescriptions({
-      forms: this._formsOnPage,
+      forms: this.m_formsOnPage,
       formsStyle: FormStyle.LOGIN_FORM,
-      buttons: this._buttonsOnPage,
-      texts: this._textsOnPage,
-      textsWithLinks: this._textsWithLinksOnPage,
-      activeItems: this._emailInputActiveItems,
+      buttons: this.m_buttonsOnPage,
+      texts: this.m_textsOnPage,
+      textsWithLinks: this.m_textsWithLinksOnPage,
+      activeItems: this.m_emailInputActiveItems,
       onCreate: () => {
-        this._emailControl$
-          ?.pipe(takeUntilDestroyed(this._destroyRef))
+        this.m_emailControl$
+          ?.pipe(takeUntilDestroyed(this.m_destroyRef))
           .subscribe(() => {
-            this.formArrayWithDescriptions.activeItems =
-              this._emailInputActiveItems;
+            this.m_formArrayWithDescriptions.activeItems =
+              this.m_emailInputActiveItems;
           });
       },
     });
 
-  protected formTitle: string = 'Вход';
+  protected m_formTitle: string = 'Вход';
 
-  protected formSubTitle: string =
+  protected m_formSubTitle: string =
     'Добро пожаловать! Пожалуйста, введите свои данные.';
 
-  private _emailControl$?: Observable<string> =
-    this.formArrayWithDescriptions.getFormValueChanges('email');
+  private m_emailControl$?: Observable<string> =
+    this.m_formArrayWithDescriptions.getFormValueChanges('email');
 }

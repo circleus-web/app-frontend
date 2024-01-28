@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { ITextWithLink } from './itext-with-link';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+
+import { ITextWithLink } from './itext-with-link';
 
 @Component({
   selector: 'app-text-with-link',

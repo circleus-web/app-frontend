@@ -13,9 +13,9 @@ export class Button implements IButton {
 
   public class?: string[];
 
-  private _disabled?: boolean;
+  private m_disabled?: boolean;
 
-  private _getDisabled?: () => boolean;
+  private m_getDisabled?: () => boolean;
 
   public click?: () => void;
 
@@ -27,22 +27,22 @@ export class Button implements IButton {
     this.click = button.click;
     this.routerLink = button.routerLink;
     if (typeof button.disabled === 'boolean') {
-      this._disabled = button.disabled;
+      this.m_disabled = button.disabled;
     } else {
-      this._getDisabled = button.disabled;
+      this.m_getDisabled = button.disabled;
     }
   }
 
   public get disabled(): boolean {
-    return this._getDisabled?.call(this) || this._disabled || false;
+    return this.m_getDisabled?.call(this) || this.m_disabled || false;
   }
 
   public set disabled(value: boolean | (() => boolean)) {
     if (typeof value === 'boolean') {
-      this._disabled = value;
-      this._getDisabled = undefined;
+      this.m_disabled = value;
+      this.m_getDisabled = undefined;
     } else {
-      this._getDisabled = value;
+      this.m_getDisabled = value;
     }
   }
 }

@@ -1,9 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { IFormArrayWithDescriptions } from './form-array/iform-array-with-descriptions';
 import { ButtonComponent } from '../shared/button/button.component';
-import { CommonModule } from '@angular/common';
 import { IsFormInputWithLabelPipe } from './form-input/is-form-input-with-label.pipe';
 import { IsFormButtonPipe } from './form-button/is-form-button.pipe';
 import { InputWithLabelComponent } from '../shared/input/input-with-label/input-with-label.component';

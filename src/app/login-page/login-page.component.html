@@ -2,12 +2,12 @@
   <div class="form-container">
     <div class="form">
       <app-form-header
-        [formTitle]="formTitle"
-        [formSubTitle]="formSubTitle"
+        [formTitle]="m_formTitle"
+        [formSubTitle]="m_formSubTitle"
       ></app-form-header>
       <form>
         <app-custom-form-generator
-          [forms]="formArrayWithDescriptions"
+          [forms]="m_formArrayWithDescriptions"
           class="form-component"
         ></app-custom-form-generator>
       </form>

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { IText } from './itext';
 import { CommonModule } from '@angular/common';
+
+import { IText } from './itext';
 
 @Component({
   selector: 'app-text',
