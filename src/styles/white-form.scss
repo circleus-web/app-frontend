@@ -3,19 +3,12 @@
 @import "form";
 
 main.white-form {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
   padding-top: 48px;
 
   display: flex;
 
   width: 100vw;
-  height: 100vh;
-  height: 100dvh;
+  height: 100%;
 
   flex-direction: column;
   align-items: center;

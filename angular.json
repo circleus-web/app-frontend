@@ -26,7 +26,8 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.scss",
-              "node_modules/typeface-inter/inter.css"
+              "node_modules/typeface-inter/inter.css",
+              "node_modules/typeface-pacifico/index.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
