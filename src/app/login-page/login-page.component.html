@@ -1,0 +1,16 @@
+<main class="colored-form">
+  <div class="form-container">
+    <div class="form">
+      <app-form-header
+        [formTitle]="m_formTitle"
+        [formSubTitle]="m_formSubTitle"
+      ></app-form-header>
+      <form>
+        <app-custom-form-generator
+          [forms]="m_formArrayWithDescriptions"
+          class="form-component"
+        ></app-custom-form-generator>
+      </form>
+    </div>
+  </div>
+</main>

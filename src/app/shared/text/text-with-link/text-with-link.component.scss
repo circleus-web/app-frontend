@@ -1,0 +1,20 @@
+span {
+  color: var(--Gray-500, #667085);
+  /* Body 1 Condensed/Regular */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 125% */
+
+  a {
+    text-decoration: none;
+    color: var(--Blue-700, #175cd3);
+    /* Body 1 Condensed/Medium */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+  }
+}
