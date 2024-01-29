@@ -8,3 +8,11 @@
     </form>
   </div>
 </div>
+
+<app-form-footer
+  [formFooterTitle]="'Шаг 2'"
+  [formFooterSubtitle]="'Специальность'"
+  [secondaryButtonText]="'Назад'"
+  [secondaryButtonRouterLink]="['/registration', 'fill-account-information', 'general-information']"
+  [primaryButtonText]="'Начать работу'"
+></app-form-footer>
