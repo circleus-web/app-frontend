@@ -1,0 +1,16 @@
+<div class="form-footer">
+  <div class="controls">
+    <div class="text">
+      <p class="title">{{ formFooterTitle }}</p>
+      <p class="subtitle">{{ formFooterSubtitle }}</p>
+    </div>
+    <div class="actions">
+      @if (m_secondaryButton) {
+        <app-button [button]="m_secondaryButton"></app-button>
+      }
+      @if (m_primaryButton) {
+        <app-button [button]="m_primaryButton"></app-button>
+      }
+    </div>
+  </div>
+</div>
