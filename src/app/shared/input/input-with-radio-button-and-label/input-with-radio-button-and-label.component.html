@@ -1,0 +1,20 @@
+@if (inputWithRadioButtonAndLabel.inputTitle) {
+  <label
+    for="{{ inputWithRadioButtonAndLabel.inputName }}"
+    [ngClass]="inputWithRadioButtonAndLabel.class"
+    >{{ inputWithRadioButtonAndLabel.inputTitle }}</label
+  >
+}
+<input
+  [formControl]="inputWithRadioButtonAndLabel.form"
+  [ngClass]="inputClass"
+  type="text"
+  placeholder="{{ inputWithRadioButtonAndLabel.inputPlaceholder }}"
+/>
+@if (inputWithRadioButtonAndLabel.isInvalid) {
+  @if (inputWithRadioButtonAndLabel.hasError("incorrectEmail")) {
+    <span class="error" [ngClass]="inputWithRadioButtonAndLabel.class">{{
+      "Email должен содержать символ «@» и имя домена"
+    }}</span>
+  }
+}
