@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainPageComponent } from './main-page.component';
+import { LanguagesBlockComponent } from './languages-block.component';
 
-describe('MainPageComponent', () => {
-  let component: MainPageComponent;
-  let fixture: ComponentFixture<MainPageComponent>;
+describe('LanguagesBlockComponent', () => {
+  let component: LanguagesBlockComponent;
+  let fixture: ComponentFixture<LanguagesBlockComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainPageComponent],
+      imports: [LanguagesBlockComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MainPageComponent);
+    fixture = TestBed.createComponent(LanguagesBlockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

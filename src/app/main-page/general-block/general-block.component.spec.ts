@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainPageComponent } from './main-page.component';
+import { GeneralBlockComponent } from './general-block.component';
 
-describe('MainPageComponent', () => {
-  let component: MainPageComponent;
-  let fixture: ComponentFixture<MainPageComponent>;
+describe('GeneralBlockComponent', () => {
+  let component: GeneralBlockComponent;
+  let fixture: ComponentFixture<GeneralBlockComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainPageComponent],
+      imports: [GeneralBlockComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MainPageComponent);
+    fixture = TestBed.createComponent(GeneralBlockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -44,10 +44,12 @@ div.header {
     align-items: center;
 
     border-radius: 200px;
-    background: var(--Accent-50, #F9F5FF);
+    background: var(--Accent-50, #f9f5ff);
 
     /* Shadow/sm */
-    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.06), 0px 1px 3px 0px rgba(16, 24, 40, 0.10);
+    box-shadow:
+      0px 1px 2px 0px rgba(16, 24, 40, 0.06),
+      0px 1px 3px 0px rgba(16, 24, 40, 0.1);
 
     img {
       width: calc(64px / 3);
