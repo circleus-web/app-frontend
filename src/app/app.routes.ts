@@ -5,6 +5,7 @@ import { RegistrationPageAccountCreationComponent } from './registration-page/ac
 import { FillAccountInfoComponent } from './registration-page/fill-account-info/fill-account-info.component';
 import { GeneralInfoComponent } from './registration-page/fill-account-info/general-info/general-info.component';
 import { JobInfoComponent } from './registration-page/fill-account-info/job-info/job-info.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -50,5 +51,10 @@ export const routes: Routes = [
         ],
       },
     ],
+  },
+  {
+    path: 'main',
+    title: 'Main Page - Circleus',
+    component: MainPageComponent,
   },
 ];
