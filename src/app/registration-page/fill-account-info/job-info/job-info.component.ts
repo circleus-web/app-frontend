@@ -7,13 +7,14 @@ import { FormItems } from '../../../custom-form-generator/form-array/form-items'
 import { FormArrayWithDescriptions } from '../../../custom-form-generator/form-array/form-array-with-descriptions';
 import { IFormArrayWithDescriptions } from '../../../custom-form-generator/form-array/iform-array-with-descriptions';
 import { CustomFormGeneratorComponent } from '../../../custom-form-generator/custom-form-generator.component';
+import { FormFooterComponent } from '../form-footer/form-footer.component';
 
 @Component({
   selector: 'app-job-info',
   standalone: true,
   templateUrl: './job-info.component.html',
   styles: ['@import "white-form";'],
-  imports: [CustomFormGeneratorComponent],
+  imports: [CustomFormGeneratorComponent, FormFooterComponent],
 })
 export class JobInfoComponent {
   private m_specializationForm: IFormInputWithLabel = new FormInputWithLabel({
