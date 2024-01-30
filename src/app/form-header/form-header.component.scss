@@ -16,7 +16,7 @@ div.header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: $form-gap / 2;
+    gap: calc($form-gap / 2);
     align-self: stretch;
 
     h1.title,

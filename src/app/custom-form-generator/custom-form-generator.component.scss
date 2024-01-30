@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $form-gap / 4;
+  gap: calc($form-gap / 4);
   align-self: stretch;
 }
 
