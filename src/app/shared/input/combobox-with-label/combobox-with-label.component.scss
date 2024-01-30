@@ -1,0 +1,41 @@
+@import "typography";
+
+label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: baseline;
+
+  @include font-body-2-condensed-medium;
+}
+
+.select-wrapper {
+  display: flex;
+  align-self: stretch;
+
+  select {
+    flex: 1 0 0;
+    display: flex;
+    height: 40px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: var(--Gray-100, #f2f4f7);
+    border: none;
+
+    @include font-body-2-medium;
+  }
+
+  select.error {
+    border: 1px solid var(--Red-400, #f97066) !important;
+  }
+}
+
+.select-wrapper::after {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.52827 5.52827C3.78862 5.26792 4.21073 5.26792 4.47108 5.52827L7.99967 9.05687L11.5283 5.52827C11.7886 5.26792 12.2107 5.26792 12.4711 5.52827C12.7314 5.78862 12.7314 6.21073 12.4711 6.47108L8.47108 10.4711C8.21073 10.7314 7.78862 10.7314 7.52827 10.4711L3.52827 6.47108C3.26792 6.21073 3.26792 5.78862 3.52827 5.52827Z' fill='%23344054'/%3E%3C/svg%3E");
+  position: relative;
+  top: 12px;
+  right: 24px;
+
+  height: 0;
+  width: 0;
+}

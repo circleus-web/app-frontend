@@ -1,7 +1,8 @@
 @import "typography";
 @import "constants";
 
-.input-with-label {
+.input-with-label,
+.combobox-with-label {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +21,7 @@ input.error {
 span.error {
   color: var(--Red-500, #f04438);
   align-self: stretch;
-  
+
   @include font-body-2-condensed-regular;
 }
 

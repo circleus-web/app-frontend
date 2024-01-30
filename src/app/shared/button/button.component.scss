@@ -28,8 +28,8 @@ button.btn.btn-primary {
 
 button.btn.btn-secondary {
   border-radius: 8px;
-  border: 1px solid var(--Gray-300, #D0D5DD);
-  background: var(--White, #FFF);
+  border: 1px solid var(--Gray-300, #d0d5dd);
+  background: var(--White, #fff);
 
   @include shadow-xs;
 }

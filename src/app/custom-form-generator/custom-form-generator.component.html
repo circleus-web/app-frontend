@@ -5,6 +5,12 @@
       class="input-with-label"
       [ngClass]="forms.formsStyle"
     ></app-input-with-label>
+  } @else if (item | isFormCombobox) {
+    <app-combobox-with-label
+      [comboboxWithLabel]="item"
+      class="combobox-with-label"
+      [ngClass]="forms.formsStyle"
+    ></app-combobox-with-label>
   } @else if (item | isFormButton) {
     <app-button
       [button]="item"

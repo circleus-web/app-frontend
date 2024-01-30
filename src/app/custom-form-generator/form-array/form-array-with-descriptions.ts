@@ -9,9 +9,10 @@ import { FormItems } from './form-items';
 import { IFormItem } from './iform-item';
 import { IFormText } from '../form-text/iform-text';
 import { IFormTextWithLink } from '../form-text-with-link/iform-text-with-link';
+import { IFormCombobox } from '../form-combobox/iform-combobox';
 
 interface IRequiredFormArrayWithDescriptions {
-  forms?: { [key: string]: IFormInputWithLabel };
+  forms?: { [key: string]: IFormInputWithLabel | IFormCombobox };
   formsStyle?: FormStyle;
   buttons?: { [key: string]: IFormButton };
   texts?: { [key: string]: IFormText };
@@ -22,7 +23,7 @@ interface IRequiredFormArrayWithDescriptions {
 }
 
 export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
-  public forms?: { [key: string]: IFormInputWithLabel };
+  public forms?: { [key: string]: IFormInputWithLabel | IFormCombobox };
 
   private _formGroup?: FormGroup;
 
@@ -51,9 +52,9 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     this.onDestroy = formArrayWithDescriptions.onDestroy;
   }
 
-  public getFormInputWithLabel(
+  public getForm(
     inputName: string,
-  ): IFormInputWithLabel | undefined {
+  ): IFormInputWithLabel | IFormCombobox | undefined {
     return this.forms ? this.forms[inputName] : undefined;
   }
 
@@ -72,19 +73,20 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
   }
 
   public getFormControl(formName: string): FormControl | undefined {
-    return this.getFormInputWithLabel(formName)?.form;
+    return this.getForm(formName)?.form;
   }
 
   public get iterableItems(): Required<IFormItem>[] {
     if (!this.activeItems) return [];
     const iterableItems: Required<IFormItem>[] = [];
     for (const [key, value] of Object.entries(this.activeItems)) {
-      const formInputWithLabel = this.getFormInputWithLabel(key);
+      const formInputWithLabel = this.getForm(key);
       const formButton = this.getFormButton(key);
       const formText = this.getFormText(key);
       const formTextWithLink = this.getFormTextWithLink(key);
       switch (value) {
         case FormItems.FORM_INPUT_WITH_LABEL:
+        case FormItems.FORM_COMBOBOX_WITH_LABEL:
           if (formInputWithLabel) iterableItems.push(formInputWithLabel);
           break;
         case FormItems.FORM_BUTTON:
@@ -120,6 +122,6 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
   }
 
   public getFormValueChanges(formName: string): Observable<string> | undefined {
-    return this.getFormInputWithLabel(formName)?.getValueChanges();
+    return this.getForm(formName)?.getValueChanges();
   }
 }
