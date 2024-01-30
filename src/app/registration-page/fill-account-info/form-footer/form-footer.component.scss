@@ -1,4 +1,7 @@
 @import "typography";
+@import "constants";
+
+$form-footer-gap: 32px;
 
 div.form-footer {
   position: absolute;
@@ -9,7 +12,7 @@ div.form-footer {
   padding: 16px 20px;
   justify-content: center;
   align-items: flex-start;
-  gap: 32px;
+  gap: $form-footer-gap;
 
   display: flex;
 
@@ -18,10 +21,10 @@ div.form-footer {
 
   div.controls {
     display: flex;
-    max-width: 376px;
+    max-width: $form-width;
     justify-content: center;
     align-items: flex-start;
-    gap: 32px;
+    gap: $form-footer-gap;
     flex: 1 0 0;
 
     div.text {
@@ -55,6 +58,6 @@ div.form-footer {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 8px;
+    gap: calc($form-footer-gap / 4);
   }
 }

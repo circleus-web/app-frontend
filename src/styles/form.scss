@@ -1,9 +1,11 @@
+@import "constants";
+
 div.form {
   display: flex;
 
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: $form-gap;
   align-self: stretch;
 
   height: 100%;
@@ -12,7 +14,7 @@ div.form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: $form-gap / 2;
     align-self: stretch;
 
     height: 100%;
@@ -21,7 +23,7 @@ div.form {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: $form-gap / 2;
       align-self: stretch;
 
       height: 100%;

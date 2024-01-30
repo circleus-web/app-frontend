@@ -1,19 +1,22 @@
+@import "typography";
+@import "constants";
+
 div.header {
   height: fit-content;
 
-  padding-top: 32px;
+  padding-top: $colored-form-padding;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: $form-gap;
   align-self: stretch;
 
   div.texts {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: calc($form-gap / 2);
     align-self: stretch;
 
     h1.title,
@@ -22,25 +25,18 @@ div.header {
       margin: 0;
 
       text-align: center;
-
-      font-family: Inter;
-      font-style: normal;
     }
 
     h1.title {
       color: var(--Gray-900, #101828);
-      /* H 5/Semibold */
-      font-size: 32px;
-      font-weight: 600;
-      line-height: 40px; /* 125% */
+      
+      @include font-h-5-semibold;
     }
 
     span.subtitle {
       color: var(--Gray-500, #667085);
-      /* Body 2/Regular */
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 20px; /* 142.857% */
+      
+      @include font-body-2-regular;
     }
   }
 }

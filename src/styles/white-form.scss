@@ -1,6 +1,17 @@
 @use "sass:math";
 
+@import "constants";
 @import "form";
+
+@mixin form-container-style {
+  display: flex;
+  width: 376px;
+  flex-direction: column;
+  align-items: center;
+  gap: $form-gap;
+
+  background-color: white;
+}
 
 main.white-form {
   padding-top: 48px;
@@ -16,19 +27,13 @@ main.white-form {
   overflow: hidden;
 
   div.form-container {
-    display: flex;
-    width: 376px;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-
-    background-color: white;
+    @include form-container-style;
   }
 
   div.form {
     form {
       .form-component {
-        gap: 24px;
+        gap: $form-gap;
       }
     }
   }
@@ -39,14 +44,14 @@ div.form-container.white-form {
   width: 376px;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: $form-gap;
 
   background-color: white;
 
   div.form {
     form {
       .form-component {
-        gap: 24px;
+        gap: $form-gap;
       }
     }
   }
