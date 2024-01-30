@@ -12,4 +12,6 @@ div.app {
   background: var(--Gray-25, #fcfcfd);
 
   z-index: -1000;
+
+  overflow: hidden
 }

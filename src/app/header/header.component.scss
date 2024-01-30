@@ -1,7 +1,10 @@
+@import "constants";
+@import "effects/shadows";
+
 div.header {
   position: sticky;
   display: flex;
-  height: 52px;
+  height: $header-height;
   width: 100vw;
   padding: 0px 20px;
   justify-content: space-between;
@@ -12,21 +15,21 @@ div.header {
 
   div.logo {
     display: flex;
-    width: 113px;
-    height: 32px;
+    height: $icon-height;
     align-items: center;
     justify-items: baseline;
     gap: 8px;
 
     img {
-      width: 32px;
-      height: 32px;
+      width: $icon-width;
+      height: $icon-height;
       flex-shrink: 0;
     }
 
     h1 {
       color: var(--Gray-900, #101828);
       text-align: center;
+
       font-family: Pacifico;
       font-size: 24px;
       font-style: normal;
@@ -37,23 +40,20 @@ div.header {
 
   div.user {
     display: flex;
-    width: 32px;
-    height: 32px;
-    padding: calc(16px / 3);
+    width: $icon-width;
+    height: $icon-height;
+    padding: calc($icon-width / 6);
     justify-content: center;
     align-items: center;
 
     border-radius: 200px;
     background: var(--Accent-50, #f9f5ff);
 
-    /* Shadow/sm */
-    box-shadow:
-      0px 1px 2px 0px rgba(16, 24, 40, 0.06),
-      0px 1px 3px 0px rgba(16, 24, 40, 0.1);
+    @include shadow-xs;
 
     img {
-      width: calc(64px / 3);
-      height: calc(64px / 3);
+      width: calc($icon-width * 2 / 3);
+      height: calc($icon-height * 2 / 3);
       flex-shrink: 0;
     }
   }

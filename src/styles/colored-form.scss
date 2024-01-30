@@ -27,9 +27,9 @@ main.colored-form {
   div.form-container {
     display: flex;
 
-    width: 440px;
+    width: $form-width + ($colored-form-padding * 2);
     height: 640px;
-    padding: 32px;
+    padding: $colored-form-padding;
 
     flex-direction: column;
     justify-content: space-between;
