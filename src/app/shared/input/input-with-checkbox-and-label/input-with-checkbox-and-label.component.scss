@@ -31,3 +31,8 @@ span.error {
 
   @include font-body-2-condensed-medium;
 }
+
+input[type=checkbox] {
+  appearance: auto;
+  -webkit-appearance: auto;
+}

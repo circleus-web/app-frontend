@@ -8,7 +8,7 @@ export interface IInputWithCheckboxAndLabel {
   checkboxName: string;
   checkboxTitle: string;
   inputPlaceholder?: string;
-  defaultCheckboxState?: boolean;
+  checkboxChecked?: boolean;
   hintText?: string;
   class: string[];
   isInversed?: boolean;

@@ -9,7 +9,7 @@ interface IRequiredInputWithCheckboxAndLabel {
   checkboxName: string;
   checkboxTitle: string;
   inputPlaceholder?: string;
-  defaultCheckboxState?: boolean;
+  checkboxChecked?: boolean;
   class?: string[];
   isInversed?: boolean;
 }
@@ -28,7 +28,7 @@ implements IInputWithCheckboxAndLabel {
 
   public inputPlaceholder?: string;
 
-  public defaultCheckboxState?: boolean;
+  public checkboxChecked?: boolean;
 
   public class: string[];
 
@@ -44,8 +44,8 @@ implements IInputWithCheckboxAndLabel {
     this.checkboxTitle = requiredInputWithCheckboxAndLabel.checkboxTitle;
     this.inputPlaceholder =
       requiredInputWithCheckboxAndLabel.inputPlaceholder;
-    this.defaultCheckboxState =
-      requiredInputWithCheckboxAndLabel.defaultCheckboxState;
+    this.checkboxChecked =
+      requiredInputWithCheckboxAndLabel.checkboxChecked;
     this.class = requiredInputWithCheckboxAndLabel.class || [];
     this.isInversed = requiredInputWithCheckboxAndLabel.isInversed;
   }
