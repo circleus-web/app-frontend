@@ -9,7 +9,7 @@ import { IFormInputWithLabel } from '../form-input/iform-input-with-label';
 import { IFormText } from '../form-text/iform-text';
 import { IFormTextWithLink } from '../form-text-with-link/iform-text-with-link';
 import { IFormCombobox } from '../form-combobox/iform-combobox';
-import { IFormInputWithRadio } from '../form-input-with-radio/iform-input-with-radio';
+import { IFormInputWithCheckbox } from '../form-input-with-checkbox/iform-input-with-checkbox';
 
 export interface IFormArrayWithDescriptions {
   iterableItems: Required<IFormItem>[];
@@ -17,7 +17,9 @@ export interface IFormArrayWithDescriptions {
   isInvalid(): boolean;
   formsStyle?: FormStyle;
   getFormValueChanges(formName: string): Observable<string> | undefined;
-  forms?: { [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithRadio };
+  forms?: {
+    [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithCheckbox;
+  };
   buttons?: { [key: string]: IFormButton };
   texts?: { [key: string]: IFormText };
   textsWithLinks?: { [key: string]: IFormTextWithLink };

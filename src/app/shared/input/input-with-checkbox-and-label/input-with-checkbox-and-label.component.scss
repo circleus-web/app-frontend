@@ -9,7 +9,7 @@ label {
   @include font-body-2-condensed-medium;
 }
 
-input {
+input[type=text] {
   display: flex;
   height: 40px;
   padding: 8px 12px;

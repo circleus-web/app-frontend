@@ -10,10 +10,12 @@ import { IFormItem } from './iform-item';
 import { IFormText } from '../form-text/iform-text';
 import { IFormTextWithLink } from '../form-text-with-link/iform-text-with-link';
 import { IFormCombobox } from '../form-combobox/iform-combobox';
-import { IFormInputWithRadio } from '../form-input-with-radio/iform-input-with-radio';
+import { IFormInputWithCheckbox } from '../form-input-with-checkbox/iform-input-with-checkbox';
 
 interface IRequiredFormArrayWithDescriptions {
-  forms?: { [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithRadio };
+  forms?: {
+    [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithCheckbox;
+  };
   formsStyle?: FormStyle;
   buttons?: { [key: string]: IFormButton };
   texts?: { [key: string]: IFormText };
@@ -24,7 +26,9 @@ interface IRequiredFormArrayWithDescriptions {
 }
 
 export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
-  public forms?: { [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithRadio };
+  public forms?: {
+    [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithCheckbox;
+  };
 
   private _formGroup?: FormGroup;
 
@@ -55,7 +59,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   public getForm(
     inputName: string,
-  ): IFormInputWithLabel | IFormCombobox | IFormInputWithRadio | undefined {
+  ): IFormInputWithLabel | IFormCombobox | IFormInputWithCheckbox | undefined {
     return this.forms ? this.forms[inputName] : undefined;
   }
 

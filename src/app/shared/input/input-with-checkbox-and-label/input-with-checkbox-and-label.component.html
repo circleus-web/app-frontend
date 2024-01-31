@@ -1,0 +1,28 @@
+@if (inputWithCheckboxAndLabel.inputTitle) {
+  <label
+    for="{{ inputWithCheckboxAndLabel.inputName }}"
+    [ngClass]="inputWithCheckboxAndLabel.class"
+    >{{ inputWithCheckboxAndLabel.inputTitle }}</label
+  >
+}
+<input
+  [formControl]="inputWithCheckboxAndLabel.form"
+  [ngClass]="inputClass"
+  type="text"
+  placeholder="{{ inputWithCheckboxAndLabel.inputPlaceholder }}"
+/>
+@if (inputWithCheckboxAndLabel.isInvalid) {
+  @if (inputWithCheckboxAndLabel.hasError("incorrectEmail")) {
+    <span class="error" [ngClass]="inputWithCheckboxAndLabel.class">{{
+      "Email должен содержать символ «@» и имя домена"
+    }}</span>
+  }
+}
+
+<label [for]="inputWithCheckboxAndLabel.checkboxName">{{
+  inputWithCheckboxAndLabel.checkboxTitle
+}}</label>
+<input
+  type="checkbox"
+  [name]="inputWithCheckboxAndLabel.checkboxName"
+/>
