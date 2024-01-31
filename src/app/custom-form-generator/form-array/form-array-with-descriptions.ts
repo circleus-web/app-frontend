@@ -10,9 +10,10 @@ import { IFormItem } from './iform-item';
 import { IFormText } from '../form-text/iform-text';
 import { IFormTextWithLink } from '../form-text-with-link/iform-text-with-link';
 import { IFormCombobox } from '../form-combobox/iform-combobox';
+import { IFormInputWithRadio } from '../form-input-with-radio/iform-input-with-radio';
 
 interface IRequiredFormArrayWithDescriptions {
-  forms?: { [key: string]: IFormInputWithLabel | IFormCombobox };
+  forms?: { [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithRadio };
   formsStyle?: FormStyle;
   buttons?: { [key: string]: IFormButton };
   texts?: { [key: string]: IFormText };
@@ -23,7 +24,7 @@ interface IRequiredFormArrayWithDescriptions {
 }
 
 export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
-  public forms?: { [key: string]: IFormInputWithLabel | IFormCombobox };
+  public forms?: { [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithRadio };
 
   private _formGroup?: FormGroup;
 
@@ -54,7 +55,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   public getForm(
     inputName: string,
-  ): IFormInputWithLabel | IFormCombobox | undefined {
+  ): IFormInputWithLabel | IFormCombobox | IFormInputWithRadio | undefined {
     return this.forms ? this.forms[inputName] : undefined;
   }
 
@@ -87,6 +88,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
       switch (value) {
         case FormItems.FORM_INPUT_WITH_LABEL:
         case FormItems.FORM_COMBOBOX_WITH_LABEL:
+        case FormItems.FORM_INPUT_WITH_RADIO:
           if (formInputWithLabel) iterableItems.push(formInputWithLabel);
           break;
         case FormItems.FORM_BUTTON:

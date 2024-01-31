@@ -7,10 +7,11 @@ interface IRequiredInputWithRadioButtonAndLabel {
   inputName: string;
   inputTitle: string;
   inputPlaceholder?: string;
-  class: string[];
+  class?: string[];
 }
 
-export class InputWithRadioButtonAndLabel implements IInputWithRadioButtonAndLabel {
+export class InputWithRadioButtonAndLabel
+implements IInputWithRadioButtonAndLabel {
   public form: FormControl;
 
   public inputName: string;
@@ -21,12 +22,15 @@ export class InputWithRadioButtonAndLabel implements IInputWithRadioButtonAndLab
 
   public class: string[];
 
-  constructor(requiredInputWithRadioButtonAndLabel: IRequiredInputWithRadioButtonAndLabel) {
+  constructor(
+    requiredInputWithRadioButtonAndLabel: IRequiredInputWithRadioButtonAndLabel,
+  ) {
     this.form = requiredInputWithRadioButtonAndLabel.form;
     this.inputName = requiredInputWithRadioButtonAndLabel.inputName;
     this.inputTitle = requiredInputWithRadioButtonAndLabel.inputTitle;
-    this.inputPlaceholder = requiredInputWithRadioButtonAndLabel.inputPlaceholder;
-    this.class = requiredInputWithRadioButtonAndLabel.class;
+    this.inputPlaceholder =
+      requiredInputWithRadioButtonAndLabel.inputPlaceholder;
+    this.class = requiredInputWithRadioButtonAndLabel.class || [];
   }
 
   public getValueChanges(): Observable<string> {

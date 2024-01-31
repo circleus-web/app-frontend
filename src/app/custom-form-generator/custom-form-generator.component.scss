@@ -2,7 +2,8 @@
 @import "constants";
 
 .input-with-label,
-.combobox-with-label {
+.combobox-with-label,
+.input-with-radio {
   display: flex;
   flex-direction: column;
   align-items: center;

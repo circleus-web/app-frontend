@@ -13,6 +13,8 @@ import { IsFormTextWithLinkPipe } from './form-text-with-link/is-form-text-with-
 import { TextWithLinkComponent } from '../shared/text/text-with-link/text-with-link.component';
 import { IsFormComboboxPipe } from './form-combobox/is-form-combobox.pipe';
 import { ComboboxWithLabelComponent } from '../shared/input/combobox-with-label/combobox-with-label.component';
+import { IsFormInputWithRadioPipe } from './form-input-with-radio/is-form-input-with-radio.pipe';
+import { InputWithRadioButtonAndLabelComponent } from '../shared/input/input-with-radio-button-and-label/input-with-radio-button-and-label.component';
 
 @Component({
   selector: 'app-custom-form-generator',
@@ -32,6 +34,8 @@ import { ComboboxWithLabelComponent } from '../shared/input/combobox-with-label/
     TextWithLinkComponent,
     IsFormComboboxPipe,
     ComboboxWithLabelComponent,
+    IsFormInputWithRadioPipe,
+    InputWithRadioButtonAndLabelComponent,
   ],
 })
 export class CustomFormGeneratorComponent implements OnInit, OnDestroy {

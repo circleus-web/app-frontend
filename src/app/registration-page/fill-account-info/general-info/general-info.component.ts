@@ -8,6 +8,8 @@ import { FormArrayWithDescriptions } from '../../../custom-form-generator/form-a
 import { IFormArrayWithDescriptions } from '../../../custom-form-generator/form-array/iform-array-with-descriptions';
 import { CustomFormGeneratorComponent } from '../../../custom-form-generator/custom-form-generator.component';
 import { FormFooterComponent } from '../form-footer/form-footer.component';
+import { IFormInputWithRadio } from '../../../custom-form-generator/form-input-with-radio/iform-input-with-radio';
+import { FormInputWithRadio } from '../../../custom-form-generator/form-input-with-radio/form-input-with-radio';
 
 @Component({
   selector: 'app-general-info',
@@ -31,7 +33,7 @@ export class GeneralInfoComponent {
     form: new FormControl('', [Validators.required]),
   });
 
-  private m_phoneNumberForm: IFormInputWithLabel = new FormInputWithLabel({
+  private m_phoneNumberForm: IFormInputWithRadio = new FormInputWithRadio({
     inputName: 'phoneNumber',
     inputTitle: 'Номер телефона',
     inputPlaceholder: '+7 (999) 999-99-99',

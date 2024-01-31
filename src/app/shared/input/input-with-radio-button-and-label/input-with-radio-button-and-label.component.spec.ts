@@ -8,10 +8,9 @@ describe('InputWithRadioButtonAndLabelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InputWithRadioButtonAndLabelComponent]
-    })
-    .compileComponents();
-    
+      imports: [InputWithRadioButtonAndLabelComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(InputWithRadioButtonAndLabelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

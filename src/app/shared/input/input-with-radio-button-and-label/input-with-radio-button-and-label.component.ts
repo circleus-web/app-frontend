@@ -12,7 +12,7 @@ import { IInputWithRadioButtonAndLabel } from './iinput-with-radio-button-and-la
   styleUrl: './input-with-radio-button-and-label.component.scss',
 })
 export class InputWithRadioButtonAndLabelComponent {
-  @Input() inputWithRadioButtonAndLabel!: IInputWithRadioButtonAndLabel;
+  @Input({ required: true }) inputWithRadioButtonAndLabel!: IInputWithRadioButtonAndLabel;
 
   protected get inputClass(): string[] {
     return [
