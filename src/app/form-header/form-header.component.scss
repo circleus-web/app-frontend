@@ -29,13 +29,13 @@ div.header {
 
     h1.title {
       color: var(--Gray-900, #101828);
-      
+
       @include font-h-5-semibold;
     }
 
     span.subtitle {
       color: var(--Gray-500, #667085);
-      
+
       @include font-body-2-regular;
     }
   }

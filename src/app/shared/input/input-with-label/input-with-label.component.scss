@@ -5,7 +5,7 @@ label {
   justify-content: space-between;
   align-items: center;
   align-self: baseline;
-  
+
   @include font-body-2-condensed-medium;
 }
 
@@ -17,7 +17,7 @@ input {
   border-radius: 8px;
   background: var(--Gray-100, #f2f4f7);
   border: none;
-  
+
   @include font-body-2-medium;
 }
 
@@ -28,6 +28,6 @@ input.error {
 span.error {
   color: var(--Red-500, #f04438);
   align-self: stretch;
-  
+
   @include font-body-2-condensed-medium;
 }

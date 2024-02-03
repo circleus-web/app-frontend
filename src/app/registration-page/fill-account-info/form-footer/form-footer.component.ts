@@ -28,7 +28,6 @@ export class FormFooterComponent implements OnInit {
 
   protected m_primaryButton?: IButton;
 
-
   ngOnInit() {
     if (this.secondaryButtonText)
       this.m_secondaryButton = new Button({

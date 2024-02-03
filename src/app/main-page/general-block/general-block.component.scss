@@ -1,3 +1,6 @@
+@import "effects/shadows";
+@import "typography";
+
 main {
   display: grid;
   width: 708px;
@@ -5,24 +8,103 @@ main {
   grid-template:
     "person-info specialization-info specialization-info" 104px
     "person-info contacts links" 156px / 300px 1fr 156px;
-  
+
+  .person-info,
+  .specialization-info,
+  .contacts,
+  .links {
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    border-radius: 12px;
+    background: var(--White, #fff);
+
+    @include shadow-sm;
+  }
+
   .person-info {
     grid-area: person-info;
-    background-color: aqua;
+
+    gap: 16px;
+
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      align-self: stretch;
+
+      .photo {
+        width: 80px;
+        height: 80px;
+
+        border-radius: 200px;
+
+        @include shadow-sm;
+
+        background-color: hotpink;
+      }
+
+      .badge {
+        display: flex;
+        align-items: flex-start;
+
+        mix-blend-mode: multiply;
+
+        .badge-component {
+          display: flex;
+          padding: 4px 12px;
+          justify-content: center;
+          align-items: center;
+
+          border-radius: 16px;
+          background: var(--Orange-50, #FFF6ED);
+
+          color: var(--Orange-700, #C4320A);
+          text-align: center;
+
+          @include font-body-2-condensed-medium;
+        }
+      }
+    }
+
+    .name {
+      flex: 1 0 0;
+      align-self: stretch;
+
+      color: var(--Gray-700, #344054);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      @include font-h-6-semibold;
+    }
+
+    .foot {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+
+      color: var(--Gray-500, #667085);
+
+      @include font-body-1-condensed-medium;
+
+      .separator {
+        color: var(--Gray-300, #D0D5DD);
+      }
+    }
   }
 
   .specialization-info {
     grid-area: specialization-info;
-    background-color: brown;
   }
 
   .contacts {
     grid-area: contacts;
-    background-color: blueviolet;
   }
 
   .links {
     grid-area: links;
-    background-color: hotpink;
   }
 }

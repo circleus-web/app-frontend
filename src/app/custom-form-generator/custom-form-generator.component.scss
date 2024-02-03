@@ -20,7 +20,7 @@ input.error {
 span.error {
   color: var(--Red-500, #f04438);
   align-self: stretch;
-  
+
   @include font-body-2-condensed-regular;
 }
 
