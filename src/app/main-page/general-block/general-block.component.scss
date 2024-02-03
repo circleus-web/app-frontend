@@ -1,0 +1,28 @@
+main {
+  display: grid;
+  width: 708px;
+  gap: 12px;
+  grid-template:
+    "person-info specialization-info specialization-info" 104px
+    "person-info contacts links" 156px / 300px 1fr 156px;
+  
+  .person-info {
+    grid-area: person-info;
+    background-color: aqua;
+  }
+
+  .specialization-info {
+    grid-area: specialization-info;
+    background-color: brown;
+  }
+
+  .contacts {
+    grid-area: contacts;
+    background-color: blueviolet;
+  }
+
+  .links {
+    grid-area: links;
+    background-color: hotpink;
+  }
+}
