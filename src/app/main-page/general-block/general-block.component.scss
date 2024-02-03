@@ -9,10 +9,7 @@ main {
     "person-info specialization-info specialization-info" 104px
     "person-info contacts links" 156px / 300px 1fr 156px;
 
-  .person-info,
-  .specialization-info,
-  .contacts,
-  .links {
+  .plate {
     display: flex;
     padding: 24px;
     flex-direction: column;
@@ -25,7 +22,7 @@ main {
     @include shadow-sm;
   }
 
-  .person-info {
+  .plate.person-info {
     grid-area: person-info;
 
     gap: 16px;
@@ -96,15 +93,56 @@ main {
     }
   }
 
-  .specialization-info {
+  .plate.specialization-info {
     grid-area: specialization-info;
+
+    .specialization-name {
+      overflow: hidden;
+      color: var(--Gray-700, #344054);
+      text-overflow: ellipsis;
+
+      @include font-h-6-semibold;
+    }
+
+    .graid {
+      color: var(--Gray-500, #667085);
+
+      @include font-body-2-condensed-medium;
+    }
   }
 
-  .contacts {
+  .plate.contacts-plate {
     grid-area: contacts;
+
+    .title {
+      color: var(--Gray-500, #667085);
+
+      @include font-uppercase-semibold;
+    }
+
+    .contacts {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      align-self: stretch;
+
+      span {
+        display: flex;
+        padding: 2px 0px;
+        flex-direction: column;
+        align-items: flex-start;
+
+        overflow: hidden;
+        color: var(--Blue-700, #175CD3);
+        text-overflow: ellipsis;
+
+        @include font-body-1-condensed-medium;
+      }
+    }
   }
 
-  .links {
+  .plate.links {
     grid-area: links;
   }
 }
