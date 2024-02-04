@@ -1,0 +1,19 @@
+@import "typography";
+
+.badge {
+  display: flex;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 16px;
+
+  text-align: center;
+
+  @include font-body-2-condensed-medium;
+}
+
+.badge.orange {
+  background: var(--Orange-50, #fff6ed);
+  color: var(--Orange-700, #c4320a);
+}

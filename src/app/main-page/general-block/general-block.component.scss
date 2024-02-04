@@ -49,21 +49,6 @@ main {
         align-items: flex-start;
 
         mix-blend-mode: multiply;
-
-        .badge-component {
-          display: flex;
-          padding: 4px 12px;
-          justify-content: center;
-          align-items: center;
-
-          border-radius: 16px;
-          background: var(--Orange-50, #FFF6ED);
-
-          color: var(--Orange-700, #C4320A);
-          text-align: center;
-
-          @include font-body-2-condensed-medium;
-        }
       }
     }
 
@@ -88,7 +73,7 @@ main {
       @include font-body-1-condensed-medium;
 
       .separator {
-        color: var(--Gray-300, #D0D5DD);
+        color: var(--Gray-300, #d0d5dd);
       }
     }
   }
@@ -134,7 +119,7 @@ main {
         align-items: flex-start;
 
         overflow: hidden;
-        color: var(--Blue-700, #175CD3);
+        color: var(--Blue-700, #175cd3);
         text-overflow: ellipsis;
 
         @include font-body-1-condensed-medium;
