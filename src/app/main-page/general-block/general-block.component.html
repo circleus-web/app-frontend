@@ -4,26 +4,26 @@
       <div class="photo"></div>
       <div class="badge">
         <app-badge
-          [badge]="{ text: 'Ищу работу', class: ['orange'] }"
+          [badge]="badge"
         ></app-badge>
       </div>
     </div>
-    <div class="name">Дёмин Константин</div>
+    <div class="name">{{ personInformation.name }}</div>
     <div class="foot">
-      <span class="age">27 лет</span>
+      <span class="age">{{ personInformation.age }}</span>
       <span class="separator">•</span>
-      <span class="location">Москва</span>
+      <span class="location">{{ personInformation.location }}</span>
     </div>
   </div>
   <div class="plate specialization-info">
-    <span class="specialization-name">Дизайнер интерфейсов</span>
-    <span class="graid">Senior</span>
+    <span class="specialization-name">{{ specializationInformation.name }}</span>
+    <span class="graid">{{ specializationInformation.graid }}</span>
   </div>
   <div class="plate contacts-plate">
     <span class="title">Свяжитесь со мной</span>
     <div class="contacts">
-      <span class="email">k.demin&#64;mail.ru</span>
-      <span class="phone">+7 (925) 123-45-67</span>
+      <span class="email">{{ contacts.email }}</span>
+      <span class="phone">{{ contacts.phone }}</span>
     </div>
   </div>
   <div class="plate links"></div>

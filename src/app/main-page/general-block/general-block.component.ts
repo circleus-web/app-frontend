@@ -1,5 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
 import { BadgeComponent } from '../../shared/badge/badge.component';
+import { IBadge } from '../../shared/badge/ibadge';
+
+
+interface IPersonInformation {
+  name: string;
+  age: string;
+  location: string;
+}
+
+interface ISpecializationInformation {
+  name: string;
+  graid: string;
+}
+
+interface IContacts {
+  email: string;
+  phone: string;
+}
+
 
 @Component({
   selector: 'app-general-block',
@@ -8,4 +28,12 @@ import { BadgeComponent } from '../../shared/badge/badge.component';
   styleUrl: './general-block.component.scss',
   imports: [BadgeComponent],
 })
-export class GeneralBlockComponent {}
+export class GeneralBlockComponent {
+  @Input({ required: true }) badge!: IBadge;
+
+  @Input({ required: true }) personInformation!: IPersonInformation;
+
+  @Input({ required: true }) specializationInformation!: ISpecializationInformation;
+
+  @Input({ required: true }) contacts!: IContacts;
+}

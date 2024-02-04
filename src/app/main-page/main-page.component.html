@@ -1,6 +1,11 @@
 <app-header></app-header>
 <div class="content">
-  <app-general-block></app-general-block>
+  <app-general-block
+    [badge]="{text: 'Ищу работу', class: ['orange']}"
+    [personInformation]="{name: 'Александр Журавлев', age: '17 лет', location: 'Москва'}"
+    [specializationInformation]="{name: 'Frontend разработчик', graid: 'Junior'}"
+    [contacts]="{email: 'zhur06\@gmail\.com', phone: '+7 (999) 123-45-67'}"
+  ></app-general-block>
   <div class="cv-blocks">
     <app-about-block></app-about-block>
     <app-skills-block></app-skills-block>
