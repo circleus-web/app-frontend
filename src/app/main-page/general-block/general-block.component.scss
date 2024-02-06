@@ -2,12 +2,7 @@
 @import "typography";
 
 main {
-  display: grid;
-  width: 708px;
   gap: 12px;
-  grid-template:
-    "person-info specialization-info specialization-info" 104px
-    "person-info contacts links" 156px / 300px 1fr 156px;
 
   .plate {
     display: flex;
@@ -23,8 +18,6 @@ main {
   }
 
   .plate.person-info {
-    grid-area: person-info;
-
     gap: 16px;
 
     .head {
@@ -79,8 +72,6 @@ main {
   }
 
   .plate.specialization-info {
-    grid-area: specialization-info;
-
     .specialization-name {
       overflow: hidden;
       color: var(--Gray-700, #344054);
@@ -97,8 +88,6 @@ main {
   }
 
   .plate.contacts-plate {
-    grid-area: contacts;
-
     .title {
       color: var(--Gray-500, #667085);
 
@@ -126,8 +115,36 @@ main {
       }
     }
   }
+}
+
+main.large,
+main.medium {
+  display: grid;
+  width: 708px;
+  grid-template:
+    "person-info specialization-info specialization-info" 104px
+    "person-info contacts links" 156px / 300px 1fr 156px;
+
+  .plate.person-info {
+    grid-area: person-info;
+  }
+
+  .plate.specialization-info {
+    grid-area: specialization-info;
+  }
+
+  .plate.contacts-plate {
+    grid-area: contacts;
+  }
 
   .plate.links {
     grid-area: links;
   }
+}
+
+main.small,
+main.x_small {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
