@@ -5,5 +5,7 @@ body {
 }
 
 * {
+  appearance: none;
+  -webkit-appearance: none;
   box-sizing: border-box;
 }

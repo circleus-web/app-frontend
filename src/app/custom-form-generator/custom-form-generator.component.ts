@@ -11,6 +11,10 @@ import { IsFormTextPipe } from './form-text/is-form-text.pipe';
 import { TextComponent } from '../shared/text/text/text.component';
 import { IsFormTextWithLinkPipe } from './form-text-with-link/is-form-text-with-link.pipe';
 import { TextWithLinkComponent } from '../shared/text/text-with-link/text-with-link.component';
+import { IsFormComboboxPipe } from './form-combobox/is-form-combobox.pipe';
+import { ComboboxWithLabelComponent } from '../shared/input/combobox-with-label/combobox-with-label.component';
+import { IsFormInputWithTogglePipe } from './form-input-with-toggle/is-form-input-with-toggle.pipe';
+import { InputWithToggleAndLabelComponent } from '../shared/input/input-with-toggle-and-label/input-with-toggle-and-label.component';
 
 @Component({
   selector: 'app-custom-form-generator',
@@ -28,6 +32,10 @@ import { TextWithLinkComponent } from '../shared/text/text-with-link/text-with-l
     TextComponent,
     IsFormTextWithLinkPipe,
     TextWithLinkComponent,
+    IsFormComboboxPipe,
+    ComboboxWithLabelComponent,
+    IsFormInputWithTogglePipe,
+    InputWithToggleAndLabelComponent,
   ],
 })
 export class CustomFormGeneratorComponent implements OnInit, OnDestroy {

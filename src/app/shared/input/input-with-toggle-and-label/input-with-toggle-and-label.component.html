@@ -1,0 +1,27 @@
+<div class="input-area">
+  @if (inputWithToggleAndLabel.inputTitle) {
+    <label
+      for="{{ inputWithToggleAndLabel.inputName }}"
+      [ngClass]="inputWithToggleAndLabel.class"
+      >{{ inputWithToggleAndLabel.inputTitle }}</label
+    >
+  }
+  <input
+    [formControl]="inputWithToggleAndLabel.form"
+    [ngClass]="inputClass"
+    type="text"
+    placeholder="{{ inputWithToggleAndLabel.inputPlaceholder }}"
+  />
+  @if (inputWithToggleAndLabel.isInvalid) {
+    @if (inputWithToggleAndLabel.hasError("incorrectEmail")) {
+      <span class="error" [ngClass]="inputWithToggleAndLabel.class">{{
+        "Email должен содержать символ «@» и имя домена"
+      }}</span>
+    }
+  }
+</div>
+
+<div class="toggle-button-area">
+  <app-toggle-button></app-toggle-button>
+  <span>{{ inputWithToggleAndLabel.toggleTitle }}</span>
+</div>

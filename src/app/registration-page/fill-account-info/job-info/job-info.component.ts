@@ -8,6 +8,8 @@ import { FormArrayWithDescriptions } from '../../../custom-form-generator/form-a
 import { IFormArrayWithDescriptions } from '../../../custom-form-generator/form-array/iform-array-with-descriptions';
 import { CustomFormGeneratorComponent } from '../../../custom-form-generator/custom-form-generator.component';
 import { FormFooterComponent } from '../form-footer/form-footer.component';
+import { IFormCombobox } from '../../../custom-form-generator/form-combobox/iform-combobox';
+import { FormCombobox } from '../../../custom-form-generator/form-combobox/form-combobox';
 
 @Component({
   selector: 'app-job-info',
@@ -24,10 +26,11 @@ export class JobInfoComponent {
     form: new FormControl('', [Validators.required]),
   });
 
-  private m_gradeForm: IFormInputWithLabel = new FormInputWithLabel({
-    inputName: 'grade',
-    inputTitle: 'Грейд',
-    inputPlaceholder: 'Senior',
+  private m_gradeForm: IFormCombobox = new FormCombobox({
+    comboboxName: 'grade',
+    comboboxTitle: 'Грейд',
+    comboboxOptions: ['Junior', 'Middle', 'Senior'],
+    defaultValue: 'Junior',
     form: new FormControl('', [Validators.required]),
   });
 
@@ -38,7 +41,7 @@ export class JobInfoComponent {
 
   private m_jobActiveItems = {
     specializationForm: FormItems.FORM_INPUT_WITH_LABEL,
-    gradeForm: FormItems.FORM_INPUT_WITH_LABEL,
+    gradeForm: FormItems.FORM_COMBOBOX_WITH_LABEL,
   };
 
   protected m_formArrayWithDescriptions: IFormArrayWithDescriptions =

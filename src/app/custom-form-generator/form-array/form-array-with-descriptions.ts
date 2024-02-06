@@ -4,15 +4,19 @@ import { Observable } from 'rxjs';
 import { IFormArrayWithDescriptions } from './iform-array-with-descriptions';
 import { IFormButton } from '../form-button/iform-button';
 import { IFormInputWithLabel } from '../form-input/iform-input-with-label';
-import { FormStyle } from './form-style';
+import { FormStyles } from './form-style';
 import { FormItems } from './form-items';
 import { IFormItem } from './iform-item';
 import { IFormText } from '../form-text/iform-text';
 import { IFormTextWithLink } from '../form-text-with-link/iform-text-with-link';
+import { IFormCombobox } from '../form-combobox/iform-combobox';
+import { IFormInputWithToggle } from '../form-input-with-toggle/iform-input-with-toggle';
 
 interface IRequiredFormArrayWithDescriptions {
-  forms?: { [key: string]: IFormInputWithLabel };
-  formsStyle?: FormStyle;
+  forms?: {
+    [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithToggle;
+  };
+  formsStyle?: FormStyles;
   buttons?: { [key: string]: IFormButton };
   texts?: { [key: string]: IFormText };
   textsWithLinks?: { [key: string]: IFormTextWithLink };
@@ -22,11 +26,13 @@ interface IRequiredFormArrayWithDescriptions {
 }
 
 export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
-  public forms?: { [key: string]: IFormInputWithLabel };
+  public forms?: {
+    [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithToggle;
+  };
 
   private _formGroup?: FormGroup;
 
-  public formsStyle?: FormStyle;
+  public formsStyle?: FormStyles;
 
   public buttons?: { [key: string]: IFormButton };
 
@@ -51,9 +57,9 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     this.onDestroy = formArrayWithDescriptions.onDestroy;
   }
 
-  public getFormInputWithLabel(
+  public getForm(
     inputName: string,
-  ): IFormInputWithLabel | undefined {
+  ): IFormInputWithLabel | IFormCombobox | IFormInputWithToggle | undefined {
     return this.forms ? this.forms[inputName] : undefined;
   }
 
@@ -72,19 +78,21 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
   }
 
   public getFormControl(formName: string): FormControl | undefined {
-    return this.getFormInputWithLabel(formName)?.form;
+    return this.getForm(formName)?.form;
   }
 
   public get iterableItems(): Required<IFormItem>[] {
     if (!this.activeItems) return [];
     const iterableItems: Required<IFormItem>[] = [];
     for (const [key, value] of Object.entries(this.activeItems)) {
-      const formInputWithLabel = this.getFormInputWithLabel(key);
+      const formInputWithLabel = this.getForm(key);
       const formButton = this.getFormButton(key);
       const formText = this.getFormText(key);
       const formTextWithLink = this.getFormTextWithLink(key);
       switch (value) {
         case FormItems.FORM_INPUT_WITH_LABEL:
+        case FormItems.FORM_COMBOBOX_WITH_LABEL:
+        case FormItems.FORM_INPUT_WITH_TOGGLE:
           if (formInputWithLabel) iterableItems.push(formInputWithLabel);
           break;
         case FormItems.FORM_BUTTON:
@@ -120,6 +128,6 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
   }
 
   public getFormValueChanges(formName: string): Observable<string> | undefined {
-    return this.getFormInputWithLabel(formName)?.getValueChanges();
+    return this.getForm(formName)?.getValueChanges();
   }
 }
