@@ -30,3 +30,7 @@ span.error {
   display: flex;
   width: 100%;
 }
+
+.input-with-checkbox {
+  gap: calc($form-gap / 2);
+}

@@ -14,8 +14,7 @@ interface IRequiredInputWithCheckboxAndLabel {
   isInversed?: boolean;
 }
 
-export class InputWithCheckboxAndLabel
-implements IInputWithCheckboxAndLabel {
+export class InputWithCheckboxAndLabel implements IInputWithCheckboxAndLabel {
   public form: FormControl;
 
   public inputName: string;
@@ -42,10 +41,8 @@ implements IInputWithCheckboxAndLabel {
     this.inputTitle = requiredInputWithCheckboxAndLabel.inputTitle;
     this.checkboxName = requiredInputWithCheckboxAndLabel.checkboxName;
     this.checkboxTitle = requiredInputWithCheckboxAndLabel.checkboxTitle;
-    this.inputPlaceholder =
-      requiredInputWithCheckboxAndLabel.inputPlaceholder;
-    this.checkboxChecked =
-      requiredInputWithCheckboxAndLabel.checkboxChecked;
+    this.inputPlaceholder = requiredInputWithCheckboxAndLabel.inputPlaceholder;
+    this.checkboxChecked = requiredInputWithCheckboxAndLabel.checkboxChecked;
     this.class = requiredInputWithCheckboxAndLabel.class || [];
     this.isInversed = requiredInputWithCheckboxAndLabel.isInversed;
   }

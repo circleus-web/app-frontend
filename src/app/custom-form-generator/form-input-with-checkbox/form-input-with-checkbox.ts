@@ -4,6 +4,7 @@ import { IFormInputWithCheckbox } from './iform-input-with-checkbox';
 
 export class FormInputWithCheckbox
   extends InputWithCheckboxAndLabel
-  implements IFormInputWithCheckbox {
+  implements IFormInputWithCheckbox
+{
   type: FormItems = FormItems.FORM_INPUT_WITH_RADIO;
 }

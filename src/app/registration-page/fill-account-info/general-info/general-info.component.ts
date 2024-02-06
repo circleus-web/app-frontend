@@ -33,14 +33,16 @@ export class GeneralInfoComponent {
     form: new FormControl('', [Validators.required]),
   });
 
-  private m_phoneNumberForm: IFormInputWithCheckbox = new FormInputWithCheckbox({
-    inputName: 'phoneNumber',
-    inputTitle: 'Номер телефона',
-    inputPlaceholder: '+7 (999) 999-99-99',
-    checkboxName: 'isPhonePublic',
-    checkboxTitle: 'Не показывать в профиле',
-    form: new FormControl('', [Validators.required]),
-  });
+  private m_phoneNumberForm: IFormInputWithCheckbox = new FormInputWithCheckbox(
+    {
+      inputName: 'phoneNumber',
+      inputTitle: 'Номер телефона',
+      inputPlaceholder: '+7 (999) 999-99-99',
+      checkboxName: 'isPhonePublic',
+      checkboxTitle: 'Не показывать в профиле',
+      form: new FormControl('', [Validators.required]),
+    },
+  );
 
   private m_dateOfBirthForm: IFormInputWithLabel = new FormInputWithLabel({
     inputName: 'dateOfBirth',

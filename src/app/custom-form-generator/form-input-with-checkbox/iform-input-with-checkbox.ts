@@ -3,4 +3,4 @@ import { IFormItem } from '../form-array/iform-item';
 
 export interface IFormInputWithCheckbox
   extends IInputWithCheckboxAndLabel,
-  IFormItem {}
+    IFormItem {}
