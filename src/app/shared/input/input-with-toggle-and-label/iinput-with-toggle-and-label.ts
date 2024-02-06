@@ -1,14 +1,14 @@
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-export interface IInputWithCheckboxAndLabel {
+export interface IInputWithToggleAndLabel {
   form: FormControl;
   inputName: string;
   inputTitle: string;
-  checkboxName: string;
-  checkboxTitle: string;
+  toggleName: string;
+  toggleTitle: string;
   inputPlaceholder?: string;
-  checkboxChecked?: boolean;
+  toggleChecked?: boolean;
   hintText?: string;
   class: string[];
   isInversed?: boolean;

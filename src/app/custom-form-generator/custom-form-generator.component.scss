@@ -3,7 +3,7 @@
 
 .input-with-label,
 .combobox-with-label,
-.input-with-checkbox {
+.input-with-toggle {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,6 +31,6 @@ span.error {
   width: 100%;
 }
 
-.input-with-checkbox {
+.input-with-toggle {
   gap: calc($form-gap / 2);
 }

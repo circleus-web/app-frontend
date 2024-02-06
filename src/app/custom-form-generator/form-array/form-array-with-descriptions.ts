@@ -4,19 +4,19 @@ import { Observable } from 'rxjs';
 import { IFormArrayWithDescriptions } from './iform-array-with-descriptions';
 import { IFormButton } from '../form-button/iform-button';
 import { IFormInputWithLabel } from '../form-input/iform-input-with-label';
-import { FormStyle } from './form-style';
+import { FormStyles } from './form-style';
 import { FormItems } from './form-items';
 import { IFormItem } from './iform-item';
 import { IFormText } from '../form-text/iform-text';
 import { IFormTextWithLink } from '../form-text-with-link/iform-text-with-link';
 import { IFormCombobox } from '../form-combobox/iform-combobox';
-import { IFormInputWithCheckbox } from '../form-input-with-checkbox/iform-input-with-checkbox';
+import { IFormInputWithToggle } from '../form-input-with-toggle/iform-input-with-toggle';
 
 interface IRequiredFormArrayWithDescriptions {
   forms?: {
-    [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithCheckbox;
+    [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithToggle;
   };
-  formsStyle?: FormStyle;
+  formsStyle?: FormStyles;
   buttons?: { [key: string]: IFormButton };
   texts?: { [key: string]: IFormText };
   textsWithLinks?: { [key: string]: IFormTextWithLink };
@@ -27,12 +27,12 @@ interface IRequiredFormArrayWithDescriptions {
 
 export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
   public forms?: {
-    [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithCheckbox;
+    [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithToggle;
   };
 
   private _formGroup?: FormGroup;
 
-  public formsStyle?: FormStyle;
+  public formsStyle?: FormStyles;
 
   public buttons?: { [key: string]: IFormButton };
 
@@ -59,7 +59,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   public getForm(
     inputName: string,
-  ): IFormInputWithLabel | IFormCombobox | IFormInputWithCheckbox | undefined {
+  ): IFormInputWithLabel | IFormCombobox | IFormInputWithToggle | undefined {
     return this.forms ? this.forms[inputName] : undefined;
   }
 
@@ -92,7 +92,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
       switch (value) {
         case FormItems.FORM_INPUT_WITH_LABEL:
         case FormItems.FORM_COMBOBOX_WITH_LABEL:
-        case FormItems.FORM_INPUT_WITH_RADIO:
+        case FormItems.FORM_INPUT_WITH_TOGGLE:
           if (formInputWithLabel) iterableItems.push(formInputWithLabel);
           break;
         case FormItems.FORM_BUTTON:

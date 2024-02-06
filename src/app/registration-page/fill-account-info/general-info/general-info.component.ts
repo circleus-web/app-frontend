@@ -8,8 +8,8 @@ import { FormArrayWithDescriptions } from '../../../custom-form-generator/form-a
 import { IFormArrayWithDescriptions } from '../../../custom-form-generator/form-array/iform-array-with-descriptions';
 import { CustomFormGeneratorComponent } from '../../../custom-form-generator/custom-form-generator.component';
 import { FormFooterComponent } from '../form-footer/form-footer.component';
-import { IFormInputWithCheckbox } from '../../../custom-form-generator/form-input-with-checkbox/iform-input-with-checkbox';
-import { FormInputWithCheckbox } from '../../../custom-form-generator/form-input-with-checkbox/form-input-with-checkbox';
+import { IFormInputWithToggle } from '../../../custom-form-generator/form-input-with-toggle/iform-input-with-toggle';
+import { FormInputWithToggle } from '../../../custom-form-generator/form-input-with-toggle/form-input-with-toggle';
 
 @Component({
   selector: 'app-general-info',
@@ -33,13 +33,13 @@ export class GeneralInfoComponent {
     form: new FormControl('', [Validators.required]),
   });
 
-  private m_phoneNumberForm: IFormInputWithCheckbox = new FormInputWithCheckbox(
+  private m_phoneNumberForm: IFormInputWithToggle = new FormInputWithToggle(
     {
       inputName: 'phoneNumber',
       inputTitle: 'Номер телефона',
       inputPlaceholder: '+7 (999) 999-99-99',
-      checkboxName: 'isPhonePublic',
-      checkboxTitle: 'Не показывать в профиле',
+      toggleName: 'isPhonePublic',
+      toggleTitle: 'Не показывать в профиле',
       form: new FormControl('', [Validators.required]),
     },
   );

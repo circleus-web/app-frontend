@@ -11,12 +11,12 @@
       class="combobox-with-label"
       [ngClass]="forms.formsStyle"
     ></app-combobox-with-label>
-  } @else if (item | isFormInputWithCheckbox) {
-    <app-input-with-checkbox-and-label
-      [inputWithCheckboxAndLabel]="item"
-      class="input-with-checkbox"
+  } @else if (item | isFormInputWithToggle) {
+    <app-input-with-toggle-and-label
+      [inputWithToggleAndLabel]="item"
+      class="input-with-toggle"
       [ngClass]="forms.formsStyle"
-    ></app-input-with-checkbox-and-label>
+    ></app-input-with-toggle-and-label>
   } @else if (item | isFormButton) {
     <app-button
       [button]="item"

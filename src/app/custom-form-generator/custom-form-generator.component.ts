@@ -13,8 +13,8 @@ import { IsFormTextWithLinkPipe } from './form-text-with-link/is-form-text-with-
 import { TextWithLinkComponent } from '../shared/text/text-with-link/text-with-link.component';
 import { IsFormComboboxPipe } from './form-combobox/is-form-combobox.pipe';
 import { ComboboxWithLabelComponent } from '../shared/input/combobox-with-label/combobox-with-label.component';
-import { IsFormInputWithCheckboxPipe } from './form-input-with-checkbox/is-form-input-with-checkbox.pipe';
-import { InputWithCheckboxAndLabelComponent } from '../shared/input/input-with-checkbox-and-label/input-with-checkbox-and-label.component';
+import { IsFormInputWithTogglePipe } from './form-input-with-toggle/is-form-input-with-toggle.pipe';
+import { InputWithToggleAndLabelComponent } from '../shared/input/input-with-toggle-and-label/input-with-toggle-and-label.component';
 
 @Component({
   selector: 'app-custom-form-generator',
@@ -34,8 +34,8 @@ import { InputWithCheckboxAndLabelComponent } from '../shared/input/input-with-c
     TextWithLinkComponent,
     IsFormComboboxPipe,
     ComboboxWithLabelComponent,
-    IsFormInputWithCheckboxPipe,
-    InputWithCheckboxAndLabelComponent,
+    IsFormInputWithTogglePipe,
+    InputWithToggleAndLabelComponent,
   ],
 })
 export class CustomFormGeneratorComponent implements OnInit, OnDestroy {
