@@ -17,7 +17,7 @@ import { FormArrayWithDescriptions } from '../../custom-form-generator/form-arra
 import { FormButton } from '../../custom-form-generator/form-button/form-button';
 import { IFormButton } from '../../custom-form-generator/form-button/iform-button';
 import { FormHeaderComponent } from '../../form-header/form-header.component';
-import { FormStyle } from '../../custom-form-generator/form-array/form-style';
+import { FormStyles } from '../../custom-form-generator/form-array/form-style';
 import { FormItems } from '../../custom-form-generator/form-array/form-items';
 import { IFormInputWithLabel } from '../../custom-form-generator/form-input/iform-input-with-label';
 import { FormInputWithLabel } from '../../custom-form-generator/form-input/form-input-with-label';
@@ -139,7 +139,7 @@ export class RegistrationPageAccountCreationComponent {
   protected m_formArrayWithDescriptions: IFormArrayWithDescriptions =
     new FormArrayWithDescriptions({
       forms: this.m_formsOnPage,
-      formsStyle: FormStyle.LOGIN_FORM,
+      formsStyle: FormStyles.LOGIN_FORM,
       buttons: this.m_buttonsOnPage,
       texts: this.m_textsOnPage,
       textsWithLinks: this.m_textsWithLinksOnPage,

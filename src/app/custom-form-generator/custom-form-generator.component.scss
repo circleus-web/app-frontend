@@ -1,7 +1,9 @@
 @import "typography";
 @import "constants";
 
-.input-with-label {
+.input-with-label,
+.combobox-with-label,
+.input-with-toggle {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,4 +29,8 @@ span.error {
 .button-container {
   display: flex;
   width: 100%;
+}
+
+.input-with-toggle {
+  gap: calc($form-gap / 2);
 }
