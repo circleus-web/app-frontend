@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
 
 @Component({
   selector: 'app-about-block',
   standalone: true,
-  imports: [],
   templateUrl: './about-block.component.html',
-  styleUrl: './about-block.component.scss',
+  styleUrls: ['./about-block.component.scss', '../main-page.component.scss'],
+  imports: [CvBlockAppearenceComponent],
 })
 export class AboutBlockComponent {}

@@ -17,3 +17,14 @@ div.content {
     gap: 48px;
   }
 }
+
+.cv-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+
+  gap: 16px;
+  
+  width: 708px;
+}

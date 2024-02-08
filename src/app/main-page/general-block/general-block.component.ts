@@ -3,7 +3,6 @@ import { Component, Input } from '@angular/core';
 import { BadgeComponent } from '../../shared/badge/badge.component';
 import { IBadge } from '../../shared/badge/ibadge';
 
-
 interface IPersonInformation {
   name: string;
   age: string;
@@ -20,7 +19,6 @@ interface IContacts {
   phone: string;
 }
 
-
 @Component({
   selector: 'app-general-block',
   standalone: true,
@@ -33,7 +31,8 @@ export class GeneralBlockComponent {
 
   @Input({ required: true }) personInformation!: IPersonInformation;
 
-  @Input({ required: true }) specializationInformation!: ISpecializationInformation;
+  @Input({ required: true })
+  specializationInformation!: ISpecializationInformation;
 
   @Input({ required: true }) contacts!: IContacts;
 }

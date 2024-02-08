@@ -1,0 +1,15 @@
+@import "typography";
+
+div.section-title {
+  display: flex;
+  width: 180px;
+
+  span {
+    @include font-uppercase-semibold;
+  }
+}
+
+main {
+  display: flex;
+  flex: 1;
+}
