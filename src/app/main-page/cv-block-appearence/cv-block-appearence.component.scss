@@ -3,6 +3,7 @@
 div.section-title {
   display: flex;
   width: 180px;
+  padding: 4px 0;
 
   span {
     @include font-uppercase-semibold;
