@@ -13,6 +13,51 @@
   @include font-body-2-condensed-medium;
 }
 
+.badge.accent {
+  background: var(--Accent-50, #F9F5FF);
+  color: var(--Accent-700, #6941C6);
+}
+
+.badge.red {
+  background: var(--Red-50, #FEF3F2);
+  color: var(--Red-700, #B42318);
+}
+
+.badge.yellow {
+  background: var(--Yellow-50, #FFFAEB);
+  color: var(--Yellow-700, #B54708);
+}
+
+.badge.green {
+  background: var(--Green-50, #ECFDF3);
+  color: var(--Green-700, #027A48);
+}
+
+.badge.blue-gray {
+  background: var(--Blue-gray-50, #F8F9FC);
+  color: var(--Blue-gray-700, #363F72);
+}
+
+.badge.blue {
+  background: var(--Blue-50, #EFF8FF);
+  color: var(--Blue-700, #175CD3);
+}
+
+.badge.indigo {
+  background: var(--Indigo-50, #EEF4FF);
+  color: var(--Indigo-700, #3538CD);
+}
+
+.badge.purple {
+  background: var(--Purple-50, #F4F3FF);
+  color: var(--Purple-700, #5925DC);
+}
+
+.badge.pink {
+  background: var(--Pink-50, #FDF2FA);
+  color: var(--Pink-700, #C11574);
+}
+
 .badge.orange {
   background: var(--Orange-50, #fff6ed);
   color: var(--Orange-700, #c4320a);

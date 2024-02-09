@@ -1,1 +1,5 @@
-<p>employment-block works!</p>
+<app-cv-block-appearence [title]="'Тип занятности'" class="cv-block">
+  @for (badge of m_activeItems; track $index) {
+    <app-badge [badge]="badge"></app-badge>
+  }
+</app-cv-block-appearence>

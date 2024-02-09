@@ -9,6 +9,7 @@ import { EducationBlockComponent } from './education-block/education-block.compo
 import { AchievementsBlockComponent } from './achievements-block/achievements-block.component';
 import { RecomendationsBlockComponent } from './recomendations-block/recomendations-block.component';
 import { LanguagesBlockComponent } from './languages-block/languages-block.component';
+import { EmploymentBlockComponent } from './employment-block/employment-block.component';
 
 @Component({
   selector: 'app-main-page',
@@ -26,6 +27,7 @@ import { LanguagesBlockComponent } from './languages-block/languages-block.compo
     AchievementsBlockComponent,
     RecomendationsBlockComponent,
     LanguagesBlockComponent,
+    EmploymentBlockComponent,
   ],
 })
 export class MainPageComponent {}
