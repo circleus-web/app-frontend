@@ -15,7 +15,13 @@
   ></app-general-block>
   <div class="cv-blocks">
     <app-about-block></app-about-block>
-    <app-employment-block [items]="['Удаленка', 'Офис', 'Гибрид']"></app-employment-block>
+    <app-employment-block
+      [items]="['Удаленка', 'Офис', 'Гибрид']"
+    ></app-employment-block>
+    <app-salary-block
+      [salaryRange]="[240000, 260000]"
+      [currency]="'₽'"
+    ></app-salary-block>
     <app-skills-block></app-skills-block>
     <app-experience-block></app-experience-block>
     <app-projects-block></app-projects-block>

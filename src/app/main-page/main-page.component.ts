@@ -10,6 +10,7 @@ import { AchievementsBlockComponent } from './achievements-block/achievements-bl
 import { RecomendationsBlockComponent } from './recomendations-block/recomendations-block.component';
 import { LanguagesBlockComponent } from './languages-block/languages-block.component';
 import { EmploymentBlockComponent } from './employment-block/employment-block.component';
+import { SalaryBlockComponent } from './salary-block/salary-block.component';
 
 @Component({
   selector: 'app-main-page',
@@ -28,6 +29,7 @@ import { EmploymentBlockComponent } from './employment-block/employment-block.co
     RecomendationsBlockComponent,
     LanguagesBlockComponent,
     EmploymentBlockComponent,
+    SalaryBlockComponent,
   ],
 })
 export class MainPageComponent {}

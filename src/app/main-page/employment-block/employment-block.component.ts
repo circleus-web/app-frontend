@@ -7,20 +7,23 @@ import { Badge } from '../../shared/badge/badge';
   selector: 'app-employment-block',
   standalone: true,
   templateUrl: './employment-block.component.html',
-  styleUrls: ['./employment-block.component.scss', '../main-page.component.scss'],
+  styleUrls: [
+    './employment-block.component.scss',
+    '../main-page.component.scss',
+  ],
   imports: [CvBlockAppearenceComponent, BadgeComponent],
 })
 export class EmploymentBlockComponent implements OnInit {
   protected readonly m_possibleValues: { [key: string]: Badge } = {
-    'Удаленка': new Badge({
+    Удаленка: new Badge({
       text: 'Удаленка',
       class: ['purple'],
     }),
-    'Офис': new Badge({
+    Офис: new Badge({
       text: 'Офис',
       class: ['green'],
     }),
-    'Гибрид': new Badge({
+    Гибрид: new Badge({
       text: 'Гибрид',
       class: ['yellow'],
     }),
