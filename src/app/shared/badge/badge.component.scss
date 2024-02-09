@@ -13,6 +13,11 @@
   @include font-body-2-condensed-medium;
 }
 
+.badge.gray {
+  background: var(--Gray-100, #F2F4F7);
+  color: var(--Gray-700, #344054);
+}
+
 .badge.accent {
   background: var(--Accent-50, #F9F5FF);
   color: var(--Accent-700, #6941C6);
