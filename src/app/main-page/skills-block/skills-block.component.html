@@ -1,4 +1,4 @@
-<app-cv-block-appearence title="Навыки" style="display: flex">
+<app-cv-block-appearence title="Навыки" class="cv-block">
   @for (skill of skills; track $index) {
     <app-badge [badge]="{ text: skill, class: ['gray'] }"></app-badge>
   }

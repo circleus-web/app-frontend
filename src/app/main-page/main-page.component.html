@@ -25,7 +25,16 @@
     <app-skills-block
       [skills]="['HTML', 'CSS', 'JavaScript', 'Angular', 'TypeScript']"
     ></app-skills-block>
-    <app-experience-block></app-experience-block>
+    <app-experience-block
+      [previousExperiences]="[
+        {
+          title: 'Frontend разработчик',
+          company: '\@circleus',
+          startDate: 'Ноябрь 2023',
+          description: 'Разрабатывал данный сайт на Angular'
+        }
+      ]"
+    ></app-experience-block>
     <app-projects-block></app-projects-block>
     <app-education-block></app-education-block>
     <app-achievements-block></app-achievements-block>

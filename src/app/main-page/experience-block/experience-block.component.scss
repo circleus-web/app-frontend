@@ -1,0 +1,34 @@
+@import "typography";
+
+div.experience-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+
+  div.head {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  span.title,
+  span.company {
+    @include font-body-1-semibold;
+  }
+
+  span.company {
+    color: var(--Accent-700, #6941C6);
+  }
+
+  span.date {
+    color: var(--Gray-500, #667085);
+
+    @include font-body-2-condensed-medium;
+  }
+
+  span.description {
+    @include font-body-1-medium;
+  }
+}
