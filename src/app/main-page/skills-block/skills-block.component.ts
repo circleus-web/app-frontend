@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
+import { BadgeComponent } from '../../shared/badge/badge.component';
 
 @Component({
   selector: 'app-skills-block',
   standalone: true,
-  imports: [],
   templateUrl: './skills-block.component.html',
-  styleUrl: './skills-block.component.scss',
+  styleUrls: ['./skills-block.component.scss', '../main-page.component.scss'],
+  imports: [CvBlockAppearenceComponent, BadgeComponent],
 })
-export class SkillsBlockComponent {}
+export class SkillsBlockComponent {
+  @Input({ required: true }) skills!: string[];
+}
