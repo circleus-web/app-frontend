@@ -1,4 +1,4 @@
-<app-cv-block-appearence title="Достижения" class="cv-block">
+<app-cv-block-appearence title="Достижения" class="cv-block" [ngClass]="size">
   <div class="achievements">
     @for (achievement of achievements; track $index) {
       <div class="achievement">

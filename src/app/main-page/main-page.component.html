@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="content" [ngClass]="m_currentBreakpoint">
   <app-general-block
-    [size]="m_currentBreakpoint"
+    class="general-block"
     status="Ищу работу"
     [personInformation]="{
       name: 'Александр Журавлев',
@@ -13,20 +13,25 @@
       graid: 'Junior'
     }"
     [contacts]="{ email: 'zhur06\@gmail\.com', phone: '+7 (999) 123-45-67' }"
+    [size]="m_currentBreakpoint"
   ></app-general-block>
   <div class="cv-blocks">
     <app-about-block
       text="Я Жура, ученик школы №179. Увлекаюсь программированием, в особенности веб-разработкой. Я разрабатываю фронтенд для этого сайта"
+      [size]="m_currentBreakpoint"
     ></app-about-block>
     <app-employment-block
       [items]="['Удаленка', 'Офис', 'Гибрид']"
+      [size]="m_currentBreakpoint"
     ></app-employment-block>
     <app-salary-block
       [salaryRange]="[240000, 260000]"
       [currency]="'₽'"
+      [size]="m_currentBreakpoint"
     ></app-salary-block>
     <app-skills-block
       [skills]="['HTML', 'CSS', 'JavaScript', 'Angular', 'TypeScript']"
+      [size]="m_currentBreakpoint"
     ></app-skills-block>
     <app-experience-block
       [previousExperiences]="[
@@ -44,6 +49,7 @@
           description: 'Руководил командой разработки онлайн-менеджера досок\. Так же отвечал за фронтенд'
         }
       ]"
+      [size]="m_currentBreakpoint"
     ></app-experience-block>
     <app-projects-block
       [projects]="[
@@ -60,6 +66,7 @@
           endDate: 'Декабрь 2022'
         }
       ]"
+      [size]="m_currentBreakpoint"
     ></app-projects-block>
     <app-education-block
       [education]="[
@@ -76,6 +83,7 @@
           year: '2030'
         }
       ]"
+      [size]="m_currentBreakpoint"
     ></app-education-block>
     <app-certificates-block
       [certificates]="[
@@ -92,6 +100,7 @@
           year: '2023'
         }
       ]"
+      [size]="m_currentBreakpoint"
     ></app-certificates-block>
     <app-achievements-block
       [achievements]="[
@@ -106,6 +115,7 @@
           link: 'https\://github\.com/zhur06'
         }
       ]"
+      [size]="m_currentBreakpoint"
     ></app-achievements-block>
     <app-recomendations-block
       [recomendations]="[
@@ -120,6 +130,7 @@
           text: 'В прошлом знаменитый певец, любящий отец в настоящем готов на цифровые подвиги в мире информационных АйТи технологий!! Выкупает за хайповые строки и могёт в архитектуру без единого гвоздя 😎 Отлично подходит для хорошего вечера!'
         }
       ]"
+      [size]="m_currentBreakpoint"
     ></app-recomendations-block>
     <app-languages-block
       [languages]="[
@@ -136,6 +147,7 @@
           level: 'Elementary (A2)'
         }
       ]"
+      [size]="m_currentBreakpoint"
     ></app-languages-block>
   </div>
 </div>

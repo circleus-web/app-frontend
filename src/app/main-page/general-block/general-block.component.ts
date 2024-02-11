@@ -55,6 +55,5 @@ export class GeneralBlockComponent implements OnInit {
     this.m_activeStatus = this.m_possibleStatuses[this.status];
   }
 
-
   @Input({ required: true }) size!: string;
 }

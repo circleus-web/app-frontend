@@ -1,4 +1,4 @@
-<app-cv-block-appearence title="Навыки" class="cv-block">
+<app-cv-block-appearence title="Навыки" class="cv-block" [ngClass]="size">
   <div class="skills">
     @for (skill of skills; track $index) {
       <app-badge color="gray">{{ skill }}</app-badge>

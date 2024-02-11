@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 
 import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
 import { BadgeComponent } from '../../shared/badge/badge.component';
-
 interface IBadge {
   text: string;
   color: string;
@@ -16,7 +17,7 @@ interface IBadge {
     './employment-block.component.scss',
     '../main-page.component.scss',
   ],
-  imports: [CvBlockAppearenceComponent, BadgeComponent],
+  imports: [CommonModule, CvBlockAppearenceComponent, BadgeComponent],
 })
 export class EmploymentBlockComponent implements OnInit {
   protected readonly m_possibleValues: { [key: string]: IBadge } = {
@@ -43,4 +44,6 @@ export class EmploymentBlockComponent implements OnInit {
       this.m_activeItems.push(this.m_possibleValues[item]);
     }
   }
+
+  @Input({ required: true }) size!: string;
 }

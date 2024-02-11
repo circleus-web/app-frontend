@@ -1,4 +1,4 @@
-<app-cv-block-appearence title="Иностранные языки" class="cv-block">
+<app-cv-block-appearence title="Иностранные языки" class="cv-block" [ngClass]="size">
   <div class="languages">
     @for (language of languages; track $index) {
       <div class="language">

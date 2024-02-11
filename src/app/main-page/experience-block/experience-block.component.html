@@ -1,4 +1,4 @@
-<app-cv-block-appearence title="Опыт работы" class="cv-block">
+<app-cv-block-appearence title="Опыт работы" class="cv-block" [ngClass]="size">
   <div class="experience">
     @for (experience of previousExperiences; track $index) {
       <div class="experience-item">

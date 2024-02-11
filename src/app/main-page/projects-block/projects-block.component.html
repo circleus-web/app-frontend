@@ -1,4 +1,4 @@
-<app-cv-block-appearence title="Проекты" class="cv-block">
+<app-cv-block-appearence title="Проекты" class="cv-block" [ngClass]="size">
   <div class="projects">
     @for (project of projects; track $index) {
       <div class="project">
