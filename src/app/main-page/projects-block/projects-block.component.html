@@ -1,1 +1,17 @@
-<p>projects-block works!</p>
+<app-cv-block-appearence title="Проекты" class="cv-block">
+  <div class="projects">
+    @for (project of projects; track $index) {
+      <div class="project">
+        <div class="head">
+          <span class="title">{{ project.title }}</span>
+          <span class="description">{{ project.description }}</span>
+        </div>
+
+        <app-badge
+          [badge]="{ text: project.startDate, class: ['gray'] }"
+        ></app-badge>
+      </div>
+    }
+  </div>
+  
+</app-cv-block-appearence>

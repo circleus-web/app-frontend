@@ -35,7 +35,14 @@
         }
       ]"
     ></app-experience-block>
-    <app-projects-block></app-projects-block>
+    <app-projects-block
+      [projects]="[{
+        title: 'Laterem',
+        description: 'Платформа для обучения',
+        startDate: 'Сентябрь 2022',
+        endDate: 'Май 2023'
+      }]"
+    ></app-projects-block>
     <app-education-block></app-education-block>
     <app-achievements-block></app-achievements-block>
     <app-recomendations-block></app-recomendations-block>

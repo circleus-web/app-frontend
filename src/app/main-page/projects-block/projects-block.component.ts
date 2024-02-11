@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
+import { BadgeComponent } from '../../shared/badge/badge.component';
+import { IProject } from './iproject';
 
 @Component({
   selector: 'app-projects-block',
   standalone: true,
-  imports: [],
   templateUrl: './projects-block.component.html',
-  styleUrl: './projects-block.component.scss',
+  styleUrls: ['./projects-block.component.scss', '../main-page.component.scss'],
+  imports: [CvBlockAppearenceComponent, BadgeComponent],
 })
-export class ProjectsBlockComponent {}
+export class ProjectsBlockComponent {
+  @Input({ required: true }) projects!: IProject[];
+}
