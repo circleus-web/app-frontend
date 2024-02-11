@@ -1,0 +1,18 @@
+<app-cv-block-appearence title="Сертификаты" class="cv-block">
+  <div class="certificates">
+    @for (certificate of certificates; track $index) {
+      <div class="certificate">
+        <div class="head">
+          <div class="title">
+            <span class="name">{{ certificate.title }}</span>
+            <span class="organization">{{ certificate.organization }}</span>
+          </div>
+          
+          <app-badge color="gray">{{ certificate.year }}</app-badge>
+        </div>
+
+        <a class="link" href="{{ certificate.link }}">Ссылка</a>
+      </div>
+    }
+  </div>
+</app-cv-block-appearence>

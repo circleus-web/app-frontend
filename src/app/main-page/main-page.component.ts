@@ -11,6 +11,7 @@ import { RecomendationsBlockComponent } from './recomendations-block/recomendati
 import { LanguagesBlockComponent } from './languages-block/languages-block.component';
 import { EmploymentBlockComponent } from './employment-block/employment-block.component';
 import { SalaryBlockComponent } from './salary-block/salary-block.component';
+import { CertificatesBlockComponent } from './certificates-block/certificates-block.component';
 
 @Component({
   selector: 'app-main-page',
@@ -30,6 +31,7 @@ import { SalaryBlockComponent } from './salary-block/salary-block.component';
     LanguagesBlockComponent,
     EmploymentBlockComponent,
     SalaryBlockComponent,
+    CertificatesBlockComponent,
   ],
 })
 export class MainPageComponent {}
