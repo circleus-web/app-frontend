@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
 
 @Component({
@@ -8,4 +8,6 @@ import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appe
   styleUrls: ['./about-block.component.scss', '../main-page.component.scss'],
   imports: [CvBlockAppearenceComponent],
 })
-export class AboutBlockComponent {}
+export class AboutBlockComponent {
+  @Input({ required: true }) text!: string;
+}

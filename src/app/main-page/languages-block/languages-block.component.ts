@@ -7,7 +7,10 @@ import { ILanguageRecord } from './ilanguage-record';
   selector: 'app-languages-block',
   standalone: true,
   templateUrl: './languages-block.component.html',
-  styleUrls: ['./languages-block.component.scss', '../main-page.component.scss'],
+  styleUrls: [
+    './languages-block.component.scss',
+    '../main-page.component.scss',
+  ],
   imports: [CvBlockAppearenceComponent],
 })
 export class LanguagesBlockComponent {

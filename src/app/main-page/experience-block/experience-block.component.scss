@@ -1,34 +1,40 @@
 @import "typography";
 
-div.experience-item {
+div.experience {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 8px;
+  gap: 28px;
 
-  div.head {
+  div.experience-item {
     display: flex;
-    flex-direction: row;
-    gap: 12px;
-  }
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
 
-  span.title,
-  span.company {
-    @include font-body-1-semibold;
-  }
+    div.head {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+    }
 
-  span.company {
-    color: var(--Accent-700, #6941c6);
-  }
+    span.title,
+    span.company {
+      @include font-body-1-semibold;
+    }
 
-  span.date {
-    color: var(--Gray-500, #667085);
+    span.company {
+      color: var(--Accent-700, #6941c6);
+    }
 
-    @include font-body-2-condensed-medium;
-  }
+    span.date {
+      color: var(--Gray-500, #667085);
 
-  span.description {
-    @include font-body-1-medium;
+      @include font-body-2-condensed-medium;
+    }
+
+    span.description {
+      @include font-body-1-medium;
+    }
   }
 }

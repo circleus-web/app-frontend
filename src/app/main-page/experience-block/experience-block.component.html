@@ -1,17 +1,20 @@
 <app-cv-block-appearence title="Опыт работы" class="cv-block">
-  @for (experience of previousExperiences; track $index) {
-    <div class="experience-item">
-      <div class="head">
-        <span class="title">{{ experience.title }}</span>
-        <span class="company">{{ experience.company }}</span>
+  <div class="experience">
+    @for (experience of previousExperiences; track $index) {
+      <div class="experience-item">
+        <div class="head">
+          <span class="title">{{ experience.title }}</span>
+          <span class="company">{{ experience.company }}</span>
+        </div>
+
+        <span class="date"
+          >{{ experience.startDate }} -
+          {{ experience.endDate || "Настоящее время" }}</span
+        >
+
+        <span class="description">{{ experience.description }}</span>
       </div>
-
-      <span class="date"
-        >{{ experience.startDate }} -
-        {{ experience.endDate || "Настоящее время" }}</span
-      >
-
-      <span class="description">{{ experience.description }}</span>
-    </div>
-  }
+    }
+  </div>
+  
 </app-cv-block-appearence>

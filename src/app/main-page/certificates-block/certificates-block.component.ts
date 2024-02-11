@@ -8,7 +8,10 @@ import { ICertificate } from './icertificate';
   selector: 'app-certificates-block',
   standalone: true,
   templateUrl: './certificates-block.component.html',
-  styleUrls: ['./certificates-block.component.scss', '../main-page.component.scss'],
+  styleUrls: [
+    './certificates-block.component.scss',
+    '../main-page.component.scss',
+  ],
   imports: [CvBlockAppearenceComponent, BadgeComponent],
 })
 export class CertificatesBlockComponent {

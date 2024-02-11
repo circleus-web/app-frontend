@@ -8,7 +8,10 @@ import { IRecomendation } from './irecomendation';
   selector: 'app-recomendations-block',
   standalone: true,
   templateUrl: './recomendations-block.component.html',
-  styleUrls: ['./recomendations-block.component.scss', '../main-page.component.scss'],
+  styleUrls: [
+    './recomendations-block.component.scss',
+    '../main-page.component.scss',
+  ],
   imports: [CvBlockAppearenceComponent, BadgeComponent],
 })
 export class RecomendationsBlockComponent {

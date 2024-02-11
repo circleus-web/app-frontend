@@ -8,10 +8,9 @@ describe('CertificatesBlockComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CertificatesBlockComponent]
-    })
-    .compileComponents();
-    
+      imports: [CertificatesBlockComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CertificatesBlockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
