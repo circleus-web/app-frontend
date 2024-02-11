@@ -1,1 +1,14 @@
-<p>recomendations-block works!</p>
+<app-cv-block-appearence title="Рекомендации" class="cv-block">
+  <div class="recomendations">
+    @for (recomendation of recomendations; track $index) {
+      <div class="recomendation">
+        <div class="head">
+          <span class="source">{{ recomendation.source }}</span>
+          <span class="tag">{{ recomendation.sourceTag }}</span>
+        </div>
+        
+        <span class="text">{{ recomendation.text }}</span>
+      </div>
+    }
+  </div>
+</app-cv-block-appearence>

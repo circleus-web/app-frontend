@@ -91,7 +91,15 @@
         }
       ]"
     ></app-achievements-block>
-    <app-recomendations-block></app-recomendations-block>
+    <app-recomendations-block
+      [recomendations]="[
+        {
+          source: 'No Name',
+          sourceTag: '\@noname',
+          text: 'Рекомендую'
+        }
+      ]"
+    ></app-recomendations-block>
     <app-languages-block></app-languages-block>
   </div>
 </div>

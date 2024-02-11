@@ -1,0 +1,32 @@
+@import "typography";
+
+div.recomendations {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+
+  div.recomendation {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    div.head {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+
+      span {
+        @include font-body-1-semibold;
+      }
+
+      span.tag {
+        color: var(--Accent-700, #6941C6);
+      }
+    }
+
+    span.text {
+      @include font-body-2-medium;
+    }
+  }
+}
