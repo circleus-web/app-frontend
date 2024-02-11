@@ -1,0 +1,42 @@
+@import "typography";
+
+div.educations {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  div.education {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    div.head {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      span.title {
+        @include font-body-1-semibold;
+      }
+    }
+
+    div.description {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+
+      span {
+        @include font-body-2-condensed-medium;
+      }
+
+      span.stage,
+      span.speciality {
+        color: var(--Gray-500, #667085);
+      }
+
+      span.separator {
+        color: var(--Gray-300, #D0D5DD);
+      }
+    }
+  }
+}

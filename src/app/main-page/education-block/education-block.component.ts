@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
+import { BadgeComponent } from '../../shared/badge/badge.component';
+import { IEducation } from './ieducation';
 
 @Component({
   selector: 'app-education-block',
   standalone: true,
-  imports: [],
   templateUrl: './education-block.component.html',
-  styleUrl: './education-block.component.scss',
+  styleUrls: ['./education-block.component.scss', '../main-page.component.scss'],
+  imports: [CvBlockAppearenceComponent, BadgeComponent],
 })
-export class EducationBlockComponent {}
+export class EducationBlockComponent {
+  @Input({ required: true }) education!: IEducation[];
+}

@@ -1,1 +1,21 @@
-<p>education-block works!</p>
+<app-cv-block-appearence title="Образование" class="cv-block">
+  <div class="educations">
+    @for (education of education; track $index) {
+      <div class="education">
+        <div class="head">
+          <span class="title">{{ education.title }}</span>
+          @if (education.year) {
+            <app-badge color="gray">{{ education.year }}</app-badge>
+          }
+        </div>
+        
+
+        <div class="description">
+          <span class="stage">{{ education.stage }}</span>
+          <span class="separator">•</span>
+          <span class="speciality">{{ education.speciality }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</app-cv-block-appearence>

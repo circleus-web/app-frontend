@@ -45,7 +45,22 @@
         }
       ]"
     ></app-projects-block>
-    <app-education-block></app-education-block>
+    <app-education-block
+      [education]="[
+        {
+          title: 'МГТУ им. Н.Э. Баумана',
+          stage: 'Бакалавр',
+          speciality: 'Информационные системы и технологии',
+          year: '2024'
+        },
+        {
+          title: 'Московский Энергетический Институт',
+          stage: 'Магистр',
+          speciality: 'Прикладная информатика',
+          year: '2030'
+        }
+      ]"
+    ></app-education-block>
     <app-achievements-block></app-achievements-block>
     <app-recomendations-block></app-recomendations-block>
     <app-languages-block></app-languages-block>
