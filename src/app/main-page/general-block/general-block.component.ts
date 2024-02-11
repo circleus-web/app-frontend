@@ -45,7 +45,7 @@ export class GeneralBlockComponent implements OnInit {
   @Input({ required: true }) personInformation!: IPersonInformation;
 
   @Input({ required: true })
-    specializationInformation!: ISpecializationInformation;
+  specializationInformation!: ISpecializationInformation;
 
   @Input({ required: true }) contacts!: IContacts;
 

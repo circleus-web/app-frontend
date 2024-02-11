@@ -1,5 +1,7 @@
 <app-cv-block-appearence title="Навыки" class="cv-block">
-  @for (skill of skills; track $index) {
-    <app-badge color="gray">{{ skill }}</app-badge>
-  }
+  <div class="skills">
+    @for (skill of skills; track $index) {
+      <app-badge color="gray">{{ skill }}</app-badge>
+    }
+  </div>
 </app-cv-block-appearence>
