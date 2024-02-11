@@ -1,5 +1,5 @@
 <app-cv-block-appearence [title]="'Тип занятности'" class="cv-block">
   @for (badge of m_activeItems; track $index) {
-    <app-badge [badge]="badge"></app-badge>
+    <app-badge [color]="badge.color">{{ badge.text }}</app-badge>
   }
 </app-cv-block-appearence>

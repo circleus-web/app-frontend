@@ -1,7 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
 import { BadgeComponent } from '../../shared/badge/badge.component';
-import { Badge } from '../../shared/badge/badge';
+
+interface IBadge {
+  text: string;
+  color: string;
+}
 
 @Component({
   selector: 'app-employment-block',
@@ -14,24 +19,24 @@ import { Badge } from '../../shared/badge/badge';
   imports: [CvBlockAppearenceComponent, BadgeComponent],
 })
 export class EmploymentBlockComponent implements OnInit {
-  protected readonly m_possibleValues: { [key: string]: Badge } = {
-    Удаленка: new Badge({
+  protected readonly m_possibleValues: { [key: string]: IBadge } = {
+    Удаленка: {
       text: 'Удаленка',
-      class: ['purple'],
-    }),
-    Офис: new Badge({
+      color: 'purple',
+    },
+    Офис: {
       text: 'Офис',
-      class: ['green'],
-    }),
-    Гибрид: new Badge({
+      color: 'green',
+    },
+    Гибрид: {
       text: 'Гибрид',
-      class: ['yellow'],
-    }),
+      color: 'yellow',
+    },
   };
 
   @Input({ required: true }) items!: string[];
 
-  protected m_activeItems: Badge[] = [];
+  protected m_activeItems: IBadge[] = [];
 
   ngOnInit(): void {
     for (const item of this.items) {

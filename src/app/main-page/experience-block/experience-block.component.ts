@@ -7,7 +7,10 @@ import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appe
   selector: 'app-experience-block',
   standalone: true,
   templateUrl: './experience-block.component.html',
-  styleUrls: ['./experience-block.component.scss', '../main-page.component.scss'],
+  styleUrls: [
+    './experience-block.component.scss',
+    '../main-page.component.scss',
+  ],
   imports: [CvBlockAppearenceComponent],
 })
 export class ExperienceBlockComponent {

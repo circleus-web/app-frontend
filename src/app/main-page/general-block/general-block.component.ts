@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { BadgeComponent } from '../../shared/badge/badge.component';
-import { IBadge } from '../../shared/badge/ibadge';
 
 interface IPersonInformation {
   name: string;
@@ -19,6 +18,11 @@ interface IContacts {
   phone: string;
 }
 
+interface IBadge {
+  text: string;
+  color: string;
+}
+
 @Component({
   selector: 'app-general-block',
   standalone: true,
@@ -26,13 +30,26 @@ interface IContacts {
   styleUrl: './general-block.component.scss',
   imports: [BadgeComponent],
 })
-export class GeneralBlockComponent {
-  @Input({ required: true }) badge!: IBadge;
+export class GeneralBlockComponent implements OnInit {
+  protected readonly m_possibleStatuses: { [key: string]: IBadge } = {
+    'Ищу работу': {
+      text: 'Ищу работу',
+      color: 'orange',
+    },
+  };
+
+  @Input({ required: true }) status!: string;
+
+  protected m_activeStatus?: IBadge;
 
   @Input({ required: true }) personInformation!: IPersonInformation;
 
   @Input({ required: true })
-  specializationInformation!: ISpecializationInformation;
+    specializationInformation!: ISpecializationInformation;
 
   @Input({ required: true }) contacts!: IContacts;
+
+  ngOnInit(): void {
+    this.m_activeStatus = this.m_possibleStatuses[this.status] ?? undefined;
+  }
 }

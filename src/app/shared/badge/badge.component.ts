@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { IBadge } from './ibadge';
-
 @Component({
   selector: 'app-badge',
   standalone: true,
@@ -11,5 +9,5 @@ import { IBadge } from './ibadge';
   styleUrl: './badge.component.scss',
 })
 export class BadgeComponent {
-  @Input({ required: true }) public badge!: IBadge;
+  @Input({ required: true }) public color!: string;
 }

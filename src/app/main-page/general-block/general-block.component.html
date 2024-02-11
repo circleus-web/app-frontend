@@ -2,9 +2,13 @@
   <div class="plate person-info">
     <div class="head">
       <div class="photo"></div>
-      <div class="badge">
-        <app-badge [badge]="badge"></app-badge>
-      </div>
+      @if (m_activeStatus) {
+        <div class="badge">
+          <app-badge [color]="m_activeStatus.color">{{
+            m_activeStatus.text
+          }}</app-badge>
+        </div>
+      }
     </div>
     <div class="name">{{ personInformation.name }}</div>
     <div class="foot">
