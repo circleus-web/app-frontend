@@ -1,3 +1,4 @@
+@import "constants";
 
 div.content {
   display: flex;
@@ -5,7 +6,8 @@ div.content {
   flex-direction: column;
   align-items: center;
 
-  height: 100%;
+  height: calc(100vh - $header-height);
+  height: calc(100dvh - $header-height);
   overflow-y: scroll;
 
   div.cv-blocks {
@@ -38,6 +40,10 @@ div.content.x_small {
   div.cv-blocks {
     align-self: stretch;
     gap: 48px;
+
+    .cv-block {
+      width: 100%;
+    }
   }
 }
 
@@ -60,6 +66,8 @@ div.content.x_small {
   align-items: flex-start;
 
   gap: 10px;
+
+  width: 100%;
 }
 
 .general-block.small,
