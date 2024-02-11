@@ -4,6 +4,7 @@ div.educations {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  flex: 1;
 
   div.education {
     display: flex;
@@ -35,7 +36,7 @@ div.educations {
       }
 
       span.separator {
-        color: var(--Gray-300, #D0D5DD);
+        color: var(--Gray-300, #d0d5dd);
       }
     }
   }

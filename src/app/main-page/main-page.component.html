@@ -61,7 +61,20 @@
         }
       ]"
     ></app-education-block>
-    <app-achievements-block></app-achievements-block>
+    <app-achievements-block
+      [achievements]="[
+        {
+          title: 'Лучший фронтендер',
+          year: '2023',
+          link: 'https\://github\.com/zhur06'
+        },
+        {
+          title: 'Лучший фронтендер',
+          year: '2024',
+          link: 'https\://github\.com/zhur06'
+        }
+      ]"
+    ></app-achievements-block>
     <app-recomendations-block></app-recomendations-block>
     <app-languages-block></app-languages-block>
   </div>

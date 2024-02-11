@@ -1,1 +1,13 @@
-<p>achievements-block works!</p>
+<app-cv-block-appearence title="Достижения" class="cv-block">
+  <div class="achievements">
+    @for (achievement of achievements; track $index) {
+      <div class="achievement">
+        <div class="head">
+          <span class="title">{{ achievement.title }}</span>
+          <app-badge color="gray">{{ achievement.year }}</app-badge>
+        </div>
+        <a class="link" href="{{ achievement.link }}">Ссылка</a>
+      </div>
+    }
+  </div>
+</app-cv-block-appearence>

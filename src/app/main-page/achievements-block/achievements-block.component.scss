@@ -1,0 +1,30 @@
+@import "typography";
+
+.achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+
+  .achievement {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    div.head {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      span.title {
+        @include font-body-1-semibold;
+      }
+    }
+
+    a.link {
+      color: var(--Blue-700, #175cd3);
+
+      @include font-body-1-condensed-medium;
+    }
+  }
+}

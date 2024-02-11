@@ -8,7 +8,10 @@ import { IEducation } from './ieducation';
   selector: 'app-education-block',
   standalone: true,
   templateUrl: './education-block.component.html',
-  styleUrls: ['./education-block.component.scss', '../main-page.component.scss'],
+  styleUrls: [
+    './education-block.component.scss',
+    '../main-page.component.scss',
+  ],
   imports: [CvBlockAppearenceComponent, BadgeComponent],
 })
 export class EducationBlockComponent {
