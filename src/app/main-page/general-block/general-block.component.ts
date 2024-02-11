@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { BadgeComponent } from '../../shared/badge/badge.component';
+
 
 interface IPersonInformation {
   name: string;
@@ -28,7 +30,7 @@ interface IBadge {
   standalone: true,
   templateUrl: './general-block.component.html',
   styleUrl: './general-block.component.scss',
-  imports: [BadgeComponent],
+  imports: [CommonModule, BadgeComponent],
 })
 export class GeneralBlockComponent implements OnInit {
   protected readonly m_possibleStatuses: { [key: string]: IBadge } = {
@@ -45,11 +47,7 @@ export class GeneralBlockComponent implements OnInit {
   @Input({ required: true }) personInformation!: IPersonInformation;
 
   @Input({ required: true })
-  specializationInformation!: ISpecializationInformation;
+    specializationInformation!: ISpecializationInformation;
 
   @Input({ required: true }) contacts!: IContacts;
-
-  ngOnInit(): void {
-    this.m_activeStatus = this.m_possibleStatuses[this.status] ?? undefined;
-  }
 }
