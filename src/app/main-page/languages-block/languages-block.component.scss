@@ -1,0 +1,24 @@
+@import "typography";
+
+div.languages {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+
+  .language {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    span.name {
+      @include font-body-1-semibold;
+    }
+
+    span.level {
+      color: var(--Gray-500, #667085);
+
+      @include font-body-2-condensed-medium;
+    }
+  }
+}
