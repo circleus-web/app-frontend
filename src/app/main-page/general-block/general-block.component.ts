@@ -50,4 +50,11 @@ export class GeneralBlockComponent implements OnInit {
     specializationInformation!: ISpecializationInformation;
 
   @Input({ required: true }) contacts!: IContacts;
+
+  ngOnInit(): void {
+    this.m_activeStatus = this.m_possibleStatuses[this.status];
+  }
+
+
+  @Input({ required: true }) size!: string;
 }

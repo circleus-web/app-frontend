@@ -1,6 +1,7 @@
 <app-header></app-header>
 <div class="content" [ngClass]="m_currentBreakpoint">
   <app-general-block
+    [size]="m_currentBreakpoint"
     status="Ищу работу"
     [personInformation]="{
       name: 'Александр Журавлев',
