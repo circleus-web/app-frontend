@@ -1,6 +1,6 @@
 @import "constants";
 
-div.form {
+div.outer-form {
   display: flex;
 
   flex-direction: column;
@@ -10,7 +10,7 @@ div.form {
 
   height: 100%;
 
-  form {
+  div.inner-form {
     display: flex;
     flex-direction: column;
     align-items: center;
