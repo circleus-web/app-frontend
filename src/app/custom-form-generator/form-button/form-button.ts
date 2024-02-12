@@ -4,4 +4,8 @@ import { IFormButton } from './iform-button';
 
 export class FormButton extends Button implements IFormButton {
   public type: FormItems = FormItems.FORM_BUTTON;
+
+  public getJSON(): string[] | string | undefined {
+    return undefined;
+  }
 }

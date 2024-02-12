@@ -10,6 +10,8 @@ import { CustomFormGeneratorComponent } from '../../../custom-form-generator/cus
 import { FormFooterComponent } from '../form-footer/form-footer.component';
 import { IFormInputWithToggle } from '../../../custom-form-generator/form-input-with-toggle/iform-input-with-toggle';
 import { FormInputWithToggle } from '../../../custom-form-generator/form-input-with-toggle/form-input-with-toggle';
+import { IFormButton } from '../../../custom-form-generator/form-button/iform-button';
+import { FormButton } from '../../../custom-form-generator/form-button/form-button';
 
 @Component({
   selector: 'app-general-info',
@@ -64,7 +66,16 @@ export class GeneralInfoComponent {
     city: this.m_cityForm,
   };
 
-  private m_buttonsOnPage = {};
+  private m_showJSONButton: IFormButton = new FormButton({
+    text: 'Показать JSON',
+    click: () => {
+      console.log(this.m_formArrayWithDescriptions.getActiveFormJSON());
+    },
+  });
+
+  private m_buttonsOnPage = {
+    json: this.m_showJSONButton,
+  };
 
   private m_generalActiveItems = {
     lastName: FormItems.FORM_INPUT_WITH_LABEL,
@@ -73,6 +84,7 @@ export class GeneralInfoComponent {
     dateOfBirth: FormItems.FORM_INPUT_WITH_LABEL,
     city: FormItems.FORM_INPUT_WITH_LABEL,
     submit: FormItems.FORM_BUTTON,
+    json: FormItems.FORM_BUTTON,
   };
 
   protected m_formArrayWithDescriptions: IFormArrayWithDescriptions =

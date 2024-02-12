@@ -4,4 +4,8 @@ import { IFormCombobox } from './iform-combobox';
 
 export class FormCombobox extends ComboboxWithLabel implements IFormCombobox {
   public type: FormItems = FormItems.FORM_COMBOBOX_WITH_LABEL;
+
+  public getJSON(): string[] | string | undefined {
+    return `"${this.comboboxName}": "${this.form.value}"`;
+  }
 }

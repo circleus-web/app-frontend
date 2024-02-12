@@ -4,7 +4,10 @@ import { IFormTextWithLink } from './iform-text-with-link';
 
 export class FormTextWithLink
   extends TextWithLink
-  implements IFormTextWithLink
-{
+  implements IFormTextWithLink {
   public type: FormItems.FORM_TEXT_WITH_LINK = FormItems.FORM_TEXT_WITH_LINK;
+
+  public getJSON(): string[] | string | undefined {
+    return undefined;
+  }
 }

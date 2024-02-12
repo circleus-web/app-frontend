@@ -130,4 +130,20 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
   public getFormValueChanges(formName: string): Observable<string> | undefined {
     return this.getForm(formName)?.getValueChanges();
   }
+
+  public getActiveFormJSON(): string {
+    let resultJSON: string = '{\n';
+    for (const item of this.iterableItems) {
+      const itemJSON = item.getJSON();
+      if (typeof itemJSON === 'string') {
+        resultJSON += '  ' + itemJSON + ',\n';
+      } else if (itemJSON instanceof Array) {
+        resultJSON += '  ' + itemJSON.join(',\n  ') + ',\n';
+      }
+    }
+    resultJSON = resultJSON.slice(0, -2);
+    resultJSON += '\n}';
+
+    return resultJSON;
+  }
 }
