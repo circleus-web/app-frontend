@@ -31,7 +31,7 @@ main.white-form {
   }
 
   div.form {
-    form {
+    .inner-form {
       .form-component {
         gap: $form-gap;
       }
@@ -46,8 +46,8 @@ div.form-container.white-form {
   align-items: center;
   gap: $form-gap;
 
-  div.form {
-    form {
+  div.outer-form {
+    .inner-form {
       .form-component {
         gap: $form-gap;
       }
