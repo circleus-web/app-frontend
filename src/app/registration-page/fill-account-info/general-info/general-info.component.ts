@@ -44,10 +44,12 @@ export class GeneralInfoComponent {
     form: new FormControl('', [Validators.required]),
   });
 
-  private m_dateOfBirthForm: IFormInputWithLabel = new FormInputWithLabel({
+  private m_dateOfBirthForm: IFormInputWithToggle = new FormInputWithToggle({
     inputName: 'dateOfBirth',
     inputTitle: 'Дата рождения',
     inputPlaceholder: '01.01.2000',
+    toggleName: 'isPhonePublic',
+    toggleTitle: 'Не показывать в профиле',
     form: new FormControl('', [Validators.required]),
   });
 

@@ -14,7 +14,7 @@ import { ToggleButtonComponent } from '../../toggle-button/toggle-button.compone
 })
 export class InputWithToggleAndLabelComponent {
   @Input({ required: true })
-  inputWithToggleAndLabel!: IInputWithToggleAndLabel;
+    inputWithToggleAndLabel!: IInputWithToggleAndLabel;
 
   protected get inputClass(): string[] {
     return [
@@ -27,7 +27,6 @@ export class InputWithToggleAndLabelComponent {
     const newValue = this.inputWithToggleAndLabel.isInversed
       ? value !== this.inputWithToggleAndLabel.isInversed
       : value;
-    console.log(newValue);
     this.inputWithToggleAndLabel.toggleChecked = newValue;
   }
 }
