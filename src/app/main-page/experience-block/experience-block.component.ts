@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
 import { IExperienceDescription } from './iexperience-description';
 import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
 @Component({

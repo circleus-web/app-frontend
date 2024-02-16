@@ -22,6 +22,6 @@
 </div>
 
 <div class="toggle-button-area">
-  <app-toggle-button></app-toggle-button>
+  <app-toggle-button (toggledEvent)="toggle($event)"></app-toggle-button>
   <span>{{ inputWithToggleAndLabel.toggleTitle }}</span>
 </div>

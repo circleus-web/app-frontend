@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
 import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
 import { BadgeComponent } from '../../shared/badge/badge.component';
 interface IBadge {

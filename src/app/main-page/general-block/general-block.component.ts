@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { BadgeComponent } from '../../shared/badge/badge.component';
 
-
 interface IPersonInformation {
   name: string;
   age: string;
@@ -47,7 +46,7 @@ export class GeneralBlockComponent implements OnInit {
   @Input({ required: true }) personInformation!: IPersonInformation;
 
   @Input({ required: true })
-    specializationInformation!: ISpecializationInformation;
+  specializationInformation!: ISpecializationInformation;
 
   @Input({ required: true }) contacts!: IContacts;
 

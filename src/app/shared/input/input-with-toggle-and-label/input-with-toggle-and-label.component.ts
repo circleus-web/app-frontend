@@ -22,4 +22,12 @@ export class InputWithToggleAndLabelComponent {
       this.inputWithToggleAndLabel.isInvalid ? 'error' : '',
     ];
   }
+
+  protected toggle(value: boolean) {
+    const newValue = this.inputWithToggleAndLabel.isInversed
+      ? value !== this.inputWithToggleAndLabel.isInversed
+      : value;
+    console.log(newValue);
+    this.inputWithToggleAndLabel.toggleChecked = newValue;
+  }
 }
