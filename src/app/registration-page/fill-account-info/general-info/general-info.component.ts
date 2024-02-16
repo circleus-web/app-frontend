@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
@@ -95,4 +97,7 @@ export class GeneralInfoComponent {
       buttons: this.m_buttonsOnPage,
       activeItems: this.m_generalActiveItems,
     });
+
+  private m_emailControl$?: Observable<string> =
+    this.m_formArrayWithDescriptions.getFormValueChanges('email');
 }

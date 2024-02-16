@@ -14,7 +14,7 @@ import { ToggleButtonComponent } from '../../toggle-button/toggle-button.compone
 })
 export class InputWithToggleAndLabelComponent {
   @Input({ required: true })
-    inputWithToggleAndLabel!: IInputWithToggleAndLabel;
+  inputWithToggleAndLabel!: IInputWithToggleAndLabel;
 
   protected get inputClass(): string[] {
     return [
