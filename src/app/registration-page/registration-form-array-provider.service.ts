@@ -275,14 +275,20 @@ class JobForm {
   providedIn: 'root',
 })
 export class RegistrationFormArrayProviderService implements FormArrayProvider {
+  private _accountCreationForm = new AccountCreationForm();
+
+  private _generalForm = new GeneralForm();
+
+  private _jobForm = new JobForm();
+
   public getFormArray(key: string): IFormArrayWithDescriptions {
     switch (key) {
       case 'account_creation':
-        return new AccountCreationForm().formArrayWithDescriptions;
+        return this._accountCreationForm.formArrayWithDescriptions;
       case 'general_info':
-        return new GeneralForm().formArrayWithDescriptions;
+        return this._generalForm.formArrayWithDescriptions;
       case 'job_info':
-        return new JobForm().formArrayWithDescriptions;
+        return this._jobForm.formArrayWithDescriptions;
       default:
         throw new FormNotFoundError(key);
     }
