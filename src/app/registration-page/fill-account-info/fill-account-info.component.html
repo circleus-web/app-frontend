@@ -1,4 +1,19 @@
 <app-header></app-header>
 <main class="white-form">
-  <router-outlet />
+  <div class="form-container white-form">
+    <div class="outer-form">
+      <div class="inner-form">
+        <app-custom-form-generator
+          [forms]="m_formArrayWithDescriptions"
+          class="form-component"
+        ></app-custom-form-generator>
+      </div>
+    </div>
+  </div>
+  <app-form-footer
+    [title]="m_footerContent.title"
+    [subtitle]="m_footerContent.subtitle"
+    [secondaryButton]="m_footerContent.secondaryButton"
+    [primaryButton]="m_footerContent.primaryButton"
+  ></app-form-footer>
 </main>
