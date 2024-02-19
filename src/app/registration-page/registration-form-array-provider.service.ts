@@ -50,13 +50,14 @@ class AccountCreationForm {
     class: ['auth-page'],
   });
 
-  private readonly m_verificationCodeForm: IFormInputWithLabel = new FormInputWithLabel({
-    inputName: 'verification-code',
-    inputTitle: 'Код верификации',
-    inputPlaceholder: 'Код из почты',
-    form: new FormControl('', Validators.required),
-    class: ['auth-page'],
-  });
+  private readonly m_verificationCodeForm: IFormInputWithLabel =
+    new FormInputWithLabel({
+      inputName: 'verification-code',
+      inputTitle: 'Код верификации',
+      inputPlaceholder: 'Код из почты',
+      form: new FormControl('', Validators.required),
+      class: ['auth-page'],
+    });
 
   private readonly m_verificationCodeSupportText: IFormText = new FormText({
     text: 'Мы отправили вам код верификации. Пожалуйста, проверьте почту и создайте аккаунт',
@@ -77,24 +78,26 @@ class AccountCreationForm {
 
   private m_submitForm(): void {}
 
-  private readonly m_submitEmailVerificationCodeButton: IFormButton = new FormButton({
-    text: 'Создать аккаунт',
-    class: ['btn', 'btn-primary'],
-    disabled: (): boolean => {
-      return this.formArrayWithDescriptions.isInvalid();
-    },
-    click: () => {
-      this.m_submitForm();
-    },
-    routerLink: ['/registration', 'fill-account-information'],
-  });
+  private readonly m_submitEmailVerificationCodeButton: IFormButton =
+    new FormButton({
+      text: 'Создать аккаунт',
+      class: ['btn', 'btn-primary'],
+      disabled: (): boolean => {
+        return this.formArrayWithDescriptions.isInvalid();
+      },
+      click: () => {
+        this.m_submitForm();
+      },
+      routerLink: ['/registration', 'fill-account-information'],
+    });
 
-  private readonly m_linkToRegistration: IFormTextWithLink = new FormTextWithLink({
-    link: 'Войти',
-    routerLink: ['/login'],
-    textBeforeLink: 'Уже есть аккаунт? ',
-    class: ['footer'],
-  });
+  private readonly m_linkToRegistration: IFormTextWithLink =
+    new FormTextWithLink({
+      link: 'Войти',
+      routerLink: ['/login'],
+      textBeforeLink: 'Уже есть аккаунт? ',
+      class: ['footer'],
+    });
 
   private readonly m_emailInputActiveItems = {
     email: FormItems.FORM_INPUT_WITH_LABEL,
@@ -151,39 +154,44 @@ class AccountCreationForm {
 }
 
 class GeneralForm {
-  private readonly m_lastNameForm: IFormInputWithLabel = new FormInputWithLabel({
-    inputName: 'lastName',
-    inputTitle: 'Фамилия',
-    inputPlaceholder: 'Корольков',
-    form: new FormControl('', [Validators.required]),
-  });
+  private readonly m_lastNameForm: IFormInputWithLabel = new FormInputWithLabel(
+    {
+      inputName: 'lastName',
+      inputTitle: 'Фамилия',
+      inputPlaceholder: 'Корольков',
+      form: new FormControl('', [Validators.required]),
+    },
+  );
 
-  private readonly m_firstNameForm: IFormInputWithLabel = new FormInputWithLabel({
-    inputName: 'firstName',
-    inputTitle: 'Имя',
-    inputPlaceholder: 'Вадим',
-    form: new FormControl('', [Validators.required]),
-  });
+  private readonly m_firstNameForm: IFormInputWithLabel =
+    new FormInputWithLabel({
+      inputName: 'firstName',
+      inputTitle: 'Имя',
+      inputPlaceholder: 'Вадим',
+      form: new FormControl('', [Validators.required]),
+    });
 
-  private readonly m_phoneNumberForm: IFormInputWithToggle = new FormInputWithToggle({
-    inputName: 'phoneNumber',
-    inputTitle: 'Номер телефона',
-    inputPlaceholder: '+7 (999) 999-99-99',
-    toggleName: 'isPhonePublic',
-    toggleTitle: 'Не показывать в профиле',
-    isInversed: true,
-    form: new FormControl('', [Validators.required]),
-  });
+  private readonly m_phoneNumberForm: IFormInputWithToggle =
+    new FormInputWithToggle({
+      inputName: 'phoneNumber',
+      inputTitle: 'Номер телефона',
+      inputPlaceholder: '+7 (999) 999-99-99',
+      toggleName: 'isPhonePublic',
+      toggleTitle: 'Не показывать в профиле',
+      isInversed: true,
+      form: new FormControl('', [Validators.required]),
+    });
 
-  private readonly m_dateOfBirthForm: IFormInputWithToggle = new FormInputWithToggle({
-    inputName: 'dateOfBirth',
-    inputTitle: 'Дата рождения',
-    inputPlaceholder: '01.01.2000',
-    toggleName: 'isPhonePublic',
-    toggleTitle: 'Не показывать в профиле',
-    isInversed: true,
-    form: new FormControl('', [Validators.required]),
-  });
+  private readonly m_dateOfBirthForm: IFormInputWithToggle =
+    new FormInputWithToggle({
+      inputName: 'dateOfBirth',
+      inputTitle: 'Дата рождения',
+      inputPlaceholder: '01.01.2000',
+      toggleName: 'isPhonePublic',
+      toggleTitle: 'Не показывать в профиле',
+      isInversed: true,
+      form: new FormControl('', [Validators.required]),
+    });
 
   private readonly m_cityForm: IFormInputWithLabel = new FormInputWithLabel({
     inputName: 'city',
@@ -230,12 +238,13 @@ class GeneralForm {
 }
 
 class JobForm {
-  private readonly m_specializationForm: IFormInputWithLabel = new FormInputWithLabel({
-    inputName: 'specialization',
-    inputTitle: 'Специальность',
-    inputPlaceholder: 'Дизайнер Интерфейсов',
-    form: new FormControl('', [Validators.required]),
-  });
+  private readonly m_specializationForm: IFormInputWithLabel =
+    new FormInputWithLabel({
+      inputName: 'specialization',
+      inputTitle: 'Специальность',
+      inputPlaceholder: 'Дизайнер Интерфейсов',
+      form: new FormControl('', [Validators.required]),
+    });
 
   private readonly m_gradeForm: IFormCombobox = new FormCombobox({
     comboboxName: 'grade',

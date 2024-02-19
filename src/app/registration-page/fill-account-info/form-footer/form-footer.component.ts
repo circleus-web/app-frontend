@@ -1,7 +1,13 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import {
+  Component,
+  input,
+  ChangeDetectionStrategy,
+  InputSignal,
+  computed,
+  Signal,
+} from '@angular/core';
 
 import { ButtonComponent } from '../../../shared/button/button.component';
-import { Button } from '../../../shared/button/button';
 import { IButton } from '../../../shared/button/ibutton';
 
 @Component({
@@ -10,44 +16,46 @@ import { IButton } from '../../../shared/button/ibutton';
   templateUrl: './form-footer.component.html',
   styleUrl: './form-footer.component.scss',
   imports: [ButtonComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormFooterComponent implements OnInit, OnChanges {
-  @Input() title?: string;
+export class FormFooterComponent {
+  public readonly title: InputSignal<string | undefined> = input<string>();
 
-  @Input() subtitle?: string;
+  public readonly subtitle: InputSignal<string | undefined> = input<string>();
 
-  @Input() secondaryButton?: IButton;
+  public readonly secondaryButton: InputSignal<IButton | undefined> =
+    input<IButton>();
 
-  @Input() primaryButton?: IButton;
+  public readonly primaryButton: InputSignal<IButton | undefined> =
+    input<IButton>();
 
-  protected m_secondaryButton?: IButton;
+  private readonly _secondaryButtonComputed: Signal<IButton | undefined> =
+    computed(() => {
+      const secondaryButtonSignal = this.secondaryButton();
+      return secondaryButtonSignal && secondaryButtonSignal.text
+        ? ({
+            ...secondaryButtonSignal,
+            class: ['btn', 'btn-secondary'],
+          } as IButton)
+        : undefined;
+    });
 
-  protected m_primaryButton?: IButton;
+  private readonly _primaryButtonComputed: Signal<IButton | undefined> =
+    computed(() => {
+      const primaryButtonSignal = this.primaryButton();
+      return primaryButtonSignal && primaryButtonSignal.text
+        ? ({
+            ...primaryButtonSignal,
+            class: ['btn', 'btn-primary'],
+          } as IButton)
+        : undefined;
+    });
 
-
-  private _prepareButtons() {
-    if (this.secondaryButton)
-      this.m_secondaryButton = new Button({
-        text: this.secondaryButton.text,
-        class: ['btn', 'btn-secondary'],
-        routerLink: this.secondaryButton.routerLink,
-        click: this.secondaryButton.click,
-      });
-
-    if (this.primaryButton)
-      this.m_primaryButton = new Button({
-        text: this.primaryButton.text,
-        class: ['btn', 'btn-primary'],
-        routerLink: this.primaryButton.routerLink,
-        click: this.primaryButton.click,
-      });
+  protected get m_secondaryButton(): IButton | undefined {
+    return this._secondaryButtonComputed();
   }
 
-  ngOnInit() {
-    this._prepareButtons();
-  }
-
-  ngOnChanges() {
-    this._prepareButtons();
+  protected get m_primaryButton(): IButton | undefined {
+    return this._primaryButtonComputed();
   }
 }

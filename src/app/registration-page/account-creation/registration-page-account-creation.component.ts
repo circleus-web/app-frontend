@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonComponent } from '../../shared/button/button.component';
 import { CustomFormGeneratorComponent } from '../../custom-form-generator/custom-form-generator.component';
@@ -22,12 +20,16 @@ import { IFormArrayWithDescriptions } from '../../custom-form-generator/form-arr
   templateUrl: './registration-page-account-creation.component.html',
   styles: ['@import "colored-form";'],
   providers: [
-    { provide: FormArrayProvider, useExisting: RegistrationFormArrayProviderService },
+    {
+      provide: FormArrayProvider,
+      useExisting: RegistrationFormArrayProviderService,
+    },
   ],
 })
 export class RegistrationPageAccountCreationComponent {
   constructor(private formArrayProvider: RegistrationFormArrayProviderService) {
-    this.m_formArrayWithDescriptions = formArrayProvider.getFormArray('account_creation');
+    this.m_formArrayWithDescriptions =
+      formArrayProvider.getFormArray('account_creation');
   }
 
   protected m_formArrayWithDescriptions: IFormArrayWithDescriptions;

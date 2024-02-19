@@ -41,7 +41,12 @@ class InvalidStepError extends Error {
       useClass: RegistrationFormArrayProviderService,
     },
   ],
-  imports: [RouterModule, HeaderComponent, FormFooterComponent, CustomFormGeneratorComponent],
+  imports: [
+    RouterModule,
+    HeaderComponent,
+    FormFooterComponent,
+    CustomFormGeneratorComponent,
+  ],
 })
 export class FillAccountInfoComponent {
   private p_currentStep: FormSteps = FormSteps.GeneralInfo;
@@ -50,10 +55,12 @@ export class FillAccountInfoComponent {
     this.p_currentStep = value;
     switch (value) {
       case FormSteps.GeneralInfo:
-        this.m_formArrayWithDescriptions = this._formArrayProvider.getFormArray('general_info');
+        this.m_formArrayWithDescriptions =
+          this._formArrayProvider.getFormArray('general_info');
         break;
       case FormSteps.JobInfo:
-        this.m_formArrayWithDescriptions = this._formArrayProvider.getFormArray('job_info');
+        this.m_formArrayWithDescriptions =
+          this._formArrayProvider.getFormArray('job_info');
         break;
       default:
         throw new InvalidStepError(value);
@@ -88,6 +95,7 @@ export class FillAccountInfoComponent {
         return {
           title: 'Шаг 1',
           subtitle: 'Основная информация',
+          secondaryButton: Object.assign({}, undefined),
           primaryButton: Object.assign({}, this._footerButtons['next']),
         };
       case FormSteps.JobInfo:
@@ -107,7 +115,8 @@ export class FillAccountInfoComponent {
   constructor(
     private _formArrayProvider: RegistrationFormArrayProviderService,
   ) {
-    this.m_formArrayWithDescriptions = _formArrayProvider.getFormArray('general_info');
+    this.m_formArrayWithDescriptions =
+      _formArrayProvider.getFormArray('general_info');
   }
 
   private _nextPage() {
