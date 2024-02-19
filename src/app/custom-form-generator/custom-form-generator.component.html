@@ -1,39 +1,39 @@
-@for (item of forms.iterableItems; track $index) {
+@for (item of forms().iterableItems; track $index) {
   @if (item | isFormInputWithLabel) {
     <app-input-with-label
       [inputWithLabel]="item"
       class="input-with-label"
-      [ngClass]="forms.formsStyle"
+      [ngClass]="forms().formsStyle"
     ></app-input-with-label>
   } @else if (item | isFormCombobox) {
     <app-combobox-with-label
       [comboboxWithLabel]="item"
       class="combobox-with-label"
-      [ngClass]="forms.formsStyle"
+      [ngClass]="forms().formsStyle"
     ></app-combobox-with-label>
   } @else if (item | isFormInputWithToggle) {
     <app-input-with-toggle-and-label
       [inputWithToggleAndLabel]="item"
       class="input-with-toggle"
-      [ngClass]="forms.formsStyle"
+      [ngClass]="forms().formsStyle"
     ></app-input-with-toggle-and-label>
   } @else if (item | isFormButton) {
     <app-button
       [button]="item"
       class="button-container"
-      [ngClass]="forms.formsStyle"
+      [ngClass]="forms().formsStyle"
     ></app-button>
   } @else if (item | isFormText) {
     <app-text
       [text]="item"
       class="text-container"
-      [ngClass]="forms.formsStyle"
+      [ngClass]="forms().formsStyle"
     ></app-text>
   } @else if (item | isFormTextWithLink) {
     <app-text-with-link
       [textWithLink]="item"
       class="text-with-link-container"
-      [ngClass]="forms.formsStyle"
+      [ngClass]="forms().formsStyle"
     ></app-text-with-link>
   }
 }

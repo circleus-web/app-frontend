@@ -5,11 +5,11 @@
       <p class="subtitle">{{ subtitle() }}</p>
     </div>
     <div class="actions">
-      @if (m_secondaryButton) {
-        <app-button [button]="m_secondaryButton"></app-button>
+      @if (secondaryButton(); as secondaryButton) {
+        <app-button [button]="secondaryButton"></app-button>
       }
-      @if (m_primaryButton) {
-        <app-button [button]="m_primaryButton"></app-button>
+      @if (primaryButton(); as primaryButton) {
+        <app-button [button]="primaryButton"></app-button>
       }
     </div>
   </div>

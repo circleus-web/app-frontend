@@ -3,8 +3,7 @@ import {
   input,
   ChangeDetectionStrategy,
   InputSignal,
-  computed,
-  Signal,
+  InputSignalWithTransform,
 } from '@angular/core';
 
 import { ButtonComponent } from '../../../shared/button/button.component';
@@ -23,39 +22,33 @@ export class FormFooterComponent {
 
   public readonly subtitle: InputSignal<string | undefined> = input<string>();
 
-  public readonly secondaryButton: InputSignal<IButton | undefined> =
-    input<IButton>();
-
-  public readonly primaryButton: InputSignal<IButton | undefined> =
-    input<IButton>();
-
-  private readonly _secondaryButtonComputed: Signal<IButton | undefined> =
-    computed(() => {
-      const secondaryButtonSignal = this.secondaryButton();
-      return secondaryButtonSignal && secondaryButtonSignal.text
-        ? ({
-            ...secondaryButtonSignal,
-            class: ['btn', 'btn-secondary'],
-          } as IButton)
-        : undefined;
-    });
-
-  private readonly _primaryButtonComputed: Signal<IButton | undefined> =
-    computed(() => {
-      const primaryButtonSignal = this.primaryButton();
-      return primaryButtonSignal && primaryButtonSignal.text
-        ? ({
-            ...primaryButtonSignal,
-            class: ['btn', 'btn-primary'],
-          } as IButton)
-        : undefined;
-    });
-
-  protected get m_secondaryButton(): IButton | undefined {
-    return this._secondaryButtonComputed();
+  private _secondaryButtonTransform(
+    value: IButton | undefined,
+  ): IButton | undefined {
+    return value && value.text
+      ? { ...value, class: ['btn', 'btn-secondary'] }
+      : undefined;
   }
 
-  protected get m_primaryButton(): IButton | undefined {
-    return this._primaryButtonComputed();
+  private _primaryButtontransform(
+    value: IButton | undefined,
+  ): IButton | undefined {
+    return value && value.text
+      ? { ...value, class: ['btn', 'btn-primary'] }
+      : undefined;
   }
+
+  public readonly secondaryButton: InputSignalWithTransform<
+  IButton | undefined,
+  IButton | undefined
+  > = input<IButton | undefined, IButton | undefined>(undefined, {
+      transform: this._secondaryButtonTransform,
+    });
+
+  public readonly primaryButton: InputSignalWithTransform<
+  IButton | undefined,
+  IButton | undefined
+  > = input<IButton | undefined, IButton | undefined>(undefined, {
+      transform: this._primaryButtontransform,
+    });
 }

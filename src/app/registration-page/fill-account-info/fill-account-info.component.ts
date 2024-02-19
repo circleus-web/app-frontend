@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from '../../header/header.component';
@@ -47,6 +47,7 @@ class InvalidStepError extends Error {
     FormFooterComponent,
     CustomFormGeneratorComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FillAccountInfoComponent {
   private p_currentStep: FormSteps = FormSteps.GeneralInfo;
@@ -71,7 +72,7 @@ export class FillAccountInfoComponent {
     return this.p_currentStep;
   }
 
-  private _footerButtons: { [key: string]: IButton } = {
+  private readonly _footerButtons: { [key: string]: IButton } = {
     next: new Button({
       text: 'Далее',
       click: () => {
@@ -101,7 +102,7 @@ export class FillAccountInfoComponent {
       case FormSteps.JobInfo:
         return {
           title: 'Шаг 2',
-          subtitle: 'Дополнительная информация',
+          subtitle: 'Специальность',
           secondaryButton: Object.assign({}, this._footerButtons['previous']),
           primaryButton: Object.assign({}, this._footerButtons['submit']),
         };
