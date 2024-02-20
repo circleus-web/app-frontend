@@ -4,7 +4,8 @@ import { IFormInputWithToggle } from './iform-input-with-toggle';
 
 export class FormInputWithToggle
   extends InputWithToggleAndLabel
-  implements IFormInputWithToggle {
+  implements IFormInputWithToggle
+{
   type: FormItems = FormItems.FORM_INPUT_WITH_TOGGLE;
 
   public getJSON(): string[] | string | undefined {
@@ -26,11 +27,10 @@ export class FormInputWithToggle
     const content: { [key: string]: string | boolean } = {};
 
     content[this.inputName] = this.form.value;
-    content[this.toggleName] = (
+    content[this.toggleName] =
       this.isInversed !== undefined
         ? this.toggleChecked !== this.isInversed
-        : !!this.toggleChecked
-    );
+        : !!this.toggleChecked;
 
     return content;
   }

@@ -15,10 +15,10 @@ export class ButtonComponent {
   button = input.required<IButton>();
 
   buttonStyle = input<
-  | {
-    [key: string]: string;
-  }
-  | undefined
+    | {
+        [key: string]: string;
+      }
+    | undefined
   >();
 
   constructor(private router: Router) {}

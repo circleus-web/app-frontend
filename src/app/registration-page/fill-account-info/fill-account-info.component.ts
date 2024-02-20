@@ -137,8 +137,12 @@ export class FillAccountInfoComponent {
 
   private _getAboutFormsContent(): object {
     return {
-      ...this._formArrayProvider.getFormArray('general_info').getActiveFormContent(),
-      ...this._formArrayProvider.getFormArray('job_info').getActiveFormContent(),
+      ...this._formArrayProvider
+        .getFormArray('general_info')
+        .getActiveFormContent(),
+      ...this._formArrayProvider
+        .getFormArray('job_info')
+        .getActiveFormContent(),
     };
   }
 
