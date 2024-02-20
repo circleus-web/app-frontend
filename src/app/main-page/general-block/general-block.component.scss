@@ -1,5 +1,5 @@
-@import "effects/shadows";
-@import "typography";
+@import 'effects/shadows';
+@import 'typography';
 
 main {
   gap: 12px;
@@ -122,8 +122,8 @@ main.medium {
   display: grid;
   width: 708px;
   grid-template:
-    "person-info specialization-info specialization-info" 104px
-    "person-info contacts links" 156px / 300px 1fr 156px;
+    'person-info specialization-info specialization-info' 104px
+    'person-info contacts links' 156px / 300px 1fr 156px;
 
   .plate.person-info {
     grid-area: person-info;

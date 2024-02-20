@@ -1,4 +1,5 @@
 import { DestroyRef, Injectable, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   AbstractControl,
   FormControl,
@@ -7,24 +8,24 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { Observable } from 'rxjs';
+
 import {
   FormArrayProvider,
   FormNotFoundError,
 } from '../custom-form-generator/form-array/form-array-provider.service';
-import { IFormArrayWithDescriptions } from '../custom-form-generator/form-array/iform-array-with-descriptions';
 import { FormArrayWithDescriptions } from '../custom-form-generator/form-array/form-array-with-descriptions';
 import { FormItems } from '../custom-form-generator/form-array/form-items';
-import { FormCombobox } from '../custom-form-generator/form-combobox/form-combobox';
-import { IFormCombobox } from '../custom-form-generator/form-combobox/iform-combobox';
-import { FormInputWithLabel } from '../custom-form-generator/form-input/form-input-with-label';
-import { IFormInputWithLabel } from '../custom-form-generator/form-input/iform-input-with-label';
+import { FormStyles } from '../custom-form-generator/form-array/form-style';
+import { IFormArrayWithDescriptions } from '../custom-form-generator/form-array/iform-array-with-descriptions';
 import { FormButton } from '../custom-form-generator/form-button/form-button';
 import { IFormButton } from '../custom-form-generator/form-button/iform-button';
+import { FormCombobox } from '../custom-form-generator/form-combobox/form-combobox';
+import { IFormCombobox } from '../custom-form-generator/form-combobox/iform-combobox';
 import { FormInputWithToggle } from '../custom-form-generator/form-input-with-toggle/form-input-with-toggle';
 import { IFormInputWithToggle } from '../custom-form-generator/form-input-with-toggle/iform-input-with-toggle';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Observable } from 'rxjs';
-import { FormStyles } from '../custom-form-generator/form-array/form-style';
+import { FormInputWithLabel } from '../custom-form-generator/form-input/form-input-with-label';
+import { IFormInputWithLabel } from '../custom-form-generator/form-input/iform-input-with-label';
 import { FormTextWithLink } from '../custom-form-generator/form-text-with-link/form-text-with-link';
 import { IFormTextWithLink } from '../custom-form-generator/form-text-with-link/iform-text-with-link';
 import { FormText } from '../custom-form-generator/form-text/form-text';
@@ -50,14 +51,13 @@ class AccountCreationForm {
     class: ['auth-page'],
   });
 
-  private readonly m_verificationCodeForm: IFormInputWithLabel =
-    new FormInputWithLabel({
-      inputName: 'verification-code',
-      inputTitle: 'Код верификации',
-      inputPlaceholder: 'Код из почты',
-      form: new FormControl('', Validators.required),
-      class: ['auth-page'],
-    });
+  private readonly m_verificationCodeForm: IFormInputWithLabel = new FormInputWithLabel({
+    inputName: 'verification-code',
+    inputTitle: 'Код верификации',
+    inputPlaceholder: 'Код из почты',
+    form: new FormControl('', Validators.required),
+    class: ['auth-page'],
+  });
 
   private readonly m_verificationCodeSupportText: IFormText = new FormText({
     text: 'Мы отправили вам код верификации. Пожалуйста, проверьте почту и создайте аккаунт',
@@ -71,33 +71,30 @@ class AccountCreationForm {
       return this.formArrayWithDescriptions.isInvalid();
     },
     click: () => {
-      this.formArrayWithDescriptions.activeItems =
-        this.m_verificationCodeInputActiveItems;
+      this.formArrayWithDescriptions.activeItems = this.m_verificationCodeInputActiveItems;
     },
   });
 
   private m_submitForm(): void {}
 
-  private readonly m_submitEmailVerificationCodeButton: IFormButton =
-    new FormButton({
-      text: 'Создать аккаунт',
-      class: ['btn', 'btn-primary'],
-      disabled: (): boolean => {
-        return this.formArrayWithDescriptions.isInvalid();
-      },
-      click: () => {
-        this.m_submitForm();
-      },
-      routerLink: ['/registration', 'fill-account-information'],
-    });
+  private readonly m_submitEmailVerificationCodeButton: IFormButton = new FormButton({
+    text: 'Создать аккаунт',
+    class: ['btn', 'btn-primary'],
+    disabled: (): boolean => {
+      return this.formArrayWithDescriptions.isInvalid();
+    },
+    click: () => {
+      this.m_submitForm();
+    },
+    routerLink: ['/registration', 'fill-account-information'],
+  });
 
-  private readonly m_linkToRegistration: IFormTextWithLink =
-    new FormTextWithLink({
-      link: 'Войти',
-      routerLink: ['/login'],
-      textBeforeLink: 'Уже есть аккаунт? ',
-      class: ['footer'],
-    });
+  private readonly m_linkToRegistration: IFormTextWithLink = new FormTextWithLink({
+    link: 'Войти',
+    routerLink: ['/login'],
+    textBeforeLink: 'Уже есть аккаунт? ',
+    class: ['footer'],
+  });
 
   private readonly m_emailInputActiveItems = {
     email: FormItems.FORM_INPUT_WITH_LABEL,
@@ -131,67 +128,58 @@ class AccountCreationForm {
     linkToRegistration: this.m_linkToRegistration,
   };
 
-  public formArrayWithDescriptions: IFormArrayWithDescriptions =
-    new FormArrayWithDescriptions({
-      forms: this.m_formsOnPage,
-      formsStyle: FormStyles.LOGIN_FORM,
-      buttons: this.m_buttonsOnPage,
-      texts: this.m_textsOnPage,
-      textsWithLinks: this.m_textsWithLinksOnPage,
-      activeItems: this.m_emailInputActiveItems,
-      onCreate: () => {
-        this.m_emailControl$
-          ?.pipe(takeUntilDestroyed(this.m_destroyRef))
-          .subscribe(() => {
-            this.formArrayWithDescriptions.activeItems =
-              this.m_emailInputActiveItems;
-          });
-      },
-    });
+  public formArrayWithDescriptions: IFormArrayWithDescriptions = new FormArrayWithDescriptions({
+    forms: this.m_formsOnPage,
+    formsStyle: FormStyles.LOGIN_FORM,
+    buttons: this.m_buttonsOnPage,
+    texts: this.m_textsOnPage,
+    textsWithLinks: this.m_textsWithLinksOnPage,
+    activeItems: this.m_emailInputActiveItems,
+    onCreate: () => {
+      this.m_emailControl$?.pipe(takeUntilDestroyed(this.m_destroyRef)).subscribe(() => {
+        this.formArrayWithDescriptions.activeItems = this.m_emailInputActiveItems;
+      });
+    },
+  });
 
   private readonly m_emailControl$?: Observable<string> =
     this.formArrayWithDescriptions.getFormValueChanges('email');
 }
 
 class GeneralForm {
-  private readonly m_lastNameForm: IFormInputWithLabel = new FormInputWithLabel(
-    {
-      inputName: 'lastName',
-      inputTitle: 'Фамилия',
-      inputPlaceholder: 'Корольков',
-      form: new FormControl('', [Validators.required]),
-    },
-  );
+  private readonly m_lastNameForm: IFormInputWithLabel = new FormInputWithLabel({
+    inputName: 'lastName',
+    inputTitle: 'Фамилия',
+    inputPlaceholder: 'Корольков',
+    form: new FormControl('', [Validators.required]),
+  });
 
-  private readonly m_firstNameForm: IFormInputWithLabel =
-    new FormInputWithLabel({
-      inputName: 'firstName',
-      inputTitle: 'Имя',
-      inputPlaceholder: 'Вадим',
-      form: new FormControl('', [Validators.required]),
-    });
+  private readonly m_firstNameForm: IFormInputWithLabel = new FormInputWithLabel({
+    inputName: 'firstName',
+    inputTitle: 'Имя',
+    inputPlaceholder: 'Вадим',
+    form: new FormControl('', [Validators.required]),
+  });
 
-  private readonly m_phoneNumberForm: IFormInputWithToggle =
-    new FormInputWithToggle({
-      inputName: 'phoneNumber',
-      inputTitle: 'Номер телефона',
-      inputPlaceholder: '+7 (999) 999-99-99',
-      toggleName: 'isPhonePublic',
-      toggleTitle: 'Не показывать в профиле',
-      isInversed: true,
-      form: new FormControl('', [Validators.required]),
-    });
+  private readonly m_phoneNumberForm: IFormInputWithToggle = new FormInputWithToggle({
+    inputName: 'phoneNumber',
+    inputTitle: 'Номер телефона',
+    inputPlaceholder: '+7 (999) 999-99-99',
+    toggleName: 'isPhonePublic',
+    toggleTitle: 'Не показывать в профиле',
+    isInversed: true,
+    form: new FormControl('', [Validators.required]),
+  });
 
-  private readonly m_dateOfBirthForm: IFormInputWithToggle =
-    new FormInputWithToggle({
-      inputName: 'dateOfBirth',
-      inputTitle: 'Дата рождения',
-      inputPlaceholder: '01.01.2000',
-      toggleName: 'isPhonePublic',
-      toggleTitle: 'Не показывать в профиле',
-      isInversed: true,
-      form: new FormControl('', [Validators.required]),
-    });
+  private readonly m_dateOfBirthForm: IFormInputWithToggle = new FormInputWithToggle({
+    inputName: 'dateOfBirth',
+    inputTitle: 'Дата рождения',
+    inputPlaceholder: '01.01.2000',
+    toggleName: 'isPhonePublic',
+    toggleTitle: 'Не показывать в профиле',
+    isInversed: true,
+    form: new FormControl('', [Validators.required]),
+  });
 
   private readonly m_cityForm: IFormInputWithLabel = new FormInputWithLabel({
     inputName: 'city',
@@ -217,21 +205,19 @@ class GeneralForm {
     submit: FormItems.FORM_BUTTON,
   };
 
-  public formArrayWithDescriptions: IFormArrayWithDescriptions =
-    new FormArrayWithDescriptions({
-      forms: this.m_formsOnPage,
-      activeItems: this.m_generalActiveItems,
-    });
+  public formArrayWithDescriptions: IFormArrayWithDescriptions = new FormArrayWithDescriptions({
+    forms: this.m_formsOnPage,
+    activeItems: this.m_generalActiveItems,
+  });
 }
 
 class JobForm {
-  private readonly m_specializationForm: IFormInputWithLabel =
-    new FormInputWithLabel({
-      inputName: 'specialization',
-      inputTitle: 'Специальность',
-      inputPlaceholder: 'Дизайнер Интерфейсов',
-      form: new FormControl('', [Validators.required]),
-    });
+  private readonly m_specializationForm: IFormInputWithLabel = new FormInputWithLabel({
+    inputName: 'specialization',
+    inputTitle: 'Специальность',
+    inputPlaceholder: 'Дизайнер Интерфейсов',
+    form: new FormControl('', [Validators.required]),
+  });
 
   private readonly m_gradeForm: IFormCombobox = new FormCombobox({
     comboboxName: 'grade',
@@ -251,11 +237,10 @@ class JobForm {
     gradeForm: FormItems.FORM_COMBOBOX_WITH_LABEL,
   };
 
-  public formArrayWithDescriptions: IFormArrayWithDescriptions =
-    new FormArrayWithDescriptions({
-      forms: this.m_formsOnPage,
-      activeItems: this.m_jobActiveItems,
-    });
+  public formArrayWithDescriptions: IFormArrayWithDescriptions = new FormArrayWithDescriptions({
+    forms: this.m_formsOnPage,
+    activeItems: this.m_jobActiveItems,
+  });
 }
 
 @Injectable({

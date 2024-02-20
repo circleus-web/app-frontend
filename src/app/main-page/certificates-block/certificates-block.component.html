@@ -1,8 +1,4 @@
-<app-cv-block-appearence
-  title="Сертификаты"
-  class="cv-block"
-  [ngClass]="size()"
->
+<app-cv-block-appearence title="Сертификаты" class="cv-block" [ngClass]="size()">
   <div class="certificates()">
     @for (certificate of certificates(); track $index) {
       <div class="certificate">

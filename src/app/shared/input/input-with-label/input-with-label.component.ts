@@ -15,9 +15,6 @@ export class InputWithLabelComponent {
   inputWithLabel = input.required<IInputWithLabel>();
 
   protected get inputClass(): string[] {
-    return [
-      ...this.inputWithLabel().class,
-      this.inputWithLabel().isInvalid ? 'error' : '',
-    ];
+    return [...this.inputWithLabel().class, this.inputWithLabel().isInvalid ? 'error' : ''];
   }
 }

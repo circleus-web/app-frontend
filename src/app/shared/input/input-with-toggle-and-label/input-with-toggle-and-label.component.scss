@@ -1,4 +1,4 @@
-@import "typography";
+@import 'typography';
 
 .input-area {
   display: flex;
@@ -16,7 +16,7 @@
     @include font-body-2-condensed-medium;
   }
 
-  input[type="text"] {
+  input[type='text'] {
     display: flex;
     height: 40px;
     padding: 8px 12px;

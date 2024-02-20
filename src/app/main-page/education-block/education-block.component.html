@@ -1,8 +1,4 @@
-<app-cv-block-appearence
-  title="Образование"
-  class="cv-block"
-  [ngClass]="size()"
->
+<app-cv-block-appearence title="Образование" class="cv-block" [ngClass]="size()">
   <div class="educations">
     @for (education of educations(); track $index) {
       <div class="education">

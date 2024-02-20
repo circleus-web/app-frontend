@@ -1,6 +1,8 @@
 import { FormControl } from '@angular/forms';
-import { IInputWithToggleAndLabel } from './iinput-with-toggle-and-label';
+
 import { Observable } from 'rxjs';
+
+import { IInputWithToggleAndLabel } from './iinput-with-toggle-and-label';
 
 interface IRequiredInputWithToggleAndLabel {
   form: FormControl;
@@ -33,9 +35,7 @@ export class InputWithToggleAndLabel implements IInputWithToggleAndLabel {
 
   public isInversed?: boolean;
 
-  constructor(
-    requiredInputWithToggleAndLabel: IRequiredInputWithToggleAndLabel,
-  ) {
+  constructor(requiredInputWithToggleAndLabel: IRequiredInputWithToggleAndLabel) {
     this.form = requiredInputWithToggleAndLabel.form;
     this.inputName = requiredInputWithToggleAndLabel.inputName;
     this.inputTitle = requiredInputWithToggleAndLabel.inputTitle;

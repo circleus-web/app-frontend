@@ -1,9 +1,3 @@
-<app-cv-block-appearence
-  [title]="'Предпочитаемая ЗП'"
-  class="cv-block"
-  [ngClass]="size()"
->
-  <span class="salary-range"
-    >{{ salaryRange()[0] }} - {{ salaryRange()[1] }} {{ currency() }}</span
-  >
+<app-cv-block-appearence [title]="'Предпочитаемая ЗП'" class="cv-block" [ngClass]="size()">
+  <span class="salary-range">{{ salaryRange()[0] }} - {{ salaryRange()[1] }} {{ currency() }}</span>
 </app-cv-block-appearence>

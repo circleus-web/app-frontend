@@ -1,9 +1,10 @@
-import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { IInputWithToggleAndLabel } from './iinput-with-toggle-and-label';
 import { ToggleButtonComponent } from '../../toggle-button/toggle-button.component';
+
+import { IInputWithToggleAndLabel } from './iinput-with-toggle-and-label';
 
 @Component({
   selector: 'app-input-with-toggle-and-label',

@@ -13,9 +13,9 @@
     placeholder="{{ inputWithToggleAndLabel().inputPlaceholder }}"
   />
   @if (inputWithToggleAndLabel().isInvalid) {
-    @if (inputWithToggleAndLabel().hasError("incorrectEmail")) {
+    @if (inputWithToggleAndLabel().hasError('incorrectEmail')) {
       <span class="error" [ngClass]="inputWithToggleAndLabel().class">{{
-        "Email должен содержать символ «@» и имя домена"
+        'Email должен содержать символ «@» и имя домена'
       }}</span>
     }
   }

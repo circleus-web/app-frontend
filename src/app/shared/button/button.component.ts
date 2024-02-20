@@ -1,8 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 import { IButton } from './ibutton';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-button',

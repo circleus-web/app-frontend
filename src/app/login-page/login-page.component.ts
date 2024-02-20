@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ButtonComponent } from '../shared/button/button.component';
 import { CustomFormGeneratorComponent } from '../custom-form-generator/custom-form-generator.component';
+import { FormArrayProvider } from '../custom-form-generator/form-array/form-array-provider.service';
 import { IFormArrayWithDescriptions } from '../custom-form-generator/form-array/iform-array-with-descriptions';
 import { FormHeaderComponent } from '../form-header/form-header.component';
-import { FormArrayProvider } from '../custom-form-generator/form-array/form-array-provider.service';
+import { ButtonComponent } from '../shared/button/button.component';
+
 import { LoginFormArrayProviderService } from './login-form-array-provider.service';
 
 @Component({
@@ -19,9 +20,7 @@ import { LoginFormArrayProviderService } from './login-form-array-provider.servi
     CustomFormGeneratorComponent,
     FormHeaderComponent,
   ],
-  providers: [
-    { provide: FormArrayProvider, useExisting: LoginFormArrayProviderService },
-  ],
+  providers: [{ provide: FormArrayProvider, useExisting: LoginFormArrayProviderService }],
 })
 export class LoginPageComponent {
   constructor(private formProvider: FormArrayProvider) {
@@ -32,6 +31,5 @@ export class LoginPageComponent {
 
   protected m_formTitle: string = 'Вход';
 
-  protected m_formSubTitle: string =
-    'Добро пожаловать! Пожалуйста, введите свои данные.';
+  protected m_formSubTitle: string = 'Добро пожаловать! Пожалуйста, введите свои данные.';
 }

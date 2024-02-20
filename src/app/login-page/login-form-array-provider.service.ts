@@ -1,23 +1,23 @@
-import { Observable } from 'rxjs';
-
 import { DestroyRef, Injectable, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
-  ValidatorFn,
   AbstractControl,
-  ValidationErrors,
   FormControl,
+  ValidationErrors,
+  ValidatorFn,
   Validators,
 } from '@angular/forms';
+
+import { Observable } from 'rxjs';
 
 import {
   FormArrayProvider,
   FormNotFoundError,
 } from '../custom-form-generator/form-array/form-array-provider.service';
-import { IFormArrayWithDescriptions } from '../custom-form-generator/form-array/iform-array-with-descriptions';
 import { FormArrayWithDescriptions } from '../custom-form-generator/form-array/form-array-with-descriptions';
 import { FormItems } from '../custom-form-generator/form-array/form-items';
 import { FormStyles } from '../custom-form-generator/form-array/form-style';
+import { IFormArrayWithDescriptions } from '../custom-form-generator/form-array/iform-array-with-descriptions';
 import { FormButton } from '../custom-form-generator/form-button/form-button';
 import { IFormButton } from '../custom-form-generator/form-button/iform-button';
 import { FormInputWithLabel } from '../custom-form-generator/form-input/form-input-with-label';
@@ -48,14 +48,13 @@ export class LoginFormArrayProviderService implements FormArrayProvider {
     class: ['auth-page'],
   });
 
-  private readonly m_verificationCodeForm: IFormInputWithLabel =
-    new FormInputWithLabel({
-      inputName: 'verification-code',
-      inputTitle: 'Код верификации',
-      inputPlaceholder: 'Код из почты',
-      form: new FormControl('', Validators.required),
-      class: ['auth-page'],
-    });
+  private readonly m_verificationCodeForm: IFormInputWithLabel = new FormInputWithLabel({
+    inputName: 'verification-code',
+    inputTitle: 'Код верификации',
+    inputPlaceholder: 'Код из почты',
+    form: new FormControl('', Validators.required),
+    class: ['auth-page'],
+  });
 
   private readonly m_verificationCodeSupportText: IFormText = new FormText({
     text: 'Мы отправили вам код верификации. Пожалуйста, проверьте почту',
@@ -69,18 +68,16 @@ export class LoginFormArrayProviderService implements FormArrayProvider {
       return this.m_loginFormArray.isInvalid();
     },
     click: () => {
-      this.m_loginFormArray.activeItems =
-        this.m_verificationCodeInputActiveItems;
+      this.m_loginFormArray.activeItems = this.m_verificationCodeInputActiveItems;
     },
   });
 
-  private readonly m_linkToRegistration: IFormTextWithLink =
-    new FormTextWithLink({
-      link: 'Зарегистрироваться',
-      routerLink: ['/registration'],
-      textBeforeLink: 'Ещё нет аккаунта? ',
-      class: ['footer'],
-    });
+  private readonly m_linkToRegistration: IFormTextWithLink = new FormTextWithLink({
+    link: 'Зарегистрироваться',
+    routerLink: ['/registration'],
+    textBeforeLink: 'Ещё нет аккаунта? ',
+    class: ['footer'],
+  });
 
   private readonly m_emailInputActiveItems = {
     email: FormItems.FORM_INPUT_WITH_LABEL,
@@ -112,28 +109,24 @@ export class LoginFormArrayProviderService implements FormArrayProvider {
     linkToRegistration: this.m_linkToRegistration,
   };
 
-  private readonly m_loginFormArray: IFormArrayWithDescriptions =
-    new FormArrayWithDescriptions({
-      forms: this.m_formsOnPage,
-      formsStyle: FormStyles.LOGIN_FORM,
-      buttons: this.m_buttonsOnPage,
-      texts: this.m_textsOnPage,
-      textsWithLinks: this.m_textsWithLinksOnPage,
-      activeItems: this.m_emailInputActiveItems,
-      onCreate: () => {
-        this.m_emailControl$
-          ?.pipe(takeUntilDestroyed(this.m_destroyRef))
-          .subscribe(() => {
-            this.m_loginFormArray.activeItems = this.m_emailInputActiveItems;
-          });
-      },
-    });
+  private readonly m_loginFormArray: IFormArrayWithDescriptions = new FormArrayWithDescriptions({
+    forms: this.m_formsOnPage,
+    formsStyle: FormStyles.LOGIN_FORM,
+    buttons: this.m_buttonsOnPage,
+    texts: this.m_textsOnPage,
+    textsWithLinks: this.m_textsWithLinksOnPage,
+    activeItems: this.m_emailInputActiveItems,
+    onCreate: () => {
+      this.m_emailControl$?.pipe(takeUntilDestroyed(this.m_destroyRef)).subscribe(() => {
+        this.m_loginFormArray.activeItems = this.m_emailInputActiveItems;
+      });
+    },
+  });
 
   private readonly m_destroyRef = inject(DestroyRef);
 
   public getFormArray(key: string): IFormArrayWithDescriptions {
-    if (key !== undefined && key !== 'login_page')
-      throw new FormNotFoundError(key);
+    if (key !== undefined && key !== 'login_page') throw new FormNotFoundError(key);
 
     return this.m_loginFormArray;
   }

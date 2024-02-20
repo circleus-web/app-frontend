@@ -5,10 +5,7 @@ import { Component, input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './cv-block-appearence.component.html',
-  styleUrls: [
-    './cv-block-appearence.component.scss',
-    '../main-page.component.scss',
-  ],
+  styleUrls: ['./cv-block-appearence.component.scss', '../main-page.component.scss'],
 })
 export class CvBlockAppearenceComponent {
   title = input.required<string>();

@@ -4,9 +4,7 @@
       <div class="photo"></div>
       @if (m_activeStatus) {
         <div class="badge">
-          <app-badge [color]="m_activeStatus.color">{{
-            m_activeStatus.text
-          }}</app-badge>
+          <app-badge [color]="m_activeStatus.color">{{ m_activeStatus.text }}</app-badge>
         </div>
       }
     </div>
@@ -18,9 +16,7 @@
     </div>
   </div>
   <div class="plate specialization-info">
-    <span class="specialization-name">{{
-      specializationInformation().name
-    }}</span>
+    <span class="specialization-name">{{ specializationInformation().name }}</span>
     <span class="graid">{{ specializationInformation().graid }}</span>
   </div>
   <div class="plate contacts-plate">

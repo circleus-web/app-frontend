@@ -1,7 +1,8 @@
 import { FormControl } from '@angular/forms';
 
-import { IInputWithLabel } from './iinput-with-label';
 import { Observable } from 'rxjs';
+
+import { IInputWithLabel } from './iinput-with-label';
 
 interface IRequiredInputWithLabel {
   form: FormControl;

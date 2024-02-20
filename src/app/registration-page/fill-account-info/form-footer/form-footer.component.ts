@@ -1,9 +1,9 @@
 import {
-  Component,
-  input,
   ChangeDetectionStrategy,
+  Component,
   InputSignal,
   InputSignalWithTransform,
+  input,
 } from '@angular/core';
 
 import { ButtonComponent } from '../../../shared/button/button.component';
@@ -22,20 +22,12 @@ export class FormFooterComponent {
 
   public readonly subtitle: InputSignal<string | undefined> = input<string>();
 
-  private _secondaryButtonTransform(
-    value: IButton | undefined,
-  ): IButton | undefined {
-    return value && value.text
-      ? { ...value, class: ['btn', 'btn-secondary'] }
-      : undefined;
+  private _secondaryButtonTransform(value: IButton | undefined): IButton | undefined {
+    return value && value.text ? { ...value, class: ['btn', 'btn-secondary'] } : undefined;
   }
 
-  private _primaryButtontransform(
-    value: IButton | undefined,
-  ): IButton | undefined {
-    return value && value.text
-      ? { ...value, class: ['btn', 'btn-primary'] }
-      : undefined;
+  private _primaryButtontransform(value: IButton | undefined): IButton | undefined {
+    return value && value.text ? { ...value, class: ['btn', 'btn-primary'] } : undefined;
   }
 
   public readonly secondaryButton: InputSignalWithTransform<

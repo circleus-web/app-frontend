@@ -1,6 +1,8 @@
 import { FormControl } from '@angular/forms';
-import { IComboboxWithLabel } from './icombobox-with-label';
+
 import { Observable } from 'rxjs';
+
+import { IComboboxWithLabel } from './icombobox-with-label';
 
 interface IRequiredComboboxWithLabel {
   form: FormControl;

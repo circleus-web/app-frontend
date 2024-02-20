@@ -1,5 +1,5 @@
-import { Component, OnInit, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit, input } from '@angular/core';
 
 import { BadgeComponent } from '../../shared/badge/badge.component';
 

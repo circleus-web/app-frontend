@@ -1,9 +1,7 @@
 @if (inputWithLabel().inputTitle) {
-  <label
-    for="{{ inputWithLabel().inputName }}"
-    [ngClass]="inputWithLabel().class"
-    >{{ inputWithLabel().inputTitle }}</label
-  >
+  <label for="{{ inputWithLabel().inputName }}" [ngClass]="inputWithLabel().class">{{
+    inputWithLabel().inputTitle
+  }}</label>
 }
 <input
   [formControl]="inputWithLabel().form"
@@ -12,9 +10,9 @@
   placeholder="{{ inputWithLabel().inputPlaceholder }}"
 />
 @if (inputWithLabel().isInvalid) {
-  @if (inputWithLabel().hasError("incorrectEmail")) {
+  @if (inputWithLabel().hasError('incorrectEmail')) {
     <span class="error" [ngClass]="inputWithLabel().class">{{
-      "Email должен содержать символ «@» и имя домена"
+      'Email должен содержать символ «@» и имя домена'
     }}</span>
   }
 }

@@ -1,6 +1,6 @@
 @mixin font-h-1-regular {
   // H 1/Regular //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 72px;
   /* Recommend for responsive css clamp(mobile, mid, desktop) - 
@@ -13,7 +13,7 @@
 
 @mixin font-h-1-medium {
   // H 1/Medium //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 500;
   font-size: 72px;
   /* Recommend for responsive css clamp(mobile, mid, desktop) - 
@@ -26,7 +26,7 @@
 
 @mixin font-h-1-semibold {
   // H 1/Semibold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 72px;
   /* Recommend for responsive css clamp(mobile, mid, desktop) - 
@@ -39,7 +39,7 @@
 
 @mixin font-h-1-bold {
   // H 1/Bold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 700;
   font-size: 72px;
   /* Recommend for responsive css clamp(mobile, mid, desktop) - 
@@ -52,7 +52,7 @@
 
 @mixin font-h-2-regular {
   // H 2/Regular //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 56px;
   /* Recommend for responsive css clamp(mobile, mid, desktop) - 
@@ -65,7 +65,7 @@
 
 @mixin font-h-2-medium {
   // H 2/Medium //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 500;
   font-size: 56px;
   /* Recommend for responsive css clamp(mobile, mid, desktop) - 
@@ -78,7 +78,7 @@
 
 @mixin font-h-2-semibold {
   // H 2/Semibold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 56px;
   /* Recommend for responsive css clamp(mobile, mid, desktop) - 
@@ -91,7 +91,7 @@
 
 @mixin font-h-2-bold {
   // H 2/Bold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 700;
   font-size: 56px;
   /* Recommend for responsive css clamp(mobile, mid, desktop) - 
@@ -104,7 +104,7 @@
 
 @mixin font-h-3-regular {
   // H 3/Regular //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 48px;
   line-height: 116.67%;
@@ -114,7 +114,7 @@
 
 @mixin font-h-3-medium {
   // H 3/Medium //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 500;
   font-size: 48px;
   line-height: 116.67%;
@@ -124,7 +124,7 @@
 
 @mixin font-h-3-semibold {
   // H 3/Semibold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 48px;
   line-height: 116.67%;
@@ -134,7 +134,7 @@
 
 @mixin font-h-3-bold {
   // H 3/Bold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 700;
   font-size: 48px;
   line-height: 116.67%;
@@ -144,7 +144,7 @@
 
 @mixin font-h-4-regular {
   // H 4/Regular //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 36px;
   line-height: 122.22%;
@@ -154,7 +154,7 @@
 
 @mixin font-h-4-medium {
   // H 4/Medium //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 500;
   font-size: 36px;
   line-height: 122.22%;
@@ -164,7 +164,7 @@
 
 @mixin font-h-4-semibold {
   // H 4/Semibold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 36px;
   line-height: 122.22%;
@@ -174,7 +174,7 @@
 
 @mixin font-h-4-bold {
   // H 4/Bold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 700;
   font-size: 36px;
   line-height: 122.22%;
@@ -184,7 +184,7 @@
 
 @mixin font-h-5-regular {
   // H 5/Regular //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 32px;
   line-height: 125%;
@@ -194,7 +194,7 @@
 
 @mixin font-h-5-medium {
   // H 5/Medium //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 500;
   font-size: 32px;
   line-height: 125%;
@@ -204,7 +204,7 @@
 
 @mixin font-h-5-semibold {
   // H 5/Semibold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 600;
   font-size: 32px;
   line-height: 125%;
@@ -214,7 +214,7 @@
 
 @mixin font-h-5-bold {
   // H 5/Bold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 700;
   font-size: 32px;
   line-height: 125%;
@@ -224,7 +224,7 @@
 
 @mixin font-h-6-regular {
   // H 6/Regular //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 24px;
   line-height: 133.33%;
@@ -234,7 +234,7 @@
 
 @mixin font-h-6-medium {
   // H 6/Medium //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 500;
   font-size: 24px;
   line-height: 133.33%;
@@ -244,7 +244,7 @@
 
 @mixin font-h-6-semibold {
   // H 6/Semibold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 600;
   font-size: 24px;
   line-height: 133.33%;
@@ -254,7 +254,7 @@
 
 @mixin font-h-6-bold {
   // H 6/Bold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 700;
   font-size: 24px;
   line-height: 133.33%;
@@ -264,7 +264,7 @@
 
 @mixin font-body-1-regular {
   // Body 1/Regular //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
@@ -274,7 +274,7 @@
 
 @mixin font-body-1-medium {
   // Body 1/Medium //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
@@ -284,7 +284,7 @@
 
 @mixin font-body-1-semibold {
   // Body 1/Semibold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 600;
   font-size: 16px;
   line-height: 150%;
@@ -294,7 +294,7 @@
 
 @mixin font-body-1-bold {
   // Body 1/Bold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 700;
   font-size: 16px;
   line-height: 150%;
@@ -304,7 +304,7 @@
 
 @mixin font-body-1-condensed-regular {
   // Body 1 Condensed/Regular //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 16px;
   line-height: 125%;
@@ -314,7 +314,7 @@
 
 @mixin font-body-1-condensed-medium {
   // Body 1 Condensed/Medium //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 500;
   font-size: 16px;
   line-height: 125%;
@@ -324,7 +324,7 @@
 
 @mixin font-body-1-condensed-semibold {
   // Body 1 Condensed/Semibold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 16px;
   line-height: 125%;
@@ -334,7 +334,7 @@
 
 @mixin font-body-1-condensed-bold {
   // Body 1 Condensed/Bold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 700;
   font-size: 16px;
   line-height: 125%;
@@ -344,7 +344,7 @@
 
 @mixin font-body-2-regular {
   // Body 2/Regular //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 14px;
   line-height: 142.86%;
@@ -354,7 +354,7 @@
 
 @mixin font-body-2-medium {
   // Body 2/Medium //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 500;
   font-size: 14px;
   line-height: 142.86%;
@@ -364,7 +364,7 @@
 
 @mixin font-body-2-semibold {
   // Body 2/Semibold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 14px;
   line-height: 142.86%;
@@ -374,7 +374,7 @@
 
 @mixin font-body-2-bold {
   // Body 2/Bold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 700;
   font-size: 14px;
   line-height: 142.86%;
@@ -384,7 +384,7 @@
 
 @mixin font-body-2-condensed-regular {
   // Body 2 Condensed/Regular //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 14px;
   line-height: 114.29%;
@@ -394,7 +394,7 @@
 
 @mixin font-body-2-condensed-medium {
   // Body 2 Condensed/Medium //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 500;
   font-size: 14px;
   line-height: 114.29%;
@@ -404,7 +404,7 @@
 
 @mixin font-body-2-condensed-semibold {
   // Body 2 Condensed/Semibold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 14px;
   line-height: 114.29%;
@@ -414,7 +414,7 @@
 
 @mixin font-body-2-condensed-bold {
   // Body 2 Condensed/Bold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 700;
   font-size: 14px;
   line-height: 114.29%;
@@ -424,7 +424,7 @@
 
 @mixin font-small-regular {
   // Small/Regular //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 12px;
   line-height: 133.33%;
@@ -434,7 +434,7 @@
 
 @mixin font-small-medium {
   // Small/Medium //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 500;
   font-size: 12px;
   line-height: 133.33%;
@@ -444,7 +444,7 @@
 
 @mixin font-small-semibold {
   // Small/Semibold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 12px;
   line-height: 133.33%;
@@ -454,7 +454,7 @@
 
 @mixin font-small-bold {
   // Small/Bold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 700;
   font-size: 12px;
   line-height: 133.33%;
@@ -464,7 +464,7 @@
 
 @mixin font-uppercase-regular {
   // UPPERCASE/Regular //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 12px;
   line-height: 133.33%;
@@ -474,7 +474,7 @@
 
 @mixin font-uppercase-medium {
   // UPPERCASE/Medium //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 500;
   font-size: 12px;
   line-height: 133.33%;
@@ -484,7 +484,7 @@
 
 @mixin font-uppercase-semibold {
   // UPPERCASE/Semibold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 400;
   font-size: 12px;
   line-height: 133.33%;
@@ -495,7 +495,7 @@
 
 @mixin font-uppercase-bold {
   // UPPERCASE/Bold //
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 700;
   font-size: 12px;
   line-height: 133.33%;

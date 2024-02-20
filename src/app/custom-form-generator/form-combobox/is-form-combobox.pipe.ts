@@ -1,8 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { IFormItem } from '../form-array/iform-item';
-import { FormCombobox } from './form-combobox';
 import { FormItems } from '../form-array/form-items';
+import { IFormItem } from '../form-array/iform-item';
+
+import { FormCombobox } from './form-combobox';
 
 @Pipe({
   name: 'isFormCombobox',

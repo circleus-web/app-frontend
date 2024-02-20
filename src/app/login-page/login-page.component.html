@@ -1,10 +1,7 @@
 <main class="colored-form">
   <div class="form-container">
     <div class="outer-form">
-      <app-form-header
-        [formTitle]="m_formTitle"
-        [formSubTitle]="m_formSubTitle"
-      ></app-form-header>
+      <app-form-header [formTitle]="m_formTitle" [formSubTitle]="m_formSubTitle"></app-form-header>
       <div class="inner-form">
         <app-custom-form-generator
           [forms]="m_formArrayWithDescriptions"

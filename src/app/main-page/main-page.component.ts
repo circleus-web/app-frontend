@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 import { HeaderComponent } from '../header/header.component';
-import { GeneralBlockComponent } from './general-block/general-block.component';
+
 import { AboutBlockComponent } from './about-block/about-block.component';
-import { ExperienceBlockComponent } from './experience-block/experience-block.component';
-import { SkillsBlockComponent } from './skills-block/skills-block.component';
-import { ProjectsBlockComponent } from './projects-block/projects-block.component';
-import { EducationBlockComponent } from './education-block/education-block.component';
 import { AchievementsBlockComponent } from './achievements-block/achievements-block.component';
-import { RecomendationsBlockComponent } from './recomendations-block/recomendations-block.component';
-import { LanguagesBlockComponent } from './languages-block/languages-block.component';
-import { EmploymentBlockComponent } from './employment-block/employment-block.component';
-import { SalaryBlockComponent } from './salary-block/salary-block.component';
 import { CertificatesBlockComponent } from './certificates-block/certificates-block.component';
+import { EducationBlockComponent } from './education-block/education-block.component';
+import { EmploymentBlockComponent } from './employment-block/employment-block.component';
+import { ExperienceBlockComponent } from './experience-block/experience-block.component';
+import { GeneralBlockComponent } from './general-block/general-block.component';
+import { LanguagesBlockComponent } from './languages-block/languages-block.component';
+import { ProjectsBlockComponent } from './projects-block/projects-block.component';
+import { RecomendationsBlockComponent } from './recomendations-block/recomendations-block.component';
+import { SalaryBlockComponent } from './salary-block/salary-block.component';
+import { SkillsBlockComponent } from './skills-block/skills-block.component';
 
 enum UsedBreakpoints {
   LARGE = 'large',

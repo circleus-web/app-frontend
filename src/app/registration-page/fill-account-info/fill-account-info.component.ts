@@ -1,14 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { HeaderComponent } from '../../header/header.component';
-import { FormFooterComponent } from './form-footer/form-footer.component';
-import { FormArrayProvider } from '../../custom-form-generator/form-array/form-array-provider.service';
-import { RegistrationFormArrayProviderService } from '../registration-form-array-provider.service';
-import { IFormArrayWithDescriptions } from '../../custom-form-generator/form-array/iform-array-with-descriptions';
 import { CustomFormGeneratorComponent } from '../../custom-form-generator/custom-form-generator.component';
+import { FormArrayProvider } from '../../custom-form-generator/form-array/form-array-provider.service';
+import { IFormArrayWithDescriptions } from '../../custom-form-generator/form-array/iform-array-with-descriptions';
+import { HeaderComponent } from '../../header/header.component';
 import { Button } from '../../shared/button/button';
 import { IButton } from '../../shared/button/ibutton';
+import { RegistrationFormArrayProviderService } from '../registration-form-array-provider.service';
+
+import { FormFooterComponent } from './form-footer/form-footer.component';
 
 enum FormSteps {
   FirstStep = 0,
@@ -41,12 +42,7 @@ class InvalidStepError extends Error {
       useClass: RegistrationFormArrayProviderService,
     },
   ],
-  imports: [
-    RouterModule,
-    HeaderComponent,
-    FormFooterComponent,
-    CustomFormGeneratorComponent,
-  ],
+  imports: [RouterModule, HeaderComponent, FormFooterComponent, CustomFormGeneratorComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FillAccountInfoComponent {
@@ -56,12 +52,10 @@ export class FillAccountInfoComponent {
     this.p_currentStep = value;
     switch (value) {
       case FormSteps.GeneralInfo:
-        this.m_formArrayWithDescriptions =
-          this._formArrayProvider.getFormArray('general_info');
+        this.m_formArrayWithDescriptions = this._formArrayProvider.getFormArray('general_info');
         break;
       case FormSteps.JobInfo:
-        this.m_formArrayWithDescriptions =
-          this._formArrayProvider.getFormArray('job_info');
+        this.m_formArrayWithDescriptions = this._formArrayProvider.getFormArray('job_info');
         break;
       default:
         throw new InvalidStepError(value);
@@ -116,11 +110,8 @@ export class FillAccountInfoComponent {
 
   protected m_formArrayWithDescriptions: IFormArrayWithDescriptions;
 
-  constructor(
-    private _formArrayProvider: RegistrationFormArrayProviderService,
-  ) {
-    this.m_formArrayWithDescriptions =
-      _formArrayProvider.getFormArray('general_info');
+  constructor(private _formArrayProvider: RegistrationFormArrayProviderService) {
+    this.m_formArrayWithDescriptions = _formArrayProvider.getFormArray('general_info');
   }
 
   private _nextPage() {
@@ -137,12 +128,8 @@ export class FillAccountInfoComponent {
 
   private _getAboutFormsContent(): object {
     return {
-      ...this._formArrayProvider
-        .getFormArray('general_info')
-        .getActiveFormContent(),
-      ...this._formArrayProvider
-        .getFormArray('job_info')
-        .getActiveFormContent(),
+      ...this._formArrayProvider.getFormArray('general_info').getActiveFormContent(),
+      ...this._formArrayProvider.getFormArray('job_info').getActiveFormContent(),
     };
   }
 

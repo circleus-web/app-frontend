@@ -1,16 +1,18 @@
 import { FormControl, FormGroup } from '@angular/forms';
+
 import { Observable } from 'rxjs';
 
-import { IFormArrayWithDescriptions } from './iform-array-with-descriptions';
 import { IFormButton } from '../form-button/iform-button';
-import { IFormInputWithLabel } from '../form-input/iform-input-with-label';
-import { FormStyles } from './form-style';
-import { FormItems } from './form-items';
-import { IFormItem } from './iform-item';
-import { IFormText } from '../form-text/iform-text';
-import { IFormTextWithLink } from '../form-text-with-link/iform-text-with-link';
 import { IFormCombobox } from '../form-combobox/iform-combobox';
 import { IFormInputWithToggle } from '../form-input-with-toggle/iform-input-with-toggle';
+import { IFormInputWithLabel } from '../form-input/iform-input-with-label';
+import { IFormTextWithLink } from '../form-text-with-link/iform-text-with-link';
+import { IFormText } from '../form-text/iform-text';
+
+import { FormItems } from './form-items';
+import { FormStyles } from './form-style';
+import { IFormArrayWithDescriptions } from './iform-array-with-descriptions';
+import { IFormItem } from './iform-item';
 
 interface IRequiredFormArrayWithDescriptions {
   forms?: {
@@ -72,9 +74,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
   }
 
   private getFormTextWithLink(textName: string): IFormTextWithLink | undefined {
-    return this.textsWithLinks
-      ? (this.textsWithLinks[textName] as IFormTextWithLink)
-      : undefined;
+    return this.textsWithLinks ? (this.textsWithLinks[textName] as IFormTextWithLink) : undefined;
   }
 
   public getFormControl(formName: string): FormControl | undefined {

@@ -1,8 +1,8 @@
-import { Component, OnInit, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit, input } from '@angular/core';
 
-import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
 import { BadgeComponent } from '../../shared/badge/badge.component';
+import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
 
 interface IBadge {
   text: string;
@@ -13,10 +13,7 @@ interface IBadge {
   selector: 'app-employment-block',
   standalone: true,
   templateUrl: './employment-block.component.html',
-  styleUrls: [
-    './employment-block.component.scss',
-    '../main-page.component.scss',
-  ],
+  styleUrls: ['./employment-block.component.scss', '../main-page.component.scss'],
   imports: [CommonModule, CvBlockAppearenceComponent, BadgeComponent],
 })
 export class EmploymentBlockComponent implements OnInit {

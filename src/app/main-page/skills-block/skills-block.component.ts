@@ -1,8 +1,8 @@
-import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, input } from '@angular/core';
 
-import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
 import { BadgeComponent } from '../../shared/badge/badge.component';
+import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
 
 @Component({
   selector: 'app-skills-block',
