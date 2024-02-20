@@ -2,6 +2,7 @@
 @import 'effects/shadows';
 
 button.btn {
+  cursor: pointer;
   display: flex;
 
   padding: 12px 16px;
@@ -18,6 +19,12 @@ button.btn {
   @include shadow-xs;
 
   @include font-body-2-condensed-semibold;
+}
+
+button.btn.btn-primary,
+button.btn.btn-secondary,
+button.btn.btn-secondary-gray {
+  outline: none;
 }
 
 button.btn.btn-primary {
