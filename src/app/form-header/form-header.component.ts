@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-form-header',
@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './form-header.component.scss',
 })
 export class FormHeaderComponent {
-  @Input({ required: true }) formTitle!: string;
+  formTitle = input.required<string>();
 
-  @Input() formSubTitle?: string;
+  formSubTitle = input<string | undefined>();
 }

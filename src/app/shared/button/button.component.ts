@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 import { IButton } from './ibutton';
@@ -12,14 +12,20 @@ import { CommonModule } from '@angular/common';
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  @Input({ required: true }) button!: IButton;
+  button = input.required<IButton>();
 
-  @Input() buttonStyle?: { [key: string]: string };
+  buttonStyle = input<
+  | {
+    [key: string]: string;
+  }
+  | undefined
+  >();
 
   constructor(private router: Router) {}
 
   protected click(): void {
-    this.button.click?.call(this.button);
-    if (this.button.routerLink) this.router.navigate(this.button.routerLink);
+    this.button().click?.call(this.button());
+    const routerLink: string[] | undefined = this.button().routerLink;
+    if (routerLink) this.router.navigate(routerLink);
   }
 }

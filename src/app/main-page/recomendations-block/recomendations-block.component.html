@@ -1,6 +1,10 @@
-<app-cv-block-appearence title="Рекомендации" class="cv-block" [ngClass]="size">
-  <div class="recomendations">
-    @for (recomendation of recomendations; track $index) {
+<app-cv-block-appearence
+  title="Рекомендации"
+  class="cv-block"
+  [ngClass]="size()"
+>
+  <div class="recomendations()">
+    @for (recomendation of recomendations(); track $index) {
       <div class="recomendation">
         <div class="head">
           <span class="source">{{ recomendation.source }}</span>

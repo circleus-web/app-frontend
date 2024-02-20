@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BadgeComponent } from '../../shared/badge/badge.component';
@@ -39,20 +39,19 @@ export class GeneralBlockComponent implements OnInit {
     },
   };
 
-  @Input({ required: true }) status!: string;
+  status = input.required<string>();
 
   protected m_activeStatus?: IBadge;
 
-  @Input({ required: true }) personInformation!: IPersonInformation;
+  personInformation = input.required<IPersonInformation>();
 
-  @Input({ required: true })
-  specializationInformation!: ISpecializationInformation;
+  specializationInformation = input.required<ISpecializationInformation>();
 
-  @Input({ required: true }) contacts!: IContacts;
+  contacts = input.required<IContacts>();
 
   ngOnInit(): void {
-    this.m_activeStatus = this.m_possibleStatuses[this.status];
+    this.m_activeStatus = this.m_possibleStatuses[this.status()];
   }
 
-  @Input({ required: true }) size!: string;
+  size = input.required<string>();
 }

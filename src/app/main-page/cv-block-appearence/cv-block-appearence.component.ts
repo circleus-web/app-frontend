@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-cv-block-appearence',
@@ -11,5 +11,5 @@ import { Component, Input } from '@angular/core';
   ],
 })
 export class CvBlockAppearenceComponent {
-  @Input({ required: true }) title!: string;
+  title = input.required<string>();
 }

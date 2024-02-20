@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { IText } from './itext';
@@ -11,5 +11,5 @@ import { IText } from './itext';
   styleUrl: './text.component.scss',
 })
 export class TextComponent {
-  @Input({ required: true }) public text!: IText;
+  public text = input.required<IText>();
 }

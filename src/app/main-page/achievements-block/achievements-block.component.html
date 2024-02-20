@@ -1,6 +1,6 @@
-<app-cv-block-appearence title="Достижения" class="cv-block" [ngClass]="size">
-  <div class="achievements" [ngClass]="size">
-    @for (achievement of achievements; track $index) {
+<app-cv-block-appearence title="Достижения" class="cv-block" [ngClass]="size()">
+  <div class="achievements()" [ngClass]="size()">
+    @for (achievement of achievements(); track $index) {
       <div class="achievement">
         <div class="head">
           <span class="title">{{ achievement.title }}</span>

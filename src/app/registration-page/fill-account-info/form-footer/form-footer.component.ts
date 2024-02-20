@@ -39,16 +39,16 @@ export class FormFooterComponent {
   }
 
   public readonly secondaryButton: InputSignalWithTransform<
-  IButton | undefined,
-  IButton | undefined
+    IButton | undefined,
+    IButton | undefined
   > = input<IButton | undefined, IButton | undefined>(undefined, {
-      transform: this._secondaryButtonTransform,
-    });
+    transform: this._secondaryButtonTransform,
+  });
 
   public readonly primaryButton: InputSignalWithTransform<
-  IButton | undefined,
-  IButton | undefined
+    IButton | undefined,
+    IButton | undefined
   > = input<IButton | undefined, IButton | undefined>(undefined, {
-      transform: this._primaryButtontransform,
-    });
+    transform: this._primaryButtontransform,
+  });
 }

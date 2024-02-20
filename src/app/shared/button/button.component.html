@@ -1,8 +1,8 @@
 <button
   (click)="click()"
-  [disabled]="button.disabled"
-  [ngClass]="button.class"
-  type="button"
+  [disabled]="button().disabled"
+  [ngClass]="button().class"
+  type="button()"
 >
-  {{ button.text }}
+  {{ button().text }}
 </button>

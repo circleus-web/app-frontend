@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
@@ -15,7 +15,7 @@ import { ILanguageRecord } from './ilanguage-record';
   imports: [CommonModule, CvBlockAppearenceComponent],
 })
 export class LanguagesBlockComponent {
-  @Input({ required: true }) languages!: ILanguageRecord[];
+  languages = input.required<ILanguageRecord[]>();
 
-  @Input({ required: true }) size!: string;
+  size = input.required<string>();
 }

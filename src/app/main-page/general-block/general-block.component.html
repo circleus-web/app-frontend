@@ -1,4 +1,4 @@
-<main [ngClass]="size">
+<main [ngClass]="size()">
   <div class="plate person-info">
     <div class="head">
       <div class="photo"></div>
@@ -10,24 +10,24 @@
         </div>
       }
     </div>
-    <div class="name">{{ personInformation.name }}</div>
+    <div class="name">{{ personInformation().name }}</div>
     <div class="foot">
-      <span class="age">{{ personInformation.age }}</span>
+      <span class="age">{{ personInformation().age }}</span>
       <span class="separator">•</span>
-      <span class="location">{{ personInformation.location }}</span>
+      <span class="location">{{ personInformation().location }}</span>
     </div>
   </div>
   <div class="plate specialization-info">
     <span class="specialization-name">{{
-      specializationInformation.name
+      specializationInformation().name
     }}</span>
-    <span class="graid">{{ specializationInformation.graid }}</span>
+    <span class="graid">{{ specializationInformation().graid }}</span>
   </div>
   <div class="plate contacts-plate">
     <span class="title">Свяжитесь со мной</span>
-    <div class="contacts">
-      <span class="email">{{ contacts.email }}</span>
-      <span class="phone">{{ contacts.phone }}</span>
+    <div class="contacts()">
+      <span class="email">{{ contacts().email }}</span>
+      <span class="phone">{{ contacts().phone }}</span>
     </div>
   </div>
   <div class="plate links"></div>

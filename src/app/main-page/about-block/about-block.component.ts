@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
 import { CommonModule } from '@angular/common';
 
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, CvBlockAppearenceComponent],
 })
 export class AboutBlockComponent {
-  @Input({ required: true }) text!: string;
+  text = input.required<string>();
 
-  @Input({ required: true }) size!: string;
+  size = input.required<string>();
 }

@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
 import { BadgeComponent } from '../../shared/badge/badge.component';
+
 interface IBadge {
   text: string;
   color: string;
@@ -34,15 +35,15 @@ export class EmploymentBlockComponent implements OnInit {
     },
   };
 
-  @Input({ required: true }) items!: string[];
+  items = input.required<string[]>();
 
   protected m_activeItems: IBadge[] = [];
 
   ngOnInit(): void {
-    for (const item of this.items) {
+    for (const item of this.items()) {
       this.m_activeItems.push(this.m_possibleValues[item]);
     }
   }
 
-  @Input({ required: true }) size!: string;
+  size = input.required<string>();
 }

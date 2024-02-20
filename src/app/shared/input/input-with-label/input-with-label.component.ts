@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { IInputWithLabel } from './iinput-with-label';
@@ -12,12 +12,12 @@ import { IInputWithLabel } from './iinput-with-label';
   styleUrl: './input-with-label.component.scss',
 })
 export class InputWithLabelComponent {
-  @Input({ required: true }) inputWithLabel!: IInputWithLabel;
+  inputWithLabel = input.required<IInputWithLabel>();
 
   protected get inputClass(): string[] {
     return [
-      ...this.inputWithLabel.class,
-      this.inputWithLabel.isInvalid ? 'error' : '',
+      ...this.inputWithLabel().class,
+      this.inputWithLabel().isInvalid ? 'error' : '',
     ];
   }
 }

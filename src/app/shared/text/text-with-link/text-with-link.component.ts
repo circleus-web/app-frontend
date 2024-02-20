@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -12,5 +12,5 @@ import { ITextWithLink } from './itext-with-link';
   styleUrl: './text-with-link.component.scss',
 })
 export class TextWithLinkComponent {
-  @Input({ required: true }) textWithLink!: ITextWithLink;
+  textWithLink = input.required<ITextWithLink>();
 }

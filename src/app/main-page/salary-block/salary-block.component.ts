@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
@@ -11,9 +11,9 @@ import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appe
   imports: [CommonModule, CvBlockAppearenceComponent],
 })
 export class SalaryBlockComponent {
-  @Input({ required: true }) salaryRange!: number[];
+  salaryRange = input.required<number[]>();
 
-  @Input({ required: true }) currency!: string;
+  currency = input.required<string>();
 
-  @Input({ required: true }) size!: string;
+  size = input.required<string>();
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BadgeComponent } from '../../shared/badge/badge.component';
@@ -16,7 +16,7 @@ import { IAcievement } from './iacievement';
   imports: [CommonModule, BadgeComponent, CvBlockAppearenceComponent],
 })
 export class AchievementsBlockComponent {
-  @Input({ required: true }) achievements!: IAcievement[];
+  achievements = input.required<IAcievement[]>();
 
-  @Input({ required: true }) size!: string;
+  size = input.required<string>();
 }

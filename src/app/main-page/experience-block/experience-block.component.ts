@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { IExperienceDescription } from './iexperience-description';
 import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
+
 @Component({
   selector: 'app-experience-block',
   standalone: true,
@@ -14,7 +15,7 @@ import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appe
   imports: [CommonModule, CvBlockAppearenceComponent],
 })
 export class ExperienceBlockComponent {
-  @Input({ required: true }) previousExperiences!: IExperienceDescription[];
+  previousExperiences = input.required<IExperienceDescription[]>();
 
-  @Input({ required: true }) size!: string;
+  size = input.required<string>();
 }

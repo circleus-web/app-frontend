@@ -1,6 +1,10 @@
-<app-cv-block-appearence title="Опыт работы" class="cv-block" [ngClass]="size">
+<app-cv-block-appearence
+  title="Опыт работы"
+  class="cv-block"
+  [ngClass]="size()"
+>
   <div class="experience">
-    @for (experience of previousExperiences; track $index) {
+    @for (experience of previousExperiences(); track $index) {
       <div class="experience-item">
         <div class="head">
           <span class="title">{{ experience.title }}</span>

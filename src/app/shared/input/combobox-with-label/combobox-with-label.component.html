@@ -1,17 +1,17 @@
-@if (comboboxWithLabel.comboboxTitle) {
+@if (comboboxWithLabel().comboboxTitle) {
   <label
-    for="{{ comboboxWithLabel.comboboxName }}"
-    [ngClass]="comboboxWithLabel.class"
-    >{{ comboboxWithLabel.comboboxTitle }}</label
+    for="{{ comboboxWithLabel().comboboxName }}"
+    [ngClass]="comboboxWithLabel().class"
+    >{{ comboboxWithLabel().comboboxTitle }}</label
   >
 }
 <div class="select-wrapper">
   <select
-    [formControl]="comboboxWithLabel.form"
-    [ngClass]="comboboxWithLabel.class"
+    [formControl]="comboboxWithLabel().form"
+    [ngClass]="comboboxWithLabel().class"
   >
     <option
-      *ngFor="let option of comboboxWithLabel.comboboxOptions"
+      *ngFor="let option of comboboxWithLabel().comboboxOptions"
       [value]="option"
     >
       {{ option }}

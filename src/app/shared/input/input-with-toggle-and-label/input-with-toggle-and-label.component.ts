@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -13,20 +13,19 @@ import { ToggleButtonComponent } from '../../toggle-button/toggle-button.compone
   imports: [CommonModule, ReactiveFormsModule, ToggleButtonComponent],
 })
 export class InputWithToggleAndLabelComponent {
-  @Input({ required: true })
-  inputWithToggleAndLabel!: IInputWithToggleAndLabel;
+  inputWithToggleAndLabel = input.required<IInputWithToggleAndLabel>();
 
   protected get inputClass(): string[] {
     return [
-      ...this.inputWithToggleAndLabel.class,
-      this.inputWithToggleAndLabel.isInvalid ? 'error' : '',
+      ...this.inputWithToggleAndLabel().class,
+      this.inputWithToggleAndLabel().isInvalid ? 'error' : '',
     ];
   }
 
   protected toggle(value: boolean) {
-    const newValue = this.inputWithToggleAndLabel.isInversed
-      ? value !== this.inputWithToggleAndLabel.isInversed
+    const newValue = this.inputWithToggleAndLabel().isInversed
+      ? value !== this.inputWithToggleAndLabel().isInversed
       : value;
-    this.inputWithToggleAndLabel.toggleChecked = newValue;
+    this.inputWithToggleAndLabel().toggleChecked = newValue;
   }
 }

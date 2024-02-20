@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
@@ -16,7 +16,7 @@ import { IRecomendation } from './irecomendation';
   imports: [CommonModule, CvBlockAppearenceComponent, BadgeComponent],
 })
 export class RecomendationsBlockComponent {
-  @Input({ required: true }) recomendations!: IRecomendation[];
+  recomendations = input.required<IRecomendation[]>();
 
-  @Input({ required: true }) size!: string;
+  size = input.required<string>();
 }

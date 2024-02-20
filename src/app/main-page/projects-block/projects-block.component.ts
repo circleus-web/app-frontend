@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CvBlockAppearenceComponent } from '../cv-block-appearence/cv-block-appearence.component';
@@ -13,7 +13,7 @@ import { IProject } from './iproject';
   imports: [CommonModule, CvBlockAppearenceComponent, BadgeComponent],
 })
 export class ProjectsBlockComponent {
-  @Input({ required: true }) projects!: IProject[];
+  projects = input.required<IProject[]>();
 
-  @Input({ required: true }) size!: string;
+  size = input.required<string>();
 }
