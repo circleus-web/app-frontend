@@ -4,11 +4,14 @@ import { IFormInputWithLabel } from './iform-input-with-label';
 
 export class FormInputWithLabel
   extends InputWithLabel
-  implements IFormInputWithLabel
-{
+  implements IFormInputWithLabel {
   public type: FormItems = FormItems.FORM_INPUT_WITH_LABEL;
 
-  public getJSON(): string[] | string | undefined {
-    return `"${this.inputName}": "${this.form.value}"`;
+  public getContent(): object {
+    const content: { [key: string]: string } = {};
+
+    content[this.inputName] = this.form.value;
+
+    return content;
   }
 }

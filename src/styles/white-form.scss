@@ -30,10 +30,11 @@ main.white-form {
     @include form-container-style;
   }
 
-  div.form {
+  div.outer-form {
     .inner-form {
       .form-component {
         gap: $form-gap;
+        padding-bottom: 8px;
       }
     }
   }

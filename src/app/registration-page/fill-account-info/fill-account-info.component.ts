@@ -87,6 +87,9 @@ export class FillAccountInfoComponent {
     }),
     submit: new Button({
       text: 'Начать работу',
+      click: () => {
+        this._logFormsContent();
+      },
     }),
   };
 
@@ -130,5 +133,16 @@ export class FillAccountInfoComponent {
     if (this._currentStep > FormSteps.FirstStep + 1) {
       this._currentStep -= 1;
     }
+  }
+
+  private _getAboutFormsContent(): object {
+    return {
+      ...this._formArrayProvider.getFormArray('general_info').getActiveFormContent(),
+      ...this._formArrayProvider.getFormArray('job_info').getActiveFormContent(),
+    };
+  }
+
+  private _logFormsContent() {
+    console.log(JSON.stringify(this._getAboutFormsContent()));
   }
 }

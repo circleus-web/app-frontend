@@ -131,19 +131,19 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     return this.getForm(formName)?.getValueChanges();
   }
 
-  public getActiveFormJSON(): string {
-    let resultJSON: string = '{\n';
+  public getActiveFormContent(): object {
+    let resultObject: object = {};
     for (const item of this.iterableItems) {
-      const itemJSON = item.getJSON();
-      if (typeof itemJSON === 'string') {
-        resultJSON += '  ' + itemJSON + ',\n';
-      } else if (itemJSON instanceof Array) {
-        resultJSON += '  ' + itemJSON.join(',\n  ') + ',\n';
-      }
+      resultObject = {
+        ...resultObject,
+        ...item.getContent(),
+      };
     }
-    resultJSON = resultJSON.slice(0, -2);
-    resultJSON += '\n}';
 
-    return resultJSON;
+    return resultObject;
+  }
+
+  public getActiveFormJSON(): string {
+    return JSON.stringify(this.getActiveFormContent());
   }
 }

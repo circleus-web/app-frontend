@@ -27,4 +27,5 @@ export interface IFormArrayWithDescriptions {
   onCreate?: () => void;
   onDestroy?: () => void;
   getActiveFormJSON(): string;
+  getActiveFormContent(): object;
 }

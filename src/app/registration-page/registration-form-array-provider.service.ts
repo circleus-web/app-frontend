@@ -208,17 +208,6 @@ class GeneralForm {
     city: this.m_cityForm,
   };
 
-  private readonly m_showJSONButton: IFormButton = new FormButton({
-    text: 'Показать JSON',
-    click: () => {
-      console.log(this.formArrayWithDescriptions.getActiveFormJSON());
-    },
-  });
-
-  private readonly m_buttonsOnPage = {
-    json: this.m_showJSONButton,
-  };
-
   private readonly m_generalActiveItems = {
     lastName: FormItems.FORM_INPUT_WITH_LABEL,
     firstName: FormItems.FORM_INPUT_WITH_LABEL,
@@ -226,13 +215,11 @@ class GeneralForm {
     dateOfBirth: FormItems.FORM_INPUT_WITH_LABEL,
     city: FormItems.FORM_INPUT_WITH_LABEL,
     submit: FormItems.FORM_BUTTON,
-    json: FormItems.FORM_BUTTON,
   };
 
   public formArrayWithDescriptions: IFormArrayWithDescriptions =
     new FormArrayWithDescriptions({
       forms: this.m_formsOnPage,
-      buttons: this.m_buttonsOnPage,
       activeItems: this.m_generalActiveItems,
     });
 }

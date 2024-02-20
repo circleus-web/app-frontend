@@ -8,4 +8,12 @@ export class FormCombobox extends ComboboxWithLabel implements IFormCombobox {
   public getJSON(): string[] | string | undefined {
     return `"${this.comboboxName}": "${this.form.value}"`;
   }
+
+  public getContent(): object {
+    const content: { [key: string]: string } = {};
+
+    content[this.comboboxName] = this.form.value;
+
+    return content;
+  }
 }

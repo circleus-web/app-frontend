@@ -5,7 +5,7 @@ import { IFormText } from './iform-text';
 export class FormText extends Text implements IFormText {
   public type: FormItems = FormItems.FORM_TEXT;
 
-  public getJSON(): string[] | string | undefined {
-    return undefined;
+  public getContent(): object {
+    return {};
   }
 }
