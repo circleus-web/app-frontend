@@ -23,7 +23,7 @@ export class FormFooterComponent {
   public readonly subtitle: InputSignal<string | undefined> = input<string>();
 
   private _secondaryButtonTransform(value: IButton | undefined): IButton | undefined {
-    return value && value.text ? { ...value, class: ['btn', 'btn-secondary'] } : undefined;
+    return value && value.text ? { ...value, class: ['btn', 'btn-secondary-gray'] } : undefined;
   }
 
   private _primaryButtontransform(value: IButton | undefined): IButton | undefined {

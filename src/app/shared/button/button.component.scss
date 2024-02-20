@@ -26,10 +26,66 @@ button.btn.btn-primary {
   color: var(--White, #fff);
 }
 
+button.btn.btn-primary:hover {
+  border: 1px solid var(--Accent-700, #6941c6);
+  background: var(--Accent-700, #6941c6);
+}
+
+button.btn.btn-primary:focus {
+  border: 1px solid var(--Accent-600, #7f56d9);
+  background: var(--Accent-600, #7f56d9);
+
+  box-shadow: 0 0 0 2px #f4ebff;
+}
+
+button.btn.btn-primary:disabled {
+  border: 1px solid var(--Accent-200, #e9d7fe);
+  background: var(--Accent-200, #e9d7fe);
+}
+
 button.btn.btn-secondary {
   border-radius: 8px;
-  border: 1px solid var(--Gray-300, #d0d5dd);
-  background: var(--White, #fff);
+  border: 1px solid var(--Accent-50, #f9f5ff);
+  background: var(--Accent-50, #f9f5ff);
 
-  @include shadow-xs;
+  color: #6941c6;
+}
+
+button.btn.btn-secondary:hover {
+  border: 1px solid var(--Accent-100, #f4ebff);
+  background: var(--Accent-100, #f4ebff);
+}
+
+button.btn.btn-secondary:focus {
+  border: 1px solid var(--Accent-50, #f9f5ff);
+  background: var(--Accent-50, #f9f5ff);
+
+  box-shadow: 0 0 0 2px #f4ebff;
+}
+
+button.btn.btn-secondary:disabled {
+  border: 1px solid var(--Accent-25, #fcfaff);
+  background: var(--Accent-25, #fcfaff);
+
+  color: var(--Accent-300, #d6bbfb);
+}
+
+button.btn.btn-secondary-gray {
+  border-radius: 8px;
+  border: 1px solid var(--Gray-300, #d0d5dd);
+  background: var(--White, #ffffff);
+}
+
+button.btn.btn-secondary-gray:hover {
+  background: var(--Gray-50, #f9fafb);
+}
+
+button.btn.btn-secondary-gray:focus {
+  box-shadow: 0 0 0 2px #f4ebff;
+}
+
+button.btn.btn-secondary-gray:disabled {
+  border: 1px solid var(--Gray-200, #eaecf0);
+
+  color: var(--Gray-300, #d0d5dd);
 }
