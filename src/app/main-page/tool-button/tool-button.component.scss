@@ -1,0 +1,135 @@
+@import 'effects/shadows';
+
+$button-size: 64px;
+$floating-button-size: 48px;
+$dot-size: 5px;
+$dot-array-height: 22px;
+
+$transition-start: 0.3s;
+$transition-step: 0.1s;
+
+button {
+  border: none;
+}
+
+.tool-selector,
+.floating-button {
+  position: absolute;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  right: 20px;
+  bottom: 20px;
+
+  width: $button-size;
+  height: $button-size;
+
+  border-radius: 50%;
+
+  z-index: 20;
+}
+
+.floating-button {
+  right: 28px;
+  bottom: 28px;
+
+  width: $floating-button-size;
+  height: $floating-button-size;
+
+  z-index: 10;
+}
+
+.tool-selector:hover {
+  @include shadow-sm;
+}
+
+.tool-selector.inactive {
+  background: var(--Accent-600, #7f56d9);
+
+  .inactive-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: $dot-size;
+    height: $dot-array-height;
+
+    * {
+      width: $dot-size;
+      height: $dot-size;
+      border-radius: 50%;
+
+      background: var(--White, #fff);
+    }
+  }
+
+  .active-content {
+    display: none;
+  }
+}
+
+.tool-selector.inactive:hover {
+  cursor: pointer;
+
+  background: var(--Accent-700, #6941c6);
+}
+
+.tool-selector.active {
+  background: var(--Gray-200, #eaecf0);
+
+  .inactive-content {
+    display: none;
+  }
+
+  .active-content {
+    display: flex;
+  }
+}
+
+.tool-selector.active:hover {
+  cursor: pointer;
+
+  background: var(--Gray-300, #d0d5dd);
+}
+
+.floating-button {
+  background: var(--Accent-600, #7f56d9);
+
+  transition: $transition-start ease-in-out;
+}
+
+.floating-button:hover {
+  cursor: pointer;
+  background: var(--Accent-700, #6941c6);
+}
+
+.floating-button.edit.active {
+  transition-duration: $transition-start;
+  transform: translateX(-108px);
+}
+
+.floating-button.edit.inactive {
+  transition-duration: $transition-start + ($transition-step * 2);
+}
+
+.floating-button.download.active {
+  transition-duration: $transition-start + $transition-step;
+  transform: translateX(-76px) translateY(-76px);
+}
+
+.floating-button.download.inactive {
+  transition-duration: $transition-start + $transition-step;
+}
+
+.floating-button.compass.active {
+  transition-duration: $transition-start + ($transition-step * 2);
+  transform: translateY(-108px);
+}
+
+.floating-button.compass.inactive {
+  transition-duration: $transition-start;
+}
