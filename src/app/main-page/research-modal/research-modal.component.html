@@ -1,4 +1,22 @@
-<app-modal [navigationList]="[
-  { iconSrc: 'assets/svg/research-modal/my-possibility\.svg', text: 'Моя вероятность' },
-  { iconSrc: 'assets/svg/research-modal/all-specialists\.svg', text: 'Все It-специалисты' },
-]"></app-modal>
+<app-modal
+  [menyValues]="{
+    'my-possibility': {
+      title: 'Моя вероятность',
+      iconSrc: 'assets/svg/research-modal/my-possibility\.svg',
+      templateValue: m_myPossibilityTemplate,
+    },
+    'all-specialists': {
+      title: 'Все It-специалисты',
+      iconSrc: 'assets/svg/research-modal/all-specialists\.svg',
+      templateValue: m_allSpecialistsTemplate,
+    }
+  }"
+>
+</app-modal>
+
+<ng-template #m_myPossibilityTemplate>
+  <p>it's a possibility section</p>
+</ng-template>
+<ng-template #m_allSpecialistsTemplate>
+  <p>all specialists section</p>
+</ng-template>

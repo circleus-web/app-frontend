@@ -4,16 +4,23 @@
   <div class="navigation">
     <div class="header"></div>
     <div class="body">
-      @for (navigationElement of navigationList(); track $index) {
-        <div class="element" [ngClass]="{ active: $index === 0 }">
-          <img src="{{ navigationElement.iconSrc }}" alt="icon" />
-          <span>{{ navigationElement.text }}</span>
-        </div>
+      @for (menyOption of m_iterableMenyValues(); track $index) {
+        <button
+          type="button"
+          class="element"
+          [ngClass]="{ active: menyOption.name === m_activeOption() }"
+          (click)="m_changeActiveOption(menyOption.name)"
+        >
+          <img src="{{ menyOption.iconSrc }}" alt="icon" />
+          <span>{{ menyOption.title }}</span>
+        </button>
       }
     </div>
   </div>
   <div class="content">
     <div class="header"></div>
-    <div class="body"></div>
+    <div class="body">
+      <ng-template [ngTemplateOutlet]="menyValues()[m_activeOption()].templateValue"></ng-template>
+    </div>
   </div>
 </main>

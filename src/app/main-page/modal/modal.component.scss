@@ -21,6 +21,13 @@ $content-width: calc($main-width - $navigation-width);
   z-index: 50;
 }
 
+button {
+  cursor: pointer;
+
+  background: transparent;
+  border: none;
+}
+
 main {
   position: absolute;
   display: flex;
@@ -79,15 +86,14 @@ main {
 
         padding: 8px 12px;
 
-        background: var(--Gray-200, #eaecf0);
-
         border-radius: 6px;
 
         img {
           width: 20px;
           height: 20px;
 
-          filter: invert(48%) sepia(16%) saturate(477%) hue-rotate(182deg) brightness(87%) contrast(93%);
+          filter: invert(48%) sepia(16%) saturate(477%) hue-rotate(182deg) brightness(87%)
+            contrast(93%);
         }
 
         span {
@@ -98,10 +104,13 @@ main {
       }
 
       .element.active {
+        background: var(--Gray-200, #eaecf0);
+
         img {
-            filter: invert(19%) sepia(10%) saturate(1957%) hue-rotate(179deg) brightness(96%) contrast(81%);
+          filter: invert(19%) sepia(10%) saturate(1957%) hue-rotate(179deg) brightness(96%)
+            contrast(81%);
         }
-        
+
         span {
           color: var(--Gray-700, #344054);
         }

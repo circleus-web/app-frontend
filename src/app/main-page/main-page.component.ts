@@ -14,10 +14,10 @@ import { GeneralBlockComponent } from './general-block/general-block.component';
 import { LanguagesBlockComponent } from './languages-block/languages-block.component';
 import { ProjectsBlockComponent } from './projects-block/projects-block.component';
 import { RecomendationsBlockComponent } from './recomendations-block/recomendations-block.component';
+import { ResearchModalComponent } from './research-modal/research-modal.component';
 import { SalaryBlockComponent } from './salary-block/salary-block.component';
 import { SkillsBlockComponent } from './skills-block/skills-block.component';
 import { ToolButtonComponent } from './tool-button/tool-button.component';
-import { ResearchModalComponent } from './research-modal/research-modal.component';
 
 enum UsedBreakpoints {
   LARGE = 'large',
