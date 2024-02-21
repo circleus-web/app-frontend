@@ -1,0 +1,19 @@
+<div class="background"></div>
+
+<main>
+  <div class="navigation">
+    <div class="header"></div>
+    <div class="body">
+      @for (navigationElement of navigationList(); track $index) {
+        <div class="element" [ngClass]="{ active: $index === 0 }">
+          <img src="{{ navigationElement.iconSrc }}" alt="icon" />
+          <span>{{ navigationElement.text }}</span>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="content">
+    <div class="header"></div>
+    <div class="body"></div>
+  </div>
+</main>

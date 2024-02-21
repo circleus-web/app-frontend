@@ -17,6 +17,7 @@ import { RecomendationsBlockComponent } from './recomendations-block/recomendati
 import { SalaryBlockComponent } from './salary-block/salary-block.component';
 import { SkillsBlockComponent } from './skills-block/skills-block.component';
 import { ToolButtonComponent } from './tool-button/tool-button.component';
+import { ResearchModalComponent } from './research-modal/research-modal.component';
 
 enum UsedBreakpoints {
   LARGE = 'large',
@@ -46,6 +47,7 @@ enum UsedBreakpoints {
     SalaryBlockComponent,
     CertificatesBlockComponent,
     ToolButtonComponent,
+    ResearchModalComponent,
   ],
 })
 export class MainPageComponent implements OnInit {

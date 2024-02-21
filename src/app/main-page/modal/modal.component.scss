@@ -1,0 +1,136 @@
+@import 'typography';
+
+$main-width: 880px;
+$main-height: calc(100vh - 80px);
+
+$header-height: 48px;
+$content-height: calc($main-height - $header-height);
+
+$navigation-width: 240px;
+$content-width: calc($main-width - $navigation-width);
+
+.background {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background: rgba(0, 0, 0, 0.32);
+  z-index: 50;
+}
+
+main {
+  position: absolute;
+  display: flex;
+
+  flex-direction: row;
+
+  top: 40px;
+  left: calc(50vw - calc($main-width / 2));
+
+  width: $main-width;
+  height: $main-height;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  z-index: 100;
+
+  * {
+    z-index: 110;
+  }
+
+  .navigation {
+    display: flex;
+
+    flex-direction: column;
+
+    height: $main-height;
+    width: $navigation-width;
+
+    background: var(--Gray-200, #f2f4f7);
+
+    .header {
+      height: $header-height;
+      width: $navigation-width;
+    }
+
+    .body {
+      display: flex;
+
+      flex-direction: column;
+      gap: 4px;
+
+      padding: 8px 0;
+      margin: 0 8px;
+
+      border-width: 1px 0 0 0;
+      border-style: solid;
+      border-color: var(--Gray-200, #eaecf0);
+
+      .element {
+        display: flex;
+
+        flex-direction: row;
+        gap: 12px;
+
+        padding: 8px 12px;
+
+        background: var(--Gray-200, #eaecf0);
+
+        border-radius: 6px;
+
+        img {
+          width: 20px;
+          height: 20px;
+
+          filter: invert(48%) sepia(16%) saturate(477%) hue-rotate(182deg) brightness(87%) contrast(93%);
+        }
+
+        span {
+          color: var(--Gray-500, #667085);
+
+          @include font-body-2-medium;
+        }
+      }
+
+      .element.active {
+        img {
+            filter: invert(19%) sepia(10%) saturate(1957%) hue-rotate(179deg) brightness(96%) contrast(81%);
+        }
+        
+        span {
+          color: var(--Gray-700, #344054);
+        }
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+
+    flex-direction: column;
+
+    height: $main-height;
+    width: $main-width - $navigation-width;
+
+    background: var(--White, #ffffff);
+
+    .header {
+      height: $header-height;
+      width: $main-width - $navigation-width;
+    }
+
+    .body {
+      height: $content-height;
+      width: $content-width;
+
+      border-width: 1px 0;
+      border-style: solid;
+      border-color: var(--Gray-200, #eaecf0);
+    }
+  }
+}
