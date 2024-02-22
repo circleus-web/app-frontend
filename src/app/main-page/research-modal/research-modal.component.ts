@@ -1,12 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Output, TemplateRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+  TemplateRef,
+} from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 import { ButtonComponent } from '../../shared/button/button.component';
-import { ModalComponent } from '../modal/modal.component';
 import { IInput } from '../../shared/input/input/iinput';
 import { Input } from '../../shared/input/input/input';
-import { FormControl } from '@angular/forms';
 import { InputComponent } from '../../shared/input/input/input.component';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-research-modal',
