@@ -1,9 +1,31 @@
-<div class="header">
-  <div class="logo">
-    <img src="assets/svg/logo.svg" alt="Circleus logo" />
-    <h1 class="title">circleus</h1>
+<main>
+  <div class="header">
+    <div class="logo">
+      <img src="assets/svg/logo.svg" alt="Circleus logo" />
+      <h1 class="title">circleus</h1>
+    </div>
+    <button class="user" (click)="m_onUserClick()">
+      <img src="assets/svg/user.svg" alt="User icon" />
+    </button>
   </div>
-  <div class="user">
-    <img src="assets/svg/user.svg" alt="User icon" />
+
+  <div *ngIf="m_userDropdownActive()" class="user-dropdown">
+    <div class="head">
+      <div class="icon"></div>
+      <div class="name">
+        <h2 class="name">Александр Журавлев</h2>
+        <span class="email">zhur06&#64;gmail.com</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item">
+        <img class="icon" src="assets/svg/header/settings.svg" alt="Settings icon" />
+        <div class="text">Настройки</div>
+      </div>
+      <div class="item">
+        <img class="icon" src="assets/svg/header/logout.svg" alt="Logout icon" />
+        <div class="text">Выйти</div>
+      </div>
+    </div>
   </div>
-</div>
+</main>
