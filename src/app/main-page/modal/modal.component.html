@@ -23,7 +23,7 @@
   <div class="content">
     <div class="header">
       <h2 class="title">{{ menyValues()[m_activeOptionName()].title }}</h2>
-      <button class="close-button">
+      <button class="close-button" (click)="m_modalHide()">
         <img src="assets/svg/modal/close.svg" alt="close button" />
       </button>
     </div>

@@ -2,7 +2,9 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   InputSignal,
+  Output,
   Signal,
   TemplateRef,
   WritableSignal,
@@ -77,5 +79,11 @@ export class ModalComponent {
     } else {
       this._activeOptionName = signal(option);
     }
+  }
+
+  @Output() modalHide = new EventEmitter<void>();
+
+  protected m_modalHide(): void {
+    this.modalHide.emit();
   }
 }

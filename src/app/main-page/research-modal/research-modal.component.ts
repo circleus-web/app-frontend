@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, TemplateRef } from '@angular/core';
 
 import { ButtonComponent } from '../../shared/button/button.component';
 import { ModalComponent } from '../modal/modal.component';
@@ -29,4 +29,10 @@ export class ResearchModalComponent {
       src: 'assets/svg/research-modal/search.svg',
     },
   });
+
+  @Output() researchModalHide = new EventEmitter<void>();
+
+  protected m_researchModalHide(): void {
+    this.researchModalHide.emit();
+  }
 }

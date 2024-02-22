@@ -162,6 +162,6 @@
       class="cv-block"
     ></app-languages-block>
   </div>
-  <app-tool-button></app-tool-button>
-  <app-research-modal></app-research-modal>
+  <app-tool-button (researchModalShow)="m_researchModalShow()"></app-tool-button>
+  <app-research-modal *ngIf="m_researchModalActive()" (researchModalHide)="m_researchModalHide()"></app-research-modal>
 </div>

@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, WritableSignal, signal } from '@angular/core';
 
 import { HeaderComponent } from '../header/header.component';
 
@@ -72,6 +72,16 @@ export class MainPageComponent implements OnInit {
     } else if (this.breakpointObserver.isMatched(Breakpoints.Large)) {
       this.m_currentBreakpoint = UsedBreakpoints.LARGE;
     }
+  }
+
+  protected m_researchModalActive: WritableSignal<boolean> = signal(false);
+
+  protected m_researchModalShow() {
+    this.m_researchModalActive.set(true);
+  }
+
+  protected m_researchModalHide() {
+    this.m_researchModalActive.set(false);
   }
 
   ngOnInit(): void {
