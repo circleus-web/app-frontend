@@ -1,7 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
 
 import { ModalComponent } from '../modal/modal.component';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-research-modal',

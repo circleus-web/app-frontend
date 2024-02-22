@@ -61,8 +61,28 @@ main {
     background: var(--Gray-200, #f2f4f7);
 
     .header {
+      display: flex;
+
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 12px 8px 16px;
+
       height: $header-height;
       width: $navigation-width;
+
+      .icon {
+        width: 28px;
+        height: 28px;
+        padding: 6px;
+
+        border-radius: 50%;
+        background: var(--Gray-300, #D0D5DD);
+      }
+
+      .title {
+        @include font-body-1-condensed-semibold;
+      }
     }
 
     .body {
@@ -129,8 +149,26 @@ main {
     background: var(--White, #ffffff);
 
     .header {
+      display: flex;
+
+      flex-direction: row;
+      gap: 8px;
+      padding: 16px 16px 12px 24px;
+
       height: $header-height;
       width: $main-width - $navigation-width;
+
+      .title {
+        flex-grow: 1;
+        margin: 0;
+
+        @include font-body-1-condensed-semibold;
+      }
+
+      .close-button {
+        width: 24px;
+        height: 24px;
+      }
     }
 
     .body {

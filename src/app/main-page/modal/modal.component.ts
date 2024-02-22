@@ -21,6 +21,11 @@ interface IMenyOptionWithName extends IMenyOption {
   name: string;
 }
 
+interface IModalInformation {
+  title: string;
+  iconSrc: string;
+}
+
 @Component({
   selector: 'app-modal',
   standalone: true,
@@ -30,6 +35,8 @@ interface IMenyOptionWithName extends IMenyOption {
   imports: [CommonModule],
 })
 export class ModalComponent {
+  modalInformation: InputSignal<IModalInformation> = input.required<IModalInformation>();
+
   menyValues: InputSignal<{ [key: string]: IMenyOption }> = input<{ [key: string]: IMenyOption }>(
     {},
   );
@@ -50,11 +57,11 @@ export class ModalComponent {
     },
   );
 
-  private _activeOption?: WritableSignal<string>;
+  private _activeOptionName?: WritableSignal<string>;
 
-  protected get m_activeOption(): WritableSignal<string> {
+  protected get m_activeOptionName(): WritableSignal<string> {
     return (
-      this._activeOption ??
+      this._activeOptionName ??
       (computed(() => {
         const firstMenyValue: string | undefined = Object.keys(this.menyValues())
           ? Object.keys(this.menyValues())[0]
@@ -65,10 +72,10 @@ export class ModalComponent {
   }
 
   protected m_changeActiveOption(option: string): void {
-    if (this._activeOption) {
-      this._activeOption.set(option);
+    if (this._activeOptionName) {
+      this._activeOptionName.set(option);
     } else {
-      this._activeOption = signal(option);
+      this._activeOptionName = signal(option);
     }
   }
 }

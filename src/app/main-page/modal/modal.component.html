@@ -2,13 +2,16 @@
 
 <main>
   <div class="navigation">
-    <div class="header"></div>
+    <div class="header">
+      <img class="icon" src="{{ modalInformation().iconSrc }}" alt="icon" />
+      <h2 class="title">{{ modalInformation().title }}</h2>
+    </div>
     <div class="body">
       @for (menyOption of m_iterableMenyValues(); track $index) {
         <button
           type="button"
           class="element"
-          [ngClass]="{ active: menyOption.name === m_activeOption() }"
+          [ngClass]="{ active: menyOption.name === m_activeOptionName() }"
           (click)="m_changeActiveOption(menyOption.name)"
         >
           <img src="{{ menyOption.iconSrc }}" alt="icon" />
@@ -18,9 +21,16 @@
     </div>
   </div>
   <div class="content">
-    <div class="header"></div>
+    <div class="header">
+      <h2 class="title">{{ menyValues()[m_activeOptionName()].title }}</h2>
+      <button class="close-button">
+        <img src="assets/svg/modal/close.svg" alt="close button" />
+      </button>
+    </div>
     <div class="body">
-      <ng-template [ngTemplateOutlet]="menyValues()[m_activeOption()].templateValue"></ng-template>
+      <ng-template
+        [ngTemplateOutlet]="menyValues()[m_activeOptionName()].templateValue"
+      ></ng-template>
     </div>
   </div>
 </main>

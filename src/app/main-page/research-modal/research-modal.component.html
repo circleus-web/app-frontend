@@ -1,14 +1,18 @@
 <app-modal
+  [modalInformation]="{
+    title: 'Заработная плата',
+    iconSrc: 'assets/svg/research-modal/compass\.svg'
+  }"
   [menyValues]="{
     'my-possibility': {
       title: 'Моя вероятность',
       iconSrc: 'assets/svg/research-modal/my-possibility\.svg',
-      templateValue: m_myPossibilityTemplate,
+      templateValue: m_myPossibilityTemplate
     },
     'all-specialists': {
       title: 'Все It-специалисты',
       iconSrc: 'assets/svg/research-modal/all-specialists\.svg',
-      templateValue: m_allSpecialistsTemplate,
+      templateValue: m_allSpecialistsTemplate
     }
   }"
 >
