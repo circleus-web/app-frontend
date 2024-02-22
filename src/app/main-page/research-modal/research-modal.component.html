@@ -19,7 +19,7 @@
 </app-modal>
 
 <ng-template #m_myPossibilityTemplate>
-  <main>
+  <main class="my-possibility">
     <div class="content">
       <img src="assets/svg/research-modal/compass.svg" alt="icon" />
       <div class="ellipse"></div>
@@ -45,6 +45,14 @@
     </div>
   </main>
 </ng-template>
+
 <ng-template #m_allSpecialistsTemplate>
-  <p>all specialists section</p>
+  <main class="all-specialists">
+    <div class="search-block">
+      <app-input
+        class="input-container"
+        [inputContent]="m_searchInput"
+      ></app-input>
+    </div>
+  </main>
 </ng-template>

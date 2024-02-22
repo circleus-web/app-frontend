@@ -8,6 +8,9 @@ export interface IInput {
   name: string;
   class: string[];
   placeholder?: string;
+  icon?: {
+    src: string;
+  };
   invalid: boolean;
   hasError(error: string): boolean;
   valueChanges$: Observable<string>;

@@ -4,14 +4,47 @@ input {
   display: flex;
   height: 40px;
   padding: 8px 12px;
+
   align-self: stretch;
+  flex-grow: 1;
+
   border-radius: 8px;
-  background: var(--Gray-100, #f2f4f7);
   border: none;
+
+  background: var(--Gray-100, #f2f4f7);
 
   @include font-body-2-medium;
 }
 
 input.error {
   border: 1px solid var(--Red-400, #f97066) !important;
+}
+
+.input-outer {
+  display: flex;
+  height: 40px;
+  padding: 8px 12px;
+
+  align-self: stretch;
+  align-items: center;
+  gap: 8px;
+  flex-grow: 1;
+
+  border-radius: 8px;
+  border: none;
+
+  background: var(--Gray-100, #f2f4f7);
+
+  input {
+    display: flex;
+
+    align-self: auto;
+
+    padding: 0;
+    height: 20px;
+
+    border-radius: 0;
+
+    outline: none;
+  }
 }

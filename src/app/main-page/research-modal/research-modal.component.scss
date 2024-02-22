@@ -2,7 +2,7 @@
 
 $content-size: 550px;
 
-main {
+main.my-possibility {
   display: flex;
 
   flex-direction: column;
@@ -109,6 +109,25 @@ main {
           @include font-small-regular;
         }
       }
+    }
+  }
+}
+
+main.all-specialists {
+  display: flex;
+
+  flex-grow: 1;
+  flex-direction: column;
+
+  .search-block {
+    display: flex;
+
+    padding: 16px 24px 16px 24px;
+    align-self: stretch;
+
+    .input-container {
+      display: flex;
+      flex-grow: 1;
     }
   }
 }

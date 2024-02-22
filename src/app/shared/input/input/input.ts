@@ -9,6 +9,9 @@ interface IRequiredInput {
   name: string;
   class?: string[];
   placeholder?: string;
+  icon?: {
+    src: string;
+  };
 }
 
 export class Input implements IInput {
@@ -20,11 +23,14 @@ export class Input implements IInput {
 
   public placeholder?: string;
 
+  public icon?: { src: string; };
+
   constructor(inputContent: IRequiredInput) {
     this.formControl = inputContent.formControl;
     this.name = inputContent.name;
     this.class = inputContent.class || [];
     this.placeholder = inputContent.placeholder;
+    this.icon = inputContent.icon;
   }
 
   public get invalid(): boolean {

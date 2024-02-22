@@ -3,6 +3,10 @@ import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
 
 import { ButtonComponent } from '../../shared/button/button.component';
 import { ModalComponent } from '../modal/modal.component';
+import { IInput } from '../../shared/input/input/iinput';
+import { Input } from '../../shared/input/input/input';
+import { FormControl } from '@angular/forms';
+import { InputComponent } from '../../shared/input/input/input.component';
 
 @Component({
   selector: 'app-research-modal',
@@ -10,10 +14,19 @@ import { ModalComponent } from '../modal/modal.component';
   templateUrl: './research-modal.component.html',
   styleUrl: './research-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, ModalComponent, ButtonComponent],
+  imports: [CommonModule, ModalComponent, ButtonComponent, InputComponent],
 })
 export class ResearchModalComponent {
   protected m_myPossibilityTemplate!: TemplateRef<Element>;
 
   protected m_allSpecialistsTemplate!: TemplateRef<Element>;
+
+  protected m_searchInput: IInput = new Input({
+    formControl: new FormControl(''),
+    name: 'search',
+    placeholder: 'Поиск по специальности',
+    icon: {
+      src: 'assets/svg/research-modal/search.svg',
+    },
+  });
 }
