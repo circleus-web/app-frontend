@@ -2,18 +2,17 @@ import { FormControl } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
+import { IToggle } from '../../toggle-button/itoggle';
+import { IInput } from '../input/iinput';
+
 export interface IInputWithToggleAndLabel {
-  form: FormControl;
-  inputName: string;
-  inputTitle: string;
-  toggleName: string;
+  input: IInput;
+  title: string;
+  toggle: IToggle;
   toggleTitle: string;
-  inputPlaceholder?: string;
-  toggleChecked?: boolean;
-  hintText?: string;
   class: string[];
-  isInversed?: boolean;
-  isInvalid: boolean;
+  invalid: boolean;
   hasError(error: string): boolean;
-  getValueChanges(): Observable<string>;
+  valueChanges$: Observable<string>;
+  formControl: FormControl;
 }

@@ -3,11 +3,11 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 export interface IComboboxWithLabel {
-  form: FormControl;
+  formControl: FormControl;
   comboboxName: string;
   comboboxTitle: string;
   comboboxOptions: string[];
   defaultValue?: string;
   class: string[];
-  getValueChanges(): Observable<string> | undefined;
+  valueChanges$: Observable<string>;
 }

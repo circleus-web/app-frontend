@@ -9,7 +9,7 @@ export class FormInputWithLabel extends InputWithLabel implements IFormInputWith
   public getContent(): object {
     const content: { [key: string]: string } = {};
 
-    content[this.inputName] = this.form.value;
+    content[this.input.name] = this.input.value;
 
     return content;
   }

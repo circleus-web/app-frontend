@@ -26,6 +26,7 @@ import { FormTextWithLink } from '../custom-form-generator/form-text-with-link/f
 import { IFormTextWithLink } from '../custom-form-generator/form-text-with-link/iform-text-with-link';
 import { FormText } from '../custom-form-generator/form-text/form-text';
 import { IFormText } from '../custom-form-generator/form-text/iform-text';
+import { Input } from '../shared/input/input/input';
 
 @Injectable({
   providedIn: 'root',
@@ -41,19 +42,21 @@ export class LoginFormArrayProviderService implements FormArrayProvider {
   }
 
   private readonly m_emailForm: IFormInputWithLabel = new FormInputWithLabel({
-    inputName: 'email',
-    inputTitle: 'Email',
-    inputPlaceholder: 'example@gmail.com',
-    form: new FormControl('', [Validators.required, this.m_emailValidator()]),
-    class: ['auth-page'],
+    input: new Input({
+      formControl: new FormControl('', [Validators.required, this.m_emailValidator()]),
+      name: 'email',
+      placeholder: 'example@gmail.com',
+    }),
+    title: 'Email',
   });
 
   private readonly m_verificationCodeForm: IFormInputWithLabel = new FormInputWithLabel({
-    inputName: 'verification-code',
-    inputTitle: 'Код верификации',
-    inputPlaceholder: 'Код из почты',
-    form: new FormControl('', Validators.required),
-    class: ['auth-page'],
+    input: new Input({
+      formControl: new FormControl('', Validators.required),
+      name: 'verificationCode',
+      placeholder: 'Код из почты',
+    }),
+    title: 'Код верификации',
   });
 
   private readonly m_verificationCodeSupportText: IFormText = new FormText({

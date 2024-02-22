@@ -30,6 +30,8 @@ import { FormTextWithLink } from '../custom-form-generator/form-text-with-link/f
 import { IFormTextWithLink } from '../custom-form-generator/form-text-with-link/iform-text-with-link';
 import { FormText } from '../custom-form-generator/form-text/form-text';
 import { IFormText } from '../custom-form-generator/form-text/iform-text';
+import { Input } from '../shared/input/input/input';
+import { Toggle } from '../shared/toggle-button/toggle';
 
 class AccountCreationForm {
   private readonly m_destroyRef = inject(DestroyRef);
@@ -44,19 +46,21 @@ class AccountCreationForm {
   }
 
   private readonly m_emailForm: IFormInputWithLabel = new FormInputWithLabel({
-    inputName: 'email',
-    inputTitle: 'Email',
-    inputPlaceholder: 'example@gmail.com',
-    form: new FormControl('', [Validators.required, this.m_emailValidator()]),
-    class: ['auth-page'],
+    input: new Input({
+      formControl: new FormControl('', [Validators.required, this.m_emailValidator()]),
+      name: 'email',
+      placeholder: 'example@gmail.com',
+    }),
+    title: 'Email',
   });
 
   private readonly m_verificationCodeForm: IFormInputWithLabel = new FormInputWithLabel({
-    inputName: 'verification-code',
-    inputTitle: 'Код верификации',
-    inputPlaceholder: 'Код из почты',
-    form: new FormControl('', Validators.required),
-    class: ['auth-page'],
+    input: new Input({
+      formControl: new FormControl('', Validators.required),
+      name: 'verification-code',
+      placeholder: 'Код из почты',
+    }),
+    title: 'Код верификации',
   });
 
   private readonly m_verificationCodeSupportText: IFormText = new FormText({
@@ -148,44 +152,58 @@ class AccountCreationForm {
 
 class GeneralForm {
   private readonly m_lastNameForm: IFormInputWithLabel = new FormInputWithLabel({
-    inputName: 'lastName',
-    inputTitle: 'Фамилия',
-    inputPlaceholder: 'Корольков',
-    form: new FormControl('', [Validators.required]),
+    input: new Input({
+      formControl: new FormControl('', Validators.required),
+      name: 'lastName',
+      placeholder: 'Корольков',
+    }),
+    title: 'Фамилия',
   });
 
   private readonly m_firstNameForm: IFormInputWithLabel = new FormInputWithLabel({
-    inputName: 'firstName',
-    inputTitle: 'Имя',
-    inputPlaceholder: 'Вадим',
-    form: new FormControl('', [Validators.required]),
+    input: new Input({
+      formControl: new FormControl('', Validators.required),
+      name: 'firstName',
+      placeholder: 'Вадим',
+    }),
+    title: 'Имя',
   });
 
   private readonly m_phoneNumberForm: IFormInputWithToggle = new FormInputWithToggle({
-    inputName: 'phoneNumber',
-    inputTitle: 'Номер телефона',
-    inputPlaceholder: '+7 (999) 999-99-99',
-    toggleName: 'isPhonePublic',
+    input: new Input({
+      formControl: new FormControl('', [Validators.required]),
+      name: 'phoneNumber',
+      placeholder: '+7 (999) 999-99-99',
+    }),
+    toggle: new Toggle({
+      name: 'isPhonePublic',
+      inversed: true,
+    }),
+    title: 'Номер телефона',
     toggleTitle: 'Не показывать в профиле',
-    isInversed: true,
-    form: new FormControl('', [Validators.required]),
   });
 
   private readonly m_dateOfBirthForm: IFormInputWithToggle = new FormInputWithToggle({
-    inputName: 'dateOfBirth',
-    inputTitle: 'Дата рождения',
-    inputPlaceholder: '01.01.2000',
-    toggleName: 'isPhonePublic',
+    input: new Input({
+      formControl: new FormControl('', [Validators.required]),
+      name: 'dateOfBirth',
+      placeholder: '01.01.2000',
+    }),
+    toggle: new Toggle({
+      name: 'isPhonePublic',
+      inversed: true,
+    }),
+    title: 'Дата рождения',
     toggleTitle: 'Не показывать в профиле',
-    isInversed: true,
-    form: new FormControl('', [Validators.required]),
   });
 
   private readonly m_cityForm: IFormInputWithLabel = new FormInputWithLabel({
-    inputName: 'city',
-    inputTitle: 'Местоположение',
-    inputPlaceholder: 'Москва',
-    form: new FormControl('', [Validators.required]),
+    input: new Input({
+      formControl: new FormControl('', Validators.required),
+      name: 'city',
+      placeholder: 'Москва',
+    }),
+    title: 'Местоположение',
   });
 
   private readonly m_formsOnPage = {
@@ -213,10 +231,12 @@ class GeneralForm {
 
 class JobForm {
   private readonly m_specializationForm: IFormInputWithLabel = new FormInputWithLabel({
-    inputName: 'specialization',
-    inputTitle: 'Специальность',
-    inputPlaceholder: 'Дизайнер Интерфейсов',
-    form: new FormControl('', [Validators.required]),
+    input: new Input({
+      formControl: new FormControl('', [Validators.required]),
+      name: 'specialization',
+      placeholder: 'Дизайнер Интерфейсов',
+    }),
+    title: 'Специальность',
   });
 
   private readonly m_gradeForm: IFormCombobox = new FormCombobox({
@@ -224,7 +244,7 @@ class JobForm {
     comboboxTitle: 'Грейд',
     comboboxOptions: ['Junior', 'Middle', 'Senior'],
     defaultValue: 'Junior',
-    form: new FormControl('', [Validators.required]),
+    formControl: new FormControl('', [Validators.required]),
   });
 
   private readonly m_formsOnPage = {

@@ -1,15 +1,12 @@
-@if (inputWithLabel().inputTitle) {
-  <label for="{{ inputWithLabel().inputName }}" [ngClass]="inputWithLabel().class">{{
-    inputWithLabel().inputTitle
+@if (inputWithLabel().title) {
+  <label for="{{ inputWithLabel().input.name }}" [ngClass]="m_labelClass()">{{
+    inputWithLabel().title
   }}</label>
 }
-<input
-  [formControl]="inputWithLabel().form"
-  [ngClass]="inputClass"
-  type="text"
-  placeholder="{{ inputWithLabel().inputPlaceholder }}"
-/>
-@if (inputWithLabel().isInvalid) {
+
+<app-input [inputContent]="m_input()" class="input-container"></app-input>
+
+@if (inputWithLabel().invalid) {
   @if (inputWithLabel().hasError('incorrectEmail')) {
     <span class="error" [ngClass]="inputWithLabel().class">{{
       'Email должен содержать символ «@» и имя домена'

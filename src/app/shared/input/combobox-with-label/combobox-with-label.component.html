@@ -4,7 +4,7 @@
   }}</label>
 }
 <div class="select-wrapper">
-  <select [formControl]="comboboxWithLabel().form" [ngClass]="comboboxWithLabel().class">
+  <select [formControl]="comboboxWithLabel().formControl" [ngClass]="comboboxWithLabel().class">
     <option *ngFor="let option of comboboxWithLabel().comboboxOptions" [value]="option">
       {{ option }}
     </option>

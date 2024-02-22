@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
 
-import { ModalComponent } from '../modal/modal.component';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-research-modal',

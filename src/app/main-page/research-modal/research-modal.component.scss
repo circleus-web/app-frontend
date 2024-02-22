@@ -1,4 +1,4 @@
-@import "typography";
+@import 'typography';
 
 $content-size: 550px;
 
@@ -27,15 +27,15 @@ main {
 
       padding: 4px;
 
-      background: var(--Gray-100, #F2F4F7);
+      background: var(--Gray-100, #f2f4f7);
 
-      border: 6px solid var(--Gray-50, #F9FAFB);
+      border: 6px solid var(--Gray-50, #f9fafb);
       border-radius: 50%;
     }
 
     .ellipse {
       border-radius: 50%;
-      border: 1px var(--Gray-200, #EAECF0);
+      border: 1px var(--Gray-200, #eaecf0);
       border-style: dashed;
 
       position: relative;
@@ -50,25 +50,28 @@ main {
     .ellipse:nth-child(-6n + 9) {
       width: $ellipse-start-size + $ellipse-step;
       height: $ellipse-start-size + $ellipse-step;
-      top: calc($content-size / 2) - calc(($ellipse-step + 3*$ellipse-start-size) / 2) - 53.5px;
+      top: calc($content-size / 2) - calc(($ellipse-step + 3 * $ellipse-start-size) / 2) - 53.5px;
       left: calc($content-size / 2) - calc(($ellipse-start-size + $ellipse-step) / 2);
     }
     .ellipse:nth-child(-6n + 10) {
       width: $ellipse-start-size + ($ellipse-step * 2);
       height: $ellipse-start-size + ($ellipse-step * 2);
-      top: calc($content-size / 2) - calc((($ellipse-step * 7) + 3*$ellipse-start-size) / 2) - 53.5px;
+      top: calc($content-size / 2) - calc((($ellipse-step * 7) + 3 * $ellipse-start-size) / 2) -
+        53.5px;
       left: calc($content-size / 2) - calc(($ellipse-start-size + ($ellipse-step * 2)) / 2);
     }
     .ellipse:nth-child(-6n + 11) {
       width: $ellipse-start-size + ($ellipse-step * 3);
       height: $ellipse-start-size + ($ellipse-step * 3);
-      top: calc($content-size / 2) - calc((($ellipse-step * 15) + 3*$ellipse-start-size) / 2) - 53.5px;
+      top: calc($content-size / 2) - calc((($ellipse-step * 15) + 3 * $ellipse-start-size) / 2) -
+        53.5px;
       left: calc($content-size / 2) - calc(($ellipse-start-size + ($ellipse-step * 3)) / 2);
     }
     .ellipse:nth-child(-6n + 12) {
       width: $ellipse-start-size + ($ellipse-step * 4);
       height: $ellipse-start-size + ($ellipse-step * 4);
-      top: calc($content-size / 2) - calc((($ellipse-step * 25) + 3*$ellipse-start-size) / 2) - 53.5px;
+      top: calc($content-size / 2) - calc((($ellipse-step * 25) + 3 * $ellipse-start-size) / 2) -
+        53.5px;
       left: calc($content-size / 2) - calc(($ellipse-start-size + ($ellipse-step * 4)) / 2);
     }
 

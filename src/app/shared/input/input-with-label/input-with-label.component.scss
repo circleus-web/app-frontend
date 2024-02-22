@@ -9,20 +9,10 @@ label {
   @include font-body-2-condensed-medium;
 }
 
-input {
+.input-container {
   display: flex;
-  height: 40px;
-  padding: 8px 12px;
+  flex-direction: column;
   align-self: stretch;
-  border-radius: 8px;
-  background: var(--Gray-100, #f2f4f7);
-  border: none;
-
-  @include font-body-2-medium;
-}
-
-input.error {
-  border: 1px solid var(--Red-400, #f97066) !important;
 }
 
 span.error {

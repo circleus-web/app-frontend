@@ -78,7 +78,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
   }
 
   public getFormControl(formName: string): FormControl | undefined {
-    return this.getForm(formName)?.form;
+    return this.getForm(formName)?.formControl;
   }
 
   public get iterableItems(): Required<IFormItem>[] {
@@ -128,7 +128,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
   }
 
   public getFormValueChanges(formName: string): Observable<string> | undefined {
-    return this.getForm(formName)?.getValueChanges();
+    return this.getForm(formName)?.valueChanges$;
   }
 
   public getActiveFormContent(): object {

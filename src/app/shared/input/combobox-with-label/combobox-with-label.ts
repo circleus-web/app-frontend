@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { IComboboxWithLabel } from './icombobox-with-label';
 
 interface IRequiredComboboxWithLabel {
-  form: FormControl;
+  formControl: FormControl;
   comboboxName: string;
   comboboxTitle: string;
   comboboxOptions: string[];
@@ -14,7 +14,7 @@ interface IRequiredComboboxWithLabel {
 }
 
 export class ComboboxWithLabel implements IComboboxWithLabel {
-  public form: FormControl;
+  public formControl: FormControl;
 
   public comboboxName: string;
 
@@ -27,7 +27,7 @@ export class ComboboxWithLabel implements IComboboxWithLabel {
   public defaultValue?: string;
 
   constructor(requiredComboboxWithLabel: IRequiredComboboxWithLabel) {
-    this.form = requiredComboboxWithLabel.form;
+    this.formControl = requiredComboboxWithLabel.formControl;
     this.comboboxName = requiredComboboxWithLabel.comboboxName;
     this.comboboxTitle = requiredComboboxWithLabel.comboboxTitle;
     this.comboboxOptions = requiredComboboxWithLabel.comboboxOptions;
@@ -35,7 +35,7 @@ export class ComboboxWithLabel implements IComboboxWithLabel {
     this.defaultValue = requiredComboboxWithLabel.defaultValue;
   }
 
-  public getValueChanges(): Observable<string> | undefined {
-    return this.form.valueChanges;
+  public get valueChanges$(): Observable<string> {
+    return this.formControl.valueChanges;
   }
 }

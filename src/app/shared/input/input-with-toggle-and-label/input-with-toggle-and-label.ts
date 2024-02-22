@@ -2,60 +2,51 @@ import { FormControl } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
+import { IToggle } from '../../toggle-button/itoggle';
+import { IInput } from '../input/iinput';
+
 import { IInputWithToggleAndLabel } from './iinput-with-toggle-and-label';
 
 interface IRequiredInputWithToggleAndLabel {
-  form: FormControl;
-  inputName: string;
-  inputTitle: string;
-  toggleName: string;
+  input: IInput;
+  title: string;
+  toggle: IToggle;
   toggleTitle: string;
-  inputPlaceholder?: string;
-  toggleChecked?: boolean;
   class?: string[];
-  isInversed?: boolean;
 }
 
 export class InputWithToggleAndLabel implements IInputWithToggleAndLabel {
-  public form: FormControl;
+  public input: IInput;
 
-  public inputName: string;
+  public title: string;
 
-  public inputTitle: string;
-
-  public toggleName: string;
+  public toggle: IToggle;
 
   public toggleTitle: string;
 
-  public inputPlaceholder?: string;
-
-  public toggleChecked?: boolean;
-
   public class: string[];
 
-  public isInversed?: boolean;
-
-  constructor(requiredInputWithToggleAndLabel: IRequiredInputWithToggleAndLabel) {
-    this.form = requiredInputWithToggleAndLabel.form;
-    this.inputName = requiredInputWithToggleAndLabel.inputName;
-    this.inputTitle = requiredInputWithToggleAndLabel.inputTitle;
-    this.toggleName = requiredInputWithToggleAndLabel.toggleName;
-    this.toggleTitle = requiredInputWithToggleAndLabel.toggleTitle;
-    this.inputPlaceholder = requiredInputWithToggleAndLabel.inputPlaceholder;
-    this.toggleChecked = requiredInputWithToggleAndLabel.toggleChecked;
-    this.class = requiredInputWithToggleAndLabel.class || [];
-    this.isInversed = requiredInputWithToggleAndLabel.isInversed;
+  constructor(inputWithToggleAndLabel: IRequiredInputWithToggleAndLabel) {
+    this.input = inputWithToggleAndLabel.input;
+    this.title = inputWithToggleAndLabel.title;
+    this.toggle = inputWithToggleAndLabel.toggle;
+    this.toggleTitle = inputWithToggleAndLabel.toggleTitle;
+    this.class = inputWithToggleAndLabel.class || [];
   }
 
-  public getValueChanges(): Observable<string> {
-    return this.form.valueChanges;
+  public get valueChanges$(): Observable<string> {
+    return this.input.valueChanges$;
   }
 
-  public get isInvalid(): boolean {
-    return this.form.invalid;
+  public get invalid(): boolean {
+    return this.input.invalid;
   }
 
   public hasError(error: string): boolean {
-    return this.isInvalid && this.form.hasError(error);
+    return this.input.hasError(error);
+  }
+
+  public get formControl(): FormControl {
+    return this.input.formControl;
   }
 }
