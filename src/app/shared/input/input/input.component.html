@@ -1,18 +1,10 @@
 @if (inputContent().icon) {
-  <div class="input-outer">
-    <img class="icon" src="{{ inputContent().icon?.src }}" alt="icon">
-    <input
-      [formControl]="inputContent().formControl"
-      [ngClass]="inputContent().class"
-      type="text"
-      placeholder="{{ inputContent().placeholder }}"
-    />
-  </div>
-} @else {
-  <input
-    [formControl]="inputContent().formControl"
-    [ngClass]="inputContent().class"
-    type="text"
-    placeholder="{{ inputContent().placeholder }}"
-  />
+  <img class="icon" src="{{ inputContent().icon?.src }}" alt="icon">
 }
+
+<input
+  [formControl]="inputContent().formControl"
+  [ngClass]="inputClass()"
+  type="text"
+  placeholder="{{ inputContent().placeholder }}"
+/>
