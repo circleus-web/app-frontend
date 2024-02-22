@@ -172,6 +172,8 @@ main {
     }
 
     .body {
+      display: flex;
+
       height: $content-height;
       width: $content-width;
 
