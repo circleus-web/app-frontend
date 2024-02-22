@@ -12,6 +12,7 @@ main.my-possibility {
   padding: 35px 45px;
 
   .content {
+    position: relative;
     $ellipse-start-size: 150px;
     $ellipse-step: 100px;
     width: $content-size;
@@ -21,7 +22,7 @@ main.my-possibility {
       width: 46px;
       height: 46px;
 
-      position: relative;
+      position: absolute;
       top: calc($content-size / 2) - calc(46px / 2);
       left: calc($content-size / 2) - calc(46px / 2);
 
@@ -38,41 +39,39 @@ main.my-possibility {
       border: 1px var(--Gray-200, #eaecf0);
       border-style: dashed;
 
-      position: relative;
+      position: absolute;
+    }
+
+    @mixin ellipse($ellipse-size) {
+      width: $ellipse-size;
+      height: $ellipse-size;
+      top: calc($content-size / 2) - calc($ellipse-size / 2);
+      left: calc($content-size / 2) - calc($ellipse-size / 2);
     }
 
     .ellipse:nth-child(-6n + 8) {
-      width: $ellipse-start-size;
-      height: $ellipse-start-size;
-      top: calc($content-size / 2) - calc($ellipse-start-size / 2) - 53.5px;
-      left: calc($content-size / 2) - calc($ellipse-start-size / 2);
+      $ellipse-size: $ellipse-start-size * 4;
+      @include ellipse($ellipse-size);
     }
+
     .ellipse:nth-child(-6n + 9) {
-      width: $ellipse-start-size + $ellipse-step;
-      height: $ellipse-start-size + $ellipse-step;
-      top: calc($content-size / 2) - calc(($ellipse-step + 3 * $ellipse-start-size) / 2) - 53.5px;
-      left: calc($content-size / 2) - calc(($ellipse-start-size + $ellipse-step) / 2);
+      $ellipse-size: $ellipse-start-size + $ellipse-step * 3;
+      @include ellipse($ellipse-size);
     }
+
     .ellipse:nth-child(-6n + 10) {
-      width: $ellipse-start-size + ($ellipse-step * 2);
-      height: $ellipse-start-size + ($ellipse-step * 2);
-      top: calc($content-size / 2) - calc((($ellipse-step * 7) + 3 * $ellipse-start-size) / 2) -
-        53.5px;
-      left: calc($content-size / 2) - calc(($ellipse-start-size + ($ellipse-step * 2)) / 2);
+      $ellipse-size: $ellipse-start-size + $ellipse-step * 2;
+      @include ellipse($ellipse-size);
     }
+
     .ellipse:nth-child(-6n + 11) {
-      width: $ellipse-start-size + ($ellipse-step * 3);
-      height: $ellipse-start-size + ($ellipse-step * 3);
-      top: calc($content-size / 2) - calc((($ellipse-step * 15) + 3 * $ellipse-start-size) / 2) -
-        53.5px;
-      left: calc($content-size / 2) - calc(($ellipse-start-size + ($ellipse-step * 3)) / 2);
+      $ellipse-size: $ellipse-start-size + $ellipse-step;
+      @include ellipse($ellipse-size);
     }
+
     .ellipse:nth-child(-6n + 12) {
-      width: $ellipse-start-size + ($ellipse-step * 4);
-      height: $ellipse-start-size + ($ellipse-step * 4);
-      top: calc($content-size / 2) - calc((($ellipse-step * 25) + 3 * $ellipse-start-size) / 2) -
-        53.5px;
-      left: calc($content-size / 2) - calc(($ellipse-start-size + ($ellipse-step * 4)) / 2);
+      $ellipse-size: $ellipse-start-size;
+      @include ellipse($ellipse-size);
     }
 
     .controls {
@@ -85,7 +84,7 @@ main.my-possibility {
 
       width: 544px;
 
-      top: calc($content-size / 5) - 1589.5px;
+      top: calc(($content-size + 46px) / 2) + 20px;
       left: calc($content-size / 2) - 272px;
 
       .texts {
