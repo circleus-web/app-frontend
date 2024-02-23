@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { FormItems } from './form-items';
 import { FormStyles } from './form-style';
 import { IFormItem } from './iform-item';
+import { WritableSignal } from '@angular/core';
 
 export interface IFormStep {
   items: {
@@ -21,7 +22,7 @@ export interface IFormArrayWithDescriptions {
   previousStep(): void;
   nextStep(): void;
   setStep(step: number): void;
-  currentStep: number;
+  currentStep: WritableSignal<number>;
   maxStep: number;
   stepValid(step: number): boolean;
   getFormValueChanges(formName: string): Observable<string> | undefined;

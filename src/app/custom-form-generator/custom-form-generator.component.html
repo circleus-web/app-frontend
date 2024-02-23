@@ -1,8 +1,8 @@
 @for (step of forms().allIterableItems; track $index) {
   <div class="form-step" [ngClass]="{
-    'current-form': forms().currentStep === $index,
-    'previous-form': forms().currentStep - 1 === $index,
-    'next-form': forms().currentStep + 1 === $index,
+    'current-form': forms().currentStep() === $index,
+    'previous-form': forms().currentStep() - 1 === $index,
+    'next-form': forms().currentStep() + 1 === $index,
   }">
     @for (item of step; track $index) {
       @if (item | isFormInputWithLabel) {

@@ -13,6 +13,7 @@ import { FormItems } from './form-items';
 import { FormStyles } from './form-style';
 import { IFormArrayWithDescriptions, IFormStep } from './iform-array-with-descriptions';
 import { IFormItem } from './iform-item';
+import { WritableSignal, signal } from '@angular/core';
 
 interface IRequiredFormArrayWithDescriptions {
   forms?: {
@@ -43,7 +44,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   private _textsWithLinks?: { [key: string]: IFormTextWithLink };
 
-  private _currentStep: number;
+  public currentStep: WritableSignal<number>;
 
   private _steps: IFormStep[];
 
@@ -57,7 +58,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     this._buttons = formArrayWithDescriptions.buttons;
     this._texts = formArrayWithDescriptions.texts;
     this._textsWithLinks = formArrayWithDescriptions.textsWithLinks;
-    this._currentStep = formArrayWithDescriptions.currentStep || 0;
+    this.currentStep = signal(formArrayWithDescriptions.currentStep || 0);
     this._steps = formArrayWithDescriptions.steps;
     this.onCreate = formArrayWithDescriptions.onCreate;
     this.onDestroy = formArrayWithDescriptions.onDestroy;
@@ -86,19 +87,15 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
   }
 
   public previousStep(): void {
-    this._currentStep--;
+    this.currentStep.set(this.currentStep() - 1);
   }
 
   public nextStep(): void {
-    this._currentStep++;
+    this.currentStep.set(this.currentStep() + 1);
   }
 
   public setStep(step: number): void {
-    this._currentStep = step;
-  }
-
-  public get currentStep(): number {
-    return this._currentStep;
+    this.currentStep.set(step);
   }
 
   public stepValid(step: number): boolean {
@@ -149,8 +146,8 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     if (!this._formGroup) {
       this._formGroup = new FormGroup({});
 
-      if (this.stepValid(this._currentStep))
-        for (const [key, value] of Object.entries(this._steps[this._currentStep])) {
+      if (this.stepValid(this.currentStep()))
+        for (const [key, value] of Object.entries(this._steps[this.currentStep()])) {
           if (value === FormItems.FORM_INPUT_WITH_LABEL) {
             this._formGroup.addControl(key, this.getFormControl(key));
           }
@@ -169,7 +166,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   public getActiveFormContent(): object {
     let resultObject: object = {};
-    for (const item of this.getIterableItems(this._currentStep)) {
+    for (const item of this.getIterableItems(this.currentStep())) {
       resultObject = {
         ...resultObject,
         ...item.getContent(),

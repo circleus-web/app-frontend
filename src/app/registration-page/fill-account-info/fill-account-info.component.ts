@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { CustomFormGeneratorComponent } from '../../custom-form-generator/custom-form-generator.component';
@@ -11,24 +11,11 @@ import { RegistrationFormArrayProviderService } from '../registration-form-array
 
 import { FormFooterComponent } from './form-footer/form-footer.component';
 
-enum FormSteps {
-  FirstStep = 0,
-  GeneralInfo = 1,
-  JobInfo = 2,
-  LastStep = 3,
-}
-
 interface FormFooterContents {
   title: string;
   subtitle: string;
   secondaryButton?: IButton;
   primaryButton?: IButton;
-}
-
-class InvalidStepError extends Error {
-  constructor(step: FormSteps) {
-    super(`Invalid step ${step}`);
-  }
 }
 
 @Component({
@@ -46,37 +33,19 @@ class InvalidStepError extends Error {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FillAccountInfoComponent {
-  private p_currentStep: FormSteps = FormSteps.GeneralInfo;
-
-  private set _currentStep(value: FormSteps) {
-    this.p_currentStep = value;
-    switch (value) {
-      case FormSteps.GeneralInfo:
-        this.m_formArrayWithDescriptions = this._formArrayProvider.getFormArray('general_info');
-        break;
-      case FormSteps.JobInfo:
-        this.m_formArrayWithDescriptions = this._formArrayProvider.getFormArray('job_info');
-        break;
-      default:
-        throw new InvalidStepError(value);
-    }
-  }
-
-  private get _currentStep(): FormSteps {
-    return this.p_currentStep;
-  }
-
   private readonly _footerButtons: { [key: string]: IButton } = {
     next: new Button({
       text: 'Далее',
       click: () => {
-        this._nextPage();
+        console.log('next of', this.m_formArrayWithDescriptions.currentStep);
+        this.m_formArrayWithDescriptions.nextStep();
+        console.log('is', this.m_formArrayWithDescriptions.currentStep);
       },
     }),
     previous: new Button({
       text: 'Назад',
       click: () => {
-        this._previousPage();
+        this.m_formArrayWithDescriptions.previousStep();
       },
     }),
     submit: new Button({
@@ -88,15 +57,15 @@ export class FillAccountInfoComponent {
   };
 
   protected get m_footerContent(): FormFooterContents {
-    switch (this._currentStep) {
-      case FormSteps.GeneralInfo:
+    switch (this.m_formArrayWithDescriptions.currentStep()) {
+      case 0:
         return {
           title: 'Шаг 1',
           subtitle: 'Основная информация',
           secondaryButton: Object.assign({}, undefined),
           primaryButton: Object.assign({}, this._footerButtons['next']),
         };
-      case FormSteps.JobInfo:
+      case 1:
         return {
           title: 'Шаг 2',
           subtitle: 'Специальность',
@@ -104,36 +73,24 @@ export class FillAccountInfoComponent {
           primaryButton: Object.assign({}, this._footerButtons['submit']),
         };
       default:
-        throw new InvalidStepError(this._currentStep);
+        return {
+          title: '',
+          subtitle: '',
+          secondaryButton: Object.assign({}, undefined),
+          primaryButton: Object.assign({}, this._footerButtons['next']),
+        };
     }
   }
 
   protected m_formArrayWithDescriptions: IFormArrayWithDescriptions;
 
-  constructor(private _formArrayProvider: RegistrationFormArrayProviderService) {
-    this.m_formArrayWithDescriptions = _formArrayProvider.getFormArray('general_info');
-  }
+  private _formArrayProvider = inject(RegistrationFormArrayProviderService);
 
-  private _nextPage() {
-    if (this._currentStep < FormSteps.LastStep - 1) {
-      this._currentStep += 1;
-    }
-  }
-
-  private _previousPage() {
-    if (this._currentStep > FormSteps.FirstStep + 1) {
-      this._currentStep -= 1;
-    }
-  }
-
-  private _getAboutFormsContent(): object {
-    return {
-      ...this._formArrayProvider.getFormArray('general_info').getActiveFormContent(),
-      ...this._formArrayProvider.getFormArray('job_info').getActiveFormContent(),
-    };
+  constructor() {
+    this.m_formArrayWithDescriptions = this._formArrayProvider.getFormArray('user_info');
   }
 
   private _logFormsContent() {
-    console.log(JSON.stringify(this._getAboutFormsContent()));
+    console.log(JSON.stringify(this._formArrayProvider.getFormArray('user_info').getActiveFormContent()));
   }
 }
