@@ -105,6 +105,10 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     return step >= 0 && step < this._steps.length && !!this._steps[step];
   }
 
+  public get maxStep(): number {
+    return this._steps.length - 1;
+  }
+
   public getIterableItems(step: number): Required<IFormItem>[] {
     if (!this.stepValid(step)) return [];
     const iterableItems: Required<IFormItem>[] = [];
@@ -131,6 +135,14 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
       }
     }
     return iterableItems;
+  }
+
+  public get allIterableItems(): Required<IFormItem>[][] {
+    const res: Required<IFormItem>[][] = [];
+    for (let i = 0; i <= this.maxStep; i++) {
+      res.push(this.getIterableItems(i));
+    }
+    return res;
   }
 
   public get formGroup(): FormGroup {

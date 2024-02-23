@@ -9,11 +9,12 @@ import { IFormItem } from './iform-item';
 export interface IFormStep {
   items: {
     [key: string]: FormItems;
-  }
+  };
 }
 
 export interface IFormArrayWithDescriptions {
   getIterableItems(step: number): Required<IFormItem>[];
+  allIterableItems: Required<IFormItem>[][];
   formGroup: FormGroup;
   isInvalid(): boolean;
   formsStyle?: FormStyles;
@@ -21,6 +22,7 @@ export interface IFormArrayWithDescriptions {
   nextStep(): void;
   setStep(step: number): void;
   currentStep: number;
+  maxStep: number;
   stepValid(step: number): boolean;
   getFormValueChanges(formName: string): Observable<string> | undefined;
   onCreate?: () => void;

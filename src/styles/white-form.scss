@@ -32,7 +32,7 @@ main.white-form {
     .inner-form {
       .form-component {
         gap: $form-gap;
-        padding-bottom: 8px;
+        height: calc(100vh - ($header-height * 2) - 48px - 21px);
       }
     }
   }
