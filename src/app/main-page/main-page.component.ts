@@ -84,6 +84,17 @@ export class MainPageComponent implements OnInit {
     this.m_researchModalActive.set(false);
   }
 
+  protected m_settingsModalActive: WritableSignal<boolean> = signal(false);
+
+  protected m_settingsModalShow() {
+    console.log('settings modal show');
+    this.m_settingsModalActive.set(true);
+  }
+
+  protected m_settingsModalHide() {
+    this.m_settingsModalActive.set(false);
+  }
+
   ngOnInit(): void {
     this.m_breakpoint$.subscribe(this.m_breakpointChanged.bind(this));
   }

@@ -1,4 +1,6 @@
-<app-header></app-header>
+<app-header
+  (userClick)="m_settingsModalShow()"
+></app-header>
 <div class="content" [ngClass]="m_currentBreakpoint">
   <app-general-block
     class="general-block"

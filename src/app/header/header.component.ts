@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, WritableSignal, signal } from '@angular/core';
+import { Component, EventEmitter, Output, WritableSignal, signal } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -13,5 +13,11 @@ export class HeaderComponent {
 
   protected m_onUserClick() {
     this.m_userDropdownActive.set(!this.m_userDropdownActive());
+  }
+
+  @Output() userClick: EventEmitter<void> = new EventEmitter<void>();
+
+  protected m_settingsClick() {
+    this.userClick.emit();
   }
 }
