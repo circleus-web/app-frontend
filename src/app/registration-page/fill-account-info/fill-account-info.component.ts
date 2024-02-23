@@ -91,6 +91,8 @@ export class FillAccountInfoComponent {
   }
 
   private _logFormsContent() {
-    console.log(JSON.stringify(this._formArrayProvider.getFormArray('user_info').getActiveFormContent()));
+    console.log(
+      JSON.stringify(this._formArrayProvider.getFormArray('user_info').getActiveFormContent()),
+    );
   }
 }

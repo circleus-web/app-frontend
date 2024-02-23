@@ -1,3 +1,4 @@
+import { WritableSignal } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { Observable } from 'rxjs';
@@ -5,7 +6,6 @@ import { Observable } from 'rxjs';
 import { FormItems } from './form-items';
 import { FormStyles } from './form-style';
 import { IFormItem } from './iform-item';
-import { WritableSignal } from '@angular/core';
 
 export interface IFormStep {
   items: {

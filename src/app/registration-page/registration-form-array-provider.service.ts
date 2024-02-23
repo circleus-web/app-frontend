@@ -252,10 +252,7 @@ class UserForm {
 
   public formArrayWithDescriptions: IFormArrayWithDescriptions = new FormArrayWithDescriptions({
     forms: this.m_formsOnPage,
-    steps: [
-      { items: this.m_generalActiveItems },
-      { items: this.m_jobActiveItems },
-    ],
+    steps: [{ items: this.m_generalActiveItems }, { items: this.m_jobActiveItems }],
   });
 }
 
