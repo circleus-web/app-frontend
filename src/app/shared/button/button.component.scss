@@ -41,8 +41,6 @@ button.btn.btn-primary:hover {
 button.btn.btn-primary:focus {
   border: 1px solid var(--Accent-600, #7f56d9);
   background: var(--Accent-600, #7f56d9);
-
-  box-shadow: 0 0 0 2px #f4ebff;
 }
 
 button.btn.btn-primary:disabled {
@@ -63,13 +61,6 @@ button.btn.btn-secondary:hover {
   background: var(--Accent-100, #f4ebff);
 }
 
-button.btn.btn-secondary:focus {
-  border: 1px solid var(--Accent-50, #f9f5ff);
-  background: var(--Accent-50, #f9f5ff);
-
-  box-shadow: 0 0 0 2px #f4ebff;
-}
-
 button.btn.btn-secondary:disabled {
   border: 1px solid var(--Accent-25, #fcfaff);
   background: var(--Accent-25, #fcfaff);
@@ -85,10 +76,6 @@ button.btn.btn-secondary-gray {
 
 button.btn.btn-secondary-gray:hover {
   background: var(--Gray-50, #f9fafb);
-}
-
-button.btn.btn-secondary-gray:focus {
-  box-shadow: 0 0 0 2px #f4ebff;
 }
 
 button.btn.btn-secondary-gray:disabled {

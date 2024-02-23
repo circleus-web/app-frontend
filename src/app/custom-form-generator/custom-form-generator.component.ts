@@ -50,6 +50,8 @@ import { IsFormTextPipe } from './form-text/is-form-text.pipe';
 export class CustomFormGeneratorComponent implements OnInit, OnDestroy {
   forms: InputSignal<IFormArrayWithDescriptions> = input.required<IFormArrayWithDescriptions>();
 
+  animated: InputSignal<boolean> = input<boolean>(false);
+
   ngOnInit(): void {
     this.forms().onCreate?.call(this.forms);
   }

@@ -9,3 +9,8 @@ body {
   -webkit-appearance: none;
   box-sizing: border-box;
 }
+
+*:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 2px #f4ebff;
+}

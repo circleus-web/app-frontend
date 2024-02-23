@@ -1,3 +1,4 @@
+import { WritableSignal, signal } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { Observable } from 'rxjs';
@@ -11,7 +12,7 @@ import { IFormText } from '../form-text/iform-text';
 
 import { FormItems } from './form-items';
 import { FormStyles } from './form-style';
-import { IFormArrayWithDescriptions } from './iform-array-with-descriptions';
+import { IFormArrayWithDescriptions, IFormStep } from './iform-array-with-descriptions';
 import { IFormItem } from './iform-item';
 
 interface IRequiredFormArrayWithDescriptions {
@@ -22,13 +23,14 @@ interface IRequiredFormArrayWithDescriptions {
   buttons?: { [key: string]: IFormButton };
   texts?: { [key: string]: IFormText };
   textsWithLinks?: { [key: string]: IFormTextWithLink };
-  activeItems?: { [key: string]: FormItems };
+  currentStep?: number;
+  steps: IFormStep[];
   onCreate?: () => void;
   onDestroy?: () => void;
 }
 
 export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
-  public forms?: {
+  private _forms?: {
     [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithToggle;
   };
 
@@ -36,25 +38,28 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   public formsStyle?: FormStyles;
 
-  public buttons?: { [key: string]: IFormButton };
+  private _buttons?: { [key: string]: IFormButton };
 
-  public texts?: { [key: string]: IFormText };
+  private _texts?: { [key: string]: IFormText };
 
-  public textsWithLinks?: { [key: string]: IFormTextWithLink };
+  private _textsWithLinks?: { [key: string]: IFormTextWithLink };
 
-  public activeItems?: { [key: string]: FormItems };
+  public currentStep: WritableSignal<number>;
+
+  private _steps: IFormStep[];
 
   public onCreate?: () => void;
 
   public onDestroy?: () => void;
 
   constructor(formArrayWithDescriptions: IRequiredFormArrayWithDescriptions) {
-    this.forms = formArrayWithDescriptions.forms;
+    this._forms = formArrayWithDescriptions.forms;
     this.formsStyle = formArrayWithDescriptions.formsStyle;
-    this.buttons = formArrayWithDescriptions.buttons;
-    this.texts = formArrayWithDescriptions.texts;
-    this.textsWithLinks = formArrayWithDescriptions.textsWithLinks;
-    this.activeItems = formArrayWithDescriptions.activeItems;
+    this._buttons = formArrayWithDescriptions.buttons;
+    this._texts = formArrayWithDescriptions.texts;
+    this._textsWithLinks = formArrayWithDescriptions.textsWithLinks;
+    this.currentStep = signal(formArrayWithDescriptions.currentStep || 0);
+    this._steps = formArrayWithDescriptions.steps;
     this.onCreate = formArrayWithDescriptions.onCreate;
     this.onDestroy = formArrayWithDescriptions.onDestroy;
   }
@@ -62,29 +67,49 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
   public getForm(
     inputName: string,
   ): IFormInputWithLabel | IFormCombobox | IFormInputWithToggle | undefined {
-    return this.forms ? this.forms[inputName] : undefined;
+    return this._forms ? this._forms[inputName] : undefined;
   }
 
   private getFormButton(buttonName: string): IFormButton | undefined {
-    return this.buttons ? this.buttons[buttonName] : undefined;
+    return this._buttons ? this._buttons[buttonName] : undefined;
   }
 
   private getFormText(textName: string): IFormText | undefined {
-    return this.texts ? this.texts[textName] : undefined;
+    return this._texts ? this._texts[textName] : undefined;
   }
 
   private getFormTextWithLink(textName: string): IFormTextWithLink | undefined {
-    return this.textsWithLinks ? (this.textsWithLinks[textName] as IFormTextWithLink) : undefined;
+    return this._textsWithLinks ? (this._textsWithLinks[textName] as IFormTextWithLink) : undefined;
   }
 
   public getFormControl(formName: string): FormControl | undefined {
     return this.getForm(formName)?.formControl;
   }
 
-  public get iterableItems(): Required<IFormItem>[] {
-    if (!this.activeItems) return [];
+  public previousStep(): void {
+    this.currentStep.set(this.currentStep() - 1);
+  }
+
+  public nextStep(): void {
+    this.currentStep.set(this.currentStep() + 1);
+  }
+
+  public setStep(step: number): void {
+    this.currentStep.set(step);
+  }
+
+  public stepValid(step: number): boolean {
+    return step >= 0 && step < this._steps.length && !!this._steps[step];
+  }
+
+  public get maxStep(): number {
+    return this._steps.length - 1;
+  }
+
+  public getIterableItems(step: number): Required<IFormItem>[] {
+    if (!this.stepValid(step)) return [];
     const iterableItems: Required<IFormItem>[] = [];
-    for (const [key, value] of Object.entries(this.activeItems)) {
+    for (const [key, value] of Object.entries(this._steps[step].items)) {
       const formInputWithLabel = this.getForm(key);
       const formButton = this.getFormButton(key);
       const formText = this.getFormText(key);
@@ -109,12 +134,20 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     return iterableItems;
   }
 
+  public get allIterableItems(): Required<IFormItem>[][] {
+    const res: Required<IFormItem>[][] = [];
+    for (let i = 0; i <= this.maxStep; i++) {
+      res.push(this.getIterableItems(i));
+    }
+    return res;
+  }
+
   public get formGroup(): FormGroup {
     if (!this._formGroup) {
       this._formGroup = new FormGroup({});
 
-      if (this.activeItems)
-        for (const [key, value] of Object.entries(this.activeItems)) {
+      if (this.stepValid(this.currentStep()))
+        for (const [key, value] of Object.entries(this._steps[this.currentStep()])) {
           if (value === FormItems.FORM_INPUT_WITH_LABEL) {
             this._formGroup.addControl(key, this.getFormControl(key));
           }
@@ -133,7 +166,7 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   public getActiveFormContent(): object {
     let resultObject: object = {};
-    for (const item of this.iterableItems) {
+    for (const item of this.getIterableItems(this.currentStep())) {
       resultObject = {
         ...resultObject,
         ...item.getContent(),

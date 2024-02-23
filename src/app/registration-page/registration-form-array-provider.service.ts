@@ -75,7 +75,7 @@ class AccountCreationForm {
       return this.formArrayWithDescriptions.isInvalid();
     },
     click: () => {
-      this.formArrayWithDescriptions.activeItems = this.m_verificationCodeInputActiveItems;
+      this.formArrayWithDescriptions.nextStep();
     },
   });
 
@@ -138,10 +138,13 @@ class AccountCreationForm {
     buttons: this.m_buttonsOnPage,
     texts: this.m_textsOnPage,
     textsWithLinks: this.m_textsWithLinksOnPage,
-    activeItems: this.m_emailInputActiveItems,
+    steps: [
+      { items: this.m_emailInputActiveItems },
+      { items: this.m_verificationCodeInputActiveItems },
+    ],
     onCreate: () => {
       this.m_emailControl$?.pipe(takeUntilDestroyed(this.m_destroyRef)).subscribe(() => {
-        this.formArrayWithDescriptions.activeItems = this.m_emailInputActiveItems;
+        this.formArrayWithDescriptions.setStep(0);
       });
     },
   });
@@ -150,7 +153,7 @@ class AccountCreationForm {
     this.formArrayWithDescriptions.getFormValueChanges('email');
 }
 
-class GeneralForm {
+class UserForm {
   private readonly m_lastNameForm: IFormInputWithLabel = new FormInputWithLabel({
     input: new Input({
       formControl: new FormControl('', Validators.required),
@@ -206,30 +209,6 @@ class GeneralForm {
     title: 'Местоположение',
   });
 
-  private readonly m_formsOnPage = {
-    lastName: this.m_lastNameForm,
-    firstName: this.m_firstNameForm,
-    phoneNumber: this.m_phoneNumberForm,
-    dateOfBirth: this.m_dateOfBirthForm,
-    city: this.m_cityForm,
-  };
-
-  private readonly m_generalActiveItems = {
-    lastName: FormItems.FORM_INPUT_WITH_LABEL,
-    firstName: FormItems.FORM_INPUT_WITH_LABEL,
-    phoneNumber: FormItems.FORM_INPUT_WITH_LABEL,
-    dateOfBirth: FormItems.FORM_INPUT_WITH_LABEL,
-    city: FormItems.FORM_INPUT_WITH_LABEL,
-    submit: FormItems.FORM_BUTTON,
-  };
-
-  public formArrayWithDescriptions: IFormArrayWithDescriptions = new FormArrayWithDescriptions({
-    forms: this.m_formsOnPage,
-    activeItems: this.m_generalActiveItems,
-  });
-}
-
-class JobForm {
   private readonly m_specializationForm: IFormInputWithLabel = new FormInputWithLabel({
     input: new Input({
       formControl: new FormControl('', [Validators.required]),
@@ -248,8 +227,22 @@ class JobForm {
   });
 
   private readonly m_formsOnPage = {
+    lastName: this.m_lastNameForm,
+    firstName: this.m_firstNameForm,
+    phoneNumber: this.m_phoneNumberForm,
+    dateOfBirth: this.m_dateOfBirthForm,
+    city: this.m_cityForm,
     specializationForm: this.m_specializationForm,
     gradeForm: this.m_gradeForm,
+  };
+
+  private readonly m_generalActiveItems = {
+    lastName: FormItems.FORM_INPUT_WITH_LABEL,
+    firstName: FormItems.FORM_INPUT_WITH_LABEL,
+    phoneNumber: FormItems.FORM_INPUT_WITH_LABEL,
+    dateOfBirth: FormItems.FORM_INPUT_WITH_LABEL,
+    city: FormItems.FORM_INPUT_WITH_LABEL,
+    submit: FormItems.FORM_BUTTON,
   };
 
   private readonly m_jobActiveItems = {
@@ -259,7 +252,7 @@ class JobForm {
 
   public formArrayWithDescriptions: IFormArrayWithDescriptions = new FormArrayWithDescriptions({
     forms: this.m_formsOnPage,
-    activeItems: this.m_jobActiveItems,
+    steps: [{ items: this.m_generalActiveItems }, { items: this.m_jobActiveItems }],
   });
 }
 
@@ -269,18 +262,14 @@ class JobForm {
 export class RegistrationFormArrayProviderService implements FormArrayProvider {
   private _accountCreationForm = new AccountCreationForm();
 
-  private _generalForm = new GeneralForm();
-
-  private _jobForm = new JobForm();
+  private _userForm = new UserForm();
 
   public getFormArray(key: string): IFormArrayWithDescriptions {
     switch (key) {
       case 'account_creation':
         return this._accountCreationForm.formArrayWithDescriptions;
-      case 'general_info':
-        return this._generalForm.formArrayWithDescriptions;
-      case 'job_info':
-        return this._jobForm.formArrayWithDescriptions;
+      case 'user_info':
+        return this._userForm.formArrayWithDescriptions;
       default:
         throw new FormNotFoundError(key);
     }

@@ -23,7 +23,7 @@ export class Input implements IInput {
 
   public placeholder?: string;
 
-  public icon?: { src: string; };
+  public icon?: { src: string };
 
   constructor(inputContent: IRequiredInput) {
     this.formControl = inputContent.formControl;
