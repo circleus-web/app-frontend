@@ -1,35 +1,46 @@
-@for (item of forms().iterableItems; track $index) {
-  @if (item | isFormInputWithLabel) {
-    <app-input-with-label
-      [inputWithLabel]="item"
-      class="input-with-label"
-      [ngClass]="forms().formsStyle"
-    ></app-input-with-label>
-  } @else if (item | isFormCombobox) {
-    <app-combobox-with-label
-      [comboboxWithLabel]="item"
-      class="combobox-with-label"
-      [ngClass]="forms().formsStyle"
-    ></app-combobox-with-label>
-  } @else if (item | isFormInputWithToggle) {
-    <app-input-with-toggle-and-label
-      [inputWithToggleAndLabel]="item"
-      class="input-with-toggle"
-      [ngClass]="forms().formsStyle"
-    ></app-input-with-toggle-and-label>
-  } @else if (item | isFormButton) {
-    <app-button
-      [button]="item"
-      class="button-container"
-      [ngClass]="forms().formsStyle"
-    ></app-button>
-  } @else if (item | isFormText) {
-    <app-text [text]="item" class="text-container" [ngClass]="forms().formsStyle"></app-text>
-  } @else if (item | isFormTextWithLink) {
-    <app-text-with-link
-      [textWithLink]="item"
-      class="text-with-link-container"
-      [ngClass]="forms().formsStyle"
-    ></app-text-with-link>
+<ng-template #form let-step="step">
+  @for (item of forms().getIterableItems(step); track $index) {
+    @if (item | isFormInputWithLabel) {
+      <app-input-with-label
+        [inputWithLabel]="item"
+        class="input-with-label"
+        [ngClass]="forms().formsStyle"
+      ></app-input-with-label>
+    } @else if (item | isFormCombobox) {
+      <app-combobox-with-label
+        [comboboxWithLabel]="item"
+        class="combobox-with-label"
+        [ngClass]="forms().formsStyle"
+      ></app-combobox-with-label>
+    } @else if (item | isFormInputWithToggle) {
+      <app-input-with-toggle-and-label
+        [inputWithToggleAndLabel]="item"
+        class="input-with-toggle"
+        [ngClass]="forms().formsStyle"
+      ></app-input-with-toggle-and-label>
+    } @else if (item | isFormButton) {
+      <app-button
+        [button]="item"
+        class="button-container"
+        [ngClass]="forms().formsStyle"
+      ></app-button>
+    } @else if (item | isFormText) {
+      <app-text [text]="item" class="text-container" [ngClass]="forms().formsStyle"></app-text>
+    } @else if (item | isFormTextWithLink) {
+      <app-text-with-link
+        [textWithLink]="item"
+        class="text-with-link-container"
+        [ngClass]="forms().formsStyle"
+      ></app-text-with-link>
+    }
   }
+</ng-template>
+
+<div class="current-form">
+  <ng-container [ngTemplateOutlet]="form" [ngTemplateOutletContext]="{step:forms().currentStep}"></ng-container>
+</div>
+@if (forms().stepValid(forms().currentStep + 1)) {
+  <div class="next-form">
+    <ng-container [ngTemplateOutlet]="form" [ngTemplateOutletContext]="{step:forms().currentStep + 1}"></ng-container>
+  </div>
 }

@@ -1,36 +1,50 @@
 @import 'typography';
 @import 'constants';
 
-.input-with-label,
-.combobox-with-label,
-.input-with-toggle {
+.current-form,
+.next-form {
   display: flex;
   flex-direction: column;
+  gap: $form-gap;
+  align-self: stretch;
   align-items: center;
-  gap: calc($form-gap / 4);
-  align-self: stretch;
+  height: 100%;
+
+  .input-with-label,
+  .combobox-with-label,
+  .input-with-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc($form-gap / 4);
+    align-self: stretch;
+  }
+
+  input.error {
+    border: 1px solid var(--Red-400, #f97066) !important;
+  }
+
+  .text-with-link-container {
+    margin-top: auto;
+  }
+
+  span.error {
+    color: var(--Red-500, #f04438);
+    align-self: stretch;
+
+    @include font-body-2-condensed-regular;
+  }
+
+  .button-container {
+    display: flex;
+    width: 100%;
+  }
+
+  .input-with-toggle {
+    gap: calc($form-gap / 2);
+  }
 }
 
-input.error {
-  border: 1px solid var(--Red-400, #f97066) !important;
-}
-
-.text-with-link-container {
-  margin-top: auto;
-}
-
-span.error {
-  color: var(--Red-500, #f04438);
-  align-self: stretch;
-
-  @include font-body-2-condensed-regular;
-}
-
-.button-container {
-  display: flex;
-  width: 100%;
-}
-
-.input-with-toggle {
-  gap: calc($form-gap / 2);
+.next-form {
+  display: none;
 }

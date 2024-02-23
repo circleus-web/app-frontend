@@ -71,7 +71,7 @@ export class LoginFormArrayProviderService implements FormArrayProvider {
       return this.m_loginFormArray.isInvalid();
     },
     click: () => {
-      this.m_loginFormArray.activeItems = this.m_verificationCodeInputActiveItems;
+      this.m_loginFormArray.nextStep();
     },
   });
 
@@ -82,13 +82,13 @@ export class LoginFormArrayProviderService implements FormArrayProvider {
     class: ['footer'],
   });
 
-  private readonly m_emailInputActiveItems = {
+  private readonly m_emailInputStep = {
     email: FormItems.FORM_INPUT_WITH_LABEL,
     showVerificationCode: FormItems.FORM_BUTTON,
     linkToRegistration: FormItems.FORM_TEXT_WITH_LINK,
   };
 
-  private readonly m_verificationCodeInputActiveItems = {
+  private readonly m_verificationCodeInputStep = {
     email: FormItems.FORM_INPUT_WITH_LABEL,
     verificationCodeSupportText: FormItems.FORM_TEXT,
     verificationCode: FormItems.FORM_INPUT_WITH_LABEL,
@@ -118,10 +118,17 @@ export class LoginFormArrayProviderService implements FormArrayProvider {
     buttons: this.m_buttonsOnPage,
     texts: this.m_textsOnPage,
     textsWithLinks: this.m_textsWithLinksOnPage,
-    activeItems: this.m_emailInputActiveItems,
+    steps: [
+      {
+        items: this.m_emailInputStep,
+      },
+      {
+        items: this.m_verificationCodeInputStep,
+      },
+    ],
     onCreate: () => {
       this.m_emailControl$?.pipe(takeUntilDestroyed(this.m_destroyRef)).subscribe(() => {
-        this.m_loginFormArray.activeItems = this.m_emailInputActiveItems;
+        this.m_loginFormArray.setStep(0);
       });
     },
   });

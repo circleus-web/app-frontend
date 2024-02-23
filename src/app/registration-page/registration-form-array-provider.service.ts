@@ -75,7 +75,7 @@ class AccountCreationForm {
       return this.formArrayWithDescriptions.isInvalid();
     },
     click: () => {
-      this.formArrayWithDescriptions.activeItems = this.m_verificationCodeInputActiveItems;
+      this.formArrayWithDescriptions.nextStep();
     },
   });
 
@@ -138,10 +138,13 @@ class AccountCreationForm {
     buttons: this.m_buttonsOnPage,
     texts: this.m_textsOnPage,
     textsWithLinks: this.m_textsWithLinksOnPage,
-    activeItems: this.m_emailInputActiveItems,
+    steps: [
+      { items: this.m_emailInputActiveItems },
+      { items: this.m_verificationCodeInputActiveItems },
+    ],
     onCreate: () => {
       this.m_emailControl$?.pipe(takeUntilDestroyed(this.m_destroyRef)).subscribe(() => {
-        this.formArrayWithDescriptions.activeItems = this.m_emailInputActiveItems;
+        this.formArrayWithDescriptions.setStep(0);
       });
     },
   });
@@ -225,7 +228,7 @@ class GeneralForm {
 
   public formArrayWithDescriptions: IFormArrayWithDescriptions = new FormArrayWithDescriptions({
     forms: this.m_formsOnPage,
-    activeItems: this.m_generalActiveItems,
+    steps: [{ items: this.m_generalActiveItems }],
   });
 }
 
@@ -259,7 +262,7 @@ class JobForm {
 
   public formArrayWithDescriptions: IFormArrayWithDescriptions = new FormArrayWithDescriptions({
     forms: this.m_formsOnPage,
-    activeItems: this.m_jobActiveItems,
+    steps: [{ items: this.m_jobActiveItems }],
   });
 }
 
