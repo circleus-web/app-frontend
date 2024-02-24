@@ -21,6 +21,10 @@ button.btn {
   @include font-body-2-condensed-semibold;
 }
 
+button.btn.small {
+  padding: 8px 12px;
+}
+
 button.btn.btn-primary,
 button.btn.btn-secondary,
 button.btn.btn-secondary-gray {

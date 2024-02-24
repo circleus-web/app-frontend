@@ -88,5 +88,7 @@ export class SettingsModalComponent {
   protected m_searchingForWorkToggle: IToggle = new Toggle({
     name: 'searchingForWork',
     checked: true,
+    text: 'Ищу работу',
+    supportingText: 'Статус будет показан в профиле',
   });
 }

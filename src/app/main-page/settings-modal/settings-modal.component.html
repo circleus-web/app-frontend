@@ -26,13 +26,20 @@
       <div class="change-photo">
         <app-button
           [button]="{
-            class: ['btn', 'btn-secondary-gray']
+            text: 'Изменить фото',
+            icon: {
+              src: 'assets/svg/settings-modal/edit\.svg'
+            },
+            class: ['btn', 'small', 'btn-secondary-gray']
           }"
-          >Изменить фото</app-button
+          ></app-button
         >
         <app-button
           [button]="{
-            class: ['btn', 'btn-secondary-gray']
+            icon: {
+              src: 'assets/svg/settings-modal/trash\.svg'
+            },
+            class: ['btn', 'small', 'btn-secondary-gray']
           }"
         ></app-button>
       </div>

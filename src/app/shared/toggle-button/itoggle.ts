@@ -3,4 +3,6 @@ export interface IToggle {
   checked: boolean;
   inversed: boolean;
   value: boolean;
+  text?: string;
+  supportingText?: string;
 }

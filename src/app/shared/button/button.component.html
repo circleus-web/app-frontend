@@ -4,6 +4,7 @@
   [ngClass]="button()?.class"
   type="button()"
 >
-  {{ button()?.text }}
+  <img *ngIf="button()?.icon" class="icon" src="{{ button()?.icon?.src }}" alt="icon" />
+  <div *ngIf="button()?.text" class="text">{{ button()?.text }}</div>
   <ng-content></ng-content>
 </button>
