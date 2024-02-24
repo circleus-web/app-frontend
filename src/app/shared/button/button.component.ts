@@ -12,7 +12,7 @@ import { IButton } from './ibutton';
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  button = input.required<IButton>();
+  button = input<IButton>();
 
   buttonStyle = input<
     | {
@@ -24,8 +24,8 @@ export class ButtonComponent {
   constructor(private router: Router) {}
 
   protected click(): void {
-    this.button().click?.call(this.button());
-    const routerLink: string[] | undefined = this.button().routerLink;
+    this.button()?.click?.call(this.button());
+    const routerLink: string[] | undefined = this.button()?.routerLink;
     if (routerLink) this.router.navigate(routerLink);
   }
 }

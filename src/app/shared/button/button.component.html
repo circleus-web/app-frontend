@@ -1,3 +1,9 @@
-<button (click)="click()" [disabled]="button().disabled" [ngClass]="button().class" type="button()">
-  {{ button().text }}
+<button
+  (click)="click()"
+  [disabled]="button()?.disabled"
+  [ngClass]="button()?.class"
+  type="button()"
+>
+  {{ button()?.text }}
+  <ng-content></ng-content>
 </button>

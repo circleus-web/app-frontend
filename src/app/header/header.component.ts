@@ -15,6 +15,10 @@ export class HeaderComponent {
     this.m_userDropdownActive.set(!this.m_userDropdownActive());
   }
 
+  protected m_userDropdownHide() {
+    this.m_userDropdownActive.set(false);
+  }
+
   @Output() userClick: EventEmitter<void> = new EventEmitter<void>();
 
   protected m_settingsClick() {

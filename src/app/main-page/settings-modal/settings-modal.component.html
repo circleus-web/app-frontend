@@ -1,0 +1,71 @@
+<app-modal
+  [modalInformation]="{
+    title: 'Настройки',
+    iconSrc: 'assets/svg/settings-modal/settings\.svg'
+  }"
+  [menyValues]="{
+    'general-settings': {
+      title: 'Общие настройки',
+      iconSrc: 'assets/svg/settings-modal/general\.svg',
+      templateValue: m_generalSettingsTemplate
+    },
+    'account-settings': {
+      title: 'Аккаунт',
+      iconSrc: 'assets/svg/settings-modal/account\.svg',
+      templateValue: m_accountSettingsTemplate
+    }
+  }"
+  (modalHide)="m_settingsModalHide()"
+>
+</app-modal>
+
+<ng-template #m_generalSettingsTemplate>
+  <main class="general-settings">
+    <div class="photo-block">
+      <div class="photo"></div>
+      <div class="change-photo">
+        <app-button
+          [button]="{
+            class: ['btn', 'btn-secondary-gray']
+          }"
+          >Изменить фото</app-button
+        >
+        <app-button
+          [button]="{
+            class: ['btn', 'btn-secondary-gray']
+          }"
+        ></app-button>
+      </div>
+    </div>
+    <hr />
+    <div class="name-change">
+      <app-input-with-label
+        [inputWithLabel]="m_lastNameInput"
+        class="last-name"
+      ></app-input-with-label>
+      <app-input-with-label
+        [inputWithLabel]="m_firstNameInput"
+        class="first-name"
+      ></app-input-with-label>
+    </div>
+    <app-input-with-toggle-and-label
+      [inputWithToggleAndLabel]="m_dateOfBirthInput"
+      class="date-of-birth-change"
+    ></app-input-with-toggle-and-label>
+    <app-input-with-label
+      [inputWithLabel]="m_locationInput"
+      class="location-change"
+    ></app-input-with-label>
+    <app-input-with-label
+      [inputWithLabel]="m_specialityInput"
+      class="speciality-change"
+    ></app-input-with-label>
+    <app-toggle-button
+      [toggle]="m_searchingForWorkToggle"
+      class="searching-for-work-change"
+    ></app-toggle-button>
+  </main>
+</ng-template>
+<ng-template #m_accountSettingsTemplate>
+  <p>Аккаунт</p>
+</ng-template>

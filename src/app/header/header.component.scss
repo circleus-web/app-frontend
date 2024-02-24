@@ -1,4 +1,4 @@
-@import "typography";
+@import 'typography';
 @import 'constants';
 @import 'effects/shadows';
 
@@ -80,7 +80,7 @@ main {
     background: var(--White, #ffffff);
 
     border-radius: 8px;
-    border: 1px solid #F2F4F7;
+    border: 1px solid #f2f4f7;
 
     @include shadow-lg;
 
@@ -143,7 +143,7 @@ main {
         }
 
         &:hover {
-          background: var(--Gray-50, #F9FAFB);
+          background: var(--Gray-50, #f9fafb);
           cursor: pointer;
         }
       }

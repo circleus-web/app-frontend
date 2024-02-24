@@ -18,14 +18,14 @@
       </div>
     </div>
     <div class="items">
-      <button (click)="m_settingsClick()" class="item">
+      <button (click)="m_userDropdownHide(); m_settingsClick()" class="item">
         <img class="icon" src="assets/svg/header/settings.svg" alt="Settings icon" />
         <div class="text">Настройки</div>
       </button>
-      <div class="item">
+      <button (click)="m_userDropdownHide()" class="item">
         <img class="icon" src="assets/svg/header/logout.svg" alt="Logout icon" />
         <div class="text">Выйти</div>
-      </div>
+      </button>
     </div>
   </div>
 </main>

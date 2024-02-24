@@ -16,6 +16,7 @@ import { ProjectsBlockComponent } from './projects-block/projects-block.componen
 import { RecomendationsBlockComponent } from './recomendations-block/recomendations-block.component';
 import { ResearchModalComponent } from './research-modal/research-modal.component';
 import { SalaryBlockComponent } from './salary-block/salary-block.component';
+import { SettingsModalComponent } from './settings-modal/settings-modal.component';
 import { SkillsBlockComponent } from './skills-block/skills-block.component';
 import { ToolButtonComponent } from './tool-button/tool-button.component';
 
@@ -48,6 +49,7 @@ enum UsedBreakpoints {
     CertificatesBlockComponent,
     ToolButtonComponent,
     ResearchModalComponent,
+    SettingsModalComponent,
   ],
 })
 export class MainPageComponent implements OnInit {

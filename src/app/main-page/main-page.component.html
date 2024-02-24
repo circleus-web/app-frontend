@@ -1,6 +1,4 @@
-<app-header
-  (userClick)="m_settingsModalShow()"
-></app-header>
+<app-header (userClick)="m_settingsModalShow()"></app-header>
 <div class="content" [ngClass]="m_currentBreakpoint">
   <app-general-block
     class="general-block"
@@ -169,4 +167,8 @@
     *ngIf="m_researchModalActive()"
     (researchModalHide)="m_researchModalHide()"
   ></app-research-modal>
+  <app-settings-modal
+    *ngIf="m_settingsModalActive()"
+    (modalHide)="m_settingsModalHide()"
+  ></app-settings-modal>
 </div>
