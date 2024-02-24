@@ -1,3 +1,5 @@
+@import "typography";
+
 main.general-settings {
   display: flex;
   flex-direction: column;
@@ -56,5 +58,58 @@ main.general-settings {
 
   .date-of-birth-change {
     width: calc(50% - 8px);
+  }
+}
+
+main.account {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  padding: 16px 24px;
+
+  .email-change {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+    border: 1px solid #EAECF0;
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .title {
+        color: var(--Gray-700, #344054);
+
+        @include font-body-1-medium;
+      }
+
+      button {
+        background: none;
+        border: none;
+        border-radius: 8px;
+      }
+    }
+    
+    .current-email {
+      color: var(--Gray-900, #101828);
+
+      @include font-body-2-regular;
+    }
+  }
+
+  .phone-change {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .delete-account {
+    display: flex;
   }
 }

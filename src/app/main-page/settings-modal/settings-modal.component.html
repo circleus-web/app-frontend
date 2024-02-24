@@ -32,8 +32,7 @@
             },
             class: ['btn', 'small', 'btn-secondary-gray']
           }"
-          ></app-button
-        >
+        ></app-button>
         <app-button
           [button]="{
             icon: {
@@ -73,6 +72,30 @@
     ></app-toggle-button>
   </main>
 </ng-template>
+
 <ng-template #m_accountSettingsTemplate>
-  <p>Аккаунт</p>
+  <main class="account">
+    <app-toggle-button [toggle]="m_isPrivateToggle" class="is-private"></app-toggle-button>
+    <div class="email-change">
+      <div class="header">
+        <span class="title">Email</span>
+        <button>
+          <img src="assets/svg/settings-modal/edit.svg" alt="edit button" />
+        </button>
+      </div>
+      <span class="current-email">zhur06&#64;gmail.com</span>
+    </div>
+    <app-input-with-toggle-and-label
+      [inputWithToggleAndLabel]="m_phoneChangeInput"
+      class="phone-change"
+    ></app-input-with-toggle-and-label>
+    <hr />
+    <app-button
+      [button]="{
+        text: 'Удалить аккаунт',
+        class: ['btn', 'btn-tertiary', 'grow'],
+      }"
+      class="delete-account"
+    ></app-button>
+  </main>
 </ng-template>

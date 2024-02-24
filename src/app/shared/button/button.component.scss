@@ -14,11 +14,16 @@ button.btn {
   gap: 8px;
   flex: 1 0 0;
 
+  border: none;
   border-radius: 8px;
 
   @include shadow-xs;
 
   @include font-body-2-condensed-semibold;
+}
+
+button.btn.grow {
+  flex-grow: 1;
 }
 
 button.btn.small {
@@ -85,5 +90,28 @@ button.btn.btn-secondary-gray:hover {
 button.btn.btn-secondary-gray:disabled {
   border: 1px solid var(--Gray-200, #eaecf0);
 
+  color: var(--Gray-300, #d0d5dd);
+}
+
+button.btn.btn-tertiary {
+  border-radius: 8px;
+  background: var(--White, #ffffff);
+
+  color: var(--Accent-600, #6941c6);
+
+  box-shadow: none;
+}
+
+button.btn.btn-tertiary:hover {
+  background: var(--Accent-50, #f9f5ff);
+
+  color: var(--Accent-700, #6941c6);
+}
+
+button.btn.btn-tertiary:focus {
+  color: var(--Accent-700, #6941c6);
+}
+
+button.btn.btn-tertiary:disabled {
   color: var(--Gray-300, #d0d5dd);
 }

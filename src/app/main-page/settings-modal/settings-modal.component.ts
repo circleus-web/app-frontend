@@ -91,4 +91,24 @@ export class SettingsModalComponent {
     text: 'Ищу работу',
     supportingText: 'Статус будет показан в профиле',
   });
+
+  protected m_isPrivateToggle: IToggle = new Toggle({
+    name: 'isPrivate',
+    text: 'Закрытый аккаунт',
+    supportingText: 'Другие пользователи не смогут просматривать ваш аккаунт',
+  });
+
+  protected m_phoneChangeInput: IInputWithToggleAndLabel = new InputWithToggleAndLabel({
+    title: 'Номер телефона',
+    input: new Input({
+      formControl: new FormControl(),
+      name: 'phone',
+      placeholder: '+7 (999) 123-45-67',
+    }),
+    toggle: new Toggle({
+      name: 'isPhonePublic',
+      inversed: true,
+    }),
+    toggleTitle: 'Не показывать в профиле',
+  });
 }

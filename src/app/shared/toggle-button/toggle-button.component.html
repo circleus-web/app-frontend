@@ -4,10 +4,11 @@
     class="toggle-button"
     [ngClass]="{ toggled: toggle().checked }"
     (click)="m_toggleClick()"
-  >
-  </button>
+  ></button>
   <div *ngIf="toggle().text || toggle().supportingText" class="texts">
     <span *ngIf="toggle().text" class="text">{{ toggle().text }}</span>
-    <span *ngIf="toggle().supportingText" class="supporting-text">{{ toggle().supportingText }}</span>
+    <span *ngIf="toggle().supportingText" class="supporting-text">{{
+      toggle().supportingText
+    }}</span>
   </div>
 </div>
