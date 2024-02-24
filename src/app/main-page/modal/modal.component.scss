@@ -162,6 +162,8 @@ main {
         flex-grow: 1;
         margin: 0;
 
+        color: var(--Gray-500, #667085);
+
         @include font-body-1-condensed-semibold;
       }
 
@@ -173,6 +175,9 @@ main {
 
     .body {
       display: flex;
+
+      flex-direction: column;
+      align-items: stretch;
 
       height: $content-height;
       width: $content-width;

@@ -5,14 +5,14 @@ import { ButtonComponent } from '../../shared/button/button.component';
 import { IInputWithLabel } from '../../shared/input/input-with-label/iinput-with-label';
 import { InputWithLabel } from '../../shared/input/input-with-label/input-with-label';
 import { InputWithLabelComponent } from '../../shared/input/input-with-label/input-with-label.component';
+import { IInputWithToggleAndLabel } from '../../shared/input/input-with-toggle-and-label/iinput-with-toggle-and-label';
+import { InputWithToggleAndLabel } from '../../shared/input/input-with-toggle-and-label/input-with-toggle-and-label';
+import { InputWithToggleAndLabelComponent } from '../../shared/input/input-with-toggle-and-label/input-with-toggle-and-label.component';
 import { Input } from '../../shared/input/input/input';
 import { IToggle } from '../../shared/toggle-button/itoggle';
 import { Toggle } from '../../shared/toggle-button/toggle';
 import { ToggleButtonComponent } from '../../shared/toggle-button/toggle-button.component';
 import { ModalComponent } from '../modal/modal.component';
-import { IInputWithToggleAndLabel } from '../../shared/input/input-with-toggle-and-label/iinput-with-toggle-and-label';
-import { InputWithToggleAndLabel } from '../../shared/input/input-with-toggle-and-label/input-with-toggle-and-label';
-import { InputWithToggleAndLabelComponent } from '../../shared/input/input-with-toggle-and-label/input-with-toggle-and-label.component';
 
 @Component({
   selector: 'app-settings-modal',
@@ -20,7 +20,13 @@ import { InputWithToggleAndLabelComponent } from '../../shared/input/input-with-
   templateUrl: './settings-modal.component.html',
   styleUrl: './settings-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ModalComponent, ButtonComponent, InputWithLabelComponent, ToggleButtonComponent, InputWithToggleAndLabelComponent],
+  imports: [
+    ModalComponent,
+    ButtonComponent,
+    InputWithLabelComponent,
+    ToggleButtonComponent,
+    InputWithToggleAndLabelComponent,
+  ],
 })
 export class SettingsModalComponent {
   @Output() modalHide: EventEmitter<void> = new EventEmitter<void>();
