@@ -1,14 +1,28 @@
-import { ChangeDetectionStrategy, Component, WritableSignal, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Signal,
+  WritableSignal,
+  computed,
+  signal,
+} from '@angular/core';
+
+import { Button } from '../../../shared/button/button';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { IButton } from '../../../shared/button/ibutton';
-import { Button } from '../../../shared/button/button';
+
 import { BackgroundComponent } from './background/background.component';
 
 enum Steps {
   Error = -1,
   WaitingToStart = 0,
   Calculating = 1,
-  Calculated = 2,
+  Finished = 2,
+}
+
+interface ISalaryPrediction {
+  amount: number[];
+  percentRate: number;
 }
 
 @Component({
@@ -26,12 +40,34 @@ export class MyPossibilityComponent {
 
   protected m_calculate(): void {
     this.m_currentStep.set(Steps.Calculating);
-    console.log('calculate');
+
+    setTimeout(() => {
+      this.m_currentStep.set(Steps.Finished);
+    }, 3000);
   }
 
   protected m_calculateButton: IButton = new Button({
     text: 'Рассчитать ЗП',
     class: ['btn', 'btn-primary'],
     click: this.m_calculate.bind(this),
+  });
+
+  protected m_predictedSalaryProbabilitiesList: ISalaryPrediction[] = [
+    {
+      amount: [180, 200],
+      percentRate: 50,
+    },
+    {
+      amount: [160, 180],
+      percentRate: 30,
+    },
+    {
+      amount: [200, 220],
+      percentRate: 20,
+    },
+  ];
+
+  protected m_maxPercentRate: Signal<number> = computed<number>(() => {
+    return Math.max(...this.m_predictedSalaryProbabilitiesList.map((item) => item.percentRate));
   });
 }

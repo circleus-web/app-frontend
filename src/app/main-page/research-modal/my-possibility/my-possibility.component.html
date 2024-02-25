@@ -1,6 +1,6 @@
 @switch (m_currentStep()) {
   @case (Steps.WaitingToStart) {
-    <div class="content">
+    <div class="waiting">
       <app-background></app-background>
       <img src="assets/svg/research-modal/compass.svg" alt="icon" />
       <div class="controls">
@@ -11,9 +11,7 @@
             как опыт работы, образование и рыночные тренды.</span
           >
         </div>
-        <app-button
-          [button]="m_calculateButton"
-        ></app-button>
+        <app-button [button]="m_calculateButton"></app-button>
       </div>
     </div>
   }
@@ -24,9 +22,78 @@
       <div class="controls">
         <div class="texts">
           <h2 class="title">Идет вычисление</h2>
-          <span class="support"
-            >Это может занять несколько минут</span
+          <span class="support">Это может занять несколько минут</span>
+        </div>
+      </div>
+    </div>
+  }
+  @case (Steps.Finished) {
+    <div class="result">
+      <app-background></app-background>
+      <div class="content">
+        <div class="user-info">
+          <div class="photo"></div>
+          <div class="texts">
+            <h2 class="name">Журавлев Александр</h2>
+            <span class="speciality">Фронтенд разработчик</span>
+          </div>
+        </div>
+        <div class="possibilities">
+          <div class="probability second-probable">
+            <div
+              class="visualisator"
+              style="--percent-rate: {{
+                m_predictedSalaryProbabilitiesList[1].percentRate
+              }}; --max-percent-rate: {{ m_maxPercentRate() }};"
+            ></div>
+            <span class="amount"
+              >{{ m_predictedSalaryProbabilitiesList[1].amount[0] }}-{{
+                m_predictedSalaryProbabilitiesList[1].amount[1]
+              }}</span
+            >
+            <span class="percent-rate">{{
+              m_predictedSalaryProbabilitiesList[1].percentRate
+            }}</span>
+          </div>
+          <div class="probability first-probable">
+            <div
+              class="visualisator"
+              style="--percent-rate: {{
+                m_predictedSalaryProbabilitiesList[0].percentRate
+              }}; --max-percent-rate: {{ m_maxPercentRate() }};"
+            ></div>
+            <span class="amount"
+              >{{ m_predictedSalaryProbabilitiesList[0].amount[0] }}-{{
+                m_predictedSalaryProbabilitiesList[0].amount[1]
+              }}</span
+            >
+            <span class="percent-rate">{{
+              m_predictedSalaryProbabilitiesList[0].percentRate
+            }}</span>
+          </div>
+          <div class="probability third-probable">
+            <div
+              class="visualisator"
+              style="--percent-rate: {{
+                m_predictedSalaryProbabilitiesList[2].percentRate
+              }}; --max-percent-rate: {{ m_maxPercentRate() }};"
+            ></div>
+            <span class="amount"
+              >{{ m_predictedSalaryProbabilitiesList[2].amount[0] }}-{{
+                m_predictedSalaryProbabilitiesList[2].amount[1]
+              }}</span
+            >
+            <span class="percent-rate">{{
+              m_predictedSalaryProbabilitiesList[2].percentRate
+            }}</span>
+          </div>
+        </div>
+        <div class="warning-message">
+          <img class="info" src="assets/svg/modal/info.svg" alt="info" />
+          <span class="message"
+            >Расчет может быть точнее при наиболее подробном заполнении профиля</span
           >
+          <img class="close" src="assets/svg/modal/close.svg" alt="close" />
         </div>
       </div>
     </div>

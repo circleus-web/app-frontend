@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
-import { ModalComponent } from '../modal/modal.component';
+
 import { ButtonComponent } from '../../shared/button/button.component';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-edit-modal',

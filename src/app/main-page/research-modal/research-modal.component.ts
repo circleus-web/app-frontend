@@ -13,6 +13,7 @@ import { IInput } from '../../shared/input/input/iinput';
 import { Input } from '../../shared/input/input/input';
 import { InputComponent } from '../../shared/input/input/input.component';
 import { ModalComponent } from '../modal/modal.component';
+
 import { MyPossibilityComponent } from './my-possibility/my-possibility.component';
 
 @Component({

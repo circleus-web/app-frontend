@@ -2,7 +2,7 @@
 
 $content-size: 550px;
 
-.content,
+.waiting,
 .loader {
   position: relative;
   width: $content-size;
@@ -91,7 +91,7 @@ $content-size: 550px;
       position: absolute;
       width: 40px;
       height: 40px;
-      background: var(--Accent-700, #6941C6);
+      background: var(--Accent-700, #6941c6);
       border-radius: 50%;
       animation-duration: $animation-duration;
       animation-iteration-count: infinite;
@@ -105,6 +105,144 @@ $content-size: 550px;
 
     &::before {
       animation-delay: calc((-3 * $animation-duration) / 4);
+    }
+  }
+}
+
+.result {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .content {
+    position: relative;
+    display: flex;
+
+    flex-direction: column;
+    gap: 48px;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 110;
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+
+      .photo {
+        width: 100px;
+        height: 100px;
+
+        border-radius: 50%;
+        background: hotpink;
+      }
+
+      .texts {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+
+        .name {
+          margin: 0;
+
+          color: var(--Gray-700, #344054);
+
+          @include font-h-6-semibold;
+        }
+
+        .speciality {
+          margin: 0;
+
+          color: var(--Gray-500, #667085);
+
+          @include font-body-1-condensed-regular;
+        }
+      }
+    }
+
+    .possibilities {
+      display: flex;
+      gap: 40px;
+      align-items: end;
+
+      flex-grow: 1;
+
+      .probability {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        align-items: center;
+        justify-content: end;
+        height: 100%;
+
+        .visualisator {
+          border-radius: 8px 8px 0 0;
+          width: 48px;
+          height: calc(100% * var(--percent-rate, 0) / var(--max-percent-rate, 100));
+        }
+
+        &.first-probable {
+          .visualisator {
+            background: var(--Green-300, #6ce9a6);
+          }
+        }
+
+        &.second-probable {
+          .visualisator {
+            background: var(--Orange-300, #feb273);
+          }
+        }
+
+        &.third-probable {
+          .visualisator {
+            background: var(--Red-300, #fda29b);
+          }
+        }
+
+        .amount {
+          margin: 0;
+
+          color: var(--Gray-900, #101828);
+
+          @include font-body-1-condensed-semibold;
+        }
+
+        .percent-rate {
+          margin: 0;
+
+          color: var(--Gray-500, #667085);
+
+          @include font-body-1-condensed-regular;
+        }
+      }
+    }
+
+    .warning-message {
+      display: flex;
+      gap: 8px;
+
+      padding: 12px;
+
+      border-radius: 8px;
+      background: var(--Blue-50, #eff8ff);
+
+      .message {
+        @include font-body-1-regular;
+      }
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+
+      .close {
+        padding: 4px;
+      }
     }
   }
 }

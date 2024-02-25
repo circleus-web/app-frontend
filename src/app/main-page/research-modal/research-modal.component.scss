@@ -6,6 +6,10 @@ main.my-possibility {
   flex-grow: 1;
 
   padding: 35px 45px;
+
+  * {
+    flex-grow: 1;
+  }
 }
 
 main.all-specialists {

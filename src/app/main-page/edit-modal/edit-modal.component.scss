@@ -1,4 +1,4 @@
-@import "typography";
+@import 'typography';
 
 main.links,
 main.about,
@@ -48,9 +48,9 @@ main.languages {
 
         padding: 4px;
 
-        background: var(--Accent-100, #F4EBFF);
+        background: var(--Accent-100, #f4ebff);
 
-        border: 6px solid var(--Accent-50, #F9F5FF);
+        border: 6px solid var(--Accent-50, #f9f5ff);
         border-radius: 50%;
 
         overflow: visible;
@@ -70,12 +70,12 @@ main.languages {
 
         .title {
           margin: 0;
-         
+
           color: var(--Gray-900, #101828);
 
           @include font-body-2-semibold;
         }
-        
+
         .text {
           width: 352px;
 

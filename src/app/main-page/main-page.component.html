@@ -174,8 +174,5 @@
     *ngIf="m_settingsModalActive()"
     (modalHide)="m_settingsModalHide()"
   ></app-settings-modal>
-  <app-edit-modal
-    *ngIf="m_editModalActive()"
-    (modalHide)="m_editModalHide()"
-  ></app-edit-modal>
+  <app-edit-modal *ngIf="m_editModalActive()" (modalHide)="m_editModalHide()"></app-edit-modal>
 </div>

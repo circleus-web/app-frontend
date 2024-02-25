@@ -8,10 +8,9 @@ describe('MyPossibilityComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MyPossibilityComponent]
-    })
-    .compileComponents();
-    
+      imports: [MyPossibilityComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(MyPossibilityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

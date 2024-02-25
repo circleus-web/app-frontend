@@ -7,6 +7,7 @@ import { HeaderComponent } from '../header/header.component';
 import { AboutBlockComponent } from './about-block/about-block.component';
 import { AchievementsBlockComponent } from './achievements-block/achievements-block.component';
 import { CertificatesBlockComponent } from './certificates-block/certificates-block.component';
+import { EditModalComponent } from './edit-modal/edit-modal.component';
 import { EducationBlockComponent } from './education-block/education-block.component';
 import { EmploymentBlockComponent } from './employment-block/employment-block.component';
 import { ExperienceBlockComponent } from './experience-block/experience-block.component';
@@ -19,7 +20,6 @@ import { SalaryBlockComponent } from './salary-block/salary-block.component';
 import { SettingsModalComponent } from './settings-modal/settings-modal.component';
 import { SkillsBlockComponent } from './skills-block/skills-block.component';
 import { ToolButtonComponent } from './tool-button/tool-button.component';
-import { EditModalComponent } from './edit-modal/edit-modal.component';
 
 enum UsedBreakpoints {
   LARGE = 'large',
