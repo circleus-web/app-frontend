@@ -70,37 +70,301 @@
 </app-modal>
 
 <ng-template #linksTemplate>
+  <main class="links">
+    <div class="empty-state">
+      <div class="content">
+        <div class="icon">
+          <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
+        </div>
+        <div class="texts">
+          <h2 class="title">Ссылок пока нет</h2>
+          <span class="text">Вы можете добавить ссылки на соцсети или портфолио</span>
+        </div>
+      </div>
+      <app-button
+        [button]="{
+          text: 'Добавить ссылку',
+          icon: {
+            src: 'assets/svg/edit-modal/add\.svg',
+          },
+          class: ['btn', 'btn-primary']
+        }"
+      ></app-button>
+    </div>
+  </main>
 </ng-template>
 
 <ng-template #aboutTemplate>
+  <main class="about">
+    <div class="empty-state">
+      <div class="content">
+        <div class="icon">
+          <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
+        </div>
+        <div class="texts">
+          <h2 class="title">Информации о вас пока нет</h2>
+          <span class="text">Вы можете написать немного о себе и прикрепить несколько фотографий</span>
+        </div>
+      </div>
+      <app-button
+        [button]="{
+          text: 'Рассказать о себе',
+          icon: {
+            src: 'assets/svg/edit-modal/add\.svg',
+          },
+          class: ['btn', 'btn-primary']
+        }"
+      ></app-button>
+    </div>
+  </main>
 </ng-template>
 
 <ng-template #employmentTypeTemplate>
+  <main class="employment-type">
+    <div class="empty-state">
+      <div class="content">
+        <div class="icon">
+          <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
+        </div>
+        <div class="texts">
+          <h2 class="title">Вы еще не выбрали тип занятости</h2>
+          <span class="text">Вы можете выбрать подходящий для вас режим работы</span>
+        </div>
+      </div>
+      <app-button
+        [button]="{
+          text: 'Добавить',
+          icon: {
+            src: 'assets/svg/edit-modal/add\.svg',
+          },
+          class: ['btn', 'btn-primary']
+        }"
+      ></app-button>
+    </div>
+  </main>
 </ng-template>
 
 <ng-template #skillsTemplate>
+  <main class="skills">
+    <div class="empty-state">
+      <div class="content">
+        <div class="icon">
+          <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
+        </div>
+        <div class="texts">
+          <h2 class="title">Вы еще не выбрали навыки</h2>
+          <span class="text">Добавьте навыки, которыми вы владеете</span>
+        </div>
+      </div>
+      <app-button
+        [button]="{
+          text: 'Добавить',
+          icon: {
+            src: 'assets/svg/edit-modal/add\.svg',
+          },
+          class: ['btn', 'btn-primary']
+        }"
+      ></app-button>
+    </div>
+  </main>
 </ng-template>
 
 <ng-template #expectedIncomeTemplate>
+  <main class="expected-income">
+    <div class="empty-state">
+      <div class="content">
+        <div class="icon">
+          <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
+        </div>
+        <div class="texts">
+          <h2 class="title">Заработная плата не указана</h2>
+          <span class="text">Вы можете указать желаемую заработную плату</span>
+        </div>
+      </div>
+      <app-button
+        [button]="{
+          text: 'Добавить',
+          icon: {
+            src: 'assets/svg/edit-modal/add\.svg',
+          },
+          class: ['btn', 'btn-primary']
+        }"
+      ></app-button>
+    </div>
+  </main>
 </ng-template>
 
 <ng-template #workExperienceTemplate>
+  <main class="experience">
+    <div class="empty-state">
+      <div class="content">
+        <div class="icon">
+          <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
+        </div>
+        <div class="texts">
+          <h2 class="title">Вы еще не рассказали об опыте работы</h2>
+          <span class="text">Расскажите о своем опыте: где работали и когда</span>
+        </div>
+      </div>
+      <app-button
+        [button]="{
+          text: 'Добавить опыт работы',
+          icon: {
+            src: 'assets/svg/edit-modal/add\.svg',
+          },
+          class: ['btn', 'btn-primary']
+        }"
+      ></app-button>
+    </div>
+  </main>
 </ng-template>
 
 <ng-template #projectsTemplate>
+  <main class="projects">
+    <div class="empty-state">
+      <div class="content">
+        <div class="icon">
+          <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
+        </div>
+        <div class="texts">
+          <h2 class="title">Вы еще не рассказали о проектах</h2>
+          <span class="text">Опишите ваши проекты и свою роль в них</span>
+        </div>
+      </div>
+      <app-button
+        [button]="{
+          text: 'Добавить проекты',
+          icon: {
+            src: 'assets/svg/edit-modal/add\.svg',
+          },
+          class: ['btn', 'btn-primary']
+        }"
+      ></app-button>
+    </div>
+  </main>
 </ng-template>
 
 <ng-template #educationsTemplate>
+  <main class="educations">
+    <div class="empty-state">
+      <div class="content">
+        <div class="icon">
+          <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
+        </div>
+        <div class="texts">
+          <h2 class="title">Вы еще не рассказали об образовании</h2>
+          <span class="text">Расскажите о вашей учебной специальности</span>
+        </div>
+      </div>
+      <app-button
+        [button]="{
+          text: 'Рассказать об образовании',
+          icon: {
+            src: 'assets/svg/edit-modal/add\.svg',
+          },
+          class: ['btn', 'btn-primary']
+        }"
+      ></app-button>
+    </div>
+  </main>
 </ng-template>
 
 <ng-template #rewardsTemplate>
+  <main class="rewards">
+    <div class="empty-state">
+      <div class="content">
+        <div class="icon">
+          <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
+        </div>
+        <div class="texts">
+          <h2 class="title">Информации о достижениях пока нет</h2>
+          <span class="text">Расскажите о ваших наградах</span>
+        </div>
+      </div>
+      <app-button
+        [button]="{
+          text: 'Добавить награды',
+          icon: {
+            src: 'assets/svg/edit-modal/add\.svg',
+          },
+          class: ['btn', 'btn-primary']
+        }"
+      ></app-button>
+    </div>
+  </main>
 </ng-template>
 
 <ng-template #certificatesTemplate>
+  <main class="certificates">
+    <div class="empty-state">
+      <div class="content">
+        <div class="icon">
+          <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
+        </div>
+        <div class="texts">
+          <h2 class="title">Информации о курсах пока нет</h2>
+          <span class="text">Расскажите о дополнительном обучении</span>
+        </div>
+      </div>
+      <app-button
+        [button]="{
+          text: 'Расскажите о курсах',
+          icon: {
+            src: 'assets/svg/edit-modal/add\.svg',
+          },
+          class: ['btn', 'btn-primary']
+        }"
+      ></app-button>
+    </div>
+  </main>
 </ng-template>
 
 <ng-template #recomendationsTemplate>
+  <main class="recomendations">
+    <div class="empty-state">
+      <div class="content">
+        <div class="icon">
+          <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
+        </div>
+        <div class="texts">
+          <h2 class="title">Рекомендаций пока нет</h2>
+          <span class="text">Добавьте отзывы о вышей работе</span>
+        </div>
+      </div>
+      <app-button
+        [button]="{
+          text: 'Добавить отзывы',
+          icon: {
+            src: 'assets/svg/edit-modal/add\.svg',
+          },
+          class: ['btn', 'btn-primary']
+        }"
+      ></app-button>
+    </div>
+  </main>
 </ng-template>
 
 <ng-template #languagesTemplate>
+  <main class="languages">
+    <div class="empty-state">
+      <div class="content">
+        <div class="icon">
+          <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
+        </div>
+        <div class="texts">
+          <h2 class="title">Информации об иностранных языках пока нет</h2>
+          <span class="text">Добавьте языки, которыми вы владеете</span>
+        </div>
+      </div>
+      <app-button
+        [button]="{
+          text: 'Добавить языки',
+          icon: {
+            src: 'assets/svg/edit-modal/add\.svg',
+          },
+          class: ['btn', 'btn-primary']
+        }"
+      ></app-button>
+    </div>
+  </main>
 </ng-template>

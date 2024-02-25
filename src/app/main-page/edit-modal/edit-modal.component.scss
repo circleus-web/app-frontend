@@ -1,0 +1,91 @@
+@import "typography";
+
+main.links,
+main.about,
+main.employment-type,
+main.skills,
+main.expected-income,
+main.experience,
+main.projects,
+main.educations,
+main.rewards,
+main.certificates,
+main.recomendations,
+main.languages {
+  display: flex;
+
+  flex-direction: column;
+  align-self: stretch;
+  justify-content: center;
+  flex-grow: 1;
+
+  padding: 35px 45px;
+
+  .empty-state {
+    display: flex;
+
+    align-self: center;
+    align-items: center;
+
+    flex-direction: column;
+    gap: 24px;
+
+    .content {
+      display: flex;
+
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+
+      .icon {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 48px;
+        height: 48px;
+
+        padding: 4px;
+
+        background: var(--Accent-100, #F4EBFF);
+
+        border: 6px solid var(--Accent-50, #F9F5FF);
+        border-radius: 50%;
+
+        overflow: visible;
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .texts {
+        display: flex;
+
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+
+        .title {
+          margin: 0;
+         
+          color: var(--Gray-900, #101828);
+
+          @include font-body-2-semibold;
+        }
+        
+        .text {
+          width: 352px;
+
+          text-align: center;
+
+          color: var(--Gray-500, #667085);
+
+          @include font-body-2-condensed-regular;
+        }
+      }
+    }
+  }
+}
