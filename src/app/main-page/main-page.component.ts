@@ -19,6 +19,7 @@ import { SalaryBlockComponent } from './salary-block/salary-block.component';
 import { SettingsModalComponent } from './settings-modal/settings-modal.component';
 import { SkillsBlockComponent } from './skills-block/skills-block.component';
 import { ToolButtonComponent } from './tool-button/tool-button.component';
+import { EditModalComponent } from './edit-modal/edit-modal.component';
 
 enum UsedBreakpoints {
   LARGE = 'large',
@@ -50,6 +51,7 @@ enum UsedBreakpoints {
     ToolButtonComponent,
     ResearchModalComponent,
     SettingsModalComponent,
+    EditModalComponent,
   ],
 })
 export class MainPageComponent implements OnInit {
@@ -89,12 +91,21 @@ export class MainPageComponent implements OnInit {
   protected m_settingsModalActive: WritableSignal<boolean> = signal(false);
 
   protected m_settingsModalShow() {
-    console.log('settings modal show');
     this.m_settingsModalActive.set(true);
   }
 
   protected m_settingsModalHide() {
     this.m_settingsModalActive.set(false);
+  }
+
+  protected m_editModalActive: WritableSignal<boolean> = signal(false);
+
+  protected m_editModalShow() {
+    this.m_editModalActive.set(true);
+  }
+
+  protected m_editModalHide() {
+    this.m_editModalActive.set(false);
   }
 
   ngOnInit(): void {

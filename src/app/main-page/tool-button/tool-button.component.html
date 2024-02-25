@@ -25,7 +25,7 @@
   type="button"
   class="floating-button edit"
   [ngClass]="{ inactive: !m_active, active: m_active }"
-  (click)="m_toggle()"
+  (click)="m_toggle(); m_editModalShow()"
 >
   <img src="assets/svg/tool-buttons/edit.svg" alt="edit" />
 </button>

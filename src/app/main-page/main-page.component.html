@@ -162,7 +162,10 @@
       class="cv-block"
     ></app-languages-block>
   </div>
-  <app-tool-button (researchModalShow)="m_researchModalShow()"></app-tool-button>
+  <app-tool-button
+    (researchModalShow)="m_researchModalShow()"
+    (editModalShow)="m_editModalShow()"
+  ></app-tool-button>
   <app-research-modal
     *ngIf="m_researchModalActive()"
     (researchModalHide)="m_researchModalHide()"
@@ -171,4 +174,8 @@
     *ngIf="m_settingsModalActive()"
     (modalHide)="m_settingsModalHide()"
   ></app-settings-modal>
+  <app-edit-modal
+    *ngIf="m_editModalActive()"
+    (modalHide)="m_editModalHide()"
+  ></app-edit-modal>
 </div>

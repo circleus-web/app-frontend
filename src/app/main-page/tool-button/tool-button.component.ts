@@ -21,4 +21,10 @@ export class ToolButtonComponent {
   protected m_researchModalShow(): void {
     this.researchModalShow.emit();
   }
+
+  @Output() editModalShow = new EventEmitter<void>();
+
+  protected m_editModalShow(): void {
+    this.editModalShow.emit();
+  }
 }

@@ -72,6 +72,11 @@ main {
       width: $navigation-width;
 
       .icon {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
         width: 28px;
         height: 28px;
         padding: 6px;
