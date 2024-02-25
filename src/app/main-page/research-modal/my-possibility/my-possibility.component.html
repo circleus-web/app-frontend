@@ -1,0 +1,34 @@
+@switch (m_currentStep()) {
+  @case (Steps.WaitingToStart) {
+    <div class="content">
+      <app-background></app-background>
+      <img src="assets/svg/research-modal/compass.svg" alt="icon" />
+      <div class="controls">
+        <div class="texts">
+          <h2 class="title">Узнайте свою заработную плату</h2>
+          <span class="support"
+            >Получите примерный расчет своей заработной платы на основе различных факторов, таких
+            как опыт работы, образование и рыночные тренды.</span
+          >
+        </div>
+        <app-button
+          [button]="m_calculateButton"
+        ></app-button>
+      </div>
+    </div>
+  }
+  @case (Steps.Calculating) {
+    <div class="loader">
+      <app-background></app-background>
+      <div class="logo"></div>
+      <div class="controls">
+        <div class="texts">
+          <h2 class="title">Идет вычисление</h2>
+          <span class="support"
+            >Это может занять несколько минут</span
+          >
+        </div>
+      </div>
+    </div>
+  }
+}

@@ -21,29 +21,7 @@
 
 <ng-template #m_myPossibilityTemplate>
   <main class="my-possibility">
-    <div class="content">
-      <img src="assets/svg/research-modal/compass.svg" alt="icon" />
-      <div class="ellipse"></div>
-      <div class="ellipse"></div>
-      <div class="ellipse"></div>
-      <div class="ellipse"></div>
-      <div class="ellipse"></div>
-      <div class="controls">
-        <div class="texts">
-          <h2 class="title">Узнайте свою заработную плату</h2>
-          <span class="support"
-            >Получите примерный расчет своей заработной платы на основе различных факторов, таких
-            как опыт работы, образование и рыночные тренды.</span
-          >
-        </div>
-        <app-button
-          [button]="{
-            text: 'Рассчитать ЗП',
-            class: ['btn', 'btn-primary']
-          }"
-        ></app-button>
-      </div>
-    </div>
+    <app-my-possibility></app-my-possibility>
   </main>
 </ng-template>
 

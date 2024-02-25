@@ -1,0 +1,110 @@
+@import 'typography';
+
+$content-size: 550px;
+
+.content,
+.loader {
+  position: relative;
+  width: $content-size;
+  height: $content-size;
+
+  img {
+    width: 46px;
+    height: 46px;
+
+    position: absolute;
+    top: calc($content-size / 2) - calc(46px / 2);
+    left: calc($content-size / 2) - calc(46px / 2);
+
+    padding: 4px;
+
+    background: var(--Gray-100, #f2f4f7);
+
+    border: 6px solid var(--Gray-50, #f9fafb);
+    border-radius: 50%;
+  }
+
+  .controls {
+    position: relative;
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    width: 544px;
+
+    top: calc(($content-size + 46px) / 2) + 20px;
+    left: calc($content-size / 2) - 272px;
+
+    .texts {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+
+      .title {
+        margin: 0;
+
+        color: var(--Gray-900, #101828);
+
+        @include font-body-1-semibold;
+      }
+
+      .support {
+        text-align: center;
+        color: var(--Gray-500, #667085);
+
+        @include font-small-regular;
+      }
+    }
+  }
+}
+
+.loader {
+  .logo {
+    width: 40px;
+    height: 40px;
+
+    position: absolute;
+    top: calc($content-size / 2) - calc(40px / 2);
+    left: calc($content-size / 2) - calc(40px / 2);
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    $animation-duration: 2s;
+
+    @keyframes move-left {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: var(--Accent-700, #6941C6);
+      border-radius: 50%;
+      animation-duration: $animation-duration;
+      animation-iteration-count: infinite;
+      animation-name: move-left;
+      animation-timing-function: linear;
+    }
+
+    &::after {
+      animation-delay: calc((-1 * $animation-duration) / 4);
+    }
+
+    &::before {
+      animation-delay: calc((-3 * $animation-duration) / 4);
+    }
+  }
+}

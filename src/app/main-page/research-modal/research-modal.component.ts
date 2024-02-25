@@ -13,6 +13,7 @@ import { IInput } from '../../shared/input/input/iinput';
 import { Input } from '../../shared/input/input/input';
 import { InputComponent } from '../../shared/input/input/input.component';
 import { ModalComponent } from '../modal/modal.component';
+import { MyPossibilityComponent } from './my-possibility/my-possibility.component';
 
 @Component({
   selector: 'app-research-modal',
@@ -20,7 +21,7 @@ import { ModalComponent } from '../modal/modal.component';
   templateUrl: './research-modal.component.html',
   styleUrl: './research-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, ModalComponent, ButtonComponent, InputComponent],
+  imports: [CommonModule, ModalComponent, ButtonComponent, InputComponent, MyPossibilityComponent],
 })
 export class ResearchModalComponent {
   protected m_myPossibilityTemplate!: TemplateRef<Element>;
