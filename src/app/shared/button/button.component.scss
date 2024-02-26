@@ -24,6 +24,10 @@ button.btn {
 
 button.btn.grow {
   flex-grow: 1;
+
+  &.justify-content-start {
+    justify-content: start;
+  }
 }
 
 button.btn.small {
@@ -93,13 +97,21 @@ button.btn.btn-secondary-gray:disabled {
   color: var(--Gray-300, #d0d5dd);
 }
 
-button.btn.btn-tertiary {
+button.btn.btn-tertiary,
+button.btn.btn-tertiary-red {
+  border: none;
   border-radius: 8px;
   background: var(--White, #ffffff);
 
   color: var(--Accent-600, #6941c6);
 
   box-shadow: none;
+}
+
+button.btn.btn-tertiary-red {
+  background: transparent;
+
+  color: var(--Red-500, #f04438);
 }
 
 button.btn.btn-tertiary:hover {
@@ -110,6 +122,11 @@ button.btn.btn-tertiary:hover {
 
 button.btn.btn-tertiary:focus {
   color: var(--Accent-700, #6941c6);
+}
+
+button.btn.btn-tertiary-red:hover,
+button.btn.btn-tertiary-red:focus {
+  color: var(--Red-600, #d92d20);
 }
 
 button.btn.btn-tertiary:disabled {

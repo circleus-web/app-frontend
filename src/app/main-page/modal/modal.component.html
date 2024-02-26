@@ -21,6 +21,21 @@
         </button>
       }
     </div>
+    <div class="footer">
+      @if (modalInformation().hasLeaveButton) {
+        <app-button
+          class="leave-button"
+          [button]="{
+            text: 'Выйти',
+            icon: {
+              src: 'assets/svg/modal/leave.svg'
+            },
+            class: ['btn', 'btn-tertiary-red', 'grow', 'justify-content-start']
+          }"
+          (click)="m_modalHide()"
+        ></app-button>
+      }
+    </div>
   </div>
   <div class="content">
     <div class="header">

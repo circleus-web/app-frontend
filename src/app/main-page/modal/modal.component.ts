@@ -13,6 +13,8 @@ import {
   signal,
 } from '@angular/core';
 
+import { ButtonComponent } from '../../shared/button/button.component';
+
 interface IMenyOption {
   iconSrc: string;
   title: string;
@@ -26,6 +28,7 @@ interface IMenyOptionWithName extends IMenyOption {
 interface IModalInformation {
   title: string;
   iconSrc: string;
+  hasLeaveButton?: boolean;
 }
 
 @Component({
@@ -34,7 +37,7 @@ interface IModalInformation {
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule],
+  imports: [CommonModule, ButtonComponent],
 })
 export class ModalComponent {
   modalInformation: InputSignal<IModalInformation> = input.required<IModalInformation>();
