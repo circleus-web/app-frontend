@@ -18,6 +18,8 @@ main.all-specialists {
   flex-grow: 1;
   flex-direction: column;
 
+  height: 100%;
+
   .search-block {
     display: flex;
 
@@ -27,6 +29,26 @@ main.all-specialists {
     .input-container {
       display: flex;
       flex-grow: 1;
+    }
+  }
+
+  .speciality-list {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 24px 16px 24px;
+    align-self: stretch;
+    align-items: stretch;
+
+    gap: 8px;
+
+    height: 100%;
+    overflow-y: scroll;
+
+    hr {
+      flex-grow: 1;
+      margin: 0;
+      border: 1px solid var(--Gray-200, #EAECF0);
     }
   }
 }

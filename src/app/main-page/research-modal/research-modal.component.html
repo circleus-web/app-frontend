@@ -30,5 +30,17 @@
     <div class="search-block">
       <app-input class="input-container" [inputContent]="m_searchInput"></app-input>
     </div>
+    <div class="speciality-list">
+      @for (speciality of m_specialities; track $index) {
+        <hr *ngIf="$index !== 0" />
+        <app-speciality-item
+          class="speciality"
+          currency="₽"
+          [name]="speciality.name"
+          [mostPossible]="speciality.mostPossible"
+          [topPossible]="speciality.topPossible"
+        ></app-speciality-item>
+      }
+    </div>
   </main>
 </ng-template>

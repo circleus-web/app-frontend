@@ -1,0 +1,114 @@
+@import "typography";
+
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+h2 {
+  margin: 0;
+}
+
+.speciality-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+  border-radius: 8px;
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 8px;
+    border-radius: 8px;
+
+    .texts {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      align-items: start;
+      gap: 4px;
+
+      .name {
+        color: var(--Gray-900, #101828);
+
+        @include font-body-1-condensed-medium;
+      }
+
+      .amount {
+        color: var(--Gray-500, #667085);
+
+        @include font-body-2-condensed-regular;
+      }
+    }
+
+    .caret {
+      background-image: url("data:image/svg+xml,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z' fill='%23667085'/%3E%3C/svg%3E%0A");
+      width: 14px;
+      height: 8px;
+
+      transition: 0.2s;
+
+      &.active {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+  .possibilities {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding: 0 8px;
+
+    .possibility-card {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 12px;
+      padding: 12px;
+
+      border: 1px solid var(--Gray-200, #EAECF0);
+      border-radius: 8px;
+
+      .percent {
+        @include font-small-medium;
+      }
+
+      .amount {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+
+        .value {
+          flex-grow: 1;
+
+          color: var(--Gray-900, #101828);
+
+          @include font-body-1-semibold;
+        }
+
+        .currency {
+          color: var(--Gray-300, #D0D5DD);
+
+          @include font-body-1-semibold;
+        }
+      }
+
+      &.first-possible {
+        color: var(--Green-500, #12B76A);
+      }
+
+      &.second-possible {
+        color: var(--Yellow-500, #F79009);
+      }
+
+      &.third-possible {
+        color: var(--Red-500, #F04438);
+      }
+    }
+  }
+}

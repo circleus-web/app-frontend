@@ -1,0 +1,41 @@
+<div class="speciality-item">
+  <button class="title" (click)="m_titleClick()">
+    <div class="texts">
+      <h2 class="name">{{ name() }}</h2>
+      <span class="amount">~{{ mostPossible() }} {{ currency() }}</span>
+    </div>
+    <div class="caret" [ngClass]="{ active: m_active() }"></div>
+  </button>
+  @if (m_active()) {
+    <div class="possibilities">
+      <div class="possibility-card first-possible">
+        <span class="percent">{{ topPossible()[0].percentRate }}% рынка</span>
+        <div class="amount">
+          <span class="value"
+            >{{ topPossible()[0].amount[0] }} - {{ topPossible()[0].amount[1] }}</span
+          >
+          <span class="currency">{{ currency() }}</span>
+        </div>
+      </div>
+      <div class="possibility-card second-possible">
+        <span class="percent">{{ topPossible()[1].percentRate }}% рынка</span>
+        <div class="amount">
+          <span class="value"
+            >{{ topPossible()[1].amount[0] }} - {{ topPossible()[1].amount[1] }}</span
+          >
+          <span class="currency">{{ currency() }}</span>
+        </div>
+      </div>
+      <div class="possibility-card third-possible">
+        <span class="percent">{{ topPossible()[2].percentRate }}% рынка</span>
+        <div class="amount">
+          <span class="value"
+            >{{ topPossible()[2].amount[0] }} - {{ topPossible()[2].amount[1] }}</span
+          >
+          <span class="currency">{{ currency() }}</span>
+        </div>
+      </div>
+    </div>
+    
+  }
+</div>
