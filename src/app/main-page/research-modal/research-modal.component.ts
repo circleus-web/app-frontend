@@ -78,7 +78,7 @@ export class ResearchModalComponent {
   };
 
   protected m_specialities: ISpeciality[] = [
-    { ...this.m_specialityMock },  
+    { ...this.m_specialityMock },
     { ...this.m_specialityMock, name: 'Product Manager' },
     { ...this.m_specialityMock, name: 'Frontend Developer' },
     { ...this.m_specialityMock, name: 'Backend Developer' },

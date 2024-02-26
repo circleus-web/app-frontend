@@ -14,6 +14,8 @@ import { Toggle } from '../../shared/toggle-button/toggle';
 import { ToggleButtonComponent } from '../../shared/toggle-button/toggle-button.component';
 import { ModalComponent } from '../modal/modal.component';
 
+import { AccountSectionComponent } from './account-section/account-section.component';
+
 @Component({
   selector: 'app-settings-modal',
   standalone: true,
@@ -26,6 +28,7 @@ import { ModalComponent } from '../modal/modal.component';
     InputWithLabelComponent,
     ToggleButtonComponent,
     InputWithToggleAndLabelComponent,
+    AccountSectionComponent,
   ],
 })
 export class SettingsModalComponent {
@@ -90,25 +93,5 @@ export class SettingsModalComponent {
     checked: true,
     text: 'Ищу работу',
     supportingText: 'Статус будет показан в профиле',
-  });
-
-  protected m_isPrivateToggle: IToggle = new Toggle({
-    name: 'isPrivate',
-    text: 'Закрытый аккаунт',
-    supportingText: 'Другие пользователи не смогут просматривать ваш аккаунт',
-  });
-
-  protected m_phoneChangeInput: IInputWithToggleAndLabel = new InputWithToggleAndLabel({
-    title: 'Номер телефона',
-    input: new Input({
-      formControl: new FormControl(),
-      name: 'phone',
-      placeholder: '+7 (999) 123-45-67',
-    }),
-    toggle: new Toggle({
-      name: 'isPhonePublic',
-      inversed: true,
-    }),
-    toggleTitle: 'Не показывать в профиле',
   });
 }

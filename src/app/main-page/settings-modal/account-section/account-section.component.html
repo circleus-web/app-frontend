@@ -1,0 +1,46 @@
+<main class="account">
+  <app-toggle-button [toggle]="m_isPrivateToggle" class="is-private"></app-toggle-button>
+  <div class="email-change">
+    <div class="header">
+      <div class="head">
+        <span class="title">Email</span>
+        <button
+          *ngIf="!m_emailChanging()"
+          type="button"
+          (click)="m_emailActivateChanging()"
+          class="edit"
+        >
+          <img src="assets/svg/settings-modal/edit.svg" alt="edit button" />
+        </button>
+      </div>
+      <span class="current-email">zhur06&#64;gmail.com</span>
+    </div>
+    @if (m_emailChanging()) {
+      <hr />
+      <span class="message">Мы отправили вам код верификации. Пожалуйста, проверьте почту</span>
+      <app-input-with-label
+        [inputWithLabel]="m_verificationCodeInput"
+        class="verification-code"
+      ></app-input-with-label>
+      <app-button
+        [button]="{
+          text: 'Изменить email',
+          class: ['btn', 'btn-secondary', 'grow']
+        }"
+        class="resend-code"
+      ></app-button>
+    }
+  </div>
+  <app-input-with-toggle-and-label
+    [inputWithToggleAndLabel]="m_phoneChangeInput"
+    class="phone-change"
+  ></app-input-with-toggle-and-label>
+  <hr />
+  <app-button
+    [button]="{
+      text: 'Удалить аккаунт',
+      class: ['btn', 'btn-tertiary', 'grow']
+    }"
+    class="delete-account"
+  ></app-button>
+</main>

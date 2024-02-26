@@ -1,0 +1,78 @@
+@import 'typography';
+
+hr {
+  width: 100%;
+  height: 1px;
+  border: none;
+  background: var(--Gray-200, #eaecf0);
+}
+
+main.account {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  padding: 16px 24px;
+
+  .email-change {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+    border: 1px solid #eaecf0;
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .title {
+          color: var(--Gray-700, #344054);
+
+          @include font-body-1-medium;
+        }
+
+        button {
+          background: none;
+          border: none;
+          border-radius: 8px;
+        }
+      }
+
+      .current-email {
+        color: var(--Gray-900, #101828);
+
+        @include font-body-2-regular;
+      }
+    }
+
+    .message {
+      color: var(--Gray-500, #667085);
+
+      @include font-body-2-regular;
+    }
+
+    .resend-code {
+      display: flex;
+      flex-grow: 1;
+    }
+  }
+
+  .phone-change {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .delete-account {
+    display: flex;
+  }
+}

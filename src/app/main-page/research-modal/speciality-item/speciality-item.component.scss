@@ -1,4 +1,4 @@
-@import "typography";
+@import 'typography';
 
 button {
   border: none;
@@ -71,7 +71,7 @@ h2 {
       gap: 12px;
       padding: 12px;
 
-      border: 1px solid var(--Gray-200, #EAECF0);
+      border: 1px solid var(--Gray-200, #eaecf0);
       border-radius: 8px;
 
       .percent {
@@ -92,22 +92,22 @@ h2 {
         }
 
         .currency {
-          color: var(--Gray-300, #D0D5DD);
+          color: var(--Gray-300, #d0d5dd);
 
           @include font-body-1-semibold;
         }
       }
 
       &.first-possible {
-        color: var(--Green-500, #12B76A);
+        color: var(--Green-500, #12b76a);
       }
 
       &.second-possible {
-        color: var(--Yellow-500, #F79009);
+        color: var(--Yellow-500, #f79009);
       }
 
       &.third-possible {
-        color: var(--Red-500, #F04438);
+        color: var(--Red-500, #f04438);
       }
     }
   }
