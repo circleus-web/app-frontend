@@ -1,5 +1,10 @@
 @import 'typography';
 
+.section {
+  display: flex;
+  flex-grow: 1;
+}
+
 main.links,
 main.about,
 main.employment-type,

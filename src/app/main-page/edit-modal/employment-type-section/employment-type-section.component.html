@@ -1,0 +1,49 @@
+<main class="employment-type">
+  @switch (m_currentState()) {
+    @case (m_States.EMPTY) {
+      <div class="empty-state">
+        <div class="content">
+          <div class="icon">
+            <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
+          </div>
+          <div class="texts">
+            <h2 class="title">Выберите тип занятости</h2>
+            <span class="text">Вы можете добавить этот блок в портфолио</span>
+          </div>
+        </div>
+        <app-button
+          [button]="{
+            text: 'Добавить',
+            icon: {
+              src: 'assets/svg/edit-modal/add\.svg'
+            },
+            class: ['btn', 'btn-primary'],
+            click: m_exitEmptyState
+          }"
+        ></app-button>
+      </div>
+    }
+    @case (m_States.SELECTING) {
+      <div class="option-list">
+        <app-employment-type-option
+          name="Удаленка"
+          description="Работаете из дома"
+          iconSrc="assets/svg/edit-modal/employment/remote.svg"
+          (ChangeStatus)="m_changeRemoteStatus($event)"
+        ></app-employment-type-option>
+        <app-employment-type-option
+          name="Офис"
+          description="Работаете из офиса"
+          iconSrc="assets/svg/edit-modal/employment/offline.svg"
+          (ChangeStatus)="m_changeOfflineStatus($event)"
+        ></app-employment-type-option>
+        <app-employment-type-option
+          name="Гибрид"
+          description="Совмещаете работу из офиса и на дому"
+          iconSrc="assets/svg/edit-modal/employment/hybrid.svg"
+          (ChangeStatus)="m_changeHybridStatus($event)"
+        ></app-employment-type-option>
+      </div>
+    }
+  }
+</main>

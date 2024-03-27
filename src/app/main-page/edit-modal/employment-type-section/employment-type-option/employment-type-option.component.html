@@ -1,0 +1,8 @@
+<button class="employment-card" [ngClass]="{ active: m_active() }" (click)="m_changeActive()">
+  <div class="icon"><img src="{{ iconSrc() }}" alt="icon" /></div>
+  <div class="texts">
+    <span class="name">{{ name() }}</span>
+    <span class="description">{{ description() }}</span>
+  </div>
+  <div class="checkbox"></div>
+</button>

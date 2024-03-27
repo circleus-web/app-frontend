@@ -103,9 +103,7 @@
         </div>
         <div class="texts">
           <h2 class="title">Расскажите о себе</h2>
-          <span class="text"
-            >Вы можете добавить этот блок в портфолио</span
-          >
+          <span class="text">Вы можете добавить этот блок в портфолио</span>
         </div>
       </div>
       <app-button
@@ -122,28 +120,7 @@
 </ng-template>
 
 <ng-template #employmentTypeTemplate>
-  <main class="employment-type">
-    <div class="empty-state">
-      <div class="content">
-        <div class="icon">
-          <img src="assets/svg/edit-modal/empty-state.svg" alt="empty state" />
-        </div>
-        <div class="texts">
-          <h2 class="title">Выберите тип занятости</h2>
-          <span class="text">Вы можете добавить этот блок в портфолио</span>
-        </div>
-      </div>
-      <app-button
-        [button]="{
-          text: 'Добавить',
-          icon: {
-            src: 'assets/svg/edit-modal/add\.svg'
-          },
-          class: ['btn', 'btn-primary']
-        }"
-      ></app-button>
-    </div>
-  </main>
+  <app-employment-type-section class="section"></app-employment-type-section>
 </ng-template>
 
 <ng-template #skillsTemplate>

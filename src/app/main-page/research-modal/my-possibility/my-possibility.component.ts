@@ -21,7 +21,7 @@ enum Steps {
 }
 
 interface ISalaryPrediction {
-  amount: number[];
+  amount: string[];
   percentRate: number;
 }
 
@@ -54,15 +54,15 @@ export class MyPossibilityComponent {
 
   protected m_predictedSalaryProbabilitiesList: ISalaryPrediction[] = [
     {
-      amount: [180, 200],
+      amount: ['180К', '200К'],
       percentRate: 50,
     },
     {
-      amount: [160, 180],
+      amount: ['160К', '180К'],
       percentRate: 30,
     },
     {
-      amount: [200, 220],
+      amount: ['200К', '220К'],
       percentRate: 20,
     },
   ];

@@ -1,0 +1,94 @@
+@import 'typography';
+
+button {
+  border: none;
+  background: transparent;
+}
+
+.employment-card {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+
+  border: var(--Gray-200, #eaecf0) 1px solid;
+  border-radius: 8px;
+  cursor: pointer;
+
+  .icon {
+    border: var(--Gray-50, #f9fafb) 6px solid;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--Gray-100, #f2f4f7);
+
+    img {
+      filter: invert(43%) sepia(16%) saturate(512%) hue-rotate(183deg) brightness(97%) contrast(89%);
+    }
+  }
+
+  .texts {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 4px;
+
+    .name {
+      text-align: start;
+      color: var(--Gray-900, #101828);
+
+      @include font-body-2-semibold;
+    }
+
+    .description {
+      text-align: start;
+      color: var(--Gray-500, #667085);
+
+      @include font-body-2-condensed-regular;
+    }
+  }
+
+  .checkbox {
+    width: 20px;
+    height: 20px;
+
+    border: var(--Gray-300, #d0d5dd) 1px solid;
+    border-radius: 6px;
+  }
+
+  &.active {
+    border-color: var(--Accent-200, #e9d7fe);
+
+    .icon {
+      border-color: var(--Accent-50, #f9f5ff);
+      background-color: var(--Accent-100, #f4ebff);
+
+      img {
+        filter: invert(43%) sepia(14%) saturate(3164%) hue-rotate(221deg) brightness(89%)
+          contrast(99%);
+      }
+    }
+
+    .checkbox {
+      border-color: var(--Accent-600, #7f56d9);
+      background-color: var(--Accent-50, #f9f5ff);
+
+      &::after {
+        content: url('data:image/svg+xml,<svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.0791 1.08785C11.307 1.31565 11.307 1.685 11.0791 1.9128L4.66248 8.32947C4.43467 8.55728 4.06533 8.55728 3.83752 8.32947L0.920854 5.4128C0.693049 5.185 0.693049 4.81565 0.920854 4.58785C1.14866 4.36004 1.51801 4.36004 1.74581 4.58785L4.25 7.09203L10.2542 1.08785C10.482 0.860041 10.8513 0.860041 11.0791 1.08785Z" fill="%237F56D9"/></svg>');
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
