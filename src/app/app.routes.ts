@@ -9,12 +9,12 @@ export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
-    title: 'Login - Circleus',
+    title: 'Login - Purples',
     component: LoginPageComponent,
   },
   {
     path: 'registration',
-    title: 'Registration - Circleus',
+    title: 'Registration - Purples',
     children: [
       {
         path: '',
@@ -23,19 +23,19 @@ export const routes: Routes = [
       },
       {
         path: 'account-creation',
-        title: 'Account Creation - Circleus',
+        title: 'Account Creation - Purples',
         component: RegistrationPageAccountCreationComponent,
       },
       {
         path: 'fill-account-information',
-        title: 'Fill Account Information - Circleus',
+        title: 'Fill Account Information - Purples',
         component: FillAccountInfoComponent,
       },
     ],
   },
   {
     path: 'main',
-    title: 'Main Page - Circleus',
+    title: 'Main Page - Purples',
     component: MainPageComponent,
   },
 ];
