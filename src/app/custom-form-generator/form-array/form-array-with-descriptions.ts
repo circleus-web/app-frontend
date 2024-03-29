@@ -30,12 +30,21 @@ interface IRequiredFormArrayWithDescriptions {
 }
 
 export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
+  /*
+  * all form items, presented in all steps in their constructor objects
+  */
   private _forms?: {
     [key: string]: IFormInputWithLabel | IFormCombobox | IFormInputWithToggle;
   };
 
+  /*
+  * angular form group of current step
+  */
   private _formGroup?: FormGroup;
 
+  /*
+  * styles for child elements in the form
+  */
   public formsStyle?: FormStyles;
 
   private _buttons?: { [key: string]: IFormButton };
@@ -44,12 +53,24 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
 
   private _textsWithLinks?: { [key: string]: IFormTextWithLink };
 
+  /*
+  * current step number
+  */
   public currentStep: WritableSignal<number>;
 
+  /*
+  * all form steps content
+  */
   private _steps: IFormStep[];
 
+  /*
+  * function to pass to ngOnCreate of form constructor component
+  */
   public onCreate?: () => void;
 
+  /*
+  * function to pass to ngOnDestroy of form constructor component
+  */
   public onDestroy?: () => void;
 
   constructor(formArrayWithDescriptions: IRequiredFormArrayWithDescriptions) {
@@ -64,48 +85,81 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     this.onDestroy = formArrayWithDescriptions.onDestroy;
   }
 
+  /*
+  * from the name of the form item, returns the corresponding form for inputs
+  */
   public getForm(
     inputName: string,
   ): IFormInputWithLabel | IFormCombobox | IFormInputWithToggle | undefined {
     return this._forms ? this._forms[inputName] : undefined;
   }
 
+  /*
+  * from the name of the form item, returns the corresponding form for buttons
+  */
   private getFormButton(buttonName: string): IFormButton | undefined {
     return this._buttons ? this._buttons[buttonName] : undefined;
   }
 
+  /*
+  * from the name of the form item, returns the corresponding form for texts
+  */
   private getFormText(textName: string): IFormText | undefined {
     return this._texts ? this._texts[textName] : undefined;
   }
 
+  /*
+  * from the name of the form item, returns the corresponding form for texts with links
+  */
   private getFormTextWithLink(textName: string): IFormTextWithLink | undefined {
     return this._textsWithLinks ? (this._textsWithLinks[textName] as IFormTextWithLink) : undefined;
   }
 
+  /*
+  * from the form item, returns the corresponding angular form control
+  */
   public getFormControl(formName: string): FormControl | undefined {
     return this.getForm(formName)?.formControl;
   }
 
+  /*
+  * selects the previous form step if it exists
+  */
   public previousStep(): void {
     this.currentStep.set(this.currentStep() - 1);
   }
 
+  /*
+  * selects the next form step if it exists
+  */
   public nextStep(): void {
     this.currentStep.set(this.currentStep() + 1);
   }
 
+  /*
+  * sets the current form step
+  */
   public setStep(step: number): void {
     this.currentStep.set(step);
   }
 
+  /*
+  * checks if the current form step is valid
+  */
   public stepValid(step: number): boolean {
     return step >= 0 && step < this._steps.length && !!this._steps[step];
   }
 
+  /*
+  * returns the last step
+  */
   public get maxStep(): number {
     return this._steps.length - 1;
   }
 
+  /*
+  * returns all form items from current step
+  */
   public getIterableItems(step: number): Required<IFormItem>[] {
     if (!this.stepValid(step)) return [];
     const iterableItems: Required<IFormItem>[] = [];
@@ -134,6 +188,9 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     return iterableItems;
   }
 
+  /*
+  * returns all form items from all step
+  */
   public get allIterableItems(): Required<IFormItem>[][] {
     const res: Required<IFormItem>[][] = [];
     for (let i = 0; i <= this.maxStep; i++) {
@@ -142,7 +199,11 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     return res;
   }
 
+  /*
+  * returns angular form group of current step
+  */
   public get formGroup(): FormGroup {
+    // TODO: update to track current step changes
     if (!this._formGroup) {
       this._formGroup = new FormGroup({});
 
@@ -156,14 +217,23 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     return this._formGroup;
   }
 
+  /*
+  * returns true if the form is invalid
+  */
   public isInvalid(): boolean {
     return this.formGroup.invalid;
   }
 
+  /*
+  * returns the rxjs observable of the form value changes
+  */
   public getFormValueChanges(formName: string): Observable<string> | undefined {
     return this.getForm(formName)?.valueChanges$;
   }
 
+  /*
+  * returns the content of the active form
+  */
   public getActiveFormContent(): object {
     let resultObject: object = {};
     for (const item of this.getIterableItems(this.currentStep())) {
@@ -176,7 +246,34 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
     return resultObject;
   }
 
+  /*
+  * returns the json of the active form
+  */
   public getActiveFormJSON(): string {
     return JSON.stringify(this.getActiveFormContent());
+  }
+
+  /*
+  * returns the content of the full form
+  */
+  public getFullFormContent(): object {
+    let resultObject: object = {};
+    for (const step of this.allIterableItems) {
+      for (const item of step) {
+        resultObject = {
+          ...resultObject,
+          ...item.getContent(),
+        };
+      }
+    }
+
+    return resultObject;
+  }
+
+  /*
+  * returns the json of the full form
+  */
+  public getFullFormJSON(): string {
+    return JSON.stringify(this.getFullFormContent());
   }
 }

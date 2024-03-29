@@ -30,4 +30,6 @@ export interface IFormArrayWithDescriptions {
   onDestroy?: () => void;
   getActiveFormJSON(): string;
   getActiveFormContent(): object;
+  getFullFormJSON(): string;
+  getFullFormContent(): object;
 }
