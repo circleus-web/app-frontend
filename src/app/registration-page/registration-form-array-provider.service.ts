@@ -75,7 +75,7 @@ class AccountCreationForm {
       return this.formArrayWithDescriptions.isInvalid();
     },
     click: () => {
-      this.formArrayWithDescriptions.nextStep();
+      this.formArrayWithDescriptions.setCurrentStepContent({ items: this.m_verificationCodeInputActiveItems });
     },
   });
 
@@ -140,11 +140,10 @@ class AccountCreationForm {
     textsWithLinks: this.m_textsWithLinksOnPage,
     steps: [
       { items: this.m_emailInputActiveItems },
-      { items: this.m_verificationCodeInputActiveItems },
     ],
     onCreate: () => {
       this.m_emailControl$?.pipe(takeUntilDestroyed(this.m_destroyRef)).subscribe(() => {
-        this.formArrayWithDescriptions.setStep(0);
+        this.formArrayWithDescriptions.setCurrentStepContent({ items: this.m_emailInputActiveItems });
       });
     },
   });

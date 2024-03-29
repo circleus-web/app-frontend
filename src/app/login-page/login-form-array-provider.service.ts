@@ -71,7 +71,7 @@ export class LoginFormArrayProviderService implements FormArrayProvider {
       return this.m_loginFormArray.isInvalid();
     },
     click: () => {
-      this.m_loginFormArray.nextStep();
+      this.m_loginFormArray.setCurrentStepContent({ items: this.m_verificationCodeInputStep });
     },
   });
 
@@ -128,7 +128,7 @@ export class LoginFormArrayProviderService implements FormArrayProvider {
     ],
     onCreate: () => {
       this.m_emailControl$?.pipe(takeUntilDestroyed(this.m_destroyRef)).subscribe(() => {
-        this.m_loginFormArray.setStep(0);
+        this.m_loginFormArray.setCurrentStepContent({ items: this.m_emailInputStep });
       });
     },
   });

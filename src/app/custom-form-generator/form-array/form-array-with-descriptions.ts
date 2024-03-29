@@ -144,6 +144,20 @@ export class FormArrayWithDescriptions implements IFormArrayWithDescriptions {
   }
 
   /*
+  * changes the content of given step
+  */
+  private _setStepContent(step: number, content: IFormStep) {
+    this._steps[step] = content;
+  }
+
+  /*
+  * changes the content of the current step
+  */
+  public setCurrentStepContent(content: IFormStep) {
+    this._setStepContent(this.currentStep(), content);
+  }
+
+  /*
   * checks if the current form step is valid
   */
   public stepValid(step: number): boolean {

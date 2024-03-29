@@ -22,6 +22,7 @@ export interface IFormArrayWithDescriptions {
   previousStep(): void;
   nextStep(): void;
   setStep(step: number): void;
+  setCurrentStepContent(content: IFormStep): void;
   currentStep: WritableSignal<number>;
   maxStep: number;
   stepValid(step: number): boolean;
